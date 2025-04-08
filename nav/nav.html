@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- Trying to change the nav bar to the transtitional one  -->
+
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="nav.css">
+</head>
+<body>
+<header>
+<a href="#" class="logo">Logo</a>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Portfolio</a></li>
+<li><a href="#">Team</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</header>
+<section class="banner"></section>
+
+<div id="overlay">
+  <p>hello world</p>  <!-- CANT BE SEEN -->
+</div>
+
+
+<script src="blur.js"></script>
+<script>
+window.addEventListener("scroll", function(){
+  var header = document.querySelector("header");
+  header.classList.toggle("sticky", window.scrollY > 0);
+});
+</script>
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Emory's Blockchain</title>
+        <meta name="description" content="" />
+        <link
+            rel="shortcut icon"
+            href="./Logo.jpg"
+            type="image/x-icon"
+        />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:title" content="Title of the project" />
+        <meta property="og:description" content="" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://github.com/FelipeCardozo0" />
+        <!--Replace with the current website url-->
+        <meta property="og:image" content="" />
+
+        <!-- <link rel="stylesheet" href="../../tailwind-css/tailwind-runtime.css" /> -->
+        <link rel="stylesheet" href="./css/tailwind-build.css">
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="/image.slider/is.css">
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+            integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body class="tw-flex tw-font-mono tw-min-h-[100vh] tw-flex-col tw-bg-[#181B20] tw-text-white">
+      
+
+        <header
+            class="lg:tw-justify-around tw-max-w-lg:tw-px-4 tw-max-w-lg:tw-mr-auto tw-absolute tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] 
+                    tw-text-white"
+        >
+            <a class="tw-h-[50px] tw-w-[50px] tw-p-[4px]" href="">
+                <img
+                    src="./Logo.jpg"
+                    alt="logo"
+                    class="tw-object tw-h-full tw-w-full"
+                />
+            </a>
+            <div
+                class="collapsible-header animated-collapse max-lg:tw-shadow-md"
+                id="collapsed-header-items"
+            >
+                <div
+                    class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base tw-text-white max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center"
+                >
+                    <a class="header-links" href=""> About </a>
+                    <!-- Delete -->
+                    <a class="header-links" href="#pricing"> Education </a>
+                    <!-- Delete -->
+                    <a class="header-links" href=""> Team </a>
+                    <a class="header-links" href=""> Divisions </a>
+                    <a class="header-links" href=""> Portifolio </a>
+                </div>
+                <div
+                    class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center"
+                >
+                    <a
+                        href=""
+                        aria-label="signup"
+                        class="tw-rounded-full tw-bg-secondary tw-px-3 tw-py-2 tw-text-white tw-transition-transform tw-duration-[0.3s] hover:tw-translate-x-2"
+                    >
+                        <span>Contact Us</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <button
+                class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-white lg:tw-hidden"
+                onclick="toggleHeader()"
+                aria-label="menu"
+                id="collapse-btn"
+            ></button>
+        </header>
+
+        <section
+            class="tw-relative tw-flex tw-min-h-[100vh] hero-section tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-md:tw-mt-[50px]"
+            id="hero-section"
+        >
+            <div
+                class="hero-bg-gradient tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-lg:tw-p-4  max-xl:tw-place-items-center"
+            >
+                <div
+                    class="tw-flex tw-flex-col tw-place-content-center tw-items-center"
+                >
+                    <div
+                        class="reveal-up tw-text-center gradient-text tw-text-6xl tw-font-semibold tw-uppercase tw-leading-[80px] max-lg:tw-text-4xl max-md:tw-leading-snug"
+                    >
+                        <span class=""> Emory's Blockchain Club </span>
+                        <br />
+                        <span class="">  </span>
+                    </div>
+                    <div
+                        class="reveal-up tw-mt-10 tw-max-w-[450px] tw-p-2 tw-text-center max-lg:tw-max-w-full"
+                    >
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Error adipisci corrupti accusamus reiciendis
+                        similique assumenda nostrum fuga dicta vitae ipsum.
+                    </div>
+
+
+                </div>
+
+                <div
+                    class="reveal-up tw-flex tw-w-full tw-place-content-center tw-place-items-center"
+                    id="dashboard-container">
+                    
+                    <div
+                        class="tw-flex tw-max-h-[750px] tw-min-h-[450px] tw-w-full tw-min-w-[350px] tw-max-w-[950px] tw-rounded-2xl 
+                                    tw-overflow-hidden tw-shadow-xl tw-shadow-[#443e437c]
+                                    max-lg:tw-h-fit max-lg:tw-max-h-[320px] max-lg:tw-min-h-[150px] max-lg:tw-w-[320px]"
+                    id="dashboard">
+                        <img
+                            src="./everyone.jpeg"
+                            alt="dashboard"
+                            class="tw-h-full tw-w-full tw-object-cover  max-lg:tw-object-contain"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+</body>
+</html>

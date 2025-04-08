@@ -1,0 +1,21 @@
+* {
+    background-color: black;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.typeW {
+    width: 100px;  /* Fixed */
+    height: 100px; /* Fixed */
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: white;
+    font-size: 75px;
+}

@@ -1,0 +1,187 @@
+/* Normalize.css (minimal reset) */
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  /* Hero Carousel Styles */
+  .hero-carousel {
+    margin-bottom: 80px;
+    background: #FAFAFA url('https://i.imgur.com/R60qKwS.jpg');
+    background-size: cover;
+  }
+  
+  .hero-carousel__cell {
+    width: 100%;
+    height: 240px;
+    color: white;
+    background: #EFCE36; /* Match GIF */
+  }
+  
+  .hero-carousel__cell__content {
+    padding: 20px 60px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .hero-carousel h1 {
+    font-size: 3.2rem;
+    line-height: 1.0;
+    margin: 0;
+    padding-top: 40px;
+  }
+  
+  .hero-carousel .tagline {
+    font-size: 1.4rem;
+    line-height: 1.0;
+    margin: 0 0 0.5rem;
+    color: #444;
+  }
+  
+  .gh-button {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.1rem;
+  }
+  
+  .gh-button__title,
+  .gh-button__stat {
+    float: left;
+    font-weight: bold;
+    line-height: 20px;
+    padding: 5px 10px;
+    border: 1px solid #D5D5D5;
+  }
+  
+  .gh-button__title {
+    background-color: #EEE;
+    background-image: linear-gradient(#FCFCFC, #EEE);
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .gh-button__stat {
+    border-left: 0;
+    border-radius: 0 4px 4px 0;
+    background: white;
+  }
+  
+  .gh-button:hover .gh-button__title {
+    background-color: #DDD;
+    background-image: linear-gradient(#EEE, #DDD);
+  }
+  
+  .gh-button:hover .gh-button__stat {
+    color: #4078C0;
+  }
+  
+  .github-logo {
+    height: 21px;
+    fill: #333;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 0.2em;
+  }
+  
+  /* Slogan Styles */
+  .slogan {
+    line-height: 1.2;
+    margin: 0;
+  }
+  
+  .slogan--easy,
+  .slogan--fun {
+    font-size: 2.2rem;
+    line-height: 1.1;
+  }
+  
+  .slogan--tagline {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #444;
+  }
+  
+  /* Byline Styles */
+  .by-line {
+    line-height: 1.2;
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+  .by-line--made {
+    padding-top: 20px;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  /* Responsive Adjustments */
+  @media screen and (max-width: 500px) {
+    .hero-carousel h1,
+    .hero-carousel .tagline,
+    .hero-carousel .gh-button {
+      display: none;
+    }
+  }
+  
+  @media screen and (min-width: 500px) {
+    .hero-carousel__cell--1 .hero-carousel__cell__content {
+      padding-right: 260px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .hero-carousel__cell {
+      height: 440px;
+    }
+  
+    .hero-carousel__cell__content {
+      padding-top: 40px;
+    }
+  
+    .hero-carousel h1 {
+      font-size: 5.8rem;
+    }
+  
+    .hero-carousel .tagline {
+      font-size: 2.1rem;
+    }
+  
+    .slogan--easy,
+    .slogan--fun {
+      font-size: 4.8rem;
+    }
+  
+    .slogan--tagline {
+      margin-top: 20px;
+      font-size: 2.4rem;
+    }
+  
+    .by-line {
+      font-size: 3.1rem;
+    }
+  
+    .by-line--made {
+      padding-top: 40px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media screen and (min-width: 960px) {
+    .hero-carousel__cell--1 .hero-carousel__cell__content {
+      padding-right: 400px;
+    }
+  
+    .hero-carousel h1 {
+      font-size: 7.8rem;
+    }
+  
+    .hero-carousel .tagline {
+      margin-bottom: 1.0rem;
+    }
+  }

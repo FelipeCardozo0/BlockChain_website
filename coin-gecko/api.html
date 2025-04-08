@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crypto Metrics</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #fff; padding: 2rem; }
+    .crypto { display: flex; gap: 2rem; }
+    .card { background: #222; padding: 1rem 2rem; border-radius: 8px; box-shadow: 0 0 10px #000; }
+    .positive { color: limegreen; }
+    .negative { color: red; }
+  </style>
+</head>
+<body>
+
+  <h1>Live Crypto Metrics (24h)</h1>
+  <div class="crypto">
+    <div class="card">
+      <h2>Bitcoin (BTC)</h2>
+      <p>Price: <span id="btc-price">$--</span></p>
+      <p>24h Change: <span id="btc-change">--%</span></p>
+    </div>
+    <div class="card">
+      <h2>Ethereum (ETH)</h2>
+      <p>Price: <span id="eth-price">$--</span></p>
+      <p>24h Change: <span id="eth-change">--%</span></p>
+    </div>
+  </div>
+
+  <script>
+    function fetchCrypto() {
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true')
+        .then(res => res.json())
+        .then(data => {
+          const btcPrice = data.bitcoin.usd;
+          const btcChange = data.bitcoin.usd_24h_change;
+          const ethPrice = data.ethereum.usd;
+          const ethChange = data.ethereum.usd_24h_change;
+
+          document.getElementById('btc-price').textContent = `$${btcPrice.toLocaleString()}`;
+          document.getElementById('btc-change').textContent = `${btcChange.toFixed(2)}%`;
+          document.getElementById('btc-change').className = btcChange >= 0 ? 'positive' : 'negative';
+
+          document.getElementById('eth-price').textContent = `$${ethPrice.toLocaleString()}`;
+          document.getElementById('eth-change').textContent = `${ethChange.toFixed(2)}%`;
+          document.getElementById('eth-change').className = ethChange >= 0 ? 'positive' : 'negative';
+        });
+    }
+
+    fetchCrypto();
+    setInterval(fetchCrypto, 60000);
+  </script>
+
+</body>
+</html>

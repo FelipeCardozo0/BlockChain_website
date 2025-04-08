@@ -1,0 +1,58 @@
+/* GitHub Button Styles */
+.gh-button {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.1rem;
+  }
+  
+  .gh-button__title,
+  .gh-button__stat {
+    float: left;
+    font-weight: bold;
+    line-height: 20px;
+    padding: 5px 10px;
+    border: 1px solid #D5D5D5;
+  }
+  
+  .gh-button__title {
+    background-color: #EEE;
+    background-image: linear-gradient(#FCFCFC, #EEE);
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .gh-button__stat {
+    border-left: 0;
+    border-radius: 0 4px 4px 0;
+    background: white;
+  }
+  
+  .gh-button:hover .gh-button__title {
+    background-color: #DDD;
+    background-image: linear-gradient(#EEE, #DDD);
+  }
+  
+  .gh-button:hover .gh-button__stat {
+    color: #4078C0;
+  }
+  
+  .github-logo {
+    height: 21px;
+    fill: #333;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 0.2em;
+  }
+  
+  .gh-button__icon {
+    fill: currentColor;
+  }
+  
+  .gh-button__icon--star {
+    fill: #333;
+  }
+  
+  .gh-button:hover .gh-button__icon--star {
+    fill: #4078C0;
+  }

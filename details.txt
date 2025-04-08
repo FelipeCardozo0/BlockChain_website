@@ -1,0 +1,23 @@
+colors
+
+blue #1a84b3
+green #9ead93
+yello #fed38f
+
+must:
+
+-Stay updated on industry trends and research
+-Publish BAE work on relevant protocols
+-Attend hackathons and build projects at conferences
+
+-Acquire capital (dormdao)
+-Manage paper trading portfolio
+-Building quantitative valuation models
+
+-Funnel jobs to students
+-Maintain industry connections
+-Keep club updated on upcoming competitions
+
+
+The Blockchain at Emory is a student-led interest group dedicated to exploring everything related to blockchain technology. Our mission is to bridge the gap between the complex fintech industry and our members by fostering a deeper understanding of blockchain. Through engaging lesson plans, talks with industry experts, and networking events, we equip our members with the knowledge and skills necessary to navigate the ever-evolving landscape of the blockchain industry. The interest group is a dynamic platform for students passionate about blockchain, providing valuable insights and preparing them for future opportunities in this transformative space.
+
