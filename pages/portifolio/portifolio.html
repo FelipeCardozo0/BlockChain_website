@@ -1,0 +1,1248 @@
+<!-- change             box-shadow: 0 10px 30px rgba(0, 255, 163, 0.1); -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Portfolio | Blockchain at Emory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        :root {
+            --emory-blue: #012269;
+            --emory-gold: #EAAA00;
+            --web3-blue: #3C78D8;
+             --accent-1: #0037ff ;
+            --dark-bg: #0A0A1A;
+            --darker-bg: #050510;
+            --light-text: #F0F0FF;
+            --gray-text: #B0B0C0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(1, 34, 105, 0.9), rgba(1, 34, 105, 0.7)), 
+                        url('team-working.jpg') center/cover;
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--light-text), var(--accent-1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: var(--gray-text);
+        }
+
+        .stats-ticker {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px 30px;
+            min-width: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-1);
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--accent-1);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-text);
+        }
+
+        .verify-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: rgba(0, 255, 163, 0.1);
+            border: 1px solid var(--accent-1);
+            border-radius: 50px;
+            color: var(--accent-1);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .verify-button:hover {
+            background: var(--accent-1);
+            color: var(--dark-bg);
+        }
+
+        /* Treasury Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--emory-gold);
+        }
+
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .chart-box {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chart-title i {
+            color: var(--emory-gold);
+        }
+
+        .holdings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        .holdings-table th {
+            text-align: left;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--gray-text);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .holdings-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .holdings-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .asset-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .asset-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .price-change {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .price-up {
+            background: rgba(0, 255, 163, 0.1);
+            color: var(--accent-1);
+        }
+
+        .price-down {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff4d4d;
+        }
+
+        /* Budget Section */
+        .budget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .budget-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .budget-card:hover {
+            border-color: var(--emory-gold);
+            transform: translateY(-5px);
+        }
+
+        .budget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .budget-category {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .budget-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--emory-gold);
+        }
+
+        .budget-description {
+            color: var(--gray-text);
+            margin-bottom: 20px;
+        }
+
+        .roi-highlight {
+            background: rgba(234, 170, 0, 0.1);
+            border-left: 3px solid var(--emory-gold);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .roi-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .roi-title i {
+            color: var(--emory-gold);
+        }
+
+        /* Projects Section */
+        .project-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--gray-text);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: var(--accent-1);
+            color: var(--dark-bg);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 163, 0.1);
+        }
+
+        /* fix this shadow */
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .project-meta-item i {
+            color: var(--emory-gold);
+        }
+
+        .project-description {
+            color: var(--gray-text);
+            margin-bottom: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--accent-1);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: white;
+        }
+
+        /* Governance Section */
+        .governance-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .governance-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .governance-card:hover {
+            border-color: var(--emory-gold);
+            transform: translateY(-5px);
+        }
+
+        .governance-icon {
+            font-size: 2rem;
+            color: var(--emory-gold);
+            margin-bottom: 20px;
+        }
+
+        .governance-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .governance-description {
+            color: var(--gray-text);
+            margin-bottom: 20px;
+        }
+
+        .signer-list {
+            margin-top: 20px;
+        }
+
+        .signer-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .signer-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Partners Section */
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .partner-logo {
+            height: 50px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .tier-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tier-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--emory-gold);
+        }
+
+        .tier-amount {
+            background: rgba(234, 170, 0, 0.1);
+            color: var(--emory-gold);
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .tier-benefits {
+            list-style-type: none;
+        }
+
+        .tier-benefits li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .tier-benefits li::before {
+            content: '•';
+            color: var(--emory-gold);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--emory-blue), var(--darker-bg));
+            padding: 80px 20px;
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .cta-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px 30px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--accent-1);
+        }
+
+        .cta-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--emory-gold);
+        }
+
+        .cta-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-description {
+            color: var(--gray-text);
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--accent-1);
+            color: var(--dark-bg);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 255, 163, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stats-ticker {
+                gap: 20px;
+            }
+            
+            .stat-card {
+                min-width: 160px;
+                padding: 15px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .stat-value {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transparent. Accountable. Building the Future.</h1>
+            <p>Explore our treasury, investments, and project impact—all on-chain.</p>
+            
+            <div class="stats-ticker">
+                <div class="stat-card">
+                    <div class="stat-value" id="treasury-amount">$42,850</div>
+                    <div class="stat-label">Total Treasury</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">18</div>
+                    <div class="stat-label">Projects Funded</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$25,500</div>
+                    <div class="stat-label">Hackathon Prizes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">240%</div>
+                    <div class="stat-label">Member ROI</div>
+                </div>
+            </div>
+            
+            <a href="#" class="verify-button">
+                <i class="fas fa-link"></i> Verify on Etherscan
+            </a>
+        </div>
+    </section>
+
+    <!-- Treasury Section -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Treasury & Holdings</h2>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-box">
+                <div class="chart-title">
+                    <i class="fas fa-chart-pie"></i> Asset Allocation
+                </div>
+                <canvas id="assetChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <div class="chart-title">
+                    <i class="fas fa-money-bill-wave"></i> Funding Sources
+                </div>
+                <canvas id="fundingChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="chart-box">
+            <div class="chart-title">
+                <i class="fas fa-coins"></i> Detailed Holdings
+            </div>
+            <table class="holdings-table">
+                <thead>
+                    <tr>
+                        <th>Asset</th>
+                        <th>Amount</th>
+                        <th>Value</th>
+                        <th>% of Treasury</th>
+                        <th>Price Change (24h)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="asset-name">
+                                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" class="asset-icon">
+                                <span>Ethereum (ETH)</span>
+                            </div>
+                        </td>
+                        <td>12.5 ETH</td>
+                        <td>$23,750</td>
+                        <td>55.4%</td>
+                        <td><span class="price-change price-up">+2.4%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="asset-name">
+                                <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC" class="asset-icon">
+                                <span>USD Coin (USDC)</span>
+                            </div>
+                        </td>
+                        <td>10,000 USDC</td>
+                        <td>$10,000</td>
+                        <td>23.3%</td>
+                        <td><span class="price-change">0.0%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="asset-name">
+                                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" class="asset-icon">
+                                <span>Bitcoin (BTC)</span>
+                            </div>
+                        </td>
+                        <td>0.25 BTC</td>
+                        <td>$7,500</td>
+                        <td>17.5%</td>
+                        <td><span class="price-change price-down">-1.2%</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="asset-name">
+                                <img src="https://cryptologos.cc/logos/polygon-matic-logo.png" alt="MATIC" class="asset-icon">
+                                <span>Polygon (MATIC)</span>
+                            </div>
+                        </td>
+                        <td>5,000 MATIC</td>
+                        <td>$1,600</td>
+                        <td>3.8%</td>
+                        <td><span class="price-change price-up">+5.1%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Budget Section -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Investments & Budget</h2>
+        </div>
+        
+        <div class="budget-grid">
+            <div class="budget-card">
+                <div class="budget-header">
+                    <div class="budget-category">Hackathons</div>
+                    <div class="budget-amount">30%</div>
+                </div>
+                <p class="budget-description">Prizes, travel, and event logistics for our competitive teams.</p>
+                <div class="roi-highlight">
+                    <div class="roi-title">
+                        <i class="fas fa-trophy"></i> 2023 ROI
+                    </div>
+                    <p>$10K spent → 3 projects launched, 2 internships secured</p>
+                </div>
+            </div>
+            
+            <div class="budget-card">
+                <div class="budget-header">
+                    <div class="budget-category">Projects</div>
+                    <div class="budget-amount">40%</div>
+                </div>
+                <p class="budget-description">Development tools, smart contract audits, and contributor bounties.</p>
+                <div class="roi-highlight">
+                    <div class="roi-title">
+                        <i class="fas fa-chart-line"></i> OwlChain ROI
+                    </div>
+                    <p>$2K initial cost → $5K revenue (150% ROI)</p>
+                </div>
+            </div>
+            
+            <div class="budget-card">
+                <div class="budget-header">
+                    <div class="budget-category">Education</div>
+                    <div class="budget-amount">20%</div>
+                </div>
+                <p class="budget-description">Workshops, speaker fees, and educational materials for members.</p>
+                <div class="roi-highlight">
+                    <div class="roi-title">
+                        <i class="fas fa-users"></i> Impact
+                    </div>
+                    <p>200+ students trained in 2024</p>
+                </div>
+            </div>
+            
+            <div class="budget-card">
+                <div class="budget-header">
+                    <div class="budget-category">Operations</div>
+                    <div class="budget-amount">10%</div>
+                </div>
+                <p class="budget-description">Website, merch, and operational costs to keep the club running.</p>
+                <div class="roi-highlight">
+                    <div class="roi-title">
+                        <i class="fas fa-globe"></i> Reach
+                    </div>
+                    <p>500+ community members engaged</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Project Portfolio</h2>
+        </div>
+        
+        <div class="project-filters">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">DeFi</button>
+            <button class="filter-btn">NFTs</button>
+            <button class="filter-btn">DAOs</button>
+            <button class="filter-btn">Education</button>
+        </div>
+        
+        <div class="project-grid">
+            <!-- Emory DAO -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="dao-screenshot.jpg" alt="Emory DAO">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Emory DAO</h3>
+                    <div class="project-meta">
+                        <div class="project-meta-item">
+                            <i class="fas fa-wallet"></i> Budget: $15K
+                        </div>
+                        <div class="project-meta-item">
+                            <i class="fas fa-gift"></i> Grants: $10K
+                        </div>
+                        <div class="project-meta-item">
+                            <i class="fas fa-vote-yea"></i> 85% Participation
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Student-governed treasury funding campus blockchain initiatives through member proposals and voting.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Governance Dashboard
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- OwlChain -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="owlchain-screenshot.jpg" alt="OwlChain">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">OwlChain</h3>
+                    <div class="project-meta">
+                        <div class="project-meta-item">
+                            <i class="fas fa-coins"></i> Revenue: $5K
+                        </div>
+                        <div class="project-meta-item">
+                            <i class="fas fa-tag"></i> Mint Cost: $1.50
+                        </div>
+                        <div class="project-meta-item">
+                            <i class="fas fa-users"></i> 300+ Holders
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Emory's official NFT platform for campus events and digital collectibles, powered by Polygon.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-paint-brush"></i> Mint Site
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-chart-bar"></i> Analytics
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DeFi Education -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="defi-screenshot.jpg" alt="DeFi Education">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">DeFi Education Portal</h3>
+                    <div class="project-meta">
+                        <div class="project-meta-item">
+                            <i class="fas fa-wallet"></i> Cost: $3K
+                        </div>
+                        <div class="project-meta-item">
+                            <i class="fas fa-users"></i> 500+ Users
+                        </div>
+                        <div class="project-meta-item">
+                            <i class="fas fa-handshake"></i> Aave Grants
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        Interactive tutorials on liquidity pools, yield farming, and other DeFi concepts.
+                    </p>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governance Section -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Financial Governance</h2>
+        </div>
+        
+        <div class="governance-cards">
+            <div class="governance-card">
+                <div class="governance-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="governance-title">Multi-Sig Wallets</h3>
+                <p class="governance-description">
+                    All funds are secured in Gnosis Safe wallets requiring 3/5 signatures for transactions.
+                </p>
+                <div class="signer-list">
+                    <div class="signer-item">
+                        <img src="chris.jpeg" alt="Signer" class="signer-avatar">
+                        <span>President</span>
+                    </div>
+                    <div class="signer-item">
+                        <img src="treasurer.jpg" alt="Signer" class="signer-avatar">
+                        <span>Treasurer</span>
+                    </div>
+                    <div class="signer-item">
+                        <img src="advisor.jpg" alt="Signer" class="signer-avatar">
+                        <span>Faculty Advisor</span>
+                    </div>
+                    <div class="signer-item">
+                        <img src="tech-lead.jpg" alt="Signer" class="signer-avatar">
+                        <span>Tech Lead</span>
+                    </div>
+                    <div class="signer-item">
+                        <img src="community-lead.jpg" alt="Signer" class="signer-avatar">
+                        <span>Community Lead</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="governance-card">
+                <div class="governance-icon">
+                    <i class="fas fa-vote-yea"></i>
+                </div>
+                <h3 class="governance-title">Democratic Voting</h3>
+                <p class="governance-description">
+                    Projects are funded via Snapshot.org votes weighted by member participation and contributions.
+                </p>
+                <a href="#" class="project-link" style="margin-top: 20px;">
+                    <i class="fas fa-external-link-alt"></i> View Active Proposals
+                </a>
+            </div>
+            
+            <div class="governance-card">
+                <div class="governance-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3 class="governance-title">Full Transparency</h3>
+                <p class="governance-description">
+                    Quarterly financial reports and real-time transaction tracking through our public dashboard.
+                </p>
+                <div class="project-links" style="margin-top: 20px;">
+                    <a href="#" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Dashboard
+                    </a>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-download"></i> Q2 2024 Report
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Partnerships & Sponsorships</h2>
+            
+        </div>
+         (I havent updated due to margin issues that disorganize the page, check /sponsors)
+        
+         <!-- 
+        <div class="partners-grid">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1200px-Ethereum_logo_2014.svg.png" alt="Ethereum" class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Chainlink_Logo_Blue.svg/1200px-Chainlink_Logo_Blue.svg.png" alt="Chainlink" class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/1200px-Ethereum-icon-purple.svg.png" alt="ETHGlobal" class="partner-logo">
+            <img src="https://pbs.twimg.com/profile_images/1547894941111721985/6QxZ5h3Z_400x400.jpg" alt="ETHAtlanta" class="partner-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cointelegraph_logo_2019.svg/1200px-Cointelegraph_logo_2019.svg.png" alt="CoinTelegraph" class="partner-logo">
+        </div>
+         -->
+        
+        <div class="tier-card">
+            <div class="tier-header">
+                <div class="tier-name">Gold Sponsorship</div>
+                <div class="tier-amount">$10K+</div>
+            </div>
+            <ul class="tier-benefits">
+                <li>Logo placement on all club merch and materials</li>
+                <li>Keynote slot at our annual blockchain conference</li>
+                <li>Exclusive recruiting access to our members</li>
+                <li>Featured case study on our projects</li>
+            </ul>
+        </div>
+        
+        <div class="tier-card">
+            <div class="tier-header">
+                <div class="tier-name">Silver Sponsorship</div>
+                <div class="tier-amount">$5K+</div>
+            </div>
+            <ul class="tier-benefits">
+                <li>Workshop sponsorship with your engineers</li>
+                <li>Logo on our website and event banners</li>
+                <li>Priority access to our talent pipeline</li>
+            </ul>
+        </div>
+        
+        <div class="tier-card">
+            <div class="tier-header">
+                <div class="tier-name">Bronze Sponsorship</div>
+                <div class="tier-amount">$1K+</div>
+            </div>
+            <ul class="tier-benefits">
+                <li>Social media shoutouts</li>
+                <li>Invitation to our demo days</li>
+                <li>Access to our project showcase</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get Involved</h2>
+            </div>
+            
+            <div class="cta-grid">
+                <div class="cta-card">
+                    <div class="cta-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="cta-title">For Members</h3>
+                    <p class="cta-description">
+                        Pitch your blockchain project idea and request funding from our treasury.
+                    </p>
+                    <a href="#" class="cta-button">Propose a Project →</a>
+                </div>
+                
+                <div class="cta-card">
+                    <div class="cta-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="cta-title">For Sponsors</h3>
+                    <p class="cta-description">
+                        Support the next generation of blockchain builders and gain access to top talent.
+                    </p>
+                    <a href="#" class="cta-button">Download Sponsorship Deck</a>
+                </div>
+                
+                <div class="cta-card">
+                    <div class="cta-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="cta-title">For Recruiters</h3>
+                    <p class="cta-description">
+                        Connect with our members who are building real-world blockchain solutions.
+                    </p>
+                    <a href="#" class="cta-button">View Talent Directory</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize asset allocation chart
+        const assetCtx = document.getElementById('assetChart').getContext('2d');
+        const assetChart = new Chart(assetCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Ethereum', 'USDC', 'Bitcoin', 'Polygon'],
+                datasets: [{
+                    data: [55.4, 23.3, 17.5, 3.8],
+                    backgroundColor: [
+                        '#627EEA',
+                        '#2775CA',
+                        '#F7931A',
+                        '#8247E5'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            color: '#F0F0FF',
+                            font: {
+                                family: 'Poppins'
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.label}: ${context.raw}%`;
+                            }
+                        }
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+
+        // Initialize funding sources chart
+        const fundingCtx = document.getElementById('fundingChart').getContext('2d');
+        const fundingChart = new Chart(fundingCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Grants', 'Sponsorships', 'Revenue', 'Donations'],
+                datasets: [{
+                    data: [45, 35, 15, 5],
+                    backgroundColor: [
+                        'rgba(0, 255, 163, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(234, 170, 0, 0.7)',
+                        'rgba(124, 58, 237, 0.7)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.raw}% of total funding`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#B0B0C0',
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#B0B0C0'
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Animate treasury counter
+        function animateCounter(elementId, target, prefix = '$', suffix = '', duration = 2000) {
+            const element = document.getElementById(elementId);
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    clearInterval(timer);
+                    current = target;
+                }
+                element.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+            }, 16);
+        }
+
+        // Start counters when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            animateCounter('treasury-amount', 42850, '$');
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.textContent;
+                
+                projectCards.forEach(card => {
+                    if (filterValue === 'All') {
+                        card.style.display = 'block';
+                    } else {
+                        const cardCategories = card.getAttribute('data-categories');
+                        if (cardCategories && cardCategories.includes(filterValue)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

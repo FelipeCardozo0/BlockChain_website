@@ -1,0 +1,34 @@
+CoinGecko API Docs — start here
+
+MDN Web Docs: Fetch API — learn how fetch() works
+
+JSON Guide (MDN) — understand API data structure
+
+Code:
+
+Build:
+
+Crypto dashboard (like the example above)
+
+Coin price tracker with dropdown selection
+
+Historical chart using Chart.js + CoinGecko /market_chart endpoint
+
+Alert system (e.g., notify if price drops 5%)
+
+Watch:
+
+YouTube:
+
+"How to Use CoinGecko API"
+
+"Fetch API JavaScript Tutorial"
+
+"Crypto Dashboard using HTML CSS JS & CoinGecko API"
+
+"Build a Cryptocurrency Price Tracker"
+https://chatgpt.com/c/67ecbf92-b4b4-8009-8f33-06c139a205ed
+
+font-family:big john;
+
+<!-- change partners section to something else -->

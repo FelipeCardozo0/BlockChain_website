@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emory's Blockchain Club</title>
+  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">Emory's Blockchain Club</a>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Team</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </header>
+
+<!--  Image Slider -->
+<section class="region-slider">
+	<div class="image-slider">
+		<div class="slider">
+			<img id="slide-1" src="../sponsors/SUI.png" alt="" />
+			<img id="slide-2" src="../sponsors/Obol.png" alt="" />
+			<img id="slide-3" src="../sponsors/Celo.png" alt="" />
+      <img id="slide-4" src="../sponsors/Gaia.png" alt="" />
+			
+
+
+		</div>
+		<div class="slider-nav">
+			<a href="#slide-1"></a>
+			<a href="#slide-2"></a>
+			<a href="#slide-3"></a>
+      <a href="#slide-3"></a>
+		</div>
+	</div>
+</section>
+<script src="is.js"></script>
+<!-- End of image slider -->
+
+
+<!-- Sponsors -->
+<div class="sponsor-scroll">
+  <div class="logo-track">
+      <!-- First set of 7 logos -->
+      <img class="sponsor-logo" src="../sponsors/SUI.png" alt="Sponsor 1">
+      <img class="sponsor-logo" src="../sponsors/Obol.png" alt="Sponsor 2">
+      <img class="sponsor-logo" src="../sponsors/Celo.png" alt="Sponsor 3">
+      <img class="sponsor-logo" src="../sponsors/Gaia.png" alt="Sponsor 4">
+      <img class="sponsor-logo" src="../sponsors/College_Dao.png" alt="Sponsor 5">
+      <img class="sponsor-logo" src="../sponsors/BAF.png" alt="Sponsor 6">
+      <img class="sponsor-logo" src="../sponsors/OCAM.png" alt="Sponsor 7">
+      <!-- Duplicate set for seamless looping -->
+      <img class="sponsor-logo" src="../sponsors/SUI.png" alt="Sponsor 1">
+      <img class="sponsor-logo" src="../sponsors/Obol.png" alt="Sponsor 2">
+      <img class="sponsor-logo" src="../sponsors/Celo.png" alt="Sponsor 3">
+      <img class="sponsor-logo" src="../sponsors/Gaia.png" alt="Sponsor 4">
+      <img class="sponsor-logo" src="../sponsors/College_Dao.png" alt="Sponsor 5">
+      <img class="sponsor-logo" src="../sponsors/BAF.png" alt="Sponsor 6">
+      <img class="sponsor-logo" src="../sponsors/OCAM.png" alt="Sponsor 7">
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const track = document.querySelector('.logo-track');
+      
+      // Reset animation periodically to prevent potential glitches
+      function resetAnimation() {
+          track.style.animation = 'none';
+          void track.offsetWidth; // Trigger reflow
+          track.style.animation = 'scroll 20s linear infinite';
+      }
+      
+      // Reset every 10 minutes (600000ms)
+      setInterval(resetAnimation, 600000);
+  });
+</script>
+
+<!-- End of sponsors -->
+
+
+
+
+</body>
+</html>

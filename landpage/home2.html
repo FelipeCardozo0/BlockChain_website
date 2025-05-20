@@ -1,0 +1,50 @@
+<!-- The idea is that the logo will go up and then after you scroll down, the nav bar will appear and substitute it  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="codegrid" />
+    <title>Home - Blockchain at Emory</title>
+    <link rel="stylesheet" href="home.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="items-left">
+        <a href="#">Projects</a>
+        <a href="#">About</a>
+      </div>
+      <div class="items-right">
+        <a href="#">Contact</a>
+        <a href="#">Join</a>
+      </div>
+    </div>
+    <div class="logo-container">
+      <h1 class="logo" style="color: #012269">Blockchain at Emory</h1>
+    </div>
+    <div class="container"></div>
+    <div class="content">
+      <img src="../Images/Logo_Official.png" alt="" />
+    </div>
+
+    <script>
+      ScrollTrigger.create({
+        animation: gsap.from(".logo", {
+          y: "50vh",
+          scale: 6,
+          yPercent: -50,
+        }),
+        scrub: true,
+        trigger: ".content",
+        start: "top bottom",
+        endTrigger: ".content",
+        end: "top center",
+      });
+    </script>
+  </body>
+</html>

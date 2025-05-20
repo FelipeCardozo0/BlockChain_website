@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects - Blockchain at Emory</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">
+          <a href="#">Projects</a>
+          <div class="logo-revealer"></div>
+        </div>
+      </div>
+      <div class="header">
+        <div class="letter">
+          <img src="./letters/P.png" alt="" />
+        </div>
+        <div class="letter">
+          <img src="./letters/R.png" alt="" />
+        </div>
+        <div class="letter">
+          <img src="./letters/o.png" alt="" />
+        </div>
+        <div class="letter">
+          <img src="./letters/J.png" alt="" />
+        </div>
+        <div class="letter">
+          <img src="./letters/E.png" alt="" />
+        </div>
+        <div class="letter">
+          <img src="./letters/C.png" alt="" />
+        </div>
+        <div class="letter">
+          <img src="./letters/T.png" alt="" />
+        </div>
+        <div class="letter">
+          <img src="./letters/S.PNG" alt="" />
+        </div>
+      </div>
+
+      <div class="website-content">
+        <div class="website-content-wrapper">
+          <h1>
+            Pioneering the uncharted frontiers of Blocks & Chains<br />
+            (burning money too)
+          </h1>
+          <div class="img">
+            <img src="Images/Projects.jpg" alt="" />
+          </div>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi deserunt, voluptate neque beatae sed minus obcaecati quasi ea nisi quibusdam ducimus at deleniti cupiditate delectus adipisci magni tenetur quos soluta!
+          </p>
+
+          <br />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero repudiandae expedita numquam praesentium at, voluptatem aliquid! Molestiae, deserunt quibusdam recusandae sapiente dolorum repellendus ad suscipit quisquam necessitatibus, qui esse dolores?
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+      const header = document.querySelector(".header");
+      const letters = document.querySelectorAll(".letter");
+      const logo = document.querySelector(".logo a");
+      const websiteContent = document.querySelector(".website-content");
+
+      let lastScroll = 0;
+
+      const sectionHeight = 150;
+
+      window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+
+        if (scrollY < 900) {
+          websiteContent.style.position = "fixed";
+          websiteContent.style.top = "0px";
+        } else {
+          websiteContent.style.position = "absolute";
+          websiteContent.style.top = "900px";
+        }
+        const orderPairs = [
+          [4, 5],
+          [3, 6],
+          [2, 7],
+          [1, 8],
+          [0, 9],
+        ];
+
+        orderPairs.forEach((pair, orderIndex) => {
+          const startScroll = sectionHeight * orderIndex;
+
+          if (scrollY >= startScroll) {
+            const moveFactor = Math.min(
+              1,
+              (scrollY - startScroll) / sectionHeight
+            );
+            const translateY = -moveFactor * header.offsetHeight;
+
+            pair.forEach((idx) => {
+              const letter = letters[idx];
+              gsap.to(letter, {
+                y: translateY,
+                zIndex: 1 - moveFactor,
+              });
+            });
+          } else {
+            pair.forEach((idx) => {
+              const letter = letters[idx];
+              gsap.to(letter, {
+                y: 0,
+                zIndex: 1,
+              });
+            });
+          }
+        });
+
+        // Buffer to introduce delay after letters' animation before logo starts moving
+        const buffer = 50;
+
+        // Adjust logo position based on scroll position
+        if (
+          scrollY >= orderPairs.length * sectionHeight + buffer &&
+          !gsap.isTweening(logo)
+        ) {
+          gsap.to(logo, {
+            top: "0px",
+            ease: "power1.out",
+            overwrite: true,
+          });
+          gsap.to(".logo-revealer", {
+            scaleY: 0,
+            overwrite: true,
+          });
+        } else if (
+          scrollY <= (orderPairs.length - 1) * sectionHeight &&
+          !gsap.isTweening(logo)
+        ) {
+          gsap.to(logo, {
+            top: "20px",
+            ease: "power1.out",
+            overwrite: true,
+          });
+
+          gsap.to(".logo-revealer", {
+            scaleY: 1,
+            overwrite: true,
+          });
+        }
+
+        lastScroll = scrollY;
+      });
+    </script>
+  </body>
+</html>

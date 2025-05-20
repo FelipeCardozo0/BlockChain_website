@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain at Emory</title>
+    <link rel="stylesheet" href="home2.css" type="text/css">
+    <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/103ed24470.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <a href="#" class="logo">Blockchain at Emory</a>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">Team</a></li>
+        </ul>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content-wrapper">
+        <div class="heading">
+            <span class="title1">&nbsp;</span>
+            <span class="title1">&nbsp;</span>
+            <span class="title2"style="font-family: 'Big John';">For those who love burning money</span>
+        </div>
+        <div class="content-spacer"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-region">
+            <div class="footer-col-1">
+                <img src="../Images/Logo_Official.png" alt="Blockchain at Emory Logo">
+                <p>
+                    Blockchain at Emory is a student-run organization that aims to educate students about blockchain technology and its applications.
+                </p>
+            </div>
+            <div class="footer-col-2">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-col-3">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">React</a></li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Newsletter</h3>
+                <form>
+                    <i class="far fa-envelope"></i>
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-2">
+            <p>© <strong>Emory Blockchain Club</strong> <span id="year"></span></p>
+            Designed by <a href="https://github.com/FelipeCardozo0">Felipe Cardozo</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sticky header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        // Set current year in footer
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

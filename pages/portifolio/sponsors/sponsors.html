@@ -1,0 +1,47 @@
+<!-- Sponsors -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Scroll</title>
+    <link rel="stylesheet" href="sponsors.css">
+</head>
+<body>
+    <div class="sponsor-scroll">
+        <div class="logo-track">
+            <!-- First set of 7 logos -->
+            <img class="sponsor-logo" src="SUI.png" alt="Sponsor 1">
+            <img class="sponsor-logo" src="Obol.png" alt="Sponsor 2">
+            <img class="sponsor-logo" src="Celo.png" alt="Sponsor 3">
+            <img class="sponsor-logo" src="Gaia.png" alt="Sponsor 4">
+            <img class="sponsor-logo" src="College_Dao.png" alt="Sponsor 5">
+            <img class="sponsor-logo" src="BAF.png" alt="Sponsor 6">
+            <img class="sponsor-logo" src="OCAM.png" alt="Sponsor 7">
+            <!-- Duplicate set for seamless looping -->
+            <img class="sponsor-logo" src="SUI.png" alt="Sponsor 1">
+            <img class="sponsor-logo" src="Obol.png" alt="Sponsor 2"> 
+            <img class="sponsor-logo" src="Celo.png" alt="Sponsor 3">
+            <img class="sponsor-logo" src="Gaia.png" alt="Sponsor 4">
+            <img class="sponsor-logo" src="College_Dao.png" alt="Sponsor 5">
+            <img class="sponsor-logo" src="BAF.png" alt="Sponsor 6">
+            <img class="sponsor-logo" src="OCAM.png" alt="Sponsor 7">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.logo-track');
+            
+            // Reset animation periodically to prevent potential glitches
+            function resetAnimation() {
+                track.style.animation = 'none';
+                void track.offsetWidth; // Trigger reflow
+                track.style.animation = 'scroll 20s linear infinite';
+            }
+            
+            // Reset every 10 minutes (600000ms)
+            setInterval(resetAnimation, 600000);
+        });
+    </script>
+
+    <!-- End of sponsors -->
+

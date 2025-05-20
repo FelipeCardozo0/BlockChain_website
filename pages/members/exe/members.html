@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Blockchain at Emory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --emory-blue: #012269;
+            --emory-gold: #EAAA00;
+            --web3-blue: #3C78D8;
+            --web3-green: ##0037ff;
+            --dark-bg: #0A0A1A;
+            --light-bg: #F3F4FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .team-hero {
+            background: linear-gradient(rgba(1, 34, 105, 0.9), rgba(1, 34, 105, 0.9)), 
+                        url('team-photo.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, white);
+            z-index: 1;
+        }
+
+        .team-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Floating blockchain animation */
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        .blockchain-node {
+            position: absolute;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .node-1 {
+            top: 20%;
+            left: 10%;
+            width: 40px;
+            animation-delay: 0s;
+        }
+
+        .node-2 {
+            top: 60%;
+            left: 80%;
+            width: 60px;
+            animation-delay: 1s;
+        }
+
+        .node-3 {
+            top: 30%;
+            left: 70%;
+            width: 30px;
+            animation-delay: 2s;
+        }
+
+        .node-4 {
+            top: 70%;
+            left: 20%;
+            width: 50px;
+            animation-delay: 3s;
+        }
+
+        /* Team Categories */
+        .team-categories {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            background: var(--light-bg);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .category-btn.active {
+            background: var(--emory-blue);
+            color: white;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+
+        .team-role {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--emory-blue);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .team-info {
+            padding: 25px;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--emory-blue);
+        }
+
+        .team-tagline {
+            color: var(--web3-blue);
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .team-achievements {
+            margin-bottom: 20px;
+        }
+
+        .achievement {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .achievement i {
+            color: var(--emory-gold);
+            margin-top: 3px;
+        }
+
+        .achievement-text {
+            font-size: 0.9rem;
+        }
+
+        .team-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .team-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--emory-blue);
+            transition: all 0.3s;
+        }
+
+        .team-link:hover {
+            background: var(--emory-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .fun-fact {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(234, 170, 0, 0.1);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .fun-fact::before {
+            content: 'Fun Fact';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: var(--emory-gold);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 10px;
+            border-radius: 50px;
+        }
+
+        /* Alumni Section */
+        .alumni-section {
+            background: var(--light-bg);
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--emory-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--emory-gold);
+        }
+
+        .alumni-carousel {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .alumni-carousel::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        .alumni-carousel::-webkit-scrollbar-track {
+            background: rgba(1, 34, 105, 0.1);
+        }
+
+        .alumni-carousel::-webkit-scrollbar-thumb {
+            background: var(--emory-blue);
+            border-radius: 5px;
+        }
+
+        .alumni-card {
+            min-width: 300px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            scroll-snap-align: start;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .alumni-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .alumni-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--emory-gold);
+        }
+
+        .alumni-info h3 {
+            font-size: 1.3rem;
+            color: var(--emory-blue);
+            margin-bottom: 5px;
+        }
+
+        .alumni-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .alumni-now {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .alumni-now strong {
+            color: var(--emory-blue);
+        }
+
+        .alumni-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Advisors Section */
+        .advisors-section {
+            padding: 80px 0;
+        }
+
+        .advisors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .advisor-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .advisor-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--emory-gold);
+        }
+
+        .advisor-name {
+            font-size: 1.3rem;
+            color: var(--emory-blue);
+            margin-bottom: 5px;
+        }
+
+        .advisor-title {
+            color: var(--web3-blue);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .advisor-focus {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: var(--light-bg);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .partner-logo {
+            height: 50px;
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Join Section */
+        .join-section {
+            padding: 80px 0;
+            text-align: center;
+            background: var(--emory-blue);
+            color: white;
+        }
+
+        .join-section .section-title h2 {
+            color: white;
+        }
+
+        .join-section .section-title h2::after {
+            background: var(--emory-gold);
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .role-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .role-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .role-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--emory-gold);
+        }
+
+        .role-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .perks-list {
+            text-align: left;
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .perk-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .perk-item i {
+            color: var(--emory-gold);
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--emory-gold);
+            color: var(--emory-blue);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .team-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .team-hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="team-hero">
+        <div class="blockchain-node node-1">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="2" stroke-dasharray="5,5"/>
+                <circle cx="50" cy="50" r="30" fill="none" stroke="white" stroke-width="2"/>
+                <circle cx="50" cy="50" r="15" fill="white"/>
+            </svg>
+        </div>
+        <div class="blockchain-node node-2">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="50,5 95,30 95,75 50,95 5,75 5,30" fill="none" stroke="white" stroke-width="2"/>
+                <circle cx="50" cy="50" r="20" fill="white"/>
+            </svg>
+        </div>
+        <div class="blockchain-node node-3">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="80" height="80" fill="none" stroke="white" stroke-width="2" rx="10"/>
+                <circle cx="50" cy="50" r="25" fill="white"/>
+            </svg>
+        </div>
+        <div class="blockchain-node node-4">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,5 L95,50 L50,95 L5,50 Z" fill="none" stroke="white" stroke-width="2"/>
+                <circle cx="50" cy="50" r="15" fill="white"/>
+            </svg>
+        </div>
+        
+        <h1>Emory's Blockchain Club <span style="color: #3C78D8;">Team</span></h1>
+        <p>Leaders, builders, and innovators shaping the decentralized world.</p>
+    </section>
+
+    <div class="container">
+        <!-- Team Categories -->
+        <div class="team-categories">
+            <button class="category-btn active">Executive Board</button>
+            <button class="category-btn">Hackers & Developers</button>
+            <button class="category-btn">Investment Team</button>
+            <button class="category-btn">Research Team</button>
+            <button class="category-btn">Outreach Team</button>
+        </div>
+
+        <!-- Leadership Team -->
+        <div class="team-grid">
+            <!-- Christopher Treston -->
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="chris.jpeg" alt="Christopher Treston">
+                    <div class="team-role">President</div>
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">Christopher Treston</h3>
+                    <p class="team-tagline">DeFi Enthusiast | ex-Coinbase Intern</p>
+                    
+                    <div class="team-achievements">
+                        <div class="achievement">
+                            <i class="fas fa-trophy"></i>
+                            <p class="achievement-text">Led team to win ETHGlobal 2023</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-file-alt"></i>
+                            <p class="achievement-text">Published research on DAO governance</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-links">
+                        <a href="#" class="team-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="team-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="team-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    
+                    <div class="fun-fact">
+                        Once wrote a smart contract for a coffee rewards system that's now used in 3 campus cafes.
+                    </div>
+                    <br>
+                    <h5 style="font-family: Arial, sans-serif; text-align: center;">focardo@emory.edu</h5>
+                </div>
+            </div>
+            
+            <!-- Robert Sun -->
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="robert.jpeg" alt="Robert Sun">
+                    <div class="team-role">President</div>
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">Robert Sun</h3>
+                    <p class="team-tagline">Crypto Researcher | ZK-Proof Specialist</p>
+                    
+                    <div class="team-achievements">
+                        <div class="achievement">
+                            <i class="fas fa-medal"></i>
+                            <p class="achievement-text">Solana U Hackathon Finalist 2024</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-chart-line"></i>
+                            <p class="achievement-text">Grew DAO membership by 300%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-links">
+                        <a href="#" class="team-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="team-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="team-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    
+                    <div class="fun-fact">
+                        Ran a Bitcoin node from his dorm room freshman year.
+                    </div>
+                    <br>
+                    <h5 style="font-family: Arial, sans-serif; text-align: center;">robert@emory.edu</h5>
+                </div>
+            </div>
+            
+            <!-- Emma Adams -->
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="emma.jpeg" alt="Emma Adams">
+                    <div class="team-role">Boss</div>
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">Emma Adams</h3>
+                    <p class="team-tagline">Workaholic | AKA Batman</p>
+                    
+                    <div class="team-achievements">
+                        <div class="achievement">
+                            <i class="fas fa-calendar-alt"></i>
+                            <p class="achievement-text">Organized 15+ campus events</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-handshake"></i>
+                            <p class="achievement-text">Secured $25K in sponsorships</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-links">
+                        <a href="#" class="team-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="team-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="team-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    
+                    <div class="fun-fact">
+                        Can recite the Ethereum whitepaper from memory.
+                    </div>
+                    <br>
+                    <h5 style="font-family: Arial, sans-serif; text-align: center;">emma@emory.edu</h5>
+                </div>
+            </div>
+            
+            <!-- Felipe Cardozo -->
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="Felipe Cardozo.jpeg" alt="Felipe Cardozo">
+                    <div class="team-role">Head of Tech</div>
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">Felipe Cardozo</h3>
+                    <p class="team-tagline">Developer & Tech Handyman</p>
+                    
+                    <div class="team-achievements">
+                        <div class="achievement">
+                            <i class="fas fa-code"></i>
+                            <p class="achievement-text">Built OwlChain NFT platform</p>
+                        </div>
+                        <div class="achievement">
+                            <i class="fas fa-users"></i>
+                            <p class="achievement-text">Mentored 50+ student developers</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-links">
+                        <a href="#" class="team-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="team-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="team-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    
+                    <div class="fun-fact">
+                        Interested in quantitative finance and addicted to betting on soccer games.
+                    </div>
+                    <br>
+                    <h5 style="font-family: Arial, sans-serif; text-align: center;">focardo@emory.edu</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alumni Section -->
+
+        <section class="alumni-section">
+            <div class="section-title">
+                <h2>Where Our Builders Are Now (maybe delete everything here because the club is new, added for reference)</h2> 
+            </div>
+            
+            <div class="alumni-carousel">
+                <div class="alumni-card">
+                    <div class="alumni-header">
+                        <img src="../exe/Felipe Cardozo.jpeg" alt="Alumni" class="alumni-avatar">
+                        <div class="alumni-info">
+                            <h3>OBAMA</h3>
+                            <p>Former President</p>
+                        </div>
+                    </div>
+                    <p class="alumni-now">
+                        <strong>Developer Relations @ Coinbase</strong><br>
+                        Launched Emory DAO in 2022 → Now scaling governance at Uniswap
+                    </p>
+                </div>
+                
+                <div class="alumni-card">
+                    <div class="alumni-header">
+                        <img src="../exe/Felipe Cardozo.jpeg" alt="Alumni" class="alumni-avatar">
+                        <div class="alumni-info">
+                            <h3>MICHAEL JACKSON</h3>
+                            <p>Former dancer, Class of 2009</p>
+                        </div>
+                    </div>
+                    <p class="alumni-now">
+                        <strong>Research Engineer @ a16z Crypto</strong><br>
+                        Published ZK-proof research → Now working on L2 scaling
+                    </p>
+                </div>
+                
+                <div class="alumni-card">
+                    <div class="alumni-header">
+                        <img src="../exe/Felipe Cardozo.jpeg" alt="Alumni" class="alumni-avatar">
+                        <div class="alumni-info">
+                            <h3>Biden</h3>
+                            <p>Has cancer now, Class of 1961</p>
+                        </div>
+                    </div>
+                    <p class="alumni-now">
+                        <strong>Product Manager @ Polygon</strong><br>
+                        Organized 10+ hackathons → Now building developer tools
+                    </p>
+                </div>
+            </div>
+            
+            <div class="alumni-cta">
+                <a href="#" class="cta-button">Join Their Ranks →</a>
+            </div>
+        </section>
+
+        <!-- Advisors Section -->
+        <section class="advisors-section">
+            <div class="section-title">
+                <h2>Faculty Advisors & Industry Mentors</h2>
+            </div>
+            
+            <div class="advisors-grid">
+                <div class="advisor-card">
+                    <img src="../exe/chris.jpeg" alt="Advisor" class="advisor-avatar">
+                    <h3 class="advisor-name">Dr. James Wilson</h3>
+                    <p class="advisor-title">Professor of Computer Science</p>
+                    <p class="advisor-focus">Smart Contract Security</p>
+                    <p>Leads blockchain research lab with $500K NSF funding</p>
+                </div>
+                
+                <div class="advisor-card">
+                    <img src="../exe/chris.jpeg" alt="Advisor" class="advisor-avatar">
+                    <h3 class="advisor-name">Dr. Lisa Zhang</h3>
+                    <p class="advisor-title">Associate Professor of Economics</p>
+                    <p class="advisor-focus">Tokenomics & Game Theory</p>
+                    <p>Published 15+ papers on DeFi mechanisms</p>
+                </div>
+                
+                <div class="advisor-card">
+                    <img src="../exe/chris.jpeg" alt="Advisor" class="advisor-avatar">
+                    <h3 class="advisor-name">Mark Johnson</h3>
+                    <p class="advisor-title">Chainlink Labs</p>
+                    <p class="advisor-focus">Smart Contract Curriculum</p>
+                    <p>Hosts quarterly workshops on oracle networks</p>
+                </div>
+            </div>
+        </section>
+<!-- change partners section to something else -->
+        <!-- Partners Section -->
+        <section class="partners-section">
+            <div class="section-title">
+                <h2>Our Partners & Sponsors</h2>
+            </div>
+            Due to issues of organization,problems with margin they are not mentioned here, check the folder /sponsors
+
+            <!--  
+            
+            <div class="partners-grid">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/1200px-Ethereum_logo_2014.svg.png" alt="Ethereum" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/1200px-Ethereum-icon-purple.svg.png" alt="ETHGlobal" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Chainlink_Logo_Blue.svg/1200px-Chainlink_Logo_Blue.svg.png" alt="Chainlink" class="partner-logo">
+                <img src="https://pbs.twimg.com/profile_images/1547894941111721985/6QxZ5h3Z_400x400.jpg" alt="ETHAtlanta" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Cointelegraph_logo_2019.svg/1200px-Cointelegraph_logo_2019.svg.png" alt="CoinTelegraph" class="partner-logo">
+            </div>
+        </section>
+
+        -->
+
+        <!-- Join Section -->
+        <section class="join-section">
+            <div class="section-title">
+                <h2>Join the Team</h2>
+            </div>
+            
+            <p>We're looking for passionate students to join our Fall 2024 cohort</p>
+            
+            <div class="roles-grid">
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="role-title">Developers</h3>
+                    <p>Solidity, Rust, or Frontend</p>
+                </div>
+                
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="role-title">Designers</h3>
+                    <p>UI/UX & Branding</p>
+                </div>
+                
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3 class="role-title">Writers</h3>
+                    <p>Technical & Educational</p>
+                </div>
+                
+                <div class="role-card">
+                    <div class="role-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="role-title">Community</h3>
+                    <p>Events & Outreach</p>
+                </div>
+            </div>
+            
+            <div class="perks-list">
+                <div class="perk-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Access to $50K hackathon fund</p>
+                </div>
+                <div class="perk-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Mentorship from industry leaders</p>
+                </div>
+                <div class="perk-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Resume-building projects</p>
+                </div>
+                <div class="perk-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p>No experience required</p>
+                </div>
+            </div>
+            
+            <a href="#" class="cta-button">Apply Now →</a>
+        </section>
+    </div>
+
+    <script>
+        // Simple category filtering
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // In a real implementation, this would filter the team members
+                console.log(`Showing ${button.textContent} team`);
+            });
+        });
+
+        // Auto-scroll alumni carousel
+        const carousel = document.querySelector('.alumni-carousel');
+        let scrollAmount = 0;
+        const scrollStep = 300;
+        
+        setInterval(() => {
+            scrollAmount += scrollStep;
+            if (scrollAmount > carousel.scrollWidth - carousel.clientWidth) {
+                scrollAmount = 0;
+            }
+            carousel.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }, 3000);
+    </script>
+</body>
+</html>

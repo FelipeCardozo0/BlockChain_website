@@ -1,0 +1,43 @@
+
+
+/* ===== Sponsors Styles ===== */
+
+.sponsor-scroll {
+    background-color: #181B20;
+    overflow: hidden;
+    width: calc(100% - 400px); /* 100px padding on each side */
+    margin: 0 250px; /* Creates the 100px gap on both sides */
+    padding: 40px 0;
+    position: relative;
+}
+
+.logo-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+    /* Adjust the starting position to account for the 100px offset */
+    position: relative;
+    left: -200px;
+}
+
+.sponsor-logo {
+    height: 85px; /* Control height (keeps aspect ratio) */
+    width: auto; /* Maintains original proportions */
+    max-width: 150px; /* Maximum width limit */
+    margin: 0 40px;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.sponsor-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(-50%); } /* Start with content shifted left */
+    100% { transform: translateX(0); } /* End with content at normal position */
+}
+/* ===== End of Sponsors Styles ===== */
