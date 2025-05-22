@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Blockchain at Emory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --emory-blue: #012269;
+            --emory-gold: #EAAA00;
+            --web3-blue: #3C78D8;
+            --web3-green: #00FFA3;
+            --dark-bg: #0A0A1A;
+            --light-bg: #F8F9FA;
+            --light-text: #333333;
+            --gray-text: #6C757D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .research-hero {
+            background: linear-gradient(rgba(1, 34, 105, 0.9), rgba(1, 34, 105, 0.8)), 
+                        url('blockchain-bg.jpg') center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+        }
+
+        .research-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .research-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .research-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .research-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* Search & Filters */
+        .research-tools {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: -40px auto 40px;
+            max-width: 1200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-bar {
+            display: flex;
+            margin-bottom: 25px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 0 25px;
+            background: var(--emory-blue);
+            color: white;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: var(--emory-gold);
+        }
+
+        .filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-tag {
+            padding: 8px 15px;
+            background: var(--light-bg);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-tag:hover, .filter-tag.active {
+            background: var(--emory-blue);
+            color: white;
+        }
+
+        /* Research Grid */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .research-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .research-image {
+            height: 180px;
+            background: var(--dark-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .research-pdf-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .research-content {
+            padding: 25px;
+        }
+
+        .research-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--emory-blue);
+        }
+
+        .research-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--gray-text);
+        }
+
+        .research-authors {
+            margin-bottom: 15px;
+        }
+
+        .research-author {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .research-author a {
+            color: var(--emory-blue);
+            text-decoration: none;
+        }
+
+        .research-author a:hover {
+            text-decoration: underline;
+        }
+
+        .research-summary {
+            margin-bottom: 20px;
+        }
+
+        .research-summary ul {
+            padding-left: 20px;
+        }
+
+        .research-summary li {
+            margin-bottom: 8px;
+        }
+
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .research-tag {
+            padding: 5px 12px;
+            background: var(--light-bg);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--gray-text);
+        }
+
+        .research-cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .research-link {
+            padding: 10px 20px;
+            background: var(--emory-blue);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .research-link:hover {
+            background: var(--emory-gold);
+            transform: translateY(-2px);
+        }
+
+        .research-save {
+            color: var(--gray-text);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .research-save:hover {
+            color: var(--emory-blue);
+        }
+
+        /* Featured Research */
+        .featured-research {
+            background: var(--emory-blue);
+            color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+
+        .featured-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .featured-image {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .featured-content {
+            flex: 2;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: var(--emory-gold);
+            color: var(--emory-blue);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .featured-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .featured-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid var(--emory-gold);
+        }
+
+        .featured-meta {
+            margin-bottom: 25px;
+        }
+
+        .featured-meta-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .featured-meta-item i {
+            color: var(--emory-gold);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .cta-card {
+            background: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .cta-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-icon {
+            font-size: 2.5rem;
+            color: var(--emory-blue);
+            margin-bottom: 20px;
+        }
+
+        .cta-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-description {
+            color: var(--gray-text);
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--emory-blue);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--emory-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .research-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .featured-container {
+                flex-direction: column;
+            }
+            
+            .featured-image {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .research-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .research-hero p {
+                font-size: 1rem;
+            }
+            
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="research-hero">
+        <div class="container">
+            <h1>Research</h1>
+            <p>Explore cutting-edge research on cryptocurrency, DeFi, and Web3—written by Emory students and faculty.</p>
+            <div class="research-badges">
+                <div class="research-badge">Peer-reviewed</div>
+                <div class="research-badge">Open Access</div>
+                <div class="research-badge">Student-Led</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filters -->
+    <div class="container">
+        <div class="research-tools">
+            <div class="search-bar">
+                <input type="text" placeholder="Search by keyword (e.g., 'stablecoins', 'ZKPs')">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="filter-section">
+                <div class="filter-group">
+                    <h3>Topics</h3>
+                    <div class="filter-tags">
+                        <div class="filter-tag active">All</div>
+                        <div class="filter-tag">DeFi</div>
+                        <div class="filter-tag">Scalability</div>
+                        <div class="filter-tag">Privacy (ZKPs)</div>
+                        <div class="filter-tag">Regulation</div>
+                        <div class="filter-tag">DAOs</div>
+                        <div class="filter-tag">NFTs</div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Year</h3>
+                    <div class="filter-tags">
+                        <div class="filter-tag">All</div>
+                        <div class="filter-tag">2024</div>
+                        <div class="filter-tag">2023</div>
+                        <div class="filter-tag">2022</div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Type</h3>
+                    <div class="filter-tags">
+                        <div class="filter-tag">All</div>
+                        <div class="filter-tag">Peer-reviewed</div>
+                        <div class="filter-tag">Working Paper</div>
+                        <div class="filter-tag">Conference</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Research Grid -->
+        <div class="research-grid">
+            <!-- Research Paper 1 -->
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="research-thumb1.jpg" alt="Research Paper">
+                    <div class="research-pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                </div>
+                <div class="research-content">
+                    <h3 class="research-title">The Impact of MEV on Ethereum's Decentralization</h3>
+                    <div class="research-meta">
+                        <span><i class="far fa-calendar"></i> May 2024</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Presented at ETHDenver</span>
+                    </div>
+                    <div class="research-authors">
+                        <span class="research-author"><a href="#">Sarah Chen</a> (CS '24)</span>
+                        <span class="research-author"><a href="#">Prof. James Wilson</a></span>
+                    </div>
+                    <div class="research-summary">
+                        <ul>
+                            <li>Analyzes Miner Extractable Value (MEV) in Ethereum post-Merge</li>
+                            <li>Proposes a novel mitigation framework using ZK-proofs</li>
+                            <li>Simulations show 30% reduction in arbitrage losses</li>
+                        </ul>
+                    </div>
+                    <div class="research-tags">
+                        <span class="research-tag">DeFi</span>
+                        <span class="research-tag">Security</span>
+                        <span class="research-tag">Ethereum</span>
+                    </div>
+                    <div class="research-cta">
+                        <a href="#" class="research-link">Read Full Paper →</a>
+                        <span class="research-save"><i class="far fa-bookmark"></i> Save</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Research Paper 2 -->
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="research-thumb2.jpg" alt="Research Paper">
+                    <div class="research-pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                </div>
+                <div class="research-content">
+                    <h3 class="research-title">Governance Models in DAOs: A Comparative Analysis</h3>
+                    <div class="research-meta">
+                        <span><i class="far fa-calendar"></i> March 2024</span>
+                        <span><i class="fas fa-map-marker-alt"></i> IEEE Blockchain</span>
+                    </div>
+                    <div class="research-authors">
+                        <span class="research-author"><a href="#">Michael Rodriguez</a> (Econ '25)</span>
+                        <span class="research-author"><a href="#">Priya Patel</a> (CS '24)</span>
+                    </div>
+                    <div class="research-summary">
+                        <ul>
+                            <li>Comparative study of 50+ DAO governance structures</li>
+                            <li>Identifies key success factors for decentralized decision-making</li>
+                            <li>Proposes new metrics for DAO health assessment</li>
+                        </ul>
+                    </div>
+                    <div class="research-tags">
+                        <span class="research-tag">DAOs</span>
+                        <span class="research-tag">Governance</span>
+                        <span class="research-tag">Tokenomics</span>
+                    </div>
+                    <div class="research-cta">
+                        <a href="#" class="research-link">Read Full Paper →</a>
+                        <span class="research-save"><i class="far fa-bookmark"></i> Save</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Research Paper 3 -->
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="research-thumb3.jpg" alt="Research Paper">
+                    <div class="research-pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                </div>
+                <div class="research-content">
+                    <h3 class="research-title">Privacy-Preserving NFTs Using Zero-Knowledge Proofs</h3>
+                    <div class="research-meta">
+                        <span><i class="far fa-calendar"></i> January 2024</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Financial Crypto</span>
+                    </div>
+                    <div class="research-authors">
+                        <span class="research-author"><a href="#">David Kim</a> (Math '25)</span>
+                        <span class="research-author"><a href="#">Prof. Lisa Zhang</a></span>
+                    </div>
+                    <div class="research-summary">
+                        <ul>
+                            <li>Novel ZKP implementation for NFT ownership privacy</li>
+                            <li>30% more efficient than existing solutions in benchmarks</li>
+                            <li>Open-source prototype available on GitHub</li>
+                        </ul>
+                    </div>
+                    <div class="research-tags">
+                        <span class="research-tag">NFTs</span>
+                        <span class="research-tag">Privacy</span>
+                        <span class="research-tag">ZKPs</span>
+                    </div>
+                    <div class="research-cta">
+                        <a href="#" class="research-link">Read Full Paper →</a>
+                        <span class="research-save"><i class="far fa-bookmark"></i> Save</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Featured Research -->
+        <div class="featured-research">
+            <div class="container">
+                <div class="featured-container">
+                    <div class="featured-image">
+                        <img src="featured-paper.jpg" alt="Featured Research">
+                    </div>
+                    <div class="featured-content">
+                        <span class="featured-badge">Award Winner</span>
+                        <h2 class="featured-title">Cross-Chain Atomic Swaps: Security Analysis and Improvements</h2>
+                        <p class="featured-quote">
+                            "Our protocol reduces swap failure rates by 42% compared to existing solutions while maintaining equivalent security guarantees."
+                        </p>
+                        <div class="featured-meta">
+                            <div class="featured-meta-item">
+                                <i class="fas fa-user-graduate"></i> <strong>Authors:</strong> Emma Adams (CS '24), Robert Sun (CS '25)
+                            </div>
+                            <div class="featured-meta-item">
+                                <i class="fas fa-trophy"></i> <strong>Award:</strong> Best Student Paper, IEEE Blockchain 2024
+                            </div>
+                            <div class="featured-meta-item">
+                                <i class="fas fa-tags"></i> <strong>Topics:</strong> Interoperability, Security, DeFi
+                            </div>
+                        </div>
+                        <a href="#" class="cta-button">Read Award-Winning Paper →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- More Research Grid -->
+        <div class="research-grid">
+            <!-- Research Paper 4 -->
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="research-thumb4.jpg" alt="Research Paper">
+                    <div class="research-pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                </div>
+                <div class="research-content">
+                    <h3 class="research-title">CBDC Design Tradeoffs: Privacy vs. Control</h3>
+                    <div class="research-meta">
+                        <span><i class="far fa-calendar"></i> November 2023</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Journal of FinTech</span>
+                    </div>
+                    <div class="research-authors">
+                        <span class="research-author"><a href="#">Alex Johnson</a> (Econ '24)</span>
+                        <span class="research-author"><a href="#">Prof. Mark Williams</a></span>
+                    </div>
+                    <div class="research-summary">
+                        <ul>
+                            <li>Framework for evaluating CBDC privacy architectures</li>
+                            <li>Case studies of 7 national CBDC projects</li>
+                            <li>Policy recommendations for balanced design</li>
+                        </ul>
+                    </div>
+                    <div class="research-tags">
+                        <span class="research-tag">CBDC</span>
+                        <span class="research-tag">Regulation</span>
+                        <span class="research-tag">Privacy</span>
+                    </div>
+                    <div class="research-cta">
+                        <a href="#" class="research-link">Read Full Paper →</a>
+                        <span class="research-save"><i class="far fa-bookmark"></i> Save</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Research Paper 5 -->
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="research-thumb5.jpg" alt="Research Paper">
+                    <div class="research-pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                </div>
+                <div class="research-content">
+                    <h3 class="research-title">Layer 2 Scaling Solutions: A Throughput Benchmark</h3>
+                    <div class="research-meta">
+                        <span><i class="far fa-calendar"></i> September 2023</span>
+                        <span><i class="fas fa-map-marker-alt"></i> ETHGlobal</span>
+                    </div>
+                    <div class="research-authors">
+                        <span class="research-author"><a href="#">Christopher Lee</a> (CS '25)</span>
+                        <span class="research-author"><a href="#">Felipe Cardozo</a> (CS '24)</span>
+                    </div>
+                    <div class="research-summary">
+                        <ul>
+                            <li>Comparative analysis of 5 major L2 solutions</li>
+                            <li>Real-world throughput measurements under load</li>
+                            <li>Cost/performance tradeoff visualizations</li>
+                        </ul>
+                    </div>
+                    <div class="research-tags">
+                        <span class="research-tag">Scalability</span>
+                        <span class="research-tag">Layer 2</span>
+                        <span class="research-tag">Benchmarking</span>
+                    </div>
+                    <div class="research-cta">
+                        <a href="#" class="research-link">Read Full Paper →</a>
+                        <span class="research-save"><i class="far fa-bookmark"></i> Save</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Research Paper 6 -->
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="research-thumb6.jpg" alt="Research Paper">
+                    <div class="research-pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                </div>
+                <div class="research-content">
+                    <h3 class="research-title">Smart Contract Vulnerability Taxonomy</h3>
+                    <div class="research-meta">
+                        <span><i class="far fa-calendar"></i> July 2023</span>
+                        <span><i class="fas fa-map-marker-alt"></i> ACM CCS</span>
+                    </div>
+                    <div class="research-authors">
+                        <span class="research-author"><a href="#">Natalie Brown</a> (CS '23)</span>
+                        <span class="research-author"><a href="#">Prof. James Wilson</a></span>
+                    </div>
+                    <div class="research-summary">
+                        <ul>
+                            <li>Analysis of 200+ exploited smart contracts</li>
+                            <li>New classification system for vulnerabilities</li>
+                            <li>Detection tool with 92% accuracy</li>
+                        </ul>
+                    </div>
+                    <div class="research-tags">
+                        <span class="research-tag">Security</span>
+                        <span class="research-tag">Smart Contracts</span>
+                        <span class="research-tag">Auditing</span>
+                    </div>
+                    <div class="research-cta">
+                        <a href="#" class="research-link">Read Full Paper →</a>
+                        <span class="research-save"><i class="far fa-bookmark"></i> Save</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <div class="container">
+                <h2>From Ethereum's consensus mechanics to CBDC policy, our research tackles the industry's hardest problems.</h2>
+                <p>Dive into the findings—then join the conversation.</p>
+                
+                <div class="cta-grid">
+                    <div class="cta-card">
+                        <div class="cta-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="cta-title">For Students</h3>
+                        <p class="cta-description">
+                            Contribute to ongoing research or propose your own blockchain study.
+                        </p>
+                        <a href="#" class="cta-button">Contribute Your Research →</a>
+                    </div>
+                    
+                    <div class="cta-card">
+                        <div class="cta-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="cta-title">For Partners</h3>
+                        <p class="cta-description">
+                            Collaborate with our team on sponsored research projects.
+                        </p>
+                        <a href="#" class="cta-button">Collaborate on a Study →</a>
+                    </div>
+                    
+                    <div class="cta-card">
+                        <div class="cta-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="cta-title">Stay Updated</h3>
+                        <p class="cta-description">
+                            Get notified when we publish new research papers.
+                        </p>
+                        <a href="#" class="cta-button">Join Mailing List →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        const filterTags = document.querySelectorAll('.filter-tag');
+        
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Remove active class from all tags in the same group
+                tag.parentElement.querySelectorAll('.filter-tag').forEach(t => {
+                    t.classList.remove('active');
+                });
+                // Add active class to clicked tag
+                tag.classList.add('active');
+                
+                // In a real implementation, this would filter the research papers
+                console.log(`Filtering by: ${tag.textContent}`);
+            });
+        });
+        
+        // Save for later functionality
+        const saveButtons = document.querySelectorAll('.research-save');
+        
+        saveButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.research-card');
+                const title = card.querySelector('.research-title').textContent;
+                
+                button.innerHTML = '<i class="fas fa-check"></i> Saved';
+                setTimeout(() => {
+                    button.innerHTML = '<i class="far fa-bookmark"></i> Save';
+                }, 2000);
+                
+                // In a real implementation, this would add to a saved items list
+                console.log(`Saved: ${title}`);
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        const searchButton = document.querySelector('.search-bar button');
+        
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchInput.value;
+            if (searchTerm) {
+                console.log(`Searching for: ${searchTerm}`);
+                // In a real implementation, this would filter the research papers
+            }
+        });
+        
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchButton.click();
+            }
+        });
+    </script>
+</body>
+</html>
