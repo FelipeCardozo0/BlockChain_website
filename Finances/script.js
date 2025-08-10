@@ -1,0 +1,754 @@
+// Finances Page JavaScript
+
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeAnimations();
+    initializeCharts();
+    initializeInteractivity();
+    initializeScrollAnimations();
+    updateCurrentYear();
+});
+
+// Initialize animations and background
+function initializeAnimations() {
+    // Create animated blockchain background
+    createBlockchainBackground();
+    createFooterBlockchainBackground();
+    
+    // Animate floating icons
+    animateFloatingIcons();
+    
+    // Animate progress bars
+    animateProgressBars();
+}
+
+// Create blockchain background animation
+function createBlockchainBackground() {
+    const canvas = document.getElementById('blockchainCanvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    const nodes = [];
+    const nodeCount = 50;
+    
+    // Create nodes
+    for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            radius: Math.random() * 3 + 1,
+            opacity: Math.random() * 0.5 + 0.2
+        });
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Update and draw nodes
+        nodes.forEach(node => {
+            node.x += node.vx;
+            node.y += node.vy;
+            
+            // Bounce off edges
+            if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+            if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+            
+            // Draw node
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(92, 194, 255, ${node.opacity})`;
+            ctx.fill();
+        });
+        
+        // Draw connections
+        nodes.forEach((nodeA, i) => {
+            nodes.slice(i + 1).forEach(nodeB => {
+                const distance = Math.sqrt(
+                    Math.pow(nodeA.x - nodeB.x, 2) + Math.pow(nodeA.y - nodeB.y, 2)
+                );
+                
+                if (distance < 100) {
+                    ctx.beginPath();
+                    ctx.moveTo(nodeA.x, nodeA.y);
+                    ctx.lineTo(nodeB.x, nodeB.y);
+                    ctx.strokeStyle = `rgba(92, 194, 255, ${0.1 * (1 - distance / 100)})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            });
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+}
+
+// Create footer blockchain background
+function createFooterBlockchainBackground() {
+    const canvas = document.getElementById('footerBlockchainCanvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    const particles = [];
+    const particleCount = 30;
+    
+    // Create particles
+    for (let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: (Math.random() - 0.5) * 0.3,
+            size: Math.random() * 4 + 2,
+            opacity: Math.random() * 0.3 + 0.1
+        });
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach(particle => {
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            
+            if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+            if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+            
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(247, 201, 72, ${particle.opacity})`;
+            ctx.fill();
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+}
+
+// Animate floating icons
+function animateFloatingIcons() {
+    const floatingIcons = document.querySelectorAll('.floating-icon');
+    
+    floatingIcons.forEach((icon, index) => {
+        const delay = parseFloat(icon.dataset.delay) || 0;
+        icon.style.animationDelay = `${delay}s`;
+        
+        // Add random movement
+        setInterval(() => {
+            const randomX = (Math.random() - 0.5) * 20;
+            const randomY = (Math.random() - 0.5) * 20;
+            icon.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }, 3000 + Math.random() * 2000);
+    });
+}
+
+// Animate progress bars
+function animateProgressBars() {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressFill = entry.target;
+                const width = progressFill.style.width;
+                progressFill.style.width = '0%';
+                
+                setTimeout(() => {
+                    progressFill.style.width = width;
+                }, 500);
+                
+                observer.unobserve(progressFill);
+            }
+        });
+    });
+    
+    progressBars.forEach(bar => observer.observe(bar));
+}
+
+// Initialize charts
+function initializeCharts() {
+    initializePieChart();
+    initializeAllocationChart();
+    initializePerformanceChart();
+    initializeValidatorChart();
+}
+
+// Initialize pie chart
+function initializePieChart() {
+    const ctx = document.getElementById('pieChart');
+    if (!ctx) return;
+    
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Partners', 'Solana Validator', 'Emory Funds', 'Event Revenue', 'Donations'],
+            datasets: [{
+                data: [50.2, 21.9, 17.7, 7.3, 2.9],
+                backgroundColor: [
+                    '#5cc2ff',
+                    '#3b82f6',
+                    '#f7c948',
+                    '#22c55e',
+                    '#a855f7'
+                ],
+                borderWidth: 0,
+                cutout: '60%'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#cfd6e4',
+                        padding: 20,
+                        usePointStyle: true,
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            },
+            animation: {
+                animateRotate: true,
+                duration: 2000
+            }
+        }
+    });
+}
+
+// Initialize allocation chart
+function initializeAllocationChart() {
+    const ctx = document.getElementById('allocationChart');
+    if (!ctx) return;
+    
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Stablecoins', 'ETH', 'SOL', 'BTC', 'Other'],
+            datasets: [{
+                data: [44.9, 25.9, 18.5, 10.4, 0.3],
+                backgroundColor: [
+                    '#22c55e',
+                    '#627eea',
+                    '#9945ff',
+                    '#f7931a',
+                    '#6b7280'
+                ],
+                borderWidth: 0,
+                cutout: '50%'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#cfd6e4',
+                        padding: 15,
+                        usePointStyle: true,
+                        font: {
+                            size: 11
+                        }
+                    }
+                }
+            },
+            animation: {
+                animateRotate: true,
+                duration: 1500
+            }
+        }
+    });
+}
+
+// Initialize performance chart
+function initializePerformanceChart() {
+    const ctx = document.getElementById('performanceChart');
+    if (!ctx) return;
+    
+    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const data = [680000, 695000, 720000, 742000, 758000, 781000, 795000, 812000, 825000, 834000, 841000, 847329];
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Portfolio Value ($)',
+                data: data,
+                borderColor: '#5cc2ff',
+                backgroundColor: 'rgba(92, 194, 255, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#5cc2ff',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 6,
+                pointHoverRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#cfd6e4'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#cfd6e4',
+                        callback: function(value) {
+                            return '$' + (value / 1000) + 'K';
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#cfd6e4'
+                    }
+                }
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeOutQuart'
+            }
+        }
+    });
+}
+
+// Initialize validator chart
+function initializeValidatorChart() {
+    const ctx = document.getElementById('validatorChart');
+    if (!ctx) return;
+    
+    const labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'];
+    const rewards = [11200, 11850, 12100, 12450, 11900, 12650];
+    
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Weekly Rewards ($)',
+                data: rewards,
+                backgroundColor: 'rgba(168, 85, 247, 0.8)',
+                borderColor: '#a855f7',
+                borderWidth: 2,
+                borderRadius: 8,
+                borderSkipped: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#cfd6e4'
+                    },
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#cfd6e4',
+                        callback: function(value) {
+                            return '$' + value.toLocaleString();
+                        }
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#cfd6e4'
+                    }
+                }
+            },
+            animation: {
+                duration: 1500,
+                easing: 'easeOutBounce'
+            }
+        }
+    });
+}
+
+// Initialize interactivity
+function initializeInteractivity() {
+    initializeMenuToggle();
+    initializeTableFilters();
+    initializeTimeframToggle();
+    initializeNewsletterForms();
+    initializeDownloadButtons();
+}
+
+// Initialize menu toggle
+function initializeMenuToggle() {
+    const menuButton = document.getElementById('menuButton');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const overlayClose = document.getElementById('overlayClose');
+    const overlayBackground = document.querySelector('.overlay-background');
+    
+    if (menuButton && menuOverlay) {
+        menuButton.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+            menuButton.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    function closeMenu() {
+        if (menuOverlay) {
+            menuOverlay.classList.remove('active');
+            if (menuButton) menuButton.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+    
+    if (overlayClose) {
+        overlayClose.addEventListener('click', closeMenu);
+    }
+    
+    if (overlayBackground) {
+        overlayBackground.addEventListener('click', closeMenu);
+    }
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuOverlay && menuOverlay.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+}
+
+// Initialize table filters
+function initializeTableFilters() {
+    const filterButtons = document.querySelectorAll('.control-btn');
+    const tableRows = document.querySelectorAll('#assetsTableBody tr');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            const filter = button.dataset.filter;
+            
+            tableRows.forEach(row => {
+                if (filter === 'all' || row.dataset.type === filter) {
+                    row.style.display = '';
+                    row.style.animation = 'fadeIn 0.3s ease-in-out';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// Initialize timeframe toggle
+function initializeTimeframToggle() {
+    const toggleButtons = document.querySelectorAll('.toggle-btn');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            const period = button.dataset.period;
+            updatePerformanceMetrics(period);
+        });
+    });
+}
+
+// Update performance metrics based on timeframe
+function updatePerformanceMetrics(period) {
+    const metrics = {
+        '7d': {
+            return: '+3.2%',
+            pnl: '+$847',
+            sharpe: '2.1',
+            winRate: '71.4%',
+            drawdown: '-2.1%',
+            volatility: '8.7%'
+        },
+        '30d': {
+            return: '+12.8%',
+            pnl: '+$8,420',
+            sharpe: '1.9',
+            winRate: '68.9%',
+            drawdown: '-5.4%',
+            volatility: '12.3%'
+        },
+        'ytd': {
+            return: '+24.7%',
+            pnl: '+$167,329',
+            sharpe: '1.85',
+            winRate: '67.3%',
+            drawdown: '-8.2%',
+            volatility: '15.4%'
+        }
+    };
+    
+    const kpiItems = document.querySelectorAll('.kpi-item');
+    const data = metrics[period];
+    
+    if (data && kpiItems.length >= 6) {
+        const values = [data.return, data.pnl, data.sharpe, data.winRate, data.drawdown, data.volatility];
+        
+        kpiItems.forEach((item, index) => {
+            const valueElement = item.querySelector('.kpi-value');
+            if (valueElement && values[index]) {
+                valueElement.textContent = values[index];
+                
+                // Add animation
+                valueElement.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    valueElement.style.transform = 'scale(1)';
+                }, 200);
+            }
+        });
+    }
+}
+
+// Initialize newsletter forms
+function initializeNewsletterForms() {
+    const newsletterForms = document.querySelectorAll('.newsletter-form');
+    
+    newsletterForms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            // Simulate loading
+            submitButton.textContent = 'Subscribing...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                submitButton.textContent = 'Subscribed!';
+                submitButton.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                
+                setTimeout(() => {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                    submitButton.style.background = '';
+                    form.reset();
+                }, 2000);
+            }, 1500);
+        });
+    });
+}
+
+// Initialize download buttons
+function initializeDownloadButtons() {
+    const downloadButtons = document.querySelectorAll('.download-btn');
+    
+    downloadButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }, 2000);
+            }, 1500);
+        });
+    });
+}
+
+// Initialize scroll animations
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Add fade-in class to elements
+    const elementsToAnimate = document.querySelectorAll('.glass-card, .section-title');
+    elementsToAnimate.forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
+}
+
+// Update current year
+function updateCurrentYear() {
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+}
+
+// Counter animation for numbers
+function animateCounter(element, start, end, duration) {
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= end) {
+            current = end;
+            clearInterval(timer);
+        }
+        
+        if (element.textContent.includes('$')) {
+            element.textContent = '$' + Math.floor(current).toLocaleString();
+        } else if (element.textContent.includes('%')) {
+            element.textContent = current.toFixed(1) + '%';
+        } else {
+            element.textContent = Math.floor(current).toLocaleString();
+        }
+    }, 16);
+}
+
+// Initialize counter animations when elements come into view
+function initializeCounterAnimations() {
+    const counters = document.querySelectorAll('.usd-value, .stat-value, .kpi-value');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const text = element.textContent;
+                const number = parseFloat(text.replace(/[^0-9.-]/g, ''));
+                
+                if (!isNaN(number) && number > 0) {
+                    animateCounter(element, 0, number, 2000);
+                }
+                
+                observer.unobserve(element);
+            }
+        });
+    });
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        initializeCounterAnimations();
+    }, 500);
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    // Recalculate chart sizes if needed
+    Chart.helpers.each(Chart.instances, (instance) => {
+        instance.resize();
+    });
+});
+
+// Performance optimization - lazy load charts
+const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const chartId = entry.target.id;
+            
+            // Initialize chart based on ID
+            switch(chartId) {
+                case 'pieChart':
+                    setTimeout(() => initializePieChart(), 300);
+                    break;
+                case 'allocationChart':
+                    setTimeout(() => initializeAllocationChart(), 600);
+                    break;
+                case 'performanceChart':
+                    setTimeout(() => initializePerformanceChart(), 900);
+                    break;
+                case 'validatorChart':
+                    setTimeout(() => initializeValidatorChart(), 1200);
+                    break;
+            }
+            
+            chartObserver.unobserve(entry.target);
+        }
+    });
+});
+
+// Observe chart canvases for lazy loading
+document.addEventListener('DOMContentLoaded', () => {
+    const chartCanvases = document.querySelectorAll('canvas');
+    chartCanvases.forEach(canvas => {
+        if (canvas.id && canvas.id.includes('Chart')) {
+            chartObserver.observe(canvas);
+        }
+    });
+});

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Blockchain Club at Emory</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <canvas id="blockchainCanvas" class="background-canvas"></canvas>
+    </div>
+
+    <!-- Home-style Navigation Bar (Initial) -->
+    <nav class="home-navbar" id="homeNavbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                    <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="nav-logo-img">
+                </a>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="nav-navigation" aria-label="Main navigation">
+                <a href="../About/index.html" class="nav-link">About</a>
+                <a href="../Projects/index.html" class="nav-link">Projects</a>
+                <a href="index.html" class="nav-link nav-link-active">Research</a>
+                <a href="../Finances/index.html" class="nav-link">Finances</a>
+                <a href="../Team/Team.html" class="nav-link">Team</a>
+                <a href="../Home/index.html#contact" class="nav-link">Contact</a>
+                <a href="../About/index.html#join" class="nav-link nav-link-apply">Apply</a>
+            </nav>
+            
+            <!-- Social Media Icons -->
+            <div class="nav-social">
+                <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://discord.gg/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord community">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="nav-mobile">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation menu" aria-expanded="false">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Research-style Navigation Bar (After Scroll) -->
+    <nav class="research-navbar" id="researchNavbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club Research - Home">
+                    <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="research-logo-img">
+                </a>
+            </div>
+            
+            <!-- Center Navigation Links -->
+            <div class="navbar-center">
+                <a href="#featured" class="nav-link" data-section="featured">
+                    <span class="link-text">Featured Research</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="#categories" class="nav-link" data-section="categories">
+                    <span class="link-text">Categories</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="#research-grid" class="nav-link" data-section="research-grid">
+                    <span class="link-text">Research Papers</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="#datasets-tools" class="nav-link" data-section="datasets-tools">
+                    <span class="link-text">Datasets & Tools</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="#collaboration" class="nav-link" data-section="collaboration">
+                    <span class="link-text">Collaborate</span>
+                    <span class="link-underline"></span>
+                </a>
+            </div>
+            
+            <!-- Menu Icon -->
+            <div class="navbar-menu">
+                <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
+                    <span class="menu-icon">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="overlay-background"></div>
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2 class="overlay-title">Navigation</h2>
+                <button class="overlay-close" id="overlayClose" aria-label="Close navigation menu">
+                    <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="overlay-nav" aria-label="Main navigation">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Main</h3>
+                    <ul class="nav-list">
+                        <li><a href="../Home/index.html" class="overlay-link">
+                            <span class="link-label">Home</span>
+                        </a></li>
+                        <li><a href="../About/index.html" class="overlay-link">
+                            <span class="link-label">About</span>
+                        </a></li>
+                        <li><a href="../Projects/index.html" class="overlay-link">
+                            <span class="link-label">Projects</span>
+                        </a></li>
+                        <li><a href="index.html" class="overlay-link active">
+                            <span class="link-label">Research</span>
+                        </a></li>
+                        <li><a href="../Finances/index.html" class="overlay-link">
+                            <span class="link-label">Finances</span>
+                        </a></li>
+                        <li><a href="../Team/Team.html" class="overlay-link">
+                            <span class="link-label">Team</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Research Sections</h3>
+                    <ul class="nav-list">
+                        <li><a href="#featured" class="overlay-link">
+                            <span class="link-label">Featured Research</span>
+                        </a></li>
+                        <li><a href="#categories" class="overlay-link">
+                            <span class="link-label">Categories</span>
+                        </a></li>
+                        <li><a href="#research-grid" class="overlay-link">
+                            <span class="link-label">Research Papers</span>
+                        </a></li>
+                        <li><a href="#datasets-tools" class="overlay-link">
+                            <span class="link-label">Datasets & Tools</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Contact</h3>
+                    <ul class="nav-list">
+                        <li><a href="../Home/index.html#contact" class="overlay-link">
+                            <span class="link-label">Contact Us</span>
+                        </a></li>
+                        <li><a href="../About/index.html#join" class="overlay-link apply-highlight">
+                            <span class="link-label">Join Us</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <!-- Social Links -->
+            <div class="overlay-social">
+                <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://blockchainemory.substack.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Substack">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Research</h1>
+                    <p class="hero-subtitle">Advancing blockchain knowledge through applied research, publications, and open data to shape the future of decentralized technology.</p>
+                </div>
+                <div class="hero-grid"></div>
+            </div>
+        </section>
+
+        <!-- Featured Research Spotlight -->
+        <section class="featured-section" id="featured">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Research</h2>
+                    <p class="section-subtitle">Highlighting our latest breakthrough research and high-impact publications</p>
+                </div>
+                
+                <div class="featured-card">
+                    <div class="featured-content">
+                        <div class="featured-text">
+                            <h3 class="featured-title">Decentralized Governance Mechanisms in DeFi Protocols: A Comparative Analysis</h3>
+                            <div class="featured-authors">
+                                <span class="author">Dr. Jennifer Wang</span>
+                                <span class="author-separator">•</span>
+                                <span class="author">Robert Taylor</span>
+                                <span class="author-separator">•</span>
+                                <span class="author">James Wilson</span>
+                            </div>
+                            <p class="featured-abstract">
+                                This comprehensive study examines governance structures across 50+ DeFi protocols, analyzing voting mechanisms, 
+                                proposal systems, and token distribution effects. Our findings reveal critical insights into the balance between 
+                                decentralization and efficiency in protocol governance, with implications for future DAO design.
+                            </p>
+                            <div class="featured-tags">
+                                <span class="tag">DeFi</span>
+                                <span class="tag">Governance</span>
+                                <span class="tag">DAOs</span>
+                                <span class="tag">Token Economics</span>
+                            </div>
+                            <div class="featured-metrics">
+                                <div class="metric">
+                                    <span class="metric-value">247</span>
+                                    <span class="metric-label">Citations</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">1.2K</span>
+                                    <span class="metric-label">Downloads</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">89</span>
+                                    <span class="metric-label">GitHub Stars</span>
+                                </div>
+                            </div>
+                            <div class="featured-actions">
+                                <a href="#" class="btn btn-primary">Read Paper</a>
+                                <a href="#" class="btn btn-secondary">View Code</a>
+                            </div>
+                        </div>
+                        <div class="featured-visual">
+                            <div class="featured-image">
+                                <svg viewBox="0 0 400 300" class="research-diagram">
+                                    <!-- Governance Network Visualization -->
+                                    <defs>
+                                        <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#5cc2ff;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#9b6bff;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Central Node -->
+                                    <circle cx="200" cy="150" r="20" fill="url(#nodeGradient)" opacity="0.9"/>
+                                    <!-- Surrounding Nodes -->
+                                    <circle cx="120" cy="80" r="12" fill="#5cc2ff" opacity="0.7"/>
+                                    <circle cx="280" cy="80" r="12" fill="#5cc2ff" opacity="0.7"/>
+                                    <circle cx="320" cy="150" r="12" fill="#9b6bff" opacity="0.7"/>
+                                    <circle cx="280" cy="220" r="12" fill="#9b6bff" opacity="0.7"/>
+                                    <circle cx="120" cy="220" r="12" fill="#5cc2ff" opacity="0.7"/>
+                                    <circle cx="80" cy="150" r="12" fill="#9b6bff" opacity="0.7"/>
+                                    <!-- Connections -->
+                                    <line x1="200" y1="150" x2="120" y2="80" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="280" y2="80" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="320" y2="150" stroke="#9b6bff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="280" y2="220" stroke="#9b6bff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="120" y2="220" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="80" y2="150" stroke="#9b6bff" stroke-width="2" opacity="0.6"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Categories -->
+        <section class="categories-section" id="categories">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Research Categories</h2>
+                    <p class="section-subtitle">Explore our diverse research areas and specializations</p>
+                </div>
+                
+                <div class="categories-filter">
+                    <button class="category-btn active" data-category="all">All Research</button>
+                    <button class="category-btn" data-category="data-science">Data Science</button>
+                    <button class="category-btn" data-category="economics">Blockchain Economics</button>
+                    <button class="category-btn" data-category="validators">Validator Performance</button>
+                    <button class="category-btn" data-category="smart-contracts">Smart Contracts</button>
+                    <button class="category-btn" data-category="security">Security</button>
+                    <button class="category-btn" data-category="nfts">NFTs/Metaverse</button>
+                    <button class="category-btn" data-category="governance">Governance</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Grid -->
+        <section class="research-grid-section" id="research-grid">
+            <div class="section-container">
+                <div class="research-grid">
+                    
+                    <!-- Research Card 1 -->
+                    <article class="research-card" data-category="data-science economics">
+                        <div class="research-image">
+                            <svg viewBox="0 0 300 200" class="research-thumbnail">
+                                <defs>
+                                    <linearGradient id="chartGradient1" x1="0%" y1="100%" x2="0%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#5cc2ff;stop-opacity:0.3" />
+                                        <stop offset="100%" style="stop-color:#5cc2ff;stop-opacity:0.8" />
+                                    </linearGradient>
+                                </defs>
+                                <polyline points="20,180 60,120 100,140 140,80 180,100 220,60 260,80" 
+                                         fill="none" stroke="#5cc2ff" stroke-width="3"/>
+                                <polyline points="20,180 60,120 100,140 140,80 180,100 220,60 260,80 260,180 20,180" 
+                                         fill="url(#chartGradient1)"/>
+                            </svg>
+                        </div>
+                        <div class="research-content">
+                            <h3 class="research-title">Market Microstructure Analysis of DEX Liquidity Pools</h3>
+                            <p class="research-authors">Lisa Martinez, Robert Taylor</p>
+                            <p class="research-abstract">Examining price discovery mechanisms and liquidity provision patterns across major DEX platforms using high-frequency transaction data...</p>
+                            <div class="research-badges">
+                                <span class="badge badge-data">Dataset Available</span>
+                                <span class="badge badge-code">Code Available</span>
+                            </div>
+                            <div class="research-actions">
+                                <a href="#" class="btn btn-outline">Read Paper</a>
+                                <a href="#" class="btn btn-outline">View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Research Card 2 -->
+                    <article class="research-card" data-category="validators security">
+                        <div class="research-image">
+                            <svg viewBox="0 0 300 200" class="research-thumbnail">
+                                <!-- Network Security Visualization -->
+                                <circle cx="150" cy="100" r="40" fill="none" stroke="#9b6bff" stroke-width="3" opacity="0.8"/>
+                                <circle cx="150" cy="100" r="60" fill="none" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
+                                <circle cx="150" cy="100" r="80" fill="none" stroke="#9b6bff" stroke-width="1" opacity="0.4"/>
+                                <circle cx="150" cy="100" r="8" fill="#5cc2ff"/>
+                                <circle cx="120" cy="70" r="4" fill="#9b6bff"/>
+                                <circle cx="180" cy="70" r="4" fill="#9b6bff"/>
+                                <circle cx="180" cy="130" r="4" fill="#9b6bff"/>
+                                <circle cx="120" cy="130" r="4" fill="#9b6bff"/>
+                            </svg>
+                        </div>
+                        <div class="research-content">
+                            <h3 class="research-title">Ethereum Validator Performance Under Network Stress</h3>
+                            <p class="research-authors">James Wilson, David Kim</p>
+                            <p class="research-abstract">Comprehensive analysis of validator behavior during high congestion periods, examining attestation rates, block proposal efficiency...</p>
+                            <div class="research-badges">
+                                <span class="badge badge-data">Dataset Available</span>
+                            </div>
+                            <div class="research-actions">
+                                <a href="#" class="btn btn-outline">Read Paper</a>
+                                <a href="#" class="btn btn-outline">View Data</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Research Card 3 -->
+                    <article class="research-card" data-category="smart-contracts security">
+                        <div class="research-image">
+                            <svg viewBox="0 0 300 200" class="research-thumbnail">
+                                <!-- Smart Contract Visualization -->
+                                <rect x="50" y="50" width="200" height="100" fill="none" stroke="#5cc2ff" stroke-width="2" rx="10"/>
+                                <rect x="70" y="70" width="160" height="20" fill="#5cc2ff" opacity="0.3"/>
+                                <rect x="70" y="100" width="120" height="20" fill="#9b6bff" opacity="0.3"/>
+                                <rect x="70" y="130" width="140" height="20" fill="#5cc2ff" opacity="0.3"/>
+                                <circle cx="240" cy="80" r="6" fill="#ff4757"/>
+                                <circle cx="240" cy="110" r="6" fill="#2ed573"/>
+                                <circle cx="240" cy="140" r="6" fill="#ffa502"/>
+                            </svg>
+                        </div>
+                        <div class="research-content">
+                            <h3 class="research-title">Automated Vulnerability Detection in Smart Contracts</h3>
+                            <p class="research-authors">Sarah Rodriguez, David Kim</p>
+                            <p class="research-abstract">Machine learning approach to identify common vulnerability patterns in Solidity contracts, achieving 94% accuracy in detecting...</p>
+                            <div class="research-badges">
+                                <span class="badge badge-code">Code Available</span>
+                            </div>
+                            <div class="research-actions">
+                                <a href="#" class="btn btn-outline">Read Paper</a>
+                                <a href="#" class="btn btn-outline">View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Research Card 4 -->
+                    <article class="research-card" data-category="nfts economics">
+                        <div class="research-image">
+                            <svg viewBox="0 0 300 200" class="research-thumbnail">
+                                <!-- NFT Market Visualization -->
+                                <rect x="60" y="60" width="60" height="60" fill="none" stroke="#9b6bff" stroke-width="2" rx="5"/>
+                                <rect x="140" y="60" width="60" height="60" fill="none" stroke="#5cc2ff" stroke-width="2" rx="5"/>
+                                <rect x="220" y="60" width="60" height="60" fill="none" stroke="#9b6bff" stroke-width="2" rx="5"/>
+                                <circle cx="90" cy="90" r="15" fill="#9b6bff" opacity="0.6"/>
+                                <circle cx="170" cy="90" r="15" fill="#5cc2ff" opacity="0.6"/>
+                                <circle cx="250" cy="90" r="15" fill="#9b6bff" opacity="0.6"/>
+                                <path d="M90 140 L170 140 L250 140" stroke="#5cc2ff" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="research-content">
+                            <h3 class="research-title">Price Formation Dynamics in NFT Secondary Markets</h3>
+                            <p class="research-authors">Robert Taylor, Lisa Martinez</p>
+                            <p class="research-abstract">Analysis of pricing mechanisms and market efficiency in NFT trading, examining the role of rarity, community sentiment...</p>
+                            <div class="research-badges">
+                                <span class="badge badge-data">Dataset Available</span>
+                            </div>
+                            <div class="research-actions">
+                                <a href="#" class="btn btn-outline">Read Paper</a>
+                                <a href="#" class="btn btn-outline">View Data</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Research Card 5 -->
+                    <article class="research-card" data-category="governance economics">
+                        <div class="research-image">
+                            <svg viewBox="0 0 300 200" class="research-thumbnail">
+                                <!-- Governance Visualization -->
+                                <circle cx="150" cy="100" r="30" fill="#5cc2ff" opacity="0.3"/>
+                                <circle cx="100" cy="70" r="20" fill="#9b6bff" opacity="0.5"/>
+                                <circle cx="200" cy="70" r="20" fill="#9b6bff" opacity="0.5"/>
+                                <circle cx="100" cy="130" r="20" fill="#9b6bff" opacity="0.5"/>
+                                <circle cx="200" cy="130" r="20" fill="#9b6bff" opacity="0.5"/>
+                                <line x1="150" y1="100" x2="100" y2="70" stroke="#5cc2ff" stroke-width="2"/>
+                                <line x1="150" y1="100" x2="200" y2="70" stroke="#5cc2ff" stroke-width="2"/>
+                                <line x1="150" y1="100" x2="100" y2="130" stroke="#5cc2ff" stroke-width="2"/>
+                                <line x1="150" y1="100" x2="200" y2="130" stroke="#5cc2ff" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="research-content">
+                            <h3 class="research-title">Token-Weighted Voting: Efficiency vs. Decentralization Trade-offs</h3>
+                            <p class="research-authors">Dr. Jennifer Wang, James Wilson</p>
+                            <p class="research-abstract">Empirical study of governance outcomes across different voting mechanisms, analyzing proposal success rates and voter participation...</p>
+                            <div class="research-badges">
+                                <span class="badge badge-code">Code Available</span>
+                            </div>
+                            <div class="research-actions">
+                                <a href="#" class="btn btn-outline">Read Paper</a>
+                                <a href="#" class="btn btn-outline">View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Research Card 6 -->
+                    <article class="research-card" data-category="data-science validators">
+                        <div class="research-image">
+                            <svg viewBox="0 0 300 200" class="research-thumbnail">
+                                <!-- Data Science Visualization -->
+                                <rect x="50" y="150" width="20" height="30" fill="#5cc2ff" opacity="0.7"/>
+                                <rect x="80" y="120" width="20" height="60" fill="#9b6bff" opacity="0.7"/>
+                                <rect x="110" y="100" width="20" height="80" fill="#5cc2ff" opacity="0.7"/>
+                                <rect x="140" y="80" width="20" height="100" fill="#9b6bff" opacity="0.7"/>
+                                <rect x="170" y="110" width="20" height="70" fill="#5cc2ff" opacity="0.7"/>
+                                <rect x="200" y="90" width="20" height="90" fill="#9b6bff" opacity="0.7"/>
+                                <rect x="230" y="130" width="20" height="50" fill="#5cc2ff" opacity="0.7"/>
+                            </svg>
+                        </div>
+                        <div class="research-content">
+                            <h3 class="research-title">Predictive Models for Blockchain Network Congestion</h3>
+                            <p class="research-authors">Lisa Martinez, Mike Johnson</p>
+                            <p class="research-abstract">Machine learning models to predict network congestion and gas price fluctuations using on-chain metrics and external factors...</p>
+                            <div class="research-badges">
+                                <span class="badge badge-data">Dataset Available</span>
+                                <span class="badge badge-code">Code Available</span>
+                            </div>
+                            <div class="research-actions">
+                                <a href="#" class="btn btn-outline">Read Paper</a>
+                                <a href="#" class="btn btn-outline">View Code</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Datasets & Tools Section -->
+        <section class="datasets-tools-section" id="datasets-tools">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Datasets & Tools</h2>
+                    <p class="section-subtitle">Open-source datasets and research tools for the blockchain community</p>
+                </div>
+                
+                <div class="datasets-tools-grid">
+                    <!-- Datasets Column -->
+                    <div class="datasets-column">
+                        <h3 class="column-title">
+                            <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="m2 17 10 5 10-5"/>
+                                <path d="m2 12 10 5 10-5"/>
+                            </svg>
+                            Datasets
+                        </h3>
+                        
+                        <div class="item-list">
+                            <div class="item-card">
+                                <h4 class="item-title">Ethereum Transaction Dataset 2024</h4>
+                                <p class="item-description">Comprehensive transaction data including gas prices, contract interactions, and MEV analysis covering Q1-Q3 2024.</p>
+                                <div class="item-meta">
+                                    <span class="item-size">2.4TB</span>
+                                    <span class="item-format">Parquet</span>
+                                </div>
+                                <a href="#" class="item-link">Download Dataset</a>
+                            </div>
+                            
+                            <div class="item-card">
+                                <h4 class="item-title">DeFi Protocol Governance Data</h4>
+                                <p class="item-description">Voting records, proposal outcomes, and token holder behavior across 50+ major DeFi protocols.</p>
+                                <div class="item-meta">
+                                    <span class="item-size">156MB</span>
+                                    <span class="item-format">CSV/JSON</span>
+                                </div>
+                                <a href="#" class="item-link">Download Dataset</a>
+                            </div>
+                            
+                            <div class="item-card">
+                                <h4 class="item-title">NFT Market Price History</h4>
+                                <p class="item-description">Historical pricing data for top NFT collections including metadata, rarity scores, and market trends.</p>
+                                <div class="item-meta">
+                                    <span class="item-size">890MB</span>
+                                    <span class="item-format">JSON</span>
+                                </div>
+                                <a href="#" class="item-link">Download Dataset</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools Column -->
+                    <div class="tools-column">
+                        <h3 class="column-title">
+                            <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                            Tools
+                        </h3>
+                        
+                        <div class="item-list">
+                            <div class="item-card">
+                                <h4 class="item-title">Validator Performance Monitor</h4>
+                                <p class="item-description">Real-time monitoring dashboard for Ethereum validators with alerting and performance analytics.</p>
+                                <div class="item-meta">
+                                    <span class="item-tech">Python/React</span>
+                                    <span class="item-license">MIT</span>
+                                </div>
+                                <a href="#" class="item-link">View on GitHub</a>
+                            </div>
+                            
+                            <div class="item-card">
+                                <h4 class="item-title">Smart Contract Analyzer</h4>
+                                <p class="item-description">Automated vulnerability detection and gas optimization suggestions for Solidity contracts.</p>
+                                <div class="item-meta">
+                                    <span class="item-tech">Rust/WASM</span>
+                                    <span class="item-license">Apache 2.0</span>
+                                </div>
+                                <a href="#" class="item-link">View on GitHub</a>
+                            </div>
+                            
+                            <div class="item-card">
+                                <h4 class="item-title">DeFi Simulation Environment</h4>
+                                <p class="item-description">Agent-based modeling framework for testing DeFi protocol mechanisms and market dynamics.</p>
+                                <div class="item-meta">
+                                    <span class="item-tech">Python/Julia</span>
+                                    <span class="item-license">GPL v3</span>
+                                </div>
+                                <a href="#" class="item-link">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Metrics -->
+        <section class="metrics-section" id="metrics">
+            <div class="section-container">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="42">0</div>
+                        <div class="metric-label">Publications</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="18">0</div>
+                        <div class="metric-label">Open Datasets</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="156">0</div>
+                        <div class="metric-label">Research Collaborations</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="1247">0</div>
+                        <div class="metric-label">Total Citations</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="23">0</div>
+                        <div class="metric-label">Conference Presentations</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collaboration Call -->
+        <section class="collaboration-section" id="collaboration">
+            <div class="section-container">
+                <div class="collaboration-content">
+                    <h2 class="collaboration-title">Join Our Research Community</h2>
+                    <p class="collaboration-text">
+                        We welcome researchers, academics, and industry experts to collaborate on cutting-edge blockchain research. 
+                        Whether you're interested in contributing to existing projects or proposing new research directions, 
+                        we'd love to hear from you.
+                    </p>
+                    <div class="collaboration-actions">
+                        <a href="../Home/index.html#contact" class="btn btn-primary">Propose a Research Project</a>
+                        <a href="../About/index.html#join" class="btn btn-secondary">Join Our Team</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Animated Background -->
+        <canvas id="blockchainCanvas" class="footer-canvas"></canvas>
+        <div class="footer-overlay"></div>
+        
+        <div class="footer-container">
+            <!-- Top Row -->
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                        <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="footer-logo-img">
+                    </a>
+                </div>
+                
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="../Home/index.html" class="footer-link">Home</a>
+                    <a href="../About/index.html" class="footer-link">About</a>
+                    <a href="../Projects/index.html" class="footer-link">Projects</a>
+                    <a href="index.html" class="footer-link">Research</a>
+                    <a href="../Finances/index.html" class="footer-link">Finances</a>
+                    <a href="../Team/Team.html" class="footer-link">Team</a>
+                    <a href="../Home/index.html#contact" class="footer-link">Contact</a>
+                    <a href="../About/index.html#join" class="footer-link">Apply</a>
+                </nav>
+                
+                <div class="footer-social">
+                    <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="https://discord.gg/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord community">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://blockchainemory.substack.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Read our research on Substack">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Middle Row -->
+            <div class="footer-middle">
+                <div class="footer-tagline">
+                    <h3>Building the future of blockchain at Emory University</h3>
+                </div>
+                
+                <div class="newsletter-signup">
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-wrapper">
+                            <input type="email" id="newsletterEmail" name="email" class="newsletter-input" 
+                                placeholder="Enter your email" required aria-label="Email address for newsletter">
+                            <button type="submit" class="newsletter-btn">
+                                <span class="btn-text">Subscribe</span>
+                                <span class="btn-spinner newsletter-spinner"></span>
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Bottom Row -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="currentYear">2024</span> Blockchain Club at Emory University. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-legal">
+                    <a href="#privacy" class="legal-link">Privacy Policy</a>
+                    <span class="legal-separator">•</span>
+                    <a href="#terms" class="legal-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

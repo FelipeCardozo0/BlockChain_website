@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finances - Blockchain Club at Emory</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <canvas id="blockchainCanvas" class="background-canvas"></canvas>
+    </div>
+
+    <!-- Navigation Bar (Same as Team page) -->
+    <nav class="home-navbar" id="homeNavbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                    <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="nav-logo-img">
+                </a>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="nav-navigation" aria-label="Main navigation">
+                <a href="../About/index.html" class="nav-link">About</a>
+                <a href="../Projects/index.html" class="nav-link">Projects</a>
+                <a href="../Research/index.html" class="nav-link">Research</a>
+                <a href="index.html" class="nav-link nav-link-active">Finances</a>
+                <a href="../Team/Team.html" class="nav-link">Team</a>
+                <a href="../Home/index.html#contact" class="nav-link">Contact</a>
+                <a href="../About/index.html#join" class="nav-link nav-link-apply">Apply</a>
+            </nav>
+            
+            <!-- Social Media Icons -->
+            <div class="nav-social">
+                <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://discord.gg/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord community">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="nav-menu">
+                <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
+                    <span class="menu-icon">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="overlay-background"></div>
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2 class="overlay-title">Navigation</h2>
+                <button class="overlay-close" id="overlayClose" aria-label="Close navigation menu">
+                    <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="overlay-nav" aria-label="Main navigation">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Main</h3>
+                    <ul class="nav-list">
+                        <li><a href="../Home/index.html" class="overlay-link">
+                            <span class="link-label">Home</span>
+                        </a></li>
+                        <li><a href="../About/index.html" class="overlay-link">
+                            <span class="link-label">About</span>
+                        </a></li>
+                        <li><a href="../Projects/index.html" class="overlay-link">
+                            <span class="link-label">Projects</span>
+                        </a></li>
+                        <li><a href="../Research/index.html" class="overlay-link">
+                            <span class="link-label">Research</span>
+                        </a></li>
+                        <li><a href="index.html" class="overlay-link active">
+                            <span class="link-label">Finances</span>
+                        </a></li>
+                        <li><a href="../Team/Team.html" class="overlay-link">
+                            <span class="link-label">Team</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Financial Sections</h3>
+                    <ul class="nav-list">
+                        <li><a href="#treasury" class="overlay-link">
+                            <span class="link-label">Treasury Overview</span>
+                        </a></li>
+                        <li><a href="#funding-sources" class="overlay-link">
+                            <span class="link-label">Funding Sources</span>
+                        </a></li>
+                        <li><a href="#portfolio" class="overlay-link">
+                            <span class="link-label">Portfolio</span>
+                        </a></li>
+                        <li><a href="#validator" class="overlay-link">
+                            <span class="link-label">Validator Performance</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Contact</h3>
+                    <ul class="nav-list">
+                        <li><a href="../Home/index.html#contact" class="overlay-link">
+                            <span class="link-label">Contact Us</span>
+                        </a></li>
+                        <li><a href="../About/index.html#join" class="overlay-link apply-highlight">
+                            <span class="link-label">Join Us</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <!-- Social Links -->
+            <div class="overlay-social">
+                <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="https://blockchainemory.substack.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Substack">
+                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="floating-elements">
+                    <div class="floating-icon" data-delay="0">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <div class="floating-icon" data-delay="1">
+                        <i class="fab fa-ethereum"></i>
+                    </div>
+                    <div class="floating-icon" data-delay="2">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="floating-icon" data-delay="3">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                </div>
+                <h1 class="hero-title">Finances</h1>
+                <p class="hero-subtitle">Transparency and accountability in managing club funds and digital assets with complete financial oversight.</p>
+            </div>
+        </section>
+
+        <!-- Treasury Overview Section -->
+        <section class="section treasury-section" id="treasury">
+            <div class="section-container">
+                <h2 class="section-title">Treasury Overview</h2>
+                <div class="treasury-grid">
+                    <div class="glass-card treasury-total">
+                        <div class="card-header">
+                            <h3>Total Treasury Value</h3>
+                            <div class="change-indicator positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+12.5%</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="total-value">
+                                <span class="usd-value">$847,329</span>
+                                <span class="crypto-equivalent">≈ 18.4 ETH</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card funding-breakdown">
+                        <div class="card-header">
+                            <h3>Funding Sources</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="breakdown-list">
+                                <div class="breakdown-item">
+                                    <div class="item-info">
+                                        <span class="source-name">Partners</span>
+                                        <span class="source-amount">$425,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 50.2%"></div>
+                                    </div>
+                                    <span class="percentage">50.2%</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="item-info">
+                                        <span class="source-name">Solana Validator</span>
+                                        <span class="source-amount">$185,329</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 21.9%"></div>
+                                    </div>
+                                    <span class="percentage">21.9%</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="item-info">
+                                        <span class="source-name">Emory Funds</span>
+                                        <span class="source-amount">$150,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 17.7%"></div>
+                                    </div>
+                                    <span class="percentage">17.7%</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="item-info">
+                                        <span class="source-name">Event Revenue</span>
+                                        <span class="source-amount">$62,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 7.3%"></div>
+                                    </div>
+                                    <span class="percentage">7.3%</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="item-info">
+                                        <span class="source-name">Donations</span>
+                                        <span class="source-amount">$25,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 2.9%"></div>
+                                    </div>
+                                    <span class="percentage">2.9%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card pie-chart-card">
+                        <div class="card-header">
+                            <h3>Allocation by Source</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-container">
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funding Sources Section -->
+        <section class="section funding-sources-section" id="funding-sources">
+            <div class="section-container">
+                <h2 class="section-title">Funding Sources</h2>
+                <div class="funding-grid">
+                    <div class="glass-card funding-card">
+                        <div class="funding-header">
+                            <div class="funding-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Partners</h3>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Total Contributions</span>
+                                    <span class="stat-value">$425,000</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Active Partners</span>
+                                    <span class="stat-value">12</span>
+                                </div>
+                            </div>
+                            <div class="recent-contributions">
+                                <div class="contribution-item">
+                                    <span class="partner-name">Solana Foundation</span>
+                                    <span class="contribution-amount">$75,000</span>
+                                    <span class="contribution-date">Dec 2024</span>
+                                </div>
+                                <div class="contribution-item">
+                                    <span class="partner-name">Ethereum Foundation</span>
+                                    <span class="contribution-amount">$50,000</span>
+                                    <span class="contribution-date">Nov 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card funding-card">
+                        <div class="funding-header">
+                            <div class="funding-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>Solana Validator</h3>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Current Stake</span>
+                                    <span class="stat-value">2,847 SOL</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Commission</span>
+                                    <span class="stat-value">5%</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Uptime</span>
+                                    <span class="stat-value">99.8%</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Monthly Rewards</span>
+                                    <span class="stat-value">$12,450</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card funding-card">
+                        <div class="funding-header">
+                            <div class="funding-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h3>Emory University</h3>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Research Grants</span>
+                                    <span class="stat-value">$100,000</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Program Support</span>
+                                    <span class="stat-value">$50,000</span>
+                                </div>
+                            </div>
+                            <div class="recent-contributions">
+                                <div class="contribution-item">
+                                    <span class="partner-name">DeFi Research Grant</span>
+                                    <span class="contribution-amount">$75,000</span>
+                                    <span class="contribution-date">Sep 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card funding-card">
+                        <div class="funding-header">
+                            <div class="funding-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h3>Donations & Events</h3>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Event Revenue</span>
+                                    <span class="stat-value">$62,000</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Donations</span>
+                                    <span class="stat-value">$25,000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio & Allocation Section -->
+        <section class="section portfolio-section" id="portfolio">
+            <div class="section-container">
+                <h2 class="section-title">Portfolio & Allocation</h2>
+                <div class="portfolio-grid">
+                    <div class="glass-card allocation-chart-card">
+                        <div class="card-header">
+                            <h3>Asset Allocation</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-container">
+                                <canvas id="allocationChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card assets-table-card">
+                        <div class="card-header">
+                            <h3>Holdings</h3>
+                            <div class="table-controls">
+                                <button class="control-btn active" data-filter="all">All</button>
+                                <button class="control-btn" data-filter="crypto">Crypto</button>
+                                <button class="control-btn" data-filter="stable">Stables</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="assets-table-container">
+                                <table class="assets-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Asset</th>
+                                            <th>Chain</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Value (USD)</th>
+                                            <th>% of Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="assetsTableBody">
+                                        <tr data-type="stable">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon usdc"></div>
+                                                    <span>USDC</span>
+                                                </div>
+                                            </td>
+                                            <td>Ethereum</td>
+                                            <td>285,420</td>
+                                            <td>$1.00</td>
+                                            <td>$285,420</td>
+                                            <td>33.7%</td>
+                                        </tr>
+                                        <tr data-type="crypto">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon eth"></div>
+                                                    <span>ETH</span>
+                                                </div>
+                                            </td>
+                                            <td>Ethereum</td>
+                                            <td>67.5</td>
+                                            <td>$3,247</td>
+                                            <td>$219,173</td>
+                                            <td>25.9%</td>
+                                        </tr>
+                                        <tr data-type="crypto">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon sol"></div>
+                                                    <span>SOL</span>
+                                                </div>
+                                            </td>
+                                            <td>Solana</td>
+                                            <td>847</td>
+                                            <td>$185</td>
+                                            <td>$156,695</td>
+                                            <td>18.5%</td>
+                                        </tr>
+                                        <tr data-type="stable">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon usdt"></div>
+                                                    <span>USDT</span>
+                                                </div>
+                                            </td>
+                                            <td>Ethereum</td>
+                                            <td>95,000</td>
+                                            <td>$1.00</td>
+                                            <td>$95,000</td>
+                                            <td>11.2%</td>
+                                        </tr>
+                                        <tr data-type="crypto">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon btc"></div>
+                                                    <span>BTC</span>
+                                                </div>
+                                            </td>
+                                            <td>Bitcoin</td>
+                                            <td>0.89</td>
+                                            <td>$98,750</td>
+                                            <td>$87,888</td>
+                                            <td>10.4%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Metrics Section -->
+        <section class="section performance-section" id="performance">
+            <div class="section-container">
+                <h2 class="section-title">Performance Metrics</h2>
+                <div class="performance-controls">
+                    <div class="timeframe-toggle">
+                        <button class="toggle-btn active" data-period="7d">7D</button>
+                        <button class="toggle-btn" data-period="30d">30D</button>
+                        <button class="toggle-btn" data-period="ytd">YTD</button>
+                    </div>
+                </div>
+                <div class="performance-grid">
+                    <div class="glass-card metrics-card">
+                        <div class="card-header">
+                            <h3>Key Performance Indicators</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="kpi-grid">
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Cumulative Return</div>
+                                    <div class="kpi-value positive">+24.7%</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Daily PnL</div>
+                                    <div class="kpi-value positive">+$2,847</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Sharpe Ratio</div>
+                                    <div class="kpi-value">1.85</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Win Rate</div>
+                                    <div class="kpi-value">67.3%</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Max Drawdown</div>
+                                    <div class="kpi-value negative">-8.2%</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Volatility</div>
+                                    <div class="kpi-value">15.4%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card chart-card">
+                        <div class="card-header">
+                            <h3>Portfolio Performance</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-container">
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cash Flow Tracker Section -->
+        <section class="section cashflow-section" id="cashflow">
+            <div class="section-container">
+                <h2 class="section-title">Cash Flow Tracker</h2>
+                <div class="glass-card cashflow-card">
+                    <div class="card-header">
+                        <h3>Income & Expenses</h3>
+                        <div class="cashflow-summary">
+                            <div class="summary-item positive">
+                                <span class="summary-label">Total Income</span>
+                                <span class="summary-value">+$142,850</span>
+                            </div>
+                            <div class="summary-item negative">
+                                <span class="summary-label">Total Expenses</span>
+                                <span class="summary-value">-$38,920</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Net Flow</span>
+                                <span class="summary-value positive">+$103,930</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="cashflow-table-container">
+                            <table class="cashflow-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>Running Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="income-row">
+                                        <td>2024-12-15</td>
+                                        <td><span class="category-tag grants">Grants</span></td>
+                                        <td>Ethereum Foundation Grant</td>
+                                        <td class="positive">+$50,000</td>
+                                        <td>$847,329</td>
+                                    </tr>
+                                    <tr class="income-row">
+                                        <td>2024-12-10</td>
+                                        <td><span class="category-tag validator">Validator</span></td>
+                                        <td>Solana Staking Rewards</td>
+                                        <td class="positive">+$12,450</td>
+                                        <td>$797,329</td>
+                                    </tr>
+                                    <tr class="expense-row">
+                                        <td>2024-12-08</td>
+                                        <td><span class="category-tag infrastructure">Infrastructure</span></td>
+                                        <td>Server & Cloud Costs</td>
+                                        <td class="negative">-$2,850</td>
+                                        <td>$784,879</td>
+                                    </tr>
+                                    <tr class="income-row">
+                                        <td>2024-12-05</td>
+                                        <td><span class="category-tag events">Events</span></td>
+                                        <td>Blockchain Workshop Revenue</td>
+                                        <td class="positive">+$8,500</td>
+                                        <td>$787,729</td>
+                                    </tr>
+                                    <tr class="expense-row">
+                                        <td>2024-12-01</td>
+                                        <td><span class="category-tag operations">Operations</span></td>
+                                        <td>Marketing & Outreach</td>
+                                        <td class="negative">-$5,200</td>
+                                        <td>$779,229</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Validator Performance Section -->
+        <section class="section validator-section" id="validator">
+            <div class="section-container">
+                <h2 class="section-title">Solana Validator Performance</h2>
+                <div class="validator-grid">
+                    <div class="glass-card validator-stats-card">
+                        <div class="card-header">
+                            <h3>Validator Statistics</h3>
+                            <div class="status-indicator online">
+                                <div class="status-dot"></div>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="validator-stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-vote-yea"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <span class="stat-label">Vote Credits (7d)</span>
+                                        <span class="stat-value">24,847</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-percentage"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <span class="stat-label">APY</span>
+                                        <span class="stat-value">7.2%</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-coins"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <span class="stat-label">Effective Stake</span>
+                                        <span class="stat-value">2,847 SOL</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-server"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <span class="stat-label">Infrastructure Costs</span>
+                                        <span class="stat-value">$890/mo</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <span class="stat-label">Net Revenue</span>
+                                        <span class="stat-value">$11,560/mo</span>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <span class="stat-label">Uptime</span>
+                                        <span class="stat-value">99.8%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card validator-chart-card">
+                        <div class="card-header">
+                            <h3>Rewards History</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-container">
+                                <canvas id="validatorChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card validator-dashboard-card">
+                        <div class="card-header">
+                            <h3>Validator Dashboard</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="dashboard-description">
+                                Monitor our validator performance in real-time with detailed metrics and analytics.
+                            </p>
+                            <a href="#" class="dashboard-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Full Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transparency & Reports Section -->
+        <section class="section transparency-section" id="transparency">
+            <div class="section-container">
+                <h2 class="section-title">Transparency & Reports</h2>
+                <div class="transparency-grid">
+                    <div class="glass-card reports-card">
+                        <div class="card-header">
+                            <h3>Financial Reports</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="reports-list">
+                                <div class="report-item">
+                                    <div class="report-info">
+                                        <div class="report-icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </div>
+                                        <div class="report-details">
+                                            <span class="report-name">December 2024 Financial Report</span>
+                                            <span class="report-date">Generated: Dec 20, 2024</span>
+                                        </div>
+                                    </div>
+                                    <button class="download-btn">
+                                        <i class="fas fa-download"></i>
+                                        Download PDF
+                                    </button>
+                                </div>
+                                <div class="report-item">
+                                    <div class="report-info">
+                                        <div class="report-icon">
+                                            <i class="fas fa-file-csv"></i>
+                                        </div>
+                                        <div class="report-details">
+                                            <span class="report-name">Transaction Ledger</span>
+                                            <span class="report-date">Updated: Real-time</span>
+                                        </div>
+                                    </div>
+                                    <button class="download-btn">
+                                        <i class="fas fa-download"></i>
+                                        Download CSV
+                                    </button>
+                                </div>
+                                <div class="report-item">
+                                    <div class="report-info">
+                                        <div class="report-icon">
+                                            <i class="fas fa-code"></i>
+                                        </div>
+                                        <div class="report-details">
+                                            <span class="report-name">Wallet Addresses</span>
+                                            <span class="report-date">Public addresses & balances</span>
+                                        </div>
+                                    </div>
+                                    <button class="download-btn">
+                                        <i class="fas fa-download"></i>
+                                        Download JSON
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card newsletter-card">
+                        <div class="card-header">
+                            <h3>Financial Updates</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="newsletter-description">
+                                Stay informed with monthly financial updates, treasury reports, and transparency insights delivered to your inbox.
+                            </p>
+                            <form class="newsletter-form">
+                                <div class="input-group">
+                                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                                    <button type="submit" class="newsletter-btn">
+                                        <i class="fas fa-bell"></i>
+                                        Subscribe
+                                    </button>
+                                </div>
+                                <p class="newsletter-privacy">We respect your privacy. Updates sent monthly.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partnership Call-to-Action Section -->
+        <section class="section partnership-section" id="partnership">
+            <div class="section-container">
+                <div class="glass-card partnership-card">
+                    <div class="partnership-content">
+                        <div class="partnership-text">
+                            <h2>Become a Partner</h2>
+                            <p>Join our growing network of partners and sponsors supporting blockchain innovation at Emory University. Help us build the future of decentralized technology.</p>
+                        </div>
+                        <div class="partnership-action">
+                            <a href="#" class="cta-button">
+                                <i class="fas fa-handshake"></i>
+                                Partner With Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Same as Team page) -->
+    <footer class="footer">
+        <!-- Animated Background -->
+        <canvas id="footerBlockchainCanvas" class="footer-canvas"></canvas>
+        <div class="footer-overlay"></div>
+        
+        <div class="footer-container">
+            <!-- Top Row -->
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                        <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="footer-logo-img">
+                    </a>
+                </div>
+                
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="../Home/index.html" class="footer-link">Home</a>
+                    <a href="../About/index.html" class="footer-link">About</a>
+                    <a href="../Projects/index.html" class="footer-link">Projects</a>
+                    <a href="../Research/index.html" class="footer-link">Research</a>
+                    <a href="index.html" class="footer-link">Finances</a>
+                    <a href="../Team/Team.html" class="footer-link">Team</a>
+                    <a href="../Home/index.html#contact" class="footer-link">Contact</a>
+                    <a href="../About/index.html#join" class="footer-link">Apply</a>
+                </nav>
+                
+                <div class="footer-social">
+                    <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="https://discord.gg/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord community">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://blockchainemory.substack.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Read our research on Substack">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Middle Row -->
+            <div class="footer-middle">
+                <div class="footer-tagline">
+                    <h3>Building the future of blockchain at Emory University</h3>
+                </div>
+                
+                <div class="newsletter-signup">
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-wrapper">
+                            <input type="email" id="newsletterEmail" name="email" class="newsletter-input" 
+                                placeholder="Enter your email" required aria-label="Email address for newsletter">
+                            <button type="submit" class="newsletter-btn">
+                                <span class="btn-text">Subscribe</span>
+                                <span class="btn-spinner newsletter-spinner"></span>
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Bottom Row -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="currentYear">2024</span> Blockchain Club at Emory University. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-legal">
+                    <a href="#privacy" class="legal-link">Privacy Policy</a>
+                    <span class="legal-separator">•</span>
+                    <a href="#terms" class="legal-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
