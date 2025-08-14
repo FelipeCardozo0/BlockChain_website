@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNewsletterForm();
     initializeCanvasAnimations();
     
-    // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    // Initialize footer with tesseract animation
+    initializeFooter();
 });
 
 // Navigation Functions
@@ -381,6 +381,21 @@ function showNotification(message, type = 'info') {
     }, 4000);
 }
 
+// Footer initialization with tesseract animation
+function initializeFooter() {
+    // Update current year
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+    
+    // Initialize tesseract animation for footer
+    initializeFooterTesseractAnimation();
+    
+    // Initialize newsletter signup
+    initializeNewsletterSignup();
+}
+
 // Canvas Animation Functions
 function initializeCanvasAnimations() {
     // Hero background animation
@@ -389,11 +404,11 @@ function initializeCanvasAnimations() {
         initializeBlockchainAnimation(heroCanvas);
     }
     
-    // Footer background animation
-    const footerCanvas = document.querySelector('.footer #blockchainCanvas');
-    if (footerCanvas) {
-        initializeFooterAnimation(footerCanvas);
-    }
+    // Footer background animation - now handled by tesseract animation
+    // const footerCanvas = document.querySelector('.footer #blockchainCanvas');
+    // if (footerCanvas) {
+    //     initializeFooterAnimation(footerCanvas);
+    // }
 }
 
 function initializeBlockchainAnimation(canvas) {

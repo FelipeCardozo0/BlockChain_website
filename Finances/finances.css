@@ -1119,6 +1119,432 @@ body {
     color: #ef4444;
 }
 
+/* Mining Section */
+.mining-section {
+    padding: 4rem 0;
+}
+
+.mining-kpis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.kpi-chip {
+    background: rgba(92, 194, 255, 0.1);
+    border: 1px solid rgba(92, 194, 255, 0.3);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 140px;
+    transition: all 0.3s ease;
+}
+
+.kpi-chip:hover {
+    background: rgba(92, 194, 255, 0.15);
+    border-color: rgba(92, 194, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.kpi-chip .kpi-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kpi-chip .kpi-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.mining-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mining-overview-card {
+    grid-column: span 1;
+}
+
+.hardware-inventory-card {
+    grid-column: span 1;
+}
+
+.performance-charts-card {
+    grid-column: span 2;
+}
+
+.revenue-cost-card {
+    grid-column: span 1;
+}
+
+.energy-cost-card {
+    grid-column: span 1;
+}
+
+.profitability-card {
+    grid-column: span 1;
+}
+
+.pool-payouts-card {
+    grid-column: span 1;
+}
+
+/* Overview Grid */
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.overview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.overview-label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.overview-value {
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.wallet-address {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: #5cc2ff;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.copy-btn {
+    background: rgba(92, 194, 255, 0.2);
+    border: 1px solid rgba(92, 194, 255, 0.3);
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    color: #5cc2ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.copy-btn:hover {
+    background: rgba(92, 194, 255, 0.3);
+    border-color: rgba(92, 194, 255, 0.5);
+}
+
+/* Hardware Table */
+.hardware-table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hardware-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.hardware-table th {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 1rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hardware-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #cfd6e4;
+}
+
+.hardware-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.healthy {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-badge.degraded {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-badge.down {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Chart Controls */
+.chart-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.unit-toggle {
+    display: flex;
+    gap: 0.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.25rem;
+}
+
+.unit-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.unit-btn.active {
+    background: rgba(92, 194, 255, 0.2);
+    color: #5cc2ff;
+}
+
+.unit-btn:hover:not(.active) {
+    color: #ffffff;
+}
+
+/* Energy Stats Grid */
+.energy-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.energy-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.energy-stat .stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.energy-stat .stat-value {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Cost Breakdown */
+.cost-breakdown h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.cost-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.cost-category {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.category-name {
+    font-size: 1rem;
+    color: #5cc2ff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cost-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.cost-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cost-item span:first-child {
+    color: #cfd6e4;
+    font-size: 0.9rem;
+}
+
+.cost-item span:last-child {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Profitability Stats */
+.profitability-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.profit-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profit-stat .stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.profit-stat .stat-value {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.profit-stat .stat-value.negative {
+    color: #ef4444;
+}
+
+/* Pool Stats Grid */
+.pool-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.pool-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pool-stat .stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.pool-stat .stat-value {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Table Controls */
+.table-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.control-btn.active {
+    background: rgba(92, 194, 255, 0.2);
+    border-color: rgba(92, 194, 255, 0.3);
+    color: #5cc2ff;
+}
+
+.control-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.export-btn {
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.export-btn:hover {
+    background: rgba(34, 197, 94, 0.3);
+    border-color: rgba(34, 197, 94, 0.5);
+}
+
 /* Validator Section */
 .validator-grid {
     display: grid;
@@ -1596,6 +2022,15 @@ body {
         gap: 1.5rem;
     }
     
+    .mining-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+    
+    .performance-charts-card {
+        grid-column: span 2;
+    }
+    
     .validator-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1649,6 +2084,83 @@ body {
     .funding-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    
+    .mining-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .mining-kpis {
+        gap: 0.75rem;
+    }
+    
+    .kpi-chip {
+        min-width: 120px;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .kpi-chip .kpi-label {
+        font-size: 0.7rem;
+    }
+    
+    .kpi-chip .kpi-value {
+        font-size: 0.9rem;
+    }
+    
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .energy-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    
+    .profitability-stats {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .pool-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .cost-categories {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .hardware-table {
+        font-size: 0.75rem;
+    }
+    
+    .hardware-table th,
+    .hardware-table td {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .table-controls {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .control-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .export-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .chart-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
     }
     
     .kpi-grid {
