@@ -193,6 +193,7 @@ function initializeCharts() {
     initializeAllocationChart();
     initializePerformanceChart();
     initializeValidatorChart();
+    initializeMiningCharts();
 }
 
 // Initialize pie chart
@@ -752,3 +753,309 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Initialize mining charts
+function initializeMiningCharts() {
+    createHashrateChart();
+    createRevenueCostChart();
+    initializeMiningInteractivity();
+}
+
+// Create hashrate chart
+function createHashrateChart() {
+    const ctx = document.getElementById('hashrateChart');
+    if (!ctx) return;
+    
+    // Generate sample data for the last 7 days
+    const labels = [];
+    const hashrateData = [];
+    const now = new Date();
+    
+    for (let i = 6; i >= 0; i--) {
+        const date = new Date(now);
+        date.setDate(date.getDate() - i);
+        labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        
+        // Generate realistic hashrate data with some variation
+        const baseHashrate = 847;
+        const variation = (Math.random() - 0.5) * 50;
+        hashrateData.push(baseHashrate + variation);
+    }
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Hashrate (PH/s)',
+                data: hashrateData,
+                borderColor: '#5cc2ff',
+                backgroundColor: 'rgba(92, 194, 255, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#5cc2ff',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 6,
+                pointHoverRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#94a3b8'
+                    }
+                },
+                y: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#94a3b8',
+                        callback: function(value) {
+                            return value + ' PH/s';
+                        }
+                    }
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeInOutQuart'
+            }
+        }
+    });
+}
+
+// Create revenue vs cost chart
+function createRevenueCostChart() {
+    const ctx = document.getElementById('revenueCostChart');
+    if (!ctx) return;
+    
+    // Generate sample data for the last 30 days
+    const labels = [];
+    const revenueData = [];
+    const costData = [];
+    const now = new Date();
+    
+    for (let i = 29; i >= 0; i--) {
+        const date = new Date(now);
+        date.setDate(date.getDate() - i);
+        labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        
+        // Generate realistic revenue and cost data
+        const baseRevenue = 859;
+        const baseCost = 3122;
+        const revenueVariation = (Math.random() - 0.5) * 100;
+        const costVariation = (Math.random() - 0.5) * 50;
+        
+        revenueData.push(baseRevenue + revenueVariation);
+        costData.push(baseCost + costVariation);
+    }
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Daily Revenue (USD)',
+                    data: revenueData,
+                    borderColor: '#22c55e',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    borderWidth: 3,
+                    fill: false,
+                    tension: 0.4,
+                    pointBackgroundColor: '#22c55e',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                },
+                {
+                    label: 'Daily Costs (USD)',
+                    data: costData,
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    borderWidth: 3,
+                    fill: false,
+                    tension: 0.4,
+                    pointBackgroundColor: '#ef4444',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#cfd6e4',
+                        usePointStyle: true,
+                        padding: 20,
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#94a3b8',
+                        maxTicksLimit: 10
+                    }
+                },
+                y: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#94a3b8',
+                        callback: function(value) {
+                            return '$' + value.toLocaleString();
+                        }
+                    }
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeInOutQuart'
+            }
+        }
+    });
+}
+
+// Initialize mining interactivity
+function initializeMiningInteractivity() {
+    // Hardware table filtering
+    const filterButtons = document.querySelectorAll('.hardware-inventory-card .control-btn');
+    const hardwareRows = document.querySelectorAll('#hardwareTableBody tr');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Filter rows
+            hardwareRows.forEach(row => {
+                const status = row.getAttribute('data-status');
+                if (filter === 'all' || status === filter) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Copy button functionality
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const textToCopy = button.getAttribute('data-clipboard');
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Show success feedback
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                button.style.background = 'rgba(34, 197, 94, 0.3)';
+                button.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+                button.style.color = '#22c55e';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = 'rgba(92, 194, 255, 0.2)';
+                    button.style.borderColor = 'rgba(92, 194, 255, 0.3)';
+                    button.style.color = '#5cc2ff';
+                }, 2000);
+            });
+        });
+    });
+    
+    // Chart timeframe toggles
+    const timeframeButtons = document.querySelectorAll('.performance-charts-card .toggle-btn');
+    timeframeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            timeframeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Here you would typically update the chart data
+            // For now, we'll just show a visual feedback
+            const period = button.getAttribute('data-period');
+            console.log('Switched to period:', period);
+        });
+    });
+    
+    // Unit toggles
+    const unitButtons = document.querySelectorAll('.unit-btn');
+    unitButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            unitButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            const unit = button.getAttribute('data-unit');
+            console.log('Switched to unit:', unit);
+        });
+    });
+    
+    // Export button functionality
+    const exportButton = document.querySelector('.export-btn');
+    if (exportButton) {
+        exportButton.addEventListener('click', () => {
+            // Generate CSV data
+            const table = document.querySelector('.hardware-table');
+            const rows = Array.from(table.querySelectorAll('tr'));
+            
+            let csvContent = 'data:text/csv;charset=utf-8,';
+            
+            rows.forEach(row => {
+                const cells = Array.from(row.querySelectorAll('th, td'));
+                const rowData = cells.map(cell => {
+                    // Remove HTML tags and get text content
+                    const text = cell.textContent.replace(/"/g, '""');
+                    return `"${text}"`;
+                });
+                csvContent += rowData.join(',') + '\r\n';
+            });
+            
+            // Create download link
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', 'mining_hardware_inventory.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    }
+}

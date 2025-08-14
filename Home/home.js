@@ -426,18 +426,24 @@ function initializeMenuOverlay() {
 
     // Add scroll effect to navbar
     let lastScrollTop = 0;
-    const navbar = document.querySelector('.navbar');
+    const homeNavbar = document.getElementById('homeNavbar');
+    const teamNavbar = document.getElementById('teamNavbar');
     
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        // Add background opacity on scroll
-        if (scrollTop > 50) {
-            navbar.style.backgroundColor = 'rgba(30, 58, 138, 0.95)';
-            navbar.style.backdropFilter = 'blur(10px)';
+        // Show/hide home navbar
+        if (scrollTop > 100) {
+            homeNavbar.classList.add('hidden');
         } else {
-            navbar.style.backgroundColor = '#1e3a8a';
-            navbar.style.backdropFilter = 'none';
+            homeNavbar.classList.remove('hidden');
+        }
+        
+        // Show/hide team navbar
+        if (scrollTop > 100) {
+            teamNavbar.classList.add('visible');
+        } else {
+            teamNavbar.classList.remove('visible');
         }
         
         lastScrollTop = scrollTop;

@@ -47,6 +47,11 @@ body {
     transform: translateY(0);
 }
 
+.home-navbar.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -123,28 +128,27 @@ body {
     stroke-width: 1.5;
 }
 
-/* Team-style Navigation Bar (After Scroll) */
+/* Team Navigation Bar */
 .team-navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
-    background: linear-gradient(135deg, rgba(11, 42, 90, 0.95) 0%, rgba(10, 36, 72, 0.95) 100%);
+    z-index: 999;
+    background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(20px);
-    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    padding: 1rem 0;
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     opacity: 0;
     transform: translateY(-100%);
-    pointer-events: none;
 }
 
-.team-navbar.active {
+.team-navbar.visible {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: auto;
+    z-index: 1000;
 }
 
 .navbar-container {

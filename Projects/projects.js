@@ -204,8 +204,8 @@ function initFooterBackground() {
         initializeMatrix();
     }
     
-    // Matrix characters (mix of Japanese katakana, numbers, and symbols)
-    const matrixChars = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*+=<>?';
+    // Matrix characters (mix of blockchain-related symbols, numbers, and letters)
+    const matrixChars = '01ABCDEF0123456789abcdef@#$%&*+=<>?{}[]()|\\/~^';
     
     // Matrix columns
     let columns = [];
@@ -213,16 +213,16 @@ function initFooterBackground() {
     
     function initializeMatrix() {
         columns = [];
-        const columnWidth = 20;
+        const columnWidth = 28; // Increased from 18 to 28 for more spacing
         const columnCount = Math.floor(canvas.width / columnWidth);
         
         for (let i = 0; i < columnCount; i++) {
             columns.push({
                 x: i * columnWidth,
                 chars: [],
-                speed: Math.random() * 2 + 1,
-                delay: Math.random() * 100,
-                length: Math.floor(Math.random() * 20) + 10
+                speed: Math.random() * 1.5 + 0.8,
+                delay: Math.random() * 200,
+                length: Math.floor(Math.random() * 15) + 8
             });
         }
     }
@@ -243,7 +243,7 @@ function initFooterBackground() {
                     char: createMatrixChar(),
                     y: 0,
                     opacity: 1,
-                    brightness: Math.random() > 0.8 ? 1 : 0.3 // Some chars are brighter
+                    brightness: Math.random() > 0.85 ? 1 : 0.4 // Some chars are brighter
                 });
                 
                 // Remove characters that are off screen
@@ -259,39 +259,39 @@ function initFooterBackground() {
             // Draw characters
             column.chars.forEach((char, charIndex) => {
                 ctx.save();
-                ctx.font = '16px monospace';
+                ctx.font = '14px monospace';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'top';
                 
-                // Create gradient effect for the character
-                const gradient = ctx.createLinearGradient(
-                    column.x, char.y - 10,
-                    column.x, char.y + 10
-                );
-                
+                // Use gradient color scheme to match footer hover effects
                 if (char.brightness === 1) {
-                    // Bright character (head of the column)
-                    gradient.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
-                    gradient.addColorStop(0.3, 'rgba(0, 255, 0, 0.8)');
-                    gradient.addColorStop(1, 'rgba(0, 255, 0, 0.3)');
+                    // Bright character (head of the column) - use light blue from gradient
+                    ctx.fillStyle = 'rgba(92, 194, 255, 0.9)'; // #5cc2ff
+                    ctx.shadowColor = 'rgba(92, 194, 255, 0.8)';
+                    ctx.shadowBlur = 8;
                 } else {
-                    // Regular character
-                    gradient.addColorStop(0, 'rgba(0, 255, 0, 0.8)');
-                    gradient.addColorStop(0.5, 'rgba(0, 255, 0, 0.5)');
-                    gradient.addColorStop(1, 'rgba(0, 255, 0, 0.1)');
-                }
-                
-                ctx.fillStyle = gradient;
-                ctx.globalAlpha = char.opacity;
-                ctx.fillText(char.char, column.x, char.y);
-                
-                // Add glow effect for bright characters
-                if (char.brightness === 1) {
-                    ctx.shadowColor = '#00ff00';
-                    ctx.shadowBlur = 10;
-                    ctx.fillText(char.char, column.x, char.y);
+                    // Regular character - alternate between gradient colors based on position
+                    const gradientProgress = (char.y / canvas.height) % 1;
+                    if (gradientProgress < 0.5) {
+                        // First half of gradient: light blue to yellow
+                        const colorProgress = gradientProgress * 2;
+                        const r = Math.floor(92 + (247 - 92) * colorProgress);
+                        const g = Math.floor(194 + (201 - 194) * colorProgress);
+                        const b = Math.floor(255 + (72 - 255) * colorProgress);
+                        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${char.opacity * 0.6})`;
+                    } else {
+                        // Second half of gradient: yellow to light blue
+                        const colorProgress = (gradientProgress - 0.5) * 2;
+                        const r = Math.floor(247 + (92 - 247) * colorProgress);
+                        const g = Math.floor(201 + (194 - 201) * colorProgress);
+                        const b = Math.floor(72 + (255 - 72) * colorProgress);
+                        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${char.opacity * 0.6})`;
+                    }
                     ctx.shadowBlur = 0;
                 }
+                
+                ctx.globalAlpha = char.opacity;
+                ctx.fillText(char.char, column.x, char.y);
                 
                 ctx.restore();
             });
