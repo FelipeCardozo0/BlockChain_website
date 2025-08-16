@@ -30,19 +30,217 @@ body {
     display: block;
 }
 
-/* Navigation Bar Styles (Same as Team page) */
+/* Navigation Bar Styles */
 .home-navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    background: linear-gradient(135deg, rgba(11, 42, 90, 0.98) 0%, rgba(10, 36, 72, 0.98) 100%);
+    background: rgb(1, 33, 105);
     backdrop-filter: blur(20px);
     padding: 1rem 0;
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.home-navbar.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+/* Finances-style Navigation Bar (After Scroll) */
+.finances-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    padding: 1rem 0;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.finances-navbar.visible {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.navbar-logo {
+    flex-shrink: 0;
+}
+
+.logo-link {
+    display: block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.finances-logo-img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.logo-link:hover .finances-logo-img {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.finances-navigation {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.finances-nav-link {
+    position: relative;
+    text-decoration: none;
+    color: #e2e8f0;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.75rem 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block;
+    letter-spacing: 0.3px;
+}
+
+.finances-nav-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    transform: translateY(-1px);
+}
+
+.finances-nav-link.active {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(92, 194, 255, 0.5);
+}
+
+.finances-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #6366f1);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 1px;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+}
+
+.finances-nav-link:hover::after,
+.finances-nav-link.active::after {
+    width: 100%;
+}
+
+/* Menu Button */
+.navbar-menu {
+    flex-shrink: 0;
+}
+
+.menu-button {
+    background: transparent;
+    border: 2px solid rgba(226, 232, 240, 0.2);
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-button:hover {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.menu-button:focus {
+    outline: none;
+    border-color: #5cc2ff;
+    box-shadow: 0 0 0 3px rgba(92, 194, 255, 0.2);
+}
+
+.menu-icon {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.menu-line {
+    width: 100%;
+    height: 2px;
+    background: #e2e8f0;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.menu-line:nth-child(1) { width: 100%; }
+.menu-line:nth-child(2) { width: 75%; }
+.menu-line:nth-child(3) { width: 100%; }
+.menu-line:nth-child(4) { width: 50%; }
+
+.menu-button:hover .menu-line {
+    background: #5cc2ff;
+}
+
+.menu-button.active .menu-icon {
+    transform: rotate(45deg);
+}
+
+.menu-button.active .menu-line:nth-child(1) {
+    transform: translateY(8px) rotate(90deg);
+    width: 100%;
+}
+
+.menu-button.active .menu-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.menu-button.active .menu-line:nth-child(3) {
+    transform: translateY(-8px);
+    width: 100%;
+}
+
+.menu-button.active .menu-line:nth-child(4) {
+    opacity: 0;
+    transform: translateX(20px);
 }
 
 .nav-container {
@@ -83,10 +281,26 @@ body {
 
 .nav-navigation {
     display: flex;
-    gap: 2rem;
     align-items: center;
     flex: 1;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.nav-links-center {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
     justify-content: center;
+    flex: 1;
+}
+
+.nav-links-right {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
 }
 
 .nav-link {
@@ -296,6 +510,7 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
+    transition: opacity 0.4s ease;
 }
 
 .overlay-content {
@@ -311,6 +526,7 @@ body {
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     overflow-y: auto;
     border-left: 1px solid rgba(148, 163, 184, 0.1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
 }
 
 .menu-overlay.active .overlay-content {
@@ -344,11 +560,15 @@ body {
     padding: 0.5rem;
     border-radius: 6px;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .overlay-close:hover {
     color: #ffffff;
     background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
 }
 
 .close-icon {
@@ -401,11 +621,32 @@ body {
     border: 1px solid transparent;
 }
 
+.overlay-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.overlay-link:hover::before {
+    left: 100%;
+}
+
 .overlay-link:hover {
     color: #ffffff;
     background: rgba(59, 130, 246, 0.1);
     border-color: rgba(59, 130, 246, 0.3);
     transform: translateX(4px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.overlay-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
 }
 
 .overlay-link.active {
@@ -418,6 +659,12 @@ body {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.2));
     border-color: rgba(59, 130, 246, 0.4);
     color: #ffffff;
+}
+
+.overlay-link.apply-highlight:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(99, 102, 241, 0.3));
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .link-label {
@@ -1119,6 +1366,433 @@ body {
     color: #ef4444;
 }
 
+/* Mining Section */
+.mining-section {
+    padding: 4rem 0;
+}
+
+.mining-kpis {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.kpi-chip {
+    background: rgba(92, 194, 255, 0.1);
+    border: 1px solid rgba(92, 194, 255, 0.3);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 140px;
+    transition: all 0.3s ease;
+}
+
+.kpi-chip:hover {
+    background: rgba(92, 194, 255, 0.15);
+    border-color: rgba(92, 194, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.kpi-chip .kpi-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kpi-chip .kpi-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.mining-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mining-overview-card {
+    grid-column: span 1;
+}
+
+.hardware-inventory-card {
+    grid-column: span 1;
+}
+
+.performance-charts-card {
+    grid-column: span 2;
+}
+
+.revenue-cost-card {
+    grid-column: span 1;
+}
+
+.energy-cost-card {
+    grid-column: span 1;
+}
+
+.profitability-card {
+    grid-column: span 1;
+}
+
+.pool-payouts-card {
+    grid-column: span 1;
+}
+
+/* Overview Grid */
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.overview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.overview-label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.overview-value {
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.wallet-address {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: #5cc2ff;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.copy-btn {
+    background: rgba(92, 194, 255, 0.2);
+    border: 1px solid rgba(92, 194, 255, 0.3);
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    color: #5cc2ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.copy-btn:hover {
+    background: rgba(92, 194, 255, 0.3);
+    border-color: rgba(92, 194, 255, 0.5);
+}
+
+/* Hardware Table */
+.hardware-table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hardware-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.hardware-table th {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 1rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hardware-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #cfd6e4;
+}
+
+.hardware-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.healthy {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-badge.degraded {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-badge.down {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Chart Controls */
+.chart-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.unit-toggle {
+    display: flex;
+    gap: 0.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.25rem;
+}
+
+.unit-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.unit-btn.active {
+    background: rgba(92, 194, 255, 0.2);
+    color: #5cc2ff;
+}
+
+.unit-btn:hover:not(.active) {
+    color: #ffffff;
+}
+
+/* Energy Stats Grid */
+.energy-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.energy-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.energy-stat .stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.energy-stat .stat-value {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Cost Breakdown */
+.cost-breakdown h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.cost-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.cost-category {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.category-name {
+    font-size: 1rem;
+    color: #5cc2ff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cost-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.cost-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cost-item span:first-child {
+    color: #cfd6e4;
+    font-size: 0.9rem;
+}
+
+.cost-item span:last-child {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Profitability Stats */
+.profitability-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.profit-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profit-stat .stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.profit-stat .stat-value {
+    font-size: 1.1rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.profit-stat .stat-value.negative {
+    color: #ef4444;
+}
+
+/* Pool Stats Grid */
+.pool-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.pool-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pool-stat .stat-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.pool-stat .stat-value {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Table Controls */
+.table-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.control-btn.active {
+    background: rgba(92, 194, 255, 0.2);
+    border-color: rgba(92, 194, 255, 0.3);
+    color: #5cc2ff;
+}
+
+.control-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.export-btn {
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.export-btn:hover {
+    background: rgba(34, 197, 94, 0.3);
+    border-color: rgba(34, 197, 94, 0.5);
+}
+
 /* Validator Section */
 .validator-grid {
     display: grid;
@@ -1308,13 +1982,18 @@ body {
     gap: 1rem;
 }
 
-.input-group {
+.newsletter-input-wrapper {
     display: flex;
-    gap: 0;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 25px;
     padding: 4px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.newsletter-input-wrapper:focus-within {
+    border-color: rgba(92, 194, 255, 0.5);
+    box-shadow: 0 0 15px rgba(92, 194, 255, 0.2);
 }
 
 .newsletter-input {
@@ -1325,6 +2004,7 @@ body {
     color: #ffffff;
     font-size: 0.9rem;
     outline: none;
+    border-radius: 21px;
 }
 
 .newsletter-input::placeholder {
@@ -1344,11 +2024,38 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .newsletter-btn:hover {
     background: linear-gradient(135deg, #f7c948, #5cc2ff);
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(92, 194, 255, 0.3);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.newsletter-spinner {
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .newsletter-privacy {
@@ -1407,11 +2114,11 @@ body {
     box-shadow: 0 8px 25px rgba(92, 194, 255, 0.4);
 }
 
-/* Footer Styles (Same as Team page) */
+/* Footer Styles - Flowing Digital Ledger */
 .footer {
     position: relative;
     height: 400px;
-    background: linear-gradient(135deg, #0b2a5a 0%, #1a093f 100%);
+    background: linear-gradient(135deg, #0b0f1a 0%, #0b2a5a 100%);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -1424,7 +2131,8 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1;
-    opacity: 0.7;
+    opacity: 0.8;
+    filter: blur(0.5px);
 }
 
 .footer-overlay {
@@ -1433,8 +2141,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(11, 42, 90, 0.3) 100%);
     z-index: 2;
+    backdrop-filter: blur(1px);
 }
 
 .footer-container {
@@ -1572,6 +2281,94 @@ body {
 
 .legal-separator {
     color: rgba(255, 255, 255, 0.4);
+}
+
+/* Enhanced footer animations for flowing digital ledger */
+@keyframes ledgerGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(92, 194, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(92, 194, 255, 0.2);
+    }
+}
+
+.footer {
+    animation: ledgerGlow 4s ease-in-out infinite;
+}
+
+/* Add subtle pulse to footer content */
+@keyframes contentPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.95;
+    }
+}
+
+.footer-container {
+    animation: contentPulse 6s ease-in-out infinite;
+}
+
+/* Enhanced social links with blockchain theme */
+.footer-social .social-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-social .social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(92, 194, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.footer-social .social-link:hover::before {
+    left: 100%;
+}
+
+/* Add blockchain-themed decorative elements */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(92, 194, 255, 0.5), transparent);
+    z-index: 4;
+}
+
+.footer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(247, 201, 72, 0.5), transparent);
+    z-index: 4;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .footer {
+        animation: none;
+    }
+    
+    .footer-container {
+        animation: none;
+    }
+    
+    .footer-social .social-link::before {
+        display: none;
+    }
+}
     font-size: 0.85rem;
 }
 
@@ -1594,6 +2391,15 @@ body {
     .performance-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    
+    .mining-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+    
+    .performance-charts-card {
+        grid-column: span 2;
     }
     
     .validator-grid {
@@ -1649,6 +2455,83 @@ body {
     .funding-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    
+    .mining-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .mining-kpis {
+        gap: 0.75rem;
+    }
+    
+    .kpi-chip {
+        min-width: 120px;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .kpi-chip .kpi-label {
+        font-size: 0.7rem;
+    }
+    
+    .kpi-chip .kpi-value {
+        font-size: 0.9rem;
+    }
+    
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .energy-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    
+    .profitability-stats {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .pool-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    
+    .cost-categories {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .hardware-table {
+        font-size: 0.75rem;
+    }
+    
+    .hardware-table th,
+    .hardware-table td {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .table-controls {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .control-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .export-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .chart-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
     }
     
     .kpi-grid {
@@ -1808,4 +2691,6 @@ body {
     .floating-icon {
         animation: none;
     }
+    
+
 }

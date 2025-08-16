@@ -2,12 +2,124 @@
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
+    initializeNavigation();
     initializeAnimations();
     initializeCharts();
     initializeInteractivity();
     initializeScrollAnimations();
     updateCurrentYear();
 });
+
+// Navigation Functions
+function initializeNavigation() {
+    const menuButton = document.getElementById('menuButton');
+    const overlayClose = document.getElementById('overlayClose');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const homeNavbar = document.getElementById('homeNavbar');
+    const financesNavbar = document.getElementById('financesNavbar');
+    
+    // Menu toggle functionality
+    if (menuButton) {
+        menuButton.addEventListener('click', toggleMenu);
+    }
+    
+    if (overlayClose) {
+        overlayClose.addEventListener('click', closeMenu);
+    }
+    
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', function(e) {
+            if (e.target.classList.contains('overlay-background')) {
+                closeMenu();
+            }
+        });
+    }
+    
+    // Dual navbar scroll effect
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+        const scrollThreshold = 200;
+        
+        if (homeNavbar && financesNavbar) {
+            if (currentScrollY > scrollThreshold) {
+                // Hide home navbar, show finances navbar
+                homeNavbar.classList.add('hidden');
+                financesNavbar.classList.add('visible');
+            } else {
+                // Show home navbar, hide finances navbar
+                homeNavbar.classList.remove('hidden');
+                financesNavbar.classList.remove('visible');
+            }
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+    
+    // Smooth scrolling for finances navbar links
+    const financesNavLinks = document.querySelectorAll('.finances-navbar .finances-nav-link[data-section]');
+    financesNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const offsetTop = targetElement.offsetTop - 120;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Update active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.finances-navbar .finances-nav-link[data-section]');
+    
+    window.addEventListener('scroll', function() {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+
+// Menu toggle functions
+function toggleMenu() {
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuButton = document.getElementById('menuButton');
+    
+    if (menuOverlay) {
+        menuOverlay.classList.add('active');
+        if (menuButton) menuButton.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeMenu() {
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuButton = document.getElementById('menuButton');
+    
+    if (menuOverlay) {
+        menuOverlay.classList.remove('active');
+        if (menuButton) menuButton.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
 
 // Initialize animations and background
 function initializeAnimations() {
@@ -95,10 +207,15 @@ function createBlockchainBackground() {
     animate();
 }
 
-// Create footer blockchain background
+// Create flowing digital ledger background
 function createFooterBlockchainBackground() {
-    const canvas = document.getElementById('footerBlockchainCanvas');
+    const canvas = document.getElementById('tesseractCanvas');
     if (!canvas) return;
+    
+    // Check for reduced motion preference
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
     
     const ctx = canvas.getContext('2d');
     
@@ -110,36 +227,121 @@ function createFooterBlockchainBackground() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    const particles = [];
-    const particleCount = 30;
+    // Generate fake transaction data
+    function generateTransactionHash() {
+        const chars = '0123456789abcdef';
+        return '0x' + Array.from({length: 64}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    }
     
-    // Create particles
-    for (let i = 0; i < particleCount; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3,
-            size: Math.random() * 4 + 2,
-            opacity: Math.random() * 0.3 + 0.1
+    function generateWalletAddress() {
+        const chars = '0123456789abcdef';
+        return '0x' + Array.from({length: 40}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    }
+    
+    function generateAmount() {
+        const amounts = ['0.0247', '1.847', '0.156', '2.394', '0.089', '5.672', '0.342', '1.234', '0.567', '3.456'];
+        return amounts[Math.floor(Math.random() * amounts.length)];
+    }
+    
+    function generateTimestamp() {
+        const now = new Date();
+        const randomMinutes = Math.floor(Math.random() * 60);
+        const time = new Date(now.getTime() - randomMinutes * 60000);
+        return time.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+    
+    // Create ledger rows
+    const ledgerRows = [];
+    const rowCount = 8;
+    const rowHeight = canvas.height / rowCount;
+    
+    for (let i = 0; i < rowCount; i++) {
+        const transactions = [];
+        const transactionCount = Math.floor(Math.random() * 15) + 10; // 10-25 transactions per row
+        
+        for (let j = 0; j < transactionCount; j++) {
+            const isLargeTransaction = Math.random() < 0.1; // 10% chance of large transaction
+            transactions.push({
+                hash: generateTransactionHash(),
+                from: generateWalletAddress(),
+                to: generateWalletAddress(),
+                amount: generateAmount(),
+                timestamp: generateTimestamp(),
+                isLarge: isLargeTransaction,
+                x: Math.random() * canvas.width * 2, // Spread across wider area
+                y: i * rowHeight + rowHeight / 2,
+                speed: (Math.random() * 0.5 + 0.5) * (isLargeTransaction ? 1.5 : 1), // Large transactions move faster
+                opacity: Math.random() * 0.4 + 0.1,
+                highlight: 0
+            });
+        }
+        
+        ledgerRows.push({
+            transactions: transactions,
+            direction: i % 2 === 0 ? 1 : -1, // Alternate direction
+            y: i * rowHeight + rowHeight / 2
         });
     }
+    
+    // Removed metric icons (Bitcoin logos and other objects) to keep only the transaction animation
     
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        particles.forEach(particle => {
-            particle.x += particle.vx;
-            particle.y += particle.vy;
-            
-            if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-            if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-            
-            ctx.beginPath();
-            ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(247, 201, 72, ${particle.opacity})`;
-            ctx.fill();
+        // Draw ledger rows
+        ledgerRows.forEach((row, rowIndex) => {
+            row.transactions.forEach(transaction => {
+                // Update position
+                transaction.x += transaction.speed * row.direction;
+                
+                // Reset position when off screen
+                if (row.direction > 0 && transaction.x > canvas.width + 200) {
+                    transaction.x = -200;
+                } else if (row.direction < 0 && transaction.x < -200) {
+                    transaction.x = canvas.width + 200;
+                }
+                
+                // Random highlight flash for large transactions
+                if (transaction.isLarge && Math.random() < 0.001) {
+                    transaction.highlight = 1;
+                }
+                
+                // Fade highlight
+                if (transaction.highlight > 0) {
+                    transaction.highlight -= 0.02;
+                }
+                
+                // Draw transaction with gradient color effect
+                const alpha = transaction.opacity + (transaction.highlight * 0.5);
+                
+                // Create gradient effect similar to social icons hover and matrix animation
+                const gradient = ctx.createLinearGradient(transaction.x, transaction.y - 5, transaction.x + 200, transaction.y + 5);
+                gradient.addColorStop(0, `rgba(92, 194, 255, ${alpha})`); // #5cc2ff (light blue)
+                gradient.addColorStop(0.7, `rgba(92, 194, 255, ${alpha})`); // More light blue
+                gradient.addColorStop(1, `rgba(247, 201, 72, ${alpha})`); // #f7c948 (yellow)
+                
+                ctx.fillStyle = gradient;
+                ctx.font = '10px "Courier New", monospace';
+                ctx.textAlign = 'left';
+                
+                const text = `${transaction.hash.slice(0, 8)}...${transaction.hash.slice(-6)} | ${transaction.from.slice(0, 6)}...${transaction.from.slice(-4)} → ${transaction.to.slice(0, 6)}...${transaction.to.slice(-4)} | ${transaction.amount} ETH | ${transaction.timestamp}`;
+                
+                // Add glow effect for highlighted transactions
+                if (transaction.highlight > 0) {
+                    ctx.shadowColor = 'rgba(92, 194, 255, 0.8)';
+                    ctx.shadowBlur = 10;
+                } else {
+                    ctx.shadowBlur = 0;
+                }
+                
+                ctx.fillText(text, transaction.x, transaction.y);
+                
+                // Reset shadow
+                ctx.shadowBlur = 0;
+            });
         });
+        
+        // Metric icons removed - keeping only transaction animation
         
         requestAnimationFrame(animate);
     }
@@ -193,6 +395,7 @@ function initializeCharts() {
     initializeAllocationChart();
     initializePerformanceChart();
     initializeValidatorChart();
+    initializeMiningCharts();
 }
 
 // Initialize pie chart
@@ -752,3 +955,309 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Initialize mining charts
+function initializeMiningCharts() {
+    createHashrateChart();
+    createRevenueCostChart();
+    initializeMiningInteractivity();
+}
+
+// Create hashrate chart
+function createHashrateChart() {
+    const ctx = document.getElementById('hashrateChart');
+    if (!ctx) return;
+    
+    // Generate sample data for the last 7 days
+    const labels = [];
+    const hashrateData = [];
+    const now = new Date();
+    
+    for (let i = 6; i >= 0; i--) {
+        const date = new Date(now);
+        date.setDate(date.getDate() - i);
+        labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        
+        // Generate realistic hashrate data with some variation
+        const baseHashrate = 847;
+        const variation = (Math.random() - 0.5) * 50;
+        hashrateData.push(baseHashrate + variation);
+    }
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Hashrate (PH/s)',
+                data: hashrateData,
+                borderColor: '#5cc2ff',
+                backgroundColor: 'rgba(92, 194, 255, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#5cc2ff',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 6,
+                pointHoverRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#94a3b8'
+                    }
+                },
+                y: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#94a3b8',
+                        callback: function(value) {
+                            return value + ' PH/s';
+                        }
+                    }
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeInOutQuart'
+            }
+        }
+    });
+}
+
+// Create revenue vs cost chart
+function createRevenueCostChart() {
+    const ctx = document.getElementById('revenueCostChart');
+    if (!ctx) return;
+    
+    // Generate sample data for the last 30 days
+    const labels = [];
+    const revenueData = [];
+    const costData = [];
+    const now = new Date();
+    
+    for (let i = 29; i >= 0; i--) {
+        const date = new Date(now);
+        date.setDate(date.getDate() - i);
+        labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        
+        // Generate realistic revenue and cost data
+        const baseRevenue = 859;
+        const baseCost = 3122;
+        const revenueVariation = (Math.random() - 0.5) * 100;
+        const costVariation = (Math.random() - 0.5) * 50;
+        
+        revenueData.push(baseRevenue + revenueVariation);
+        costData.push(baseCost + costVariation);
+    }
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Daily Revenue (USD)',
+                    data: revenueData,
+                    borderColor: '#22c55e',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    borderWidth: 3,
+                    fill: false,
+                    tension: 0.4,
+                    pointBackgroundColor: '#22c55e',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                },
+                {
+                    label: 'Daily Costs (USD)',
+                    data: costData,
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    borderWidth: 3,
+                    fill: false,
+                    tension: 0.4,
+                    pointBackgroundColor: '#ef4444',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#cfd6e4',
+                        usePointStyle: true,
+                        padding: 20,
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#94a3b8',
+                        maxTicksLimit: 10
+                    }
+                },
+                y: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#94a3b8',
+                        callback: function(value) {
+                            return '$' + value.toLocaleString();
+                        }
+                    }
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeInOutQuart'
+            }
+        }
+    });
+}
+
+// Initialize mining interactivity
+function initializeMiningInteractivity() {
+    // Hardware table filtering
+    const filterButtons = document.querySelectorAll('.hardware-inventory-card .control-btn');
+    const hardwareRows = document.querySelectorAll('#hardwareTableBody tr');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Filter rows
+            hardwareRows.forEach(row => {
+                const status = row.getAttribute('data-status');
+                if (filter === 'all' || status === filter) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Copy button functionality
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const textToCopy = button.getAttribute('data-clipboard');
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Show success feedback
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                button.style.background = 'rgba(34, 197, 94, 0.3)';
+                button.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+                button.style.color = '#22c55e';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = 'rgba(92, 194, 255, 0.2)';
+                    button.style.borderColor = 'rgba(92, 194, 255, 0.3)';
+                    button.style.color = '#5cc2ff';
+                }, 2000);
+            });
+        });
+    });
+    
+    // Chart timeframe toggles
+    const timeframeButtons = document.querySelectorAll('.performance-charts-card .toggle-btn');
+    timeframeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            timeframeButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Here you would typically update the chart data
+            // For now, we'll just show a visual feedback
+            const period = button.getAttribute('data-period');
+            console.log('Switched to period:', period);
+        });
+    });
+    
+    // Unit toggles
+    const unitButtons = document.querySelectorAll('.unit-btn');
+    unitButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            unitButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            const unit = button.getAttribute('data-unit');
+            console.log('Switched to unit:', unit);
+        });
+    });
+    
+    // Export button functionality
+    const exportButton = document.querySelector('.export-btn');
+    if (exportButton) {
+        exportButton.addEventListener('click', () => {
+            // Generate CSV data
+            const table = document.querySelector('.hardware-table');
+            const rows = Array.from(table.querySelectorAll('tr'));
+            
+            let csvContent = 'data:text/csv;charset=utf-8,';
+            
+            rows.forEach(row => {
+                const cells = Array.from(row.querySelectorAll('th, td'));
+                const rowData = cells.map(cell => {
+                    // Remove HTML tags and get text content
+                    const text = cell.textContent.replace(/"/g, '""');
+                    return `"${text}"`;
+                });
+                csvContent += rowData.join(',') + '\r\n';
+            });
+            
+            // Create download link
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', 'mining_hardware_inventory.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    }
+}

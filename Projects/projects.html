@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Blockchain Club at Emory</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../Images/Logo/Logo_Official.png">
+    <link rel="stylesheet" href="projects.css">
 </head>
 <body>
     <!-- Animated Background -->
@@ -12,61 +13,157 @@
         <canvas id="networkCanvas" class="background-canvas"></canvas>
     </div>
 
-    <!-- Navigation Bar -->
+    <!-- Home-style Navigation Bar (Initial) -->
     <nav class="home-navbar" id="homeNavbar">
         <div class="nav-container">
             <!-- Logo -->
             <div class="nav-logo">
-                <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
                     <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="nav-logo-img">
                 </a>
             </div>
             
             <!-- Navigation Links -->
             <nav class="nav-navigation" aria-label="Main navigation">
-                <a href="../About/index.html" class="nav-link">About</a>
-                <a href="index.html" class="nav-link nav-link-active">Projects</a>
-                <a href="../Research/index.html" class="nav-link">Research</a>
-                <a href="../Finances/index.html" class="nav-link">Finances</a>
-                <a href="../Team/Team.html" class="nav-link">Team</a>
-                <a href="../Home/index.html#contact" class="nav-link">Contact</a>
-                <a href="../About/index.html#join" class="nav-link nav-link-apply">Apply</a>
+                <div class="nav-links-center">
+                    <a href="../About/about.html" class="nav-link">About</a>
+                    <a href="projects.html" class="nav-link nav-link-active">Projects</a>
+                    <a href="../Research/research.html" class="nav-link">Research</a>
+                    <a href="../Finances/finances.html" class="nav-link">Finances</a>
+                    <a href="../Team/Team.html" class="nav-link">Team</a>
+                </div>
+                <div class="nav-links-right">
+                    <a href="../Home/home.html#contact" class="nav-link">Contact</a>
+                    <a href="../About/about.html#join" class="nav-link nav-link-apply">Apply</a>
+                </div>
             </nav>
+        </div>
+    </nav>
+
+    <!-- Projects-style Navigation Bar (After Scroll) -->
+    <nav class="projects-navbar" id="projectsNavbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club Projects - Home">
+                    <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="projects-logo-img">
+                </a>
+            </div>
             
-            <!-- Social Media Icons -->
-            <div class="nav-social">
-                <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                        <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                    </svg>
+            <!-- Center Navigation Links -->
+            <div class="navbar-center">
+                <a href="#featured" class="nav-link" data-section="featured">
+                    <span class="link-text">Featured Projects</span>
+                    <span class="link-underline"></span>
                 </a>
-                <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
+                <a href="#all-projects" class="nav-link" data-section="all-projects">
+                    <span class="link-text">All Projects</span>
+                    <span class="link-underline"></span>
                 </a>
-                <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
+                <a href="#categories" class="nav-link" data-section="categories">
+                    <span class="link-text">Project Categories</span>
+                    <span class="link-underline"></span>
                 </a>
-                <a href="https://discord.gg/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord community">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
-                    </svg>
+                <a href="#impact" class="nav-link" data-section="impact">
+                    <span class="link-text">Impact Metrics</span>
+                    <span class="link-underline"></span>
                 </a>
-                <a href="https://github.com/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                    </svg>
+                <a href="#collaboration" class="nav-link" data-section="collaboration">
+                    <span class="link-text">Collaboration</span>
+                    <span class="link-underline"></span>
                 </a>
+            </div>
+            
+            <!-- Menu Icon -->
+            <div class="navbar-menu">
+                <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
+                    <span class="menu-icon">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </span>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="overlay-background"></div>
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2 class="overlay-title">Navigation</h2>
+                <button class="overlay-close" id="overlayClose" aria-label="Close navigation menu">
+                    <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="overlay-nav" aria-label="Main navigation">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Main</h3>
+                    <ul class="nav-list">
+                        <li><a href="../Home/home.html" class="overlay-link">
+                            <span class="link-label">Home</span>
+                        </a></li>
+                        <li><a href="../About/about.html" class="overlay-link">
+                            <span class="link-label">About</span>
+                        </a></li>
+                        <li><a href="projects.html" class="overlay-link active">
+                            <span class="link-label">Projects</span>
+                        </a></li>
+                        <li><a href="../Research/research.html" class="overlay-link">
+                            <span class="link-label">Research</span>
+                        </a></li>
+                        <li><a href="../Finances/finances.html" class="overlay-link">
+                            <span class="link-label">Finances</span>
+                        </a></li>
+                        <li><a href="../Team/Team.html" class="overlay-link">
+                            <span class="link-label">Team</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Project Sections</h3>
+                    <ul class="nav-list">
+                        <li><a href="#featured" class="overlay-link">
+                            <span class="link-label">Featured Projects</span>
+                        </a></li>
+                        <li><a href="#all-projects" class="overlay-link">
+                            <span class="link-label">All Projects</span>
+                        </a></li>
+                        <li><a href="#impact" class="overlay-link">
+                            <span class="link-label">Impact Metrics</span>
+                        </a></li>
+                        <li><a href="#categories" class="overlay-link">
+                            <span class="link-label">Categories</span>
+                        </a></li>
+                        <li><a href="#collaboration" class="overlay-link">
+                            <span class="link-label">Collaboration</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Contact</h3>
+                    <ul class="nav-list">
+                        <li><a href="../Home/home.html#contact" class="overlay-link">
+                            <span class="link-label">Contact Us</span>
+                        </a></li>
+                        <li><a href="../About/about.html#join" class="overlay-link apply-highlight">
+                            <span class="link-label">Join Us</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -80,9 +177,10 @@
         </section>
 
         <!-- Featured Project Showcase -->
-        <section class="featured-section">
+        <section class="featured-section" id="featured">
             <div class="featured-container">
                 <h2 class="section-title">Featured Projects</h2>
+                
                 
                 <div class="featured-grid">
                     <!-- Featured Project 1 -->
@@ -159,9 +257,12 @@
         </section>
 
         <!-- Projects Grid -->
-        <section class="projects-section">
+        <section class="projects-section" id="all-projects">
             <div class="projects-container">
-                <h2 class="section-title">All Projects</h2>
+                <h2 class="section-title">
+                    <span class="typewriter-text" id="typewriterText"></span>
+                    <span class="typewriter-cursor">|</span>
+                </h2>
                 
                 <div class="projects-grid">
                     <!-- Project Card 1 -->
@@ -324,7 +425,7 @@
         </section>
 
         <!-- Impact Metrics Section -->
-        <section class="metrics-section">
+        <section class="metrics-section" id="impact">
             <div class="metrics-container">
                 <h2 class="section-title">Project Impact</h2>
                 <div class="metrics-grid">
@@ -356,12 +457,167 @@
             </div>
         </section>
 
+        <!-- Project Categories Section -->
+        <section class="categories-section" id="categories">
+            <div class="categories-container">
+                <h2 class="section-title">Project Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="data-science">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Data Science</h3>
+                        <p class="category-description">Machine learning algorithms, data analysis, and predictive modeling for blockchain applications.</p>
+                        <div class="category-stats">
+                            <span class="stat">8 Projects</span>
+                            <span class="stat">15 Contributors</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="defi">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">DeFi</h3>
+                        <p class="category-description">Decentralized finance protocols, yield optimization, and lending platforms.</p>
+                        <div class="category-stats">
+                            <span class="stat">12 Projects</span>
+                            <span class="stat">22 Contributors</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="infrastructure">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Infrastructure</h3>
+                        <p class="category-description">Validator nodes, monitoring systems, and blockchain infrastructure tools.</p>
+                        <div class="category-stats">
+                            <span class="stat">6 Projects</span>
+                            <span class="stat">18 Contributors</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="nft">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">NFT & Gaming</h3>
+                        <p class="category-description">Non-fungible tokens, gaming platforms, and digital asset management.</p>
+                        <div class="category-stats">
+                            <span class="stat">4 Projects</span>
+                            <span class="stat">12 Contributors</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="research">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10,9 9,9 8,9"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Research</h3>
+                        <p class="category-description">Academic research, whitepapers, and theoretical blockchain advancements.</p>
+                        <div class="category-stats">
+                            <span class="stat">10 Projects</span>
+                            <span class="stat">25 Contributors</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="tools">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <h3 class="category-title">Developer Tools</h3>
+                        <p class="category-description">Development frameworks, testing tools, and blockchain development utilities.</p>
+                        <div class="category-stats">
+                            <span class="stat">7 Projects</span>
+                            <span class="stat">20 Contributors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collaboration Section -->
+        <section class="collaboration-section" id="collaboration">
+            <div class="collaboration-container">
+                <h2 class="section-title">Collaborate With Us</h2>
+                <div class="collaboration-content">
+                    <div class="collaboration-text">
+                        <h3 class="collaboration-subtitle">Join Our Innovation Ecosystem</h3>
+                        <p class="collaboration-description">
+                            We're always looking for talented developers, researchers, and blockchain enthusiasts to join our projects. 
+                            Whether you're a student, industry professional, or academic researcher, there's a place for you in our community.
+                        </p>
+                        <div class="collaboration-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">🚀</div>
+                                <div class="feature-content">
+                                    <h4>Hands-on Experience</h4>
+                                    <p>Work on real blockchain projects with cutting-edge technology</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🤝</div>
+                                <div class="feature-content">
+                                    <h4>Mentorship</h4>
+                                    <p>Learn from experienced developers and industry professionals</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🌐</div>
+                                <div class="feature-content">
+                                    <h4>Network Access</h4>
+                                    <p>Connect with blockchain companies and research institutions</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collaboration-actions">
+                            <a href="../About/about.html#join" class="collaboration-btn primary">Join Our Team</a>
+                            <a href="../Home/home.html#contact" class="collaboration-btn secondary">Get in Touch</a>
+                        </div>
+                    </div>
+                    <div class="collaboration-visual">
+                        <div class="collaboration-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Active Members</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">Industry Partners</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">$2M+</div>
+                                <div class="stat-label">Project Funding</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        
         <!-- Animated Background -->
         <canvas id="blockchainCanvas" class="footer-canvas"></canvas>
         <div class="footer-overlay"></div>
@@ -370,20 +626,20 @@
             <!-- Top Row -->
             <div class="footer-top">
                 <div class="footer-logo">
-                    <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
-                        <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="footer-logo-img">
+                    <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                        <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="footer-logo-img">
                     </a>
                 </div>
                 
                 <nav class="footer-nav" aria-label="Footer navigation">
-                    <a href="../Home/index.html" class="footer-link">Home</a>
-                    <a href="../About/index.html" class="footer-link">About</a>
-                    <a href="index.html" class="footer-link">Projects</a>
-                    <a href="../Research/index.html" class="footer-link">Research</a>
-                    <a href="../Finances/index.html" class="footer-link">Finances</a>
-                    <a href="../Team/Team.html" class="footer-link">Team</a>
-                    <a href="../Home/index.html#contact" class="footer-link">Contact</a>
-                    <a href="../About/index.html#join" class="footer-link">Apply</a>
+                                    <a href="../Home/home.html" class="footer-link">Home</a>
+                <a href="../About/about.html" class="footer-link">About</a>
+                <a href="projects.html" class="footer-link">Projects</a>
+                <a href="../Research/research.html" class="footer-link">Research</a>
+                <a href="../Finances/finances.html" class="footer-link">Finances</a>
+                <a href="../Team/Team.html" class="footer-link">Team</a>
+                <a href="../Home/home.html#contact" class="footer-link">Contact</a>
+                <a href="../About/about.html#join" class="footer-link">Apply</a>
                 </nav>
                 
                 <div class="footer-social">
@@ -411,7 +667,7 @@
                             <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
                         </svg>
                     </a>
-                    <a href="https://blockchainemory.substack.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Read our research on Substack">
+                    <a href="https://emoryblockchain.substack.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Read our research on Substack">
                         <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
                         </svg>
@@ -460,6 +716,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="projects.js"></script>
 </body>
 </html>
