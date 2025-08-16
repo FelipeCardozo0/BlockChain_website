@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team - Blockchain Club at Emory</title>
+    <link rel="icon" type="image/png" href="../Images/Logo/Logo_Official.png">
     <link rel="stylesheet" href="Team.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Animated Background -->
@@ -17,23 +19,27 @@
         <div class="nav-container">
             <!-- Logo -->
             <div class="nav-logo">
-                <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
                     <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="nav-logo-img">
                 </a>
             </div>
             
             <!-- Navigation Links -->
             <nav class="nav-navigation" aria-label="Main navigation">
-                <a href="../About/index.html" class="nav-link">About</a>
-                <a href="../Projects/index.html" class="nav-link">Projects</a>
-                <a href="../Research/index.html" class="nav-link">Research</a>
-                <a href="../Finances/index.html" class="nav-link">Finances</a>
-                <a href="Team.html" class="nav-link nav-link-active">Team</a>
-                <a href="../Home/index.html#contact" class="nav-link">Contact</a>
-                <a href="../About/index.html#join" class="nav-link nav-link-apply">Apply</a>
+                <div class="nav-links-center">
+                    <a href="../About/about.html" class="nav-link">About</a>
+                    <a href="../Projects/projects.html" class="nav-link">Projects</a>
+                    <a href="../Research/research.html" class="nav-link">Research</a>
+                    <a href="../Finances/finances.html" class="nav-link">Finances</a>
+                    <a href="Team.html" class="nav-link nav-link-active">Team</a>
+                </div>
+                <div class="nav-links-right">
+                    <a href="../Home/home.html#contact" class="nav-link">Contact</a>
+                    <a href="../About/about.html#join" class="nav-link nav-link-apply">Apply</a>
+                </div>
             </nav>
             
-            
+
         </div>
     </nav>
 
@@ -42,33 +48,18 @@
         <div class="navbar-container">
             <!-- Logo -->
             <div class="navbar-logo">
-                <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club Team - Home">
-                    <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="team-logo-img">
+                <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club Team - Home">
+                    <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="team-logo-img">
                 </a>
             </div>
             
             <!-- Center Navigation Links -->
-            <div class="navbar-center">
-                <a href="#board" class="nav-link" data-team="board">
-                    <span class="link-text">Board</span>
-                    <span class="link-underline"></span>
-                </a>
-                <a href="#hacker" class="nav-link" data-team="hacker">
-                    <span class="link-text">Hacker Team</span>
-                    <span class="link-underline"></span>
-                </a>
-                <a href="#research" class="nav-link" data-team="research">
-                    <span class="link-text">Research Team</span>
-                    <span class="link-underline"></span>
-                </a>
-                <a href="#investment" class="nav-link" data-team="investment">
-                    <span class="link-text">Investment Team</span>
-                    <span class="link-underline"></span>
-                </a>
-                <a href="#governance" class="nav-link" data-team="governance">
-                    <span class="link-text">Governance</span>
-                    <span class="link-underline"></span>
-                </a>
+            <div class="team-navigation">
+                <a href="#board" class="team-nav-link" data-section="board">Board</a>
+                <a href="#hacker" class="team-nav-link" data-section="hacker">Hacker Team</a>
+                <a href="#research" class="team-nav-link" data-section="research">Research Team</a>
+                <a href="#investment" class="team-nav-link" data-section="investment">Investment Team</a>
+                <a href="#governance" class="team-nav-link" data-section="governance">Governance</a>
             </div>
             
             <!-- Menu Icon -->
@@ -103,19 +94,19 @@
                 <div class="nav-section">
                     <h3 class="nav-section-title">Main</h3>
                     <ul class="nav-list">
-                        <li><a href="../Home/index.html" class="overlay-link">
+                        <li><a href="../Home/home.html" class="overlay-link">
                             <span class="link-label">Home</span>
                         </a></li>
-                        <li><a href="../About/index.html" class="overlay-link">
+                        <li><a href="../About/about.html" class="overlay-link">
                             <span class="link-label">About</span>
                         </a></li>
-                        <li><a href="../Projects/index.html" class="overlay-link">
+                        <li><a href="../Projects/projects.html" class="overlay-link">
                             <span class="link-label">Projects</span>
                         </a></li>
-                        <li><a href="../Research/index.html" class="overlay-link">
+                        <li><a href="../Research/research.html" class="overlay-link">
                             <span class="link-label">Research</span>
                         </a></li>
-                        <li><a href="../Finances/index.html" class="overlay-link">
+                        <li><a href="../Finances/finances.html" class="overlay-link">
                             <span class="link-label">Finances</span>
                         </a></li>
                         <li><a href="Team.html" class="overlay-link active">
@@ -127,6 +118,9 @@
                 <div class="nav-section">
                     <h3 class="nav-section-title">Team Sections</h3>
                     <ul class="nav-list">
+                        <li><a href="#board" class="overlay-link">
+                            <span class="link-label">Board of Directors</span>
+                        </a></li>
                         <li><a href="#hacker" class="overlay-link">
                             <span class="link-label">Hacker Team</span>
                         </a></li>
@@ -142,46 +136,22 @@
                     </ul>
                 </div>
                 
+
+                
                 <div class="nav-section">
                     <h3 class="nav-section-title">Contact</h3>
                     <ul class="nav-list">
-                        <li><a href="../Home/index.html#contact" class="overlay-link">
+                        <li><a href="../Home/home.html#contact" class="overlay-link">
                             <span class="link-label">Contact Us</span>
                         </a></li>
-                        <li><a href="../About/index.html#join" class="overlay-link apply-highlight">
+                        <li><a href="../About/about.html#join" class="overlay-link apply-highlight">
                             <span class="link-label">Join Us</span>
                         </a></li>
                     </ul>
                 </div>
             </nav>
             
-            <!-- Social Links -->
-            <div class="overlay-social">
-                <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                        <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                    </svg>
-                </a>
-                <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                </a>
-                <a href="https://emoryblockchain.substack.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Substack">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
-                    </svg>
-                </a>
-            </div>
+
         </div>
     </div>
 
@@ -236,7 +206,7 @@
                         <p class="member-title">Computer Science & Math, Class of 2028</p>
                     </div>
 
-                    <div class="member-card board-member" data-linkedin="https://linkedin.com/in/felipe-cardozo">
+                    <div class="member-card board-member" data-linkedin="https://www.linkedin.com/in/felipecardozo-/">
                         <div class="member-image-wrapper">
                             <img src="Board/Felipe Cardozo.jpeg" alt="Felipe Cardozo" class="member-image">
                             <div class="member-badge">Head of Tech</div>
@@ -249,14 +219,14 @@
                 </div>
             </div>
         </section>
-<!--  
+ 
         <section class="team-section" id="hacker">
             <div class="team-container">
                 <h2 class="team-title">Hacker Team</h2>
                 <p class="team-description">Building innovative blockchain solutions through cutting-edge development and smart contract engineering.</p>
                 
                 <div class="members-grid">
-                    <div class="member-card" data-linkedin="https://linkedin.com/in/felipe-cardozo">
+                    <div class="member-card" data-linkedin="https://www.linkedin.com/in/felipecardozo-/">
                         <div class="member-image-wrapper">
                             <img src="Hacker-Team/Felipe Cardozo.jpeg" alt="Felipe Cardozo" class="member-image">
                         </div>
@@ -458,20 +428,20 @@
             <!-- Top Row -->
             <div class="footer-top">
                 <div class="footer-logo">
-                    <a href="../Home/index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
-                        <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="footer-logo-img">
+                    <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                        <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="footer-logo-img">
                     </a>
                 </div>
                 
                 <nav class="footer-nav" aria-label="Footer navigation">
-                    <a href="../Home/index.html" class="footer-link">Home</a>
-                    <a href="../About/index.html" class="footer-link">About</a>
-                    <a href="../Projects/index.html" class="footer-link">Projects</a>
-                    <a href="../Research/index.html" class="footer-link">Research</a>
-                    <a href="../Finances/index.html" class="footer-link">Finances</a>
+                    <a href="../Home/home.html" class="footer-link">Home</a>
+                    <a href="../About/about.html" class="footer-link">About</a>
+                    <a href="../Projects/projects.html" class="footer-link">Projects</a>
+                    <a href="../Research/research.html" class="footer-link">Research</a>
+                    <a href="../Finances/finances.html" class="footer-link">Finances</a>
                     <a href="Team.html" class="footer-link">Team</a>
-                    <a href="../Home/index.html#contact" class="footer-link">Contact</a>
-                    <a href="../About/index.html#join" class="footer-link">Apply</a>
+                    <a href="../Home/home.html#contact" class="footer-link">Contact</a>
+                    <a href="../About/about.html#join" class="footer-link">Apply</a>
                 </nav>
                 
                 <div class="footer-social">

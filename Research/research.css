@@ -43,7 +43,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: linear-gradient(135deg, rgba(11, 42, 90, 0.98) 0%, rgba(10, 36, 72, 0.98) 100%);
+    background: rgb(1, 33, 105);
     backdrop-filter: blur(20px);
     padding: 1rem 0;
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -122,10 +122,26 @@ body {
 /* Home Navigation Links */
 .home-navbar .nav-navigation {
     display: flex;
-    gap: 2rem;
     align-items: center;
     flex: 1;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.home-navbar .nav-links-center {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
     justify-content: center;
+    flex: 1;
+}
+
+.home-navbar .nav-links-right {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
 }
 
 .home-navbar .nav-link {
@@ -1249,10 +1265,11 @@ body {
 .footer {
     position: relative;
     height: 400px;
-    background: linear-gradient(135deg, #0b2a5a 0%, #1a093f 100%);
+    background: linear-gradient(135deg, #0b0f1a 0%, #0b2a5a 100%);
     overflow: hidden;
     display: flex;
     align-items: center;
+    animation: ledgerGlow 4s ease-in-out infinite;
 }
 
 .footer-canvas {
@@ -1262,7 +1279,8 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1;
-    opacity: 0.7;
+    opacity: 0.8;
+    filter: blur(0.5px);
 }
 
 .footer-overlay {
@@ -1271,8 +1289,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(11, 42, 90, 0.3) 100%);
     z-index: 2;
+    backdrop-filter: blur(1px);
 }
 
 .footer-container {
@@ -1285,6 +1304,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    animation: contentPulse 6s ease-in-out infinite;
 }
 
 .footer-top {
@@ -1376,20 +1396,9 @@ body {
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
-    animation: socialPulse 3s ease-in-out infinite;
 }
 
-.social-link:nth-child(2) {
-    animation-delay: 0.5s;
-}
 
-.social-link:nth-child(3) {
-    animation-delay: 1s;
-}
-
-.social-link:nth-child(4) {
-    animation-delay: 1.5s;
-}
 
 .social-link:hover {
     transform: scale(1.1);
@@ -1410,14 +1419,7 @@ body {
     transform: rotate(360deg);
 }
 
-@keyframes socialPulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(92, 194, 255, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(92, 194, 255, 0);
-    }
-}
+
 
 .footer-middle {
     display: flex;
@@ -1904,6 +1906,26 @@ body {
     }
 }
 
+/* Enhanced footer animations for flowing digital ledger */
+@keyframes ledgerGlow {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(92, 194, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(92, 194, 255, 0.4);
+    }
+}
+
+/* Add subtle pulse to footer content */
+@keyframes contentPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.95;
+    }
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -1915,6 +1937,14 @@ body {
     }
     
     .hero-grid {
+        animation: none;
+    }
+    
+    .footer {
+        animation: none;
+    }
+    
+    .footer-container {
         animation: none;
     }
 }

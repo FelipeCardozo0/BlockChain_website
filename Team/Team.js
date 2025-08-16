@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
     initializeGeometricBackground();
-    initializeMenuOverlay();
+    initializeNavigation();
     initializeMemberCards();
     initializeFooter();
 });
@@ -170,189 +170,118 @@ function initializeGeometricBackground() {
     };
 }
 
-// Menu Overlay Functionality
-function initializeMenuOverlay() {
+// Navigation Functions
+function initializeNavigation() {
     const menuButton = document.getElementById('menuButton');
-    const menuOverlay = document.getElementById('menuOverlay');
     const overlayClose = document.getElementById('overlayClose');
-    const overlayBackground = document.querySelector('.overlay-background');
-    const overlayLinks = document.querySelectorAll('.overlay-link');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const homeNavbar = document.getElementById('homeNavbar');
+    const teamNavbar = document.getElementById('teamNavbar');
     
-    if (!menuButton || !menuOverlay) return;
-    
-    let isMenuOpen = false;
-    
-    function openMenu() {
-        isMenuOpen = true;
-        menuOverlay.classList.add('active');
-        menuButton.classList.add('active');
-        menuButton.setAttribute('aria-expanded', 'true');
-        menuButton.setAttribute('aria-label', 'Close navigation menu');
-        
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
-        
-        // Focus trap
-        trapFocus(menuOverlay);
-        
-        // Add staggered animation to links
-        overlayLinks.forEach((link, index) => {
-            link.style.animationDelay = `${index * 0.05}s`;
-            link.style.animation = 'slideInRight 0.3s ease forwards';
-        });
+    // Menu toggle functionality
+    if (menuButton) {
+        menuButton.addEventListener('click', toggleMenu);
     }
-    
-    function closeMenu() {
-        isMenuOpen = false;
-        menuOverlay.classList.remove('active');
-        menuButton.classList.remove('active');
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', 'Open navigation menu');
-        
-        // Restore body scroll
-        document.body.style.overflow = '';
-        
-        // Remove focus trap
-        removeFocusTrap();
-        
-        // Reset link animations
-        overlayLinks.forEach(link => {
-            link.style.animation = '';
-            link.style.animationDelay = '';
-        });
-        
-        // Return focus to menu button
-        menuButton.focus();
-    }
-    
-    function toggleMenu() {
-        if (isMenuOpen) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    }
-    
-    // Event listeners
-    menuButton.addEventListener('click', toggleMenu);
     
     if (overlayClose) {
         overlayClose.addEventListener('click', closeMenu);
     }
     
-    if (overlayBackground) {
-        overlayBackground.addEventListener('click', closeMenu);
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', function(e) {
+            if (e.target.classList.contains('overlay-background')) {
+                closeMenu();
+            }
+        });
     }
     
-    // Close menu when clicking on overlay links
-    overlayLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Add ripple effect
-            createRipple(e, link);
+    // Dual navbar scroll effect
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+        const scrollThreshold = 200;
+        
+        if (homeNavbar && teamNavbar) {
+            if (currentScrollY > scrollThreshold) {
+                // Hide home navbar, show team navbar
+                homeNavbar.classList.add('hidden');
+                teamNavbar.classList.add('visible');
+            } else {
+                // Show home navbar, hide team navbar
+                homeNavbar.classList.remove('hidden');
+                teamNavbar.classList.remove('visible');
+            }
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+    
+    // Smooth scrolling for team navbar links
+    const teamNavLinks = document.querySelectorAll('.team-navbar .team-nav-link[data-section]');
+    teamNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
             
-            // Close menu after short delay
-            setTimeout(closeMenu, 150);
+            if (targetElement) {
+                const offsetTop = targetElement.offsetTop - 120;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
     
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isMenuOpen) {
-            closeMenu();
-        }
+    // Update active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.team-navbar .team-nav-link[data-section]');
+    
+    window.addEventListener('scroll', function() {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.offsetHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
     });
+}
+
+// Menu toggle functions
+function toggleMenu() {
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuButton = document.getElementById('menuButton');
     
-    // Focus management
-    let focusableElements = [];
-    let firstFocusableElement = null;
-    let lastFocusableElement = null;
-    
-    function trapFocus(container) {
-        focusableElements = container.querySelectorAll(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        firstFocusableElement = focusableElements[0];
-        lastFocusableElement = focusableElements[focusableElements.length - 1];
-        
-        container.addEventListener('keydown', handleFocusTrap);
-        
-        // Focus first element
-        if (overlayClose) {
-            overlayClose.focus();
-        }
-    }
-    
-    function handleFocusTrap(e) {
-        if (e.key === 'Tab') {
-            if (e.shiftKey) {
-                if (document.activeElement === firstFocusableElement) {
-                    lastFocusableElement.focus();
-                    e.preventDefault();
-                }
-            } else {
-                if (document.activeElement === lastFocusableElement) {
-                    firstFocusableElement.focus();
-                    e.preventDefault();
-                }
-            }
-        }
-    }
-    
-    function removeFocusTrap() {
-        if (menuOverlay) {
-            menuOverlay.removeEventListener('keydown', handleFocusTrap);
-        }
-    }
-    
-    // Ripple effect for overlay links
-    function createRipple(event, element) {
-        const ripple = document.createElement('span');
-        const rect = element.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = event.clientX - rect.left - size / 2;
-        const y = event.clientY - rect.top - size / 2;
-        
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.classList.add('ripple');
-        
-        element.style.position = 'relative';
-        element.style.overflow = 'hidden';
-        element.appendChild(ripple);
-        
-        // Remove ripple after animation
-        setTimeout(() => {
-            if (ripple.parentNode) {
-                ripple.parentNode.removeChild(ripple);
-            }
-        }, 600);
-    }
-    
-    // Add ripple CSS if not already added
-    if (!document.querySelector('#ripple-styles')) {
-        const style = document.createElement('style');
-        style.id = 'ripple-styles';
-        style.textContent = `
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(92, 194, 255, 0.4);
-                transform: scale(0);
-                animation: ripple-animation 0.6s linear;
-                pointer-events: none;
-            }
-            
-            @keyframes ripple-animation {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
+    if (menuOverlay) {
+        menuOverlay.classList.add('active');
+        if (menuButton) menuButton.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 }
+
+function closeMenu() {
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuButton = document.getElementById('menuButton');
+    
+    if (menuOverlay) {
+        menuOverlay.classList.remove('active');
+        if (menuButton) menuButton.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+    
+
 
 
 

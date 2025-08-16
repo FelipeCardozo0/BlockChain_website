@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — Blockchain Club at Emory</title>
     <meta name="description" content="Student-led blockchain research, education, and innovation at Emory University">
+    <link rel="icon" type="image/png" href="../Images/Logo/Logo_Official.png">
     <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="print.css" media="print">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -60,7 +61,7 @@
             <section class="hero-section grid-module">
                 <div class="hero-content">
                     <h1 class="hero-title">About the Blockchain Club at Emory</h1>
-                    <p class="hero-mission">We advance blockchain education through rigorous research, practical application, and community engagement.</p>
+                    <p class="hero-mission">Learn about our mission, programs, team, and everything you need to know about the Blockchain Club at Emory.</p>
                 </div>
             </section>
 
@@ -521,16 +522,18 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <div class="copyright">
-                        <span>&copy; 2024 Blockchain Club at Emory</span>
+                        <span>&copy; 2025 Blockchain Club at Emory</span>
                         <span>Atlanta, GA</span>
                     </div>
-                    <div class="language-selector">
-                        <button class="language-btn" aria-label="Select language">
-                            <span>English</span>
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                                <polyline points="6,9 12,15 18,9"></polyline>
-                            </svg>
+                    <div class="newsletter-subscribe">
+                        <form class="newsletter-form" action="#" method="post">
+                            <div class="newsletter-input-group">
+                                <input type="email" class="newsletter-input" placeholder="Enter your email" required aria-label="Email address for newsletter">
+                                <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+                                    Subscribe
                         </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -574,6 +577,35 @@
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     // Add form validation logic here
+                });
+            }
+
+            // Newsletter form validation
+            const newsletterForm = document.querySelector('.newsletter-form');
+            const newsletterInput = document.querySelector('.newsletter-input');
+            
+            if (newsletterForm && newsletterInput) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    if (!newsletterInput.checkValidity()) {
+                        newsletterForm.classList.add('error');
+                        newsletterForm.setAttribute('data-error', 'Please enter a valid email address');
+                    } else {
+                        newsletterForm.classList.remove('error');
+                        newsletterForm.setAttribute('data-error', '');
+                        // Here you would typically send the email to your backend
+                        alert('Thank you for subscribing to our newsletter!');
+                        newsletterInput.value = '';
+                    }
+                });
+
+                // Remove error on input
+                newsletterInput.addEventListener('input', function() {
+                    if (this.checkValidity()) {
+                        newsletterForm.classList.remove('error');
+                        newsletterForm.setAttribute('data-error', '');
+                    }
                 });
             }
 
