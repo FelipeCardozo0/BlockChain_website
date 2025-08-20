@@ -159,7 +159,7 @@ function initializeAnimations() {
     
     // Observe elements for animation
     const animatedElements = document.querySelectorAll(
-        '.section-header, .featured-card, .categories-filter, .research-card, .item-card, .metric-card, .collaboration-content'
+        '.section-header, .featured-card, .categories-filter, .research-card, .item-card, .metric-item, .collaboration-content'
     );
     
     animatedElements.forEach(el => {
@@ -178,10 +178,10 @@ function initializeAnimations() {
         card.style.transitionDelay = `${index * 0.15}s`;
     });
     
-    // Staggered animation for metric cards
-    const metricCards = document.querySelectorAll('.metric-card');
-    metricCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.1}s`;
+    // Staggered animation for metric items
+    const metricItems = document.querySelectorAll('.metric-item');
+    metricItems.forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.1}s`;
     });
 }
 
@@ -504,7 +504,7 @@ function initializeFooter() {
 
 // Advanced Tesseract Animation for Footer
 function initializeFooterTesseractAnimation() {
-    const canvas = document.getElementById('tesseractCanvas');
+    const canvas = document.getElementById('footerTesseractCanvas');
     if (!canvas) {
         console.warn('Tesseract canvas not found');
         return;
@@ -926,140 +926,11 @@ function initializeFooterTesseractAnimation() {
 
 // Canvas Animation Functions
 function initializeCanvasAnimations() {
-    // Hero background animation
-    const heroCanvas = document.querySelector('.animated-background #blockchainCanvas');
-    if (heroCanvas) {
-        initializeBlockchainAnimation(heroCanvas);
-    }
-    
-    // Footer background animation - now handled by tesseract animation
-    // const footerCanvas = document.querySelector('.footer #blockchainCanvas');
-    // if (footerCanvas) {
-    //     initializeFooterAnimation(footerCanvas);
-    // }
+    // Background animation removed - keeping only footer animation
+    // Footer background animation is now handled by tesseract animation
 }
 
-function initializeBlockchainAnimation(canvas) {
-    const ctx = canvas.getContext('2d');
-    let animationId;
-    let nodes = [];
-    let connections = [];
-    
-    function resizeCanvas() {
-        const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width * window.devicePixelRatio;
-        canvas.height = rect.height * window.devicePixelRatio;
-        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-        canvas.style.width = rect.width + 'px';
-        canvas.style.height = rect.height + 'px';
-    }
-    
-    function createNodes() {
-        nodes = [];
-        const nodeCount = Math.min(20, Math.floor(canvas.width / 100));
-        
-        for (let i = 0; i < nodeCount; i++) {
-            nodes.push({
-                x: Math.random() * canvas.width / window.devicePixelRatio,
-                y: Math.random() * canvas.height / window.devicePixelRatio,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                radius: Math.random() * 3 + 2,
-                opacity: Math.random() * 0.5 + 0.3
-            });
-        }
-    }
-    
-    function updateNodes() {
-        nodes.forEach(node => {
-            node.x += node.vx;
-            node.y += node.vy;
-            
-            // Bounce off edges
-            if (node.x <= 0 || node.x >= canvas.width / window.devicePixelRatio) {
-                node.vx *= -1;
-            }
-            if (node.y <= 0 || node.y >= canvas.height / window.devicePixelRatio) {
-                node.vy *= -1;
-            }
-            
-            // Keep within bounds
-            node.x = Math.max(0, Math.min(canvas.width / window.devicePixelRatio, node.x));
-            node.y = Math.max(0, Math.min(canvas.height / window.devicePixelRatio, node.y));
-        });
-    }
-    
-    function drawNodes() {
-        nodes.forEach(node => {
-            ctx.beginPath();
-            ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(92, 194, 255, ${node.opacity})`;
-            ctx.fill();
-        });
-    }
-    
-    function drawConnections() {
-        connections = [];
-        
-        for (let i = 0; i < nodes.length; i++) {
-            for (let j = i + 1; j < nodes.length; j++) {
-                const dx = nodes[i].x - nodes[j].x;
-                const dy = nodes[i].y - nodes[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 150) {
-                    const opacity = (150 - distance) / 150 * 0.2;
-                    
-                    ctx.beginPath();
-                    ctx.moveTo(nodes[i].x, nodes[i].y);
-                    ctx.lineTo(nodes[j].x, nodes[j].y);
-                    ctx.strokeStyle = `rgba(155, 107, 255, ${opacity})`;
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-            }
-        }
-    }
-    
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        updateNodes();
-        drawConnections();
-        drawNodes();
-        
-        animationId = requestAnimationFrame(animate);
-    }
-    
-    function init() {
-        resizeCanvas();
-        createNodes();
-        animate();
-    }
-    
-    // Initialize
-    init();
-    
-    // Handle resize
-    window.addEventListener('resize', () => {
-        cancelAnimationFrame(animationId);
-        init();
-    });
-    
-    // Pause animation when not visible
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (!animationId) animate();
-            } else {
-                cancelAnimationFrame(animationId);
-                animationId = null;
-            }
-        });
-    });
-    
-    observer.observe(canvas);
-}
+
 
 function initializeFooterAnimation(canvas) {
     const ctx = canvas.getContext('2d');

@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initProjectInteractions();
     initNavigation();
     initTypewriterAnimation(); // Add this line to initialize the new function
+    initRoadmapAnimations(); // Initialize roadmap animations
     
     // Set current year in footer
     const currentYear = new Date().getFullYear();
@@ -224,7 +225,7 @@ function initFooterBackground() {
                 chars: [],
                 speed: Math.random() * 1.5 + 0.8,
                 delay: Math.random() * 200,
-                length: Math.floor(Math.random() * 12) + 6 // Reduced by 20%: from (15) + 8 to (12) + 6
+                length: Math.floor(Math.random() * 8) + 4 // Further reduced: from (12) + 6 to (8) + 4
             });
         }
     }
@@ -473,6 +474,10 @@ function initTypewriterAnimation() {
         return;
     }
     
+    // Ensure cursor is visible and start blinking
+    cursor.style.display = 'inline-block';
+    cursor.style.animation = 'none'; // Disable CSS animation to use our custom blinking
+    
     const words = [
         'All Projects',
         'Coding Initiatives',
@@ -483,9 +488,21 @@ function initTypewriterAnimation() {
     let currentWordIndex = 0;
     let currentCharIndex = 0;
     let isDeleting = false;
-    let typingSpeed = 100; // ms per character
-    let deleteSpeed = 50; // ms per character when deleting
-    let pauseTime = 1000; // ms to pause after completing a word
+    let typingSpeed = 50; // ms per character (increased speed)
+    let deleteSpeed = 25; // ms per character when deleting (increased speed)
+    let pauseTime = 500; // ms to pause after completing a word (reduced pause)
+    
+    // Cursor blinking state
+    let cursorVisible = true;
+    
+    // Function to toggle cursor visibility
+    function toggleCursor() {
+        cursorVisible = !cursorVisible;
+        cursor.style.opacity = cursorVisible ? '1' : '0';
+    }
+    
+    // Start cursor blinking
+    const cursorBlinkInterval = setInterval(toggleCursor, 500); // Blink every 500ms
     
     function typeWriter() {
         const currentWord = words[currentWordIndex];
@@ -511,14 +528,21 @@ function initTypewriterAnimation() {
             // Word deleted, move to next word
             isDeleting = false;
             currentWordIndex = (currentWordIndex + 1) % words.length;
-            typingSpeed = 500; // Pause before starting next word
+            typingSpeed = 250; // Pause before starting next word (reduced pause)
         }
         
         setTimeout(typeWriter, typingSpeed);
     }
     
     // Start the animation
-    setTimeout(typeWriter, 1000); // Initial delay
+    setTimeout(typeWriter, 500); // Initial delay (reduced)
+    
+    // Cleanup function to clear the cursor blinking interval
+    window.addEventListener('beforeunload', () => {
+        if (cursorBlinkInterval) {
+            clearInterval(cursorBlinkInterval);
+        }
+    });
 }
 
 // Smooth scrolling for anchor links
@@ -694,4 +718,51 @@ function closeMenu() {
         overlay.classList.remove('active');
         document.body.style.overflow = '';
     }
+}
+
+// Roadmap Animations
+function initRoadmapAnimations() {
+    const roadmapItems = document.querySelectorAll('.roadmap-item');
+    const roadmapPhases = document.querySelectorAll('.roadmap-phase');
+    
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe roadmap phases
+    roadmapPhases.forEach(phase => {
+        phase.style.opacity = '0';
+        phase.style.transform = 'translateY(30px)';
+        phase.style.transition = 'all 0.6s ease';
+        observer.observe(phase);
+    });
+    
+    // Observe individual roadmap items
+    roadmapItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
+        item.style.transition = `all 0.5s ease ${index * 0.1}s`;
+        observer.observe(item);
+    });
+    
+    // Add hover effects for roadmap items
+    roadmapItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'translateY(-4px) scale(1.02)';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'translateY(0) scale(1)';
+        });
+    });
 }

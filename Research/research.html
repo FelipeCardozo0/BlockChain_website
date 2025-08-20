@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="research.css">
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="animated-background">
-        <canvas id="blockchainCanvas" class="background-canvas"></canvas>
-    </div>
-
     <!-- Home-style Navigation Bar (Initial) -->
     <nav class="home-navbar" id="homeNavbar">
         <div class="nav-container">
@@ -67,10 +62,7 @@
                     <span class="link-text">Research Papers</span>
                     <span class="link-underline"></span>
                 </a>
-                <a href="#datasets-tools" class="nav-link" data-section="datasets-tools">
-                    <span class="link-text">Datasets & Tools</span>
-                    <span class="link-underline"></span>
-                </a>
+
                 <a href="#collaboration" class="nav-link" data-section="collaboration">
                     <span class="link-text">Collaborate</span>
                     <span class="link-underline"></span>
@@ -142,9 +134,7 @@
                         <li><a href="#research-grid" class="overlay-link">
                             <span class="link-label">Research Grid</span>
                         </a></li>
-                        <li><a href="#datasets-tools" class="overlay-link">
-                            <span class="link-label">Datasets & Tools</span>
-                        </a></li>
+
                         <li><a href="#metrics" class="overlay-link">
                             <span class="link-label">Research Metrics</span>
                         </a></li>
@@ -192,78 +182,98 @@
                     <p class="section-subtitle">Highlighting our latest breakthrough research and high-impact publications</p>
                 </div>
                 
+                                <a href="https://emoryblockchain.substack.com/p/state-of-bittensor-in-2025" target="_blank" rel="noopener noreferrer" class="featured-card-link">
                 <div class="featured-card">
                     <div class="featured-content">
                         <div class="featured-text">
-                            <h3 class="featured-title">Decentralized Governance Mechanisms in DeFi Protocols: A Comparative Analysis</h3>
+                            <h3 class="featured-title">State of Bittensor in 2025: Leading Decentralized AI Network</h3>
                             <div class="featured-authors">
-                                <span class="author">Dr. Jennifer Wang</span>
+                                <span class="author">Robert Sun</span>
                                 <span class="author-separator">•</span>
-                                <span class="author">Robert Taylor</span>
-                                <span class="author-separator">•</span>
-                                <span class="author">James Wilson</span>
+                                <span class="author">Emory Blockchain</span>
                             </div>
                             <p class="featured-abstract">
-                                This comprehensive study examines governance structures across 50+ DeFi protocols, analyzing voting mechanisms, 
-                                proposal systems, and token distribution effects. Our findings reveal critical insights into the balance between 
-                                decentralization and efficiency in protocol governance, with implications for future DAO design.
+                                In 2025, Bittensor became the leading decentralized AI network, driven by rapid subnet growth, strong staking activity, 
+                                and major institutional investment. This comprehensive analysis examines subnet expansion, TAO staking dynamics, 
+                                and the Yuma Consensus mechanism that enables scalable, high-quality AI projects.
                             </p>
                             <div class="featured-tags">
-                                <span class="tag">DeFi</span>
-                                <span class="tag">Governance</span>
-                                <span class="tag">DAOs</span>
-                                <span class="tag">Token Economics</span>
+                                <span class="tag">Bittensor</span>
+                                <span class="tag">DeAI</span>
+                                <span class="tag">Subnets</span>
+                                <span class="tag">Institutional Investment</span>
                             </div>
                             <div class="featured-metrics">
                                 <div class="metric">
-                                    <span class="metric-value">247</span>
-                                    <span class="metric-label">Citations</span>
+                                    <span class="metric-value">129</span>
+                                    <span class="metric-label">Subnets</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-value">1.2K</span>
-                                    <span class="metric-label">Downloads</span>
+                                    <span class="metric-value">800K</span>
+                                    <span class="metric-label">TAO Staked</span>
                                 </div>
                                 <div class="metric">
-                                    <span class="metric-value">89</span>
-                                    <span class="metric-label">GitHub Stars</span>
+                                    <span class="metric-value">72.4%</span>
+                                    <span class="metric-label">QoQ Growth</span>
                                 </div>
                             </div>
-                            <div class="featured-actions">
-                                <a href="#" class="btn btn-primary">Read Paper</a>
-                                <a href="#" class="btn btn-secondary">View Code</a>
-                            </div>
+ 
                         </div>
                         <div class="featured-visual">
                             <div class="featured-image">
                                 <svg viewBox="0 0 400 300" class="research-diagram">
-                                    <!-- Governance Network Visualization -->
+                                    <!-- Bittensor Network Visualization -->
                                     <defs>
-                                        <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <linearGradient id="bittensorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                                             <stop offset="0%" style="stop-color:#5cc2ff;stop-opacity:1" />
                                             <stop offset="100%" style="stop-color:#9b6bff;stop-opacity:1" />
                                         </linearGradient>
+                                        <linearGradient id="subnetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:0.8" />
+                                            <stop offset="100%" style="stop-color:#ffa500;stop-opacity:0.8" />
+                                        </linearGradient>
                                     </defs>
-                                    <!-- Central Node -->
-                                    <circle cx="200" cy="150" r="20" fill="url(#nodeGradient)" opacity="0.9"/>
-                                    <!-- Surrounding Nodes -->
-                                    <circle cx="120" cy="80" r="12" fill="#5cc2ff" opacity="0.7"/>
-                                    <circle cx="280" cy="80" r="12" fill="#5cc2ff" opacity="0.7"/>
-                                    <circle cx="320" cy="150" r="12" fill="#9b6bff" opacity="0.7"/>
-                                    <circle cx="280" cy="220" r="12" fill="#9b6bff" opacity="0.7"/>
-                                    <circle cx="120" cy="220" r="12" fill="#5cc2ff" opacity="0.7"/>
-                                    <circle cx="80" cy="150" r="12" fill="#9b6bff" opacity="0.7"/>
-                                    <!-- Connections -->
-                                    <line x1="200" y1="150" x2="120" y2="80" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
-                                    <line x1="200" y1="150" x2="280" y2="80" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
-                                    <line x1="200" y1="150" x2="320" y2="150" stroke="#9b6bff" stroke-width="2" opacity="0.6"/>
-                                    <line x1="200" y1="150" x2="280" y2="220" stroke="#9b6bff" stroke-width="2" opacity="0.6"/>
-                                    <line x1="200" y1="150" x2="120" y2="220" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
-                                    <line x1="200" y1="150" x2="80" y2="150" stroke="#9b6bff" stroke-width="2" opacity="0.6"/>
+                                    <!-- Central Bittensor Node -->
+                                    <circle cx="200" cy="150" r="25" fill="url(#bittensorGradient)" opacity="0.9"/>
+                                    <text x="200" y="155" text-anchor="middle" fill="white" font-size="12" font-weight="bold">TAO</text>
+                                    
+                                    <!-- Subnet Nodes -->
+                                    <circle cx="100" cy="80" r="8" fill="url(#subnetGradient)"/>
+                                    <circle cx="300" cy="80" r="8" fill="url(#subnetGradient)"/>
+                                    <circle cx="350" cy="150" r="8" fill="url(#subnetGradient)"/>
+                                    <circle cx="300" cy="220" r="8" fill="url(#subnetGradient)"/>
+                                    <circle cx="100" cy="220" r="8" fill="url(#subnetGradient)"/>
+                                    <circle cx="50" cy="150" r="8" fill="url(#subnetGradient)"/>
+                                    
+                                    <!-- Additional subnet nodes for density -->
+                                    <circle cx="150" cy="60" r="6" fill="#ff6b6b" opacity="0.7"/>
+                                    <circle cx="250" cy="60" r="6" fill="#ffa500" opacity="0.7"/>
+                                    <circle cx="320" cy="100" r="6" fill="#ff6b6b" opacity="0.7"/>
+                                    <circle cx="320" cy="200" r="6" fill="#ffa500" opacity="0.7"/>
+                                    <circle cx="250" cy="240" r="6" fill="#ff6b6b" opacity="0.7"/>
+                                    <circle cx="150" cy="240" r="6" fill="#ffa500" opacity="0.7"/>
+                                    <circle cx="80" cy="200" r="6" fill="#ff6b6b" opacity="0.7"/>
+                                    <circle cx="80" cy="100" r="6" fill="#ffa500" opacity="0.7"/>
+                                    
+                                    <!-- Connections to central node -->
+                                    <line x1="200" y1="150" x2="100" y2="80" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="300" y2="80" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="350" y2="150" stroke="#9b6bff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="300" y2="220" stroke="#9b6bff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="100" y2="220" stroke="#5cc2ff" stroke-width="2" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="50" y2="150" stroke="#9b6bff" stroke-width="2" opacity="0.6"/>
+                                    
+                                    <!-- Inter-subnet connections -->
+                                    <line x1="100" y1="80" x2="150" y2="60" stroke="#ff6b6b" stroke-width="1" opacity="0.4"/>
+                                    <line x1="300" y1="80" x2="250" y2="60" stroke="#ffa500" stroke-width="1" opacity="0.4"/>
+                                    <line x1="350" y1="150" x2="320" y2="100" stroke="#ff6b6b" stroke-width="1" opacity="0.4"/>
+                                    <line x1="300" y1="220" x2="320" y2="200" stroke="#ffa500" stroke-width="1" opacity="0.4"/>
                                 </svg>
                             </div>
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
         </section>
 
@@ -279,6 +289,7 @@
                     <button class="category-btn active" data-category="all">All Research</button>
                     <button class="category-btn" data-category="data-science">Data Science</button>
                     <button class="category-btn" data-category="economics">Blockchain Economics</button>
+                    <button class="category-btn" data-category="bittensor">Bittensor/DeAI</button>
                     <button class="category-btn" data-category="validators">Validator Performance</button>
                     <button class="category-btn" data-category="smart-contracts">Smart Contracts</button>
                     <button class="category-btn" data-category="security">Security</button>
@@ -293,7 +304,52 @@
             <div class="section-container">
                 <div class="research-grid">
                     
-                    <!-- Research Card 1 -->
+                    <!-- Research Card 1 - Bittensor Article -->
+                    <a href="https://emoryblockchain.substack.com/p/state-of-bittensor-in-2025" target="_blank" rel="noopener noreferrer" class="research-card-link">
+                    <article class="research-card" data-category="bittensor data-science economics governance">
+                        <div class="research-image">
+                            <svg viewBox="0 0 300 200" class="research-thumbnail">
+                                <defs>
+                                    <linearGradient id="bittensorThumbnail" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#5cc2ff;stop-opacity:0.8" />
+                                        <stop offset="100%" style="stop-color:#9b6bff;stop-opacity:0.8" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Bittensor Network Thumbnail -->
+                                <circle cx="150" cy="100" r="20" fill="url(#bittensorThumbnail)"/>
+                                <text x="150" y="105" text-anchor="middle" fill="white" font-size="10" font-weight="bold">TAO</text>
+                                
+                                <!-- Subnet nodes around central node -->
+                                <circle cx="100" cy="60" r="6" fill="#ff6b6b" opacity="0.8"/>
+                                <circle cx="200" cy="60" r="6" fill="#ffa500" opacity="0.8"/>
+                                <circle cx="240" cy="100" r="6" fill="#ff6b6b" opacity="0.8"/>
+                                <circle cx="200" cy="140" r="6" fill="#ffa500" opacity="0.8"/>
+                                <circle cx="100" cy="140" r="6" fill="#ff6b6b" opacity="0.8"/>
+                                <circle cx="60" cy="100" r="6" fill="#ffa500" opacity="0.8"/>
+                                
+                                <!-- Connection lines -->
+                                <line x1="150" y1="100" x2="100" y2="60" stroke="#5cc2ff" stroke-width="1.5" opacity="0.6"/>
+                                <line x1="150" y1="100" x2="200" y2="60" stroke="#5cc2ff" stroke-width="1.5" opacity="0.6"/>
+                                <line x1="150" y1="100" x2="240" y2="100" stroke="#9b6bff" stroke-width="1.5" opacity="0.6"/>
+                                <line x1="150" y1="100" x2="200" y2="140" stroke="#9b6bff" stroke-width="1.5" opacity="0.6"/>
+                                <line x1="150" y1="100" x2="100" y2="140" stroke="#5cc2ff" stroke-width="1.5" opacity="0.6"/>
+                                <line x1="150" y1="100" x2="60" y2="100" stroke="#9b6bff" stroke-width="1.5" opacity="0.6"/>
+                            </svg>
+                        </div>
+                        <div class="research-content">
+                            <h3 class="research-title">State of Bittensor in 2025: Leading Decentralized AI Network</h3>
+                            <p class="research-authors">Robert Sun, Emory Blockchain</p>
+                            <p class="research-abstract">Comprehensive analysis of Bittensor's growth to 129 subnets, 800K+ TAO staked, and 72.4% QoQ growth. Examines Yuma Consensus, institutional investment, and DeAI ecosystem development...</p>
+                            <div class="research-badges">
+                                <span class="badge badge-data">Data Analysis</span>
+                                <span class="badge badge-code">Published</span>
+                            </div>
+                        </div>
+                    </article>
+                    </a>
+
+                    <!-- Research Card 2 -->
+                    <a href="https://emoryblockchain.substack.com/" target="_blank" rel="noopener noreferrer" class="research-card-link">
                     <article class="research-card" data-category="data-science economics">
                         <div class="research-image">
                             <svg viewBox="0 0 300 200" class="research-thumbnail">
@@ -317,14 +373,12 @@
                                 <span class="badge badge-data">Dataset Available</span>
                                 <span class="badge badge-code">Code Available</span>
                             </div>
-                            <div class="research-actions">
-                                <a href="#" class="btn btn-outline">Read Paper</a>
-                                <a href="#" class="btn btn-outline">View Code</a>
-                            </div>
                         </div>
                     </article>
+                    </a>
 
-                    <!-- Research Card 2 -->
+                    <!-- Research Card 3 -->
+                    <a href="https://emoryblockchain.substack.com/" target="_blank" rel="noopener noreferrer" class="research-card-link">
                     <article class="research-card" data-category="validators security">
                         <div class="research-image">
                             <svg viewBox="0 0 300 200" class="research-thumbnail">
@@ -346,14 +400,12 @@
                             <div class="research-badges">
                                 <span class="badge badge-data">Dataset Available</span>
                             </div>
-                            <div class="research-actions">
-                                <a href="#" class="btn btn-outline">Read Paper</a>
-                                <a href="#" class="btn btn-outline">View Data</a>
-                            </div>
                         </div>
                     </article>
+                    </a>
 
-                    <!-- Research Card 3 -->
+                    <!-- Research Card 4 -->
+                    <a href="https://emoryblockchain.substack.com/" target="_blank" rel="noopener noreferrer" class="research-card-link">
                     <article class="research-card" data-category="smart-contracts security">
                         <div class="research-image">
                             <svg viewBox="0 0 300 200" class="research-thumbnail">
@@ -374,14 +426,12 @@
                             <div class="research-badges">
                                 <span class="badge badge-code">Code Available</span>
                             </div>
-                            <div class="research-actions">
-                                <a href="#" class="btn btn-outline">Read Paper</a>
-                                <a href="#" class="btn btn-outline">View Code</a>
-                            </div>
                         </div>
                     </article>
+                    </a>
 
-                    <!-- Research Card 4 -->
+                    <!-- Research Card 5 -->
+                    <a href="https://emoryblockchain.substack.com/" target="_blank" rel="noopener noreferrer" class="research-card-link">
                     <article class="research-card" data-category="nfts economics">
                         <div class="research-image">
                             <svg viewBox="0 0 300 200" class="research-thumbnail">
@@ -402,14 +452,12 @@
                             <div class="research-badges">
                                 <span class="badge badge-data">Dataset Available</span>
                             </div>
-                            <div class="research-actions">
-                                <a href="#" class="btn btn-outline">Read Paper</a>
-                                <a href="#" class="btn btn-outline">View Data</a>
-                            </div>
                         </div>
                     </article>
+                    </a>
 
-                    <!-- Research Card 5 -->
+                    <!-- Research Card 6 -->
+                    <a href="https://emoryblockchain.substack.com/" target="_blank" rel="noopener noreferrer" class="research-card-link">
                     <article class="research-card" data-category="governance economics">
                         <div class="research-image">
                             <svg viewBox="0 0 300 200" class="research-thumbnail">
@@ -432,14 +480,12 @@
                             <div class="research-badges">
                                 <span class="badge badge-code">Code Available</span>
                             </div>
-                            <div class="research-actions">
-                                <a href="#" class="btn btn-outline">Read Paper</a>
-                                <a href="#" class="btn btn-outline">View Code</a>
-                            </div>
                         </div>
                     </article>
+                    </a>
 
-                    <!-- Research Card 6 -->
+                    <!-- Research Card 7 -->
+                    <a href="https://emoryblockchain.substack.com/" target="_blank" rel="noopener noreferrer" class="research-card-link">
                     <article class="research-card" data-category="data-science validators">
                         <div class="research-image">
                             <svg viewBox="0 0 300 200" class="research-thumbnail">
@@ -461,136 +507,40 @@
                                 <span class="badge badge-data">Dataset Available</span>
                                 <span class="badge badge-code">Code Available</span>
                             </div>
-                            <div class="research-actions">
-                                <a href="#" class="btn btn-outline">Read Paper</a>
-                                <a href="#" class="btn btn-outline">View Code</a>
-                            </div>
                         </div>
                     </article>
+                    </a>
 
                 </div>
             </div>
         </section>
 
-        <!-- Datasets & Tools Section -->
-        <section class="datasets-tools-section" id="datasets-tools">
-            <div class="section-container">
-                <div class="section-header">
-                    <h2 class="section-title">Datasets & Tools</h2>
-                    <p class="section-subtitle">Open-source datasets and research tools for the blockchain community</p>
-                </div>
-                
-                <div class="datasets-tools-grid">
-                    <!-- Datasets Column -->
-                    <div class="datasets-column">
-                        <h3 class="column-title">
-                            <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                <path d="m2 17 10 5 10-5"/>
-                                <path d="m2 12 10 5 10-5"/>
-                            </svg>
-                            Datasets
-                        </h3>
-                        
-                        <div class="item-list">
-                            <div class="item-card">
-                                <h4 class="item-title">Ethereum Transaction Dataset 2024</h4>
-                                <p class="item-description">Comprehensive transaction data including gas prices, contract interactions, and MEV analysis covering Q1-Q3 2024.</p>
-                                <div class="item-meta">
-                                    <span class="item-size">2.4TB</span>
-                                    <span class="item-format">Parquet</span>
-                                </div>
-                                <a href="#" class="item-link">Download Dataset</a>
-                            </div>
-                            
-                            <div class="item-card">
-                                <h4 class="item-title">DeFi Protocol Governance Data</h4>
-                                <p class="item-description">Voting records, proposal outcomes, and token holder behavior across 50+ major DeFi protocols.</p>
-                                <div class="item-meta">
-                                    <span class="item-size">156MB</span>
-                                    <span class="item-format">CSV/JSON</span>
-                                </div>
-                                <a href="#" class="item-link">Download Dataset</a>
-                            </div>
-                            
-                            <div class="item-card">
-                                <h4 class="item-title">NFT Market Price History</h4>
-                                <p class="item-description">Historical pricing data for top NFT collections including metadata, rarity scores, and market trends.</p>
-                                <div class="item-meta">
-                                    <span class="item-size">890MB</span>
-                                    <span class="item-format">JSON</span>
-                                </div>
-                                <a href="#" class="item-link">Download Dataset</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Tools Column -->
-                    <div class="tools-column">
-                        <h3 class="column-title">
-                            <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                            </svg>
-                            Tools
-                        </h3>
-                        
-                        <div class="item-list">
-                            <div class="item-card">
-                                <h4 class="item-title">Validator Performance Monitor</h4>
-                                <p class="item-description">Real-time monitoring dashboard for Ethereum validators with alerting and performance analytics.</p>
-                                <div class="item-meta">
-                                    <span class="item-tech">Python/React</span>
-                                    <span class="item-license">MIT</span>
-                                </div>
-                                <a href="#" class="item-link">View on GitHub</a>
-                            </div>
-                            
-                            <div class="item-card">
-                                <h4 class="item-title">Smart Contract Analyzer</h4>
-                                <p class="item-description">Automated vulnerability detection and gas optimization suggestions for Solidity contracts.</p>
-                                <div class="item-meta">
-                                    <span class="item-tech">Rust/WASM</span>
-                                    <span class="item-license">Apache 2.0</span>
-                                </div>
-                                <a href="#" class="item-link">View on GitHub</a>
-                            </div>
-                            
-                            <div class="item-card">
-                                <h4 class="item-title">DeFi Simulation Environment</h4>
-                                <p class="item-description">Agent-based modeling framework for testing DeFi protocol mechanisms and market dynamics.</p>
-                                <div class="item-meta">
-                                    <span class="item-tech">Python/Julia</span>
-                                    <span class="item-license">GPL v3</span>
-                                </div>
-                                <a href="#" class="item-link">View on GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Impact Metrics -->
+
+        <!-- Impact Metrics Section -->
         <section class="metrics-section" id="metrics">
-            <div class="section-container">
+            <div class="metrics-container">
+                <div class="section-header">
+                    <h2 class="section-title">Impact Metrics</h2>
+                </div>
                 <div class="metrics-grid">
-                    <div class="metric-card">
+                    <div class="metric-item">
                         <div class="metric-value" data-target="42">0</div>
                         <div class="metric-label">Publications</div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-item">
                         <div class="metric-value" data-target="18">0</div>
                         <div class="metric-label">Open Datasets</div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-item">
                         <div class="metric-value" data-target="156">0</div>
                         <div class="metric-label">Research Collaborations</div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-item">
                         <div class="metric-value" data-target="1247">0</div>
                         <div class="metric-label">Total Citations</div>
                     </div>
-                    <div class="metric-card">
+                    <div class="metric-item">
                         <div class="metric-value" data-target="23">0</div>
                         <div class="metric-label">Conference Presentations</div>
                     </div>
@@ -617,10 +567,13 @@
         </section>
     </main>
 
+    <!-- Thin Line Divider -->
+    <div class="thin-line-divider"></div>
+
     <!-- Footer -->
     <footer class="footer">
         <!-- Tesseract Animated Background -->
-        <canvas id="tesseractCanvas" class="footer-canvas"></canvas>
+                        <canvas id="footerTesseractCanvas" class="footer-canvas"></canvas>
         <div class="footer-overlay"></div>
         
         <div class="footer-container">

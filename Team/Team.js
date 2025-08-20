@@ -1,174 +1,11 @@
 // Team page functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
-    initializeGeometricBackground();
     initializeNavigation();
     initializeMemberCards();
     initializeFooter();
+    initializeAnimations();
 });
-
-// Animated Geometric Background
-function initializeGeometricBackground() {
-    const canvas = document.getElementById('geometricCanvas');
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    let animationId;
-    let shapes = [];
-    
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        initializeShapes();
-    }
-    
-    function initializeShapes() {
-        shapes = [];
-        const shapeCount = Math.min(12, Math.floor(canvas.width / 150));
-        
-        for (let i = 0; i < shapeCount; i++) {
-            const shapeType = Math.random() > 0.5 ? 'triangle' : 'hexagon';
-            shapes.push({
-                type: shapeType,
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 40 + 20,
-                rotation: Math.random() * Math.PI * 2,
-                rotationSpeed: (Math.random() - 0.5) * 0.02,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.3,
-                opacity: Math.random() * 0.3 + 0.1,
-                color: Math.random() > 0.6 ? '#5cc2ff' : '#f7c948',
-                glowIntensity: Math.random() * 0.5 + 0.3,
-                glowDirection: Math.random() > 0.5 ? 1 : -1
-            });
-        }
-    }
-    
-    function updateShapes() {
-        shapes.forEach(shape => {
-            // Update position
-            shape.x += shape.vx;
-            shape.y += shape.vy;
-            
-            // Bounce off edges
-            if (shape.x < -shape.size || shape.x > canvas.width + shape.size) {
-                shape.vx *= -1;
-            }
-            if (shape.y < -shape.size || shape.y > canvas.height + shape.size) {
-                shape.vy *= -1;
-            }
-            
-            // Keep within bounds
-            shape.x = Math.max(-shape.size, Math.min(canvas.width + shape.size, shape.x));
-            shape.y = Math.max(-shape.size, Math.min(canvas.height + shape.size, shape.y));
-            
-            // Update rotation
-            shape.rotation += shape.rotationSpeed;
-            
-            // Update glow
-            shape.glowIntensity += shape.glowDirection * 0.005;
-            if (shape.glowIntensity > 0.8 || shape.glowIntensity < 0.2) {
-                shape.glowDirection *= -1;
-            }
-        });
-    }
-    
-    function drawTriangle(ctx, x, y, size, rotation) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(rotation);
-        
-        const height = size * Math.sqrt(3) / 2;
-        
-        ctx.beginPath();
-        ctx.moveTo(0, -height / 2);
-        ctx.lineTo(-size / 2, height / 2);
-        ctx.lineTo(size / 2, height / 2);
-        ctx.closePath();
-        
-        ctx.restore();
-    }
-    
-    function drawHexagon(ctx, x, y, size, rotation) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(rotation);
-        
-        ctx.beginPath();
-        for (let i = 0; i < 6; i++) {
-            const angle = (i * Math.PI) / 3;
-            const px = size * Math.cos(angle);
-            const py = size * Math.sin(angle);
-            if (i === 0) {
-                ctx.moveTo(px, py);
-            } else {
-                ctx.lineTo(px, py);
-            }
-        }
-        ctx.closePath();
-        
-        ctx.restore();
-    }
-    
-    function drawShapes() {
-        shapes.forEach(shape => {
-            // Create glow effect
-            const gradient = ctx.createRadialGradient(
-                shape.x, shape.y, 0,
-                shape.x, shape.y, shape.size * 2
-            );
-            
-            const alpha = shape.opacity * shape.glowIntensity;
-            gradient.addColorStop(0, `${shape.color}${Math.floor(alpha * 255).toString(16).padStart(2, '0')}`);
-            gradient.addColorStop(0.5, `${shape.color}${Math.floor(alpha * 0.5 * 255).toString(16).padStart(2, '0')}`);
-            gradient.addColorStop(1, `${shape.color}00`);
-            
-            ctx.fillStyle = gradient;
-            
-            if (shape.type === 'triangle') {
-                drawTriangle(ctx, shape.x, shape.y, shape.size, shape.rotation);
-            } else {
-                drawHexagon(ctx, shape.x, shape.y, shape.size, shape.rotation);
-            }
-            
-            ctx.fill();
-            
-            // Draw outline
-            ctx.strokeStyle = `${shape.color}${Math.floor(alpha * 0.8 * 255).toString(16).padStart(2, '0')}`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-        });
-    }
-    
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        if (!prefersReducedMotion) {
-            updateShapes();
-        }
-        
-        drawShapes();
-        
-        animationId = requestAnimationFrame(animate);
-    }
-    
-    // Initialize
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    // Start animation
-    animate();
-    
-    // Cleanup function
-    return () => {
-        cancelAnimationFrame(animationId);
-        window.removeEventListener('resize', resizeCanvas);
-    };
-}
 
 // Navigation Functions
 function initializeNavigation() {
@@ -338,7 +175,7 @@ function initializeFooter() {
 
 // Footer Blockchain Animation
 function initializeFooterBlockchainAnimation() {
-    const canvas = document.getElementById('blockchainCanvas');
+    const canvas = document.getElementById('footerTesseractCanvas');
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
@@ -674,6 +511,46 @@ function initializeScrollAnimations() {
         `;
         document.head.appendChild(style);
     }
+}
+
+// Initialize animations
+function initializeAnimations() {
+    // Animate floating icons
+    animateFloatingIcons();
+    
+    // Animate member cards
+    animateMemberCards();
+}
+
+// Animate floating icons
+function animateFloatingIcons() {
+    const floatingIcons = document.querySelectorAll('.floating-icon');
+    
+    floatingIcons.forEach((icon, index) => {
+        icon.style.animationDelay = `${index * 0.5}s`;
+    });
+}
+
+// Animate member cards
+function animateMemberCards() {
+    const memberCards = document.querySelectorAll('.member-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, index * 100);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    memberCards.forEach(card => {
+        observer.observe(card);
+    });
 }
 
 // Initialize scroll animations

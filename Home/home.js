@@ -8,10 +8,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize existing Home page functionality
     initializePartnersInteraction();
     initializeEventsSection();
+    initializeIndustryEventsSection();
     initializeTeamPreviewSection();
     initializeUpdatesSection();
     initializeContactSection();
+    
+    // Initialize scroll animations
+    initializeScrollAnimations();
 });
+
+// Scroll-triggered animations
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                element.classList.add('animate-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all elements with scroll animation classes
+    const animatedElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale');
+    animatedElements.forEach(el => observer.observe(el));
+}
 
 // Animated Geometric Background
 function initializeGeometricBackground() {
@@ -246,94 +272,84 @@ function initializeMenuOverlay() {
     });
 }
 
-    // Toggle mobile menu
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        
-        // Prevent body scroll when menu is open
-        if (navMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // Close mobile menu when clicking on nav links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        const isClickInsideNav = navMenu.contains(event.target) || hamburger.contains(event.target);
-        
-        if (!isClickInsideNav && navMenu.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // Smooth scrolling for anchor links
+// Navigation functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Get navigation elements
+    const navLinks = document.querySelectorAll('.home-navbar .nav-link');
+    const contactLink = document.querySelector('.home-navbar .nav-link[href="#contact"]');
+    
+    // Smooth scrolling for all navigation links with anchor hrefs
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
-            if (href.startsWith('#')) {
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const targetId = href.substring(1);
                 const targetElement = document.getElementById(targetId);
                 
                 if (targetElement) {
-                    const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+                    // Calculate offset to account for fixed navbar
+                    const navbarHeight = document.querySelector('.home-navbar').offsetHeight;
+                    const offsetTop = targetElement.offsetTop - navbarHeight - 20; // Extra 20px for breathing room
                     
+                                    // Smooth scroll to target with fallback
+                if ('scrollBehavior' in document.documentElement.style) {
                     window.scrollTo({
-                        top: offsetTop,
+                        top: Math.max(0, offsetTop), // Ensure we don't scroll to negative values
                         behavior: 'smooth'
                     });
+                } else {
+                    // Fallback for browsers that don't support smooth scrolling
+                    window.scrollTo(0, Math.max(0, offsetTop));
+                }
                 }
             }
         });
     });
-
-    // Add scroll effect to navbar
-    let lastScrollTop = 0;
-    const homeNavbar = document.getElementById('homeNavbar');
-    const teamNavbar = document.getElementById('teamNavbar');
     
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Show/hide home navbar
-        if (scrollTop > 100) {
-            homeNavbar.classList.add('hidden');
-        } else {
-            homeNavbar.classList.remove('hidden');
-        }
-        
-        // Show/hide team navbar
-        if (scrollTop > 100) {
-            teamNavbar.classList.add('visible');
-        } else {
-            teamNavbar.classList.remove('visible');
-        }
-        
-        lastScrollTop = scrollTop;
-    });
+    // Special handling for contact link to ensure smooth transition
+    if (contactLink) {
+        contactLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const contactSection = document.getElementById('contact');
+            
+            if (contactSection) {
+                const navbarHeight = document.querySelector('.home-navbar').offsetHeight;
+                const offsetTop = contactSection.offsetTop - navbarHeight - 20;
+                
+                // Smooth scroll with easing and fallback
+                if ('scrollBehavior' in document.documentElement.style) {
+                    window.scrollTo({
+                        top: Math.max(0, offsetTop),
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Fallback for browsers that don't support smooth scrolling
+                    window.scrollTo(0, Math.max(0, offsetTop));
+                }
+                
+                // Add a subtle highlight effect when scrolling to contact section
+                setTimeout(() => {
+                    contactSection.style.transition = 'all 0.3s ease';
+                    contactSection.style.transform = 'scale(1.02)';
+                    contactSection.style.boxShadow = '0 0 30px rgba(92, 194, 255, 0.3)';
+                    
+                    setTimeout(() => {
+                        contactSection.style.transform = 'scale(1)';
+                        contactSection.style.boxShadow = 'none';
+                    }, 300);
+                }, 500); // Wait for scroll to complete
+            }
+        });
+    }
+});
+
+    // Keep home navbar visible (no scroll effect)
+    const homeNavbar = document.getElementById('homeNavbar');
+    if (homeNavbar) {
+        homeNavbar.classList.remove('hidden');
+    }
 
     // Button click handlers
     const contactBtn = document.querySelector('.btn-outline');
@@ -359,7 +375,6 @@ function initializeMenuOverlay() {
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
     });
-});
 
 // Utility function for smooth animations
 function animateOnScroll() {
@@ -476,7 +491,7 @@ function initializeEventsSection() {
             });
             
             // Add next set of images
-            for (let i = 0; i < 3 && i < hiddenImages.length; i++) {
+            for (let i = 0; i < 6 && i < hiddenImages.length; i++) {
                 const img = hiddenImages[i];
                 document.querySelector('.event-images-hidden').removeChild(img);
                 fanContainer.appendChild(img);
@@ -545,11 +560,22 @@ function initializeEventsSection() {
         // Store original transform for restoration
         wrapper.setAttribute('data-original-transform', wrapper.style.transform || '');
         
+        // Get the expanded image path
+        const expandedImagePath = wrapper.getAttribute('data-expanded');
+        
         // Show backdrop
         backdrop.classList.add('active');
         
         // Expand the image with smooth transition
         wrapper.classList.add('expanded');
+        
+        // If there's an expanded image path, replace the image source
+        if (expandedImagePath) {
+            const img = wrapper.querySelector('.event-image');
+            if (img) {
+                img.src = expandedImagePath;
+            }
+        }
         
         // Prevent body scroll
         document.body.style.overflow = 'hidden';
@@ -580,6 +606,23 @@ function initializeEventsSection() {
         
         // Collapse the image
         expandedImage.classList.remove('expanded');
+        
+        // Restore original image source
+        const img = expandedImage.querySelector('.event-image');
+        if (img) {
+            // Get the original image path from the data-event attribute
+            const eventType = expandedImage.getAttribute('data-event');
+            const originalImageMap = {
+                'nearai': '../Images/Meetings/NearAI.jpg',
+                'accelerate': '../Images/Meetings/Accelerate.jpg',
+                'sui': '../Images/Meetings/Sui-workshop.jpg',
+                'starknet': '../Images/Meetings/Starknet.jpg',
+                'sui-pizza': '../Images/Meetings/SUI-pizza.jpg'
+            };
+            if (originalImageMap[eventType]) {
+                img.src = originalImageMap[eventType];
+            }
+        }
         
         // Restore original transform if it was stored
         const originalTransform = expandedImage.getAttribute('data-original-transform');
@@ -619,6 +662,158 @@ function initializeEventsSection() {
     if (learnMoreBtn) {
         learnMoreBtn.addEventListener('click', function() {
             console.log('Learn More clicked - redirect to event details');
+            resetUserInteractionTimer();
+        });
+    }
+}
+
+// Industry Events section functionality
+function initializeIndustryEventsSection() {
+    const sliderTrack = document.getElementById('industrySliderTrack');
+    const prevBtn = document.getElementById('industryPrevBtn');
+    const nextBtn = document.getElementById('industryNextBtn');
+    const dotsContainer = document.getElementById('industrySliderDots');
+    
+    if (!sliderTrack || !prevBtn || !nextBtn || !dotsContainer) return;
+    
+    const slides = sliderTrack.querySelectorAll('.slider-slide');
+    let currentSlide = 0;
+    let autoSlideTimer = null;
+    let userInteractionTimer = null;
+    
+    // Initialize dots
+    function initializeDots() {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+    }
+    
+    // Update dots
+    function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.slider-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    // Go to specific slide
+    function goToSlide(index) {
+        if (index < 0 || index >= slides.length) return;
+        
+        currentSlide = index;
+        const translateX = -currentSlide * 100;
+        sliderTrack.style.transform = `translateX(${translateX}%)`;
+        updateDots();
+        resetUserInteractionTimer();
+    }
+    
+    // Next slide
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        goToSlide(currentSlide);
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        goToSlide(currentSlide);
+    }
+    
+    // Auto slide
+    function startAutoSlide() {
+        autoSlideTimer = setInterval(() => {
+            nextSlide();
+        }, 5000); // 5 seconds
+    }
+    
+    // Stop auto slide
+    function stopAutoSlide() {
+        if (autoSlideTimer) {
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = null;
+        }
+    }
+    
+    // Reset user interaction timer
+    function resetUserInteractionTimer() {
+        clearTimeout(userInteractionTimer);
+        userInteractionTimer = setTimeout(() => {
+            startAutoSlide();
+        }, 10000); // 10 seconds of no interaction
+    }
+    
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        prevSlide();
+        resetUserInteractionTimer();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        nextSlide();
+        resetUserInteractionTimer();
+    });
+    
+    // Touch/swipe support
+    let startX = 0;
+    let endX = 0;
+    
+    sliderTrack.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        stopAutoSlide();
+    });
+    
+    sliderTrack.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > 50) { // Minimum swipe distance
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+        
+        resetUserInteractionTimer();
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            stopAutoSlide();
+            prevSlide();
+            resetUserInteractionTimer();
+        } else if (e.key === 'ArrowRight') {
+            stopAutoSlide();
+            nextSlide();
+            resetUserInteractionTimer();
+        }
+    });
+    
+    // Hover pause
+    sliderTrack.addEventListener('mouseenter', () => {
+        stopAutoSlide();
+    });
+    
+    sliderTrack.addEventListener('mouseleave', () => {
+        resetUserInteractionTimer();
+    });
+    
+    // Initialize
+    initializeDots();
+    resetUserInteractionTimer();
+    
+    // Add Learn More button functionality for industry events
+    const industryLearnMoreBtn = document.querySelector('.industry-events-section .learn-more-btn');
+    if (industryLearnMoreBtn) {
+        industryLearnMoreBtn.addEventListener('click', function() {
+            console.log('Industry Learn More clicked - redirect to event details');
             resetUserInteractionTimer();
         });
     }
@@ -943,23 +1138,27 @@ function initializeUpdatesSection() {
 function initializeContactSection() {
     const form = document.querySelector('.contact-form');
     const submitBtn = document.querySelector('.form-submit');
-    const nameInput = document.getElementById('contact-name');
+    const firstNameInput = document.getElementById('first-name');
+    const lastNameInput = document.getElementById('last-name');
     const emailInput = document.getElementById('contact-email');
-    const topicSelect = document.getElementById('contact-topic');
+    const subjectInput = document.getElementById('contact-subject');
     const messageTextarea = document.getElementById('contact-message');
+    
+    // Debug logging
+    console.log('Contact form elements found:', {
+        form: !!form,
+        submitBtn: !!submitBtn,
+        firstNameInput: !!firstNameInput,
+        lastNameInput: !!lastNameInput,
+        emailInput: !!emailInput,
+        subjectInput: !!subjectInput,
+        messageTextarea: !!messageTextarea
+    });
     
     let lastSubmission = 0;
     const RATE_LIMIT_MS = 30000; // 30 seconds
     
-    // Store UTM parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const utmParams = {
-        source: urlParams.get('utm_source'),
-        medium: urlParams.get('utm_medium'),
-        campaign: urlParams.get('utm_campaign'),
-        term: urlParams.get('utm_term'),
-        content: urlParams.get('utm_content')
-    };
+    // Simple contact form functionality
     
     // Fade in form on scroll
     function checkContactVisibility() {
@@ -972,50 +1171,30 @@ function initializeContactSection() {
         }
     }
     
-    // Character counter for message
-    function updateCharCount() {
-        const length = messageTextarea.value.length;
-        charCount.textContent = length;
+    // Simple form validation
+    function validateForm() {
+        const formData = new FormData(form);
+        let isValid = true;
         
-        const counter = charCount.parentElement;
-        counter.classList.remove('warning', 'error');
+        // Define validation rules
+        const validations = {
+            firstName: { required: true },
+            lastName: { required: true },
+            email: { required: true, email: true },
+            subject: { required: true },
+            message: { required: true, minLength: 10 }
+        };
         
-        if (length < 200) {
-            counter.classList.add('error');
-        } else if (length > 1400) {
-            counter.classList.add('warning');
-        }
-    }
-    
-    // File upload handler
-    function handleFileUpload() {
-        const file = fileInput.files[0];
-        const maxSize = parseInt(fileInput.dataset.maxSize);
-        
-        if (file) {
-            if (file.size > maxSize) {
-                showError('attachmentError', 'File size must be ≤10MB');
-                fileInput.value = '';
-                fileName.textContent = '';
-                return false;
-            }
+        // Validate each field
+        Object.entries(validations).forEach(([field, rules]) => {
+            const value = formData.get(field) || '';
             
-            const allowedTypes = ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg'];
-            if (!allowedTypes.includes(file.type)) {
-                showError('attachmentError', 'Only PDF, PNG, and JPG files are allowed');
-                fileInput.value = '';
-                fileName.textContent = '';
-                return false;
+            if (!validateField(field, value, rules)) {
+                isValid = false;
             }
-            
-            fileName.textContent = file.name;
-            clearError('attachmentError');
-            return true;
-        }
+        });
         
-        fileName.textContent = '';
-        clearError('attachmentError');
-        return true;
+        return isValid;
     }
     
     // Validation functions
@@ -1047,23 +1226,8 @@ function initializeContactSection() {
             return false;
         }
         
-        if (validationRules.url && value && !validateURL(value)) {
-            showError(errorId, 'Please enter a valid URL');
-            return false;
-        }
-        
         if (validationRules.minLength && value.length < validationRules.minLength) {
             showError(errorId, `Minimum ${validationRules.minLength} characters required`);
-            return false;
-        }
-        
-        if (validationRules.maxLength && value.length > validationRules.maxLength) {
-            showError(errorId, `Maximum ${validationRules.maxLength} characters allowed`);
-            return false;
-        }
-        
-        if (validationRules.antiBot && value !== '10') {
-            showError(errorId, 'Incorrect answer. Please try again.');
             return false;
         }
         
@@ -1177,36 +1341,20 @@ function initializeContactSection() {
                 ...Object.fromEntries(formData),
                 timestamp: new Date().toISOString(),
                 timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                timezoneOffset: new Date().getTimezoneOffset(),
-                utm: utmParams,
-                links: {
-                    linkedin: formData.get('linkedin') || null,
-                    github: formData.get('github') || null
-                }
+                timezoneOffset: new Date().getTimezoneOffset()
             };
             
-            // Remove individual link fields since they're in links object
-            delete submissionData.linkedin;
-            delete submissionData.github;
+            // For now, simulate a successful submission
+            // In production, this would be a real API call
+            console.log('Form submission data:', submissionData);
             
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(submissionData)
-            });
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
             
-            if (response.ok) {
-                showToast("Thanks! We'll reply within 3 business days.", 'success');
-                form.reset();
-                updateCharCount();
-                fileName.textContent = '';
-                updateSubmitButton(false);
-                lastSubmission = Date.now();
-            } else {
-                throw new Error('Submission failed');
-            }
+            showToast("Thanks! We'll reply within 3 business days.", 'success');
+            form.reset();
+            updateSubmitButton(false);
+            lastSubmission = Date.now();
         } catch (error) {
             console.error('Form submission error:', error);
             showToast('Something went wrong. Please try again or email us directly.', 'error');
@@ -1221,31 +1369,23 @@ function initializeContactSection() {
         
         if (rateLimited) {
             const remaining = Math.ceil((RATE_LIMIT_MS - (now - lastSubmission)) / 1000);
-            submitBtn.querySelector('.btn-text').textContent = `Wait ${remaining}s`;
+            submitBtn.querySelector('.submit-text').textContent = `Wait ${remaining}s`;
             setTimeout(() => updateSubmitButton(validateForm()), 1000);
         } else {
-            submitBtn.querySelector('.btn-text').textContent = 'Send Message';
+            submitBtn.querySelector('.submit-text').textContent = 'SEND MESSAGE';
         }
     }
     
-    // Event listeners
-    messageTextarea.addEventListener('input', updateCharCount);
-    fileInput.addEventListener('change', handleFileUpload);
-    
     // Real-time validation
-    form.querySelectorAll('input, select, textarea').forEach(field => {
+    form.querySelectorAll('input, textarea').forEach(field => {
         field.addEventListener('blur', () => {
             if (field.value || field.required) {
                 const validations = {
-                    name: { required: true },
+                    firstName: { required: true },
+                    lastName: { required: true },
                     email: { required: true, email: true },
-                    affiliation: { required: true },
-                    role: { required: true },
-                    topic: { required: true },
-                    linkedin: { url: true },
-                    github: { url: true },
-                    message: { required: true, minLength: 200, maxLength: 1500 },
-                    antiBot: { required: true, antiBot: true }
+                    subject: { required: true },
+                    message: { required: true, minLength: 10 }
                 };
                 
                 if (validations[field.name]) {
@@ -1256,14 +1396,9 @@ function initializeContactSection() {
         });
         
         field.addEventListener('input', () => {
-            clearError(field.name);
+            clearError(field.name + 'Error');
             updateSubmitButton(validateForm());
         });
-    });
-    
-    // Consent checkbox
-    document.getElementById('consent').addEventListener('change', () => {
-        updateSubmitButton(validateForm());
     });
     
     // Form submission
@@ -1285,16 +1420,22 @@ function initializeContactSection() {
         submitBtn.classList.remove('loading');
     });
     
-    // Email button
-    emailBtn.addEventListener('click', () => {
-        window.location.href = 'mailto:blockchain@emory.edu?subject=Collaboration Inquiry';
-    });
+    // Email link functionality is handled in the contact footer
     
     // Initialize
-    updateCharCount();
-    checkContactVisibility();
-    window.addEventListener('scroll', checkContactVisibility);
-    updateSubmitButton(false);
+    if (form) {
+        checkContactVisibility();
+        window.addEventListener('scroll', checkContactVisibility);
+        updateSubmitButton(false);
+    }
+    
+    // Fallback: ensure form is visible
+    if (form) {
+        form.style.opacity = '1';
+        form.style.transform = 'translateY(0)';
+        form.style.visibility = 'visible';
+        form.style.display = 'block';
+    }
 }
 
 // Footer functionality
@@ -1873,6 +2014,76 @@ function initializeNewsletterSignup() {
         document.body.appendChild(container);
         return container;
     }
+}
+
+// Email copy functionality
+function copyEmail() {
+    const email = 'blockchainemory@gmail.com';
+    const button = document.querySelector('.copy-email-btn');
+    const copyIcon = button.querySelector('.copy-icon');
+    const checkIcon = button.querySelector('.check-icon');
+    
+    // Copy email to clipboard
+    if (navigator.clipboard && window.isSecureContext) {
+        // Modern clipboard API
+        navigator.clipboard.writeText(email).then(() => {
+            showCopySuccess(button, copyIcon, checkIcon);
+        }).catch(err => {
+            console.error('Failed to copy email: ', err);
+            fallbackCopyText(email);
+            showCopySuccess(button, copyIcon, checkIcon);
+        });
+    } else {
+        // Fallback for older browsers
+        fallbackCopyText(email);
+        showCopySuccess(button, copyIcon, checkIcon);
+    }
+}
+
+// Fallback copy method for older browsers
+function fallbackCopyText(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+    } catch (err) {
+        console.error('Fallback copy failed: ', err);
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// Show copy success feedback
+function showCopySuccess(button, copyIcon, checkIcon) {
+    // Add copied state
+    button.classList.add('copied');
+    
+    // Switch icons
+    copyIcon.style.display = 'none';
+    checkIcon.style.display = 'inline';
+    
+    // Show success toast (reuse existing toast system)
+    const toastContainer = document.getElementById('toastContainer');
+    if (toastContainer) {
+        showToast('Email address copied to clipboard!', 'success');
+    } else {
+        // Simple fallback notification
+        console.log('Email copied to clipboard: ' + 'blockchainemory@gmail.com');
+    }
+    
+    // Reset after 2 seconds
+    setTimeout(() => {
+        button.classList.remove('copied');
+        copyIcon.style.display = 'inline';
+        checkIcon.style.display = 'none';
+    }, 2000);
 }
 
 

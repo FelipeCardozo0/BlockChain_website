@@ -8,132 +8,38 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-        <!-- Animated Background -->
+                <!-- Animated Background -->
         <div class="animated-background">
             <canvas id="geometricCanvas" class="background-canvas"></canvas>
         </div>
 
-        <!-- Research-style Navigation Bar -->
-        <nav class="research-navbar" id="researchNavbar">
-            <div class="navbar-container">
+        <!-- Navigation -->
+        <nav class="home-navbar" id="homeNavbar">
+            <div class="nav-container">
                 <!-- Logo -->
-                <div class="navbar-logo">
-                    <a href="home.html" class="logo-link" aria-label="Blockchain Club Home">
-                        <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="research-logo-img">
+                <div class="nav-logo">
+                    <a href="home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                        <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="nav-logo-img">
                     </a>
                 </div>
                 
-                <!-- Center Navigation Links -->
-                <div class="navbar-center">
-                    <a href="../About/about.html" class="nav-link" data-section="about">
-                        <span class="link-text">About</span>
-                        <span class="link-underline"></span>
-                    </a>
-                    <a href="../Projects/projects.html" class="nav-link" data-section="projects">
-                        <span class="link-text">Projects</span>
-                        <span class="link-underline"></span>
-                    </a>
-                    <a href="../Research/research.html" class="nav-link" data-section="research">
-                        <span class="link-text">Research</span>
-                        <span class="link-underline"></span>
-                    </a>
-                    <a href="../Finances/finances.html" class="nav-link" data-section="finances">
-                        <span class="link-text">Finances</span>
-                        <span class="link-underline"></span>
-                    </a>
-                    <a href="../Team/Team.html" class="nav-link" data-section="team">
-                        <span class="link-text">Team</span>
-                        <span class="link-underline"></span>
-                    </a>
-                </div>
-                
-                <!-- Menu Icon -->
-                <div class="navbar-menu">
-                    <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
-                        <span class="menu-icon">
-                            <span class="menu-line"></span>
-                            <span class="menu-line"></span>
-                            <span class="menu-line"></span>
-                            <span class="menu-line"></span>
-                        </span>
-                    </button>
-                </div>
+                <!-- Navigation Links -->
+                <nav class="nav-navigation" aria-label="Main navigation">
+                    <div class="nav-links-center">
+                        <a href="home.html" class="nav-link nav-link-active">Home</a>
+                        <a href="../About/about.html" class="nav-link">About</a>
+                        <a href="../Projects/projects.html" class="nav-link">Projects</a>
+                        <a href="../Research/research.html" class="nav-link">Research</a>
+                        <a href="../Finances/finances.html" class="nav-link">Finances</a>
+                        <a href="../Team/Team.html" class="nav-link">Team</a>
+                    </div>
+                    <div class="nav-links-right">
+                        <a href="#contact" class="nav-link">Contact</a>
+                        <a href="../About/about.html#join" class="nav-link nav-link-apply">Apply</a>
+                    </div>
+                </nav>
             </div>
         </nav>
-
-        <!-- Menu Overlay -->
-        <div class="menu-overlay" id="menuOverlay">
-            <div class="overlay-background"></div>
-            <div class="overlay-content">
-                <div class="overlay-header">
-                    <h2 class="overlay-title">Navigation</h2>
-                    <button class="overlay-close" id="overlayClose" aria-label="Close navigation menu">
-                        <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-                
-                <nav class="overlay-nav" aria-label="Main navigation">
-                    <div class="nav-section">
-                        <h3 class="nav-section-title">Main</h3>
-                        <ul class="nav-list">
-                            <li><a href="home.html" class="overlay-link active">
-                                <span class="link-label">Home</span>
-                            </a></li>
-                            <li><a href="../About/about.html" class="overlay-link">
-                                <span class="link-label">About</span>
-                            </a></li>
-                            <li><a href="../Projects/projects.html" class="overlay-link">
-                                <span class="link-label">Projects</span>
-                            </a></li>
-                            <li><a href="../Research/research.html" class="overlay-link">
-                                <span class="link-label">Research</span>
-                            </a></li>
-                            <li><a href="../Finances/finances.html" class="overlay-link">
-                                <span class="link-label">Finances</span>
-                            </a></li>
-                            <li><a href="../Team/Team.html" class="overlay-link">
-                                <span class="link-label">Team</span>
-                            </a></li>
-                        </ul>
-                    </div>
-
-                                    <div class="nav-section">
-                    <h3 class="nav-section-title">Home Sections</h3>
-                    <ul class="nav-list">
-                        <li><a href="#mission" class="overlay-link">
-                            <span class="link-label">Mission</span>
-                        </a></li>
-                        <li><a href="#events" class="overlay-link">
-                            <span class="link-label">Events</span>
-                        </a></li>
-                        <li><a href="#team-preview" class="overlay-link">
-                            <span class="link-label">Team Preview</span>
-                        </a></li>
-                        <li><a href="#updates" class="overlay-link">
-                            <span class="link-label">Latest Updates</span>
-                        </a></li>
-                    </ul>
-                </div>
-                
-                <div class="nav-section">
-                    <h3 class="nav-section-title">Contact</h3>
-                    <ul class="nav-list">
-                        <li><a href="#contact" class="overlay-link">
-                            <span class="link-label">Contact Us</span>
-                        </a></li>
-                        <li><a href="../About/about.html#join" class="overlay-link apply-highlight">
-                            <span class="link-label">Join Us</span>
-                        </a></li>
-                    </ul>
-                </div>
-                </nav>
-                
-
-            </div>
-        </div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -153,17 +59,46 @@
             <div class="mission-container">
                 <div class="mission-content">
                     <h2 class="mission-headline">
-                        Empowering students to <span class="highlight-gradient">lead the future</span> of blockchain innovation.
+                        Empowering students to 
+                        <span class="highlight-gradient">lead the future</span> 
+                        of blockchain innovation
                     </h2>
+                    
                     <p class="mission-description">
                         We bridge the gap between academic learning and real-world blockchain applications through 
                         <span class="highlight-blue">cutting-edge research</span>, hands-on education, strategic consulting, 
                         and <span class="highlight-blue">innovative design solutions</span>. Join us in shaping the 
                         decentralized economy of tomorrow.
                     </p>
+                    
+                    <div class="mission-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Active Members</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Industry Partners</div>
+                        </div>
+                    </div>
+                    
+
                 </div>
+                
                 <div class="mission-visual">
-                    <img src="Images/blockchain-hero.jpg" alt="Blockchain network visualization" class="mission-image">
+                    <div class="eth-denver-image">
+                        <img src="../Images/Gallery/ETH Denver.jpg" alt="ETH Denver Conference" class="mission-image">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <h3>ETH Denver 2024</h3>
+                                <p>Representing Emory at one of the largest Ethereum conferences</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -171,8 +106,8 @@
         <!-- Partners Section -->
         <section class="partners-section">
             <div class="partners-container">
-                <h2 class="partners-title">Partners</h2>
-                <div class="partners-slider">
+                <h2 class="partners-title scroll-animate">Partners</h2>
+                <div class="partners-slider scroll-animate stagger-1">
                     <div class="partners-track">
                         <!-- First set of logos -->
                         <div class="partner-logo">
@@ -227,14 +162,14 @@
         <!-- Events Section -->
         <section class="events-section" id="events">
             <div class="events-container">
+                <h2 class="events-title scroll-animate">Club Events</h2>
+                <p class="events-description scroll-animate stagger-1">
+                    Join us for cutting-edge workshops, inspiring guest talks, and innovative hackathons 
+                    that bridge the gap between blockchain theory and real-world applications. Connect with 
+                    industry leaders and build the future together.
+                </p>
                 <div class="events-content">
-                    <div class="events-text">
-                        <h2 class="events-title"> Events</h2>
-                        <p class="events-description">
-                            Join us for cutting-edge workshops, inspiring guest talks, and innovative hackathons 
-                            that bridge the gap between blockchain theory and real-world applications. Connect with 
-                            industry leaders and build the future together.
-                        </p>
+                    <div class="events-text scroll-animate-left stagger-2">
                         
                         <div class="last-event">
                             <h4 class="last-event-label">Last Event</h4>
@@ -274,17 +209,23 @@
                         </div>
                     </div>
                     
-                    <div class="events-visual">
+                    <div class="events-visual scroll-animate-right stagger-3">
                         <div class="event-images-container">
                             <div class="event-images-fan" id="eventImagesFan">
-                                <div class="event-image-wrapper" data-event="nearai" data-expanded="../Images/Meetings/NearAI expanded.png">
+                                <div class="event-image-wrapper" data-event="nearai" data-expanded="../Images/end event/NearAI.jpg">
                                     <img src="../Images/Meetings/NearAI.jpg" alt="Near AI Workshop" class="event-image">
                                 </div>
-                                <div class="event-image-wrapper" data-event="accelerate" data-expanded="../Images/Meetings/Accekerate expanded.png">
+                                <div class="event-image-wrapper" data-event="accelerate" data-expanded="../Images/end event/Accelerator.jpg">
                                     <img src="../Images/Meetings/Accelerate.jpg" alt="Accelerate Workshop" class="event-image">
                                 </div>
-                                <div class="event-image-wrapper" data-event="sui" data-expanded="../Images/Meetings/SUi-workshop expanded.png">
+                                <div class="event-image-wrapper" data-event="sui" data-expanded="../Images/end event/Sui-workshop.jpg">
                                     <img src="../Images/Meetings/Sui-workshop.jpg" alt="SUI Workshop" class="event-image">
+                                </div>
+                                <div class="event-image-wrapper" data-event="starknet" data-expanded="../Images/end event/Starknet.jpg">
+                                    <img src="../Images/Meetings/Starknet.jpg" alt="Starknet Workshop" class="event-image">
+                                </div>
+                                <div class="event-image-wrapper" data-event="sui-pizza" data-expanded="../Images/end event/Sui-pizza.jpg">
+                                    <img src="../Images/Meetings/SUI-pizza.jpg" alt="SUI Pizza Event" class="event-image">
                                 </div>
                             </div>
                             
@@ -299,6 +240,130 @@
                                 <div class="event-image-wrapper" data-event="conference">
                                     <img src="https://via.placeholder.com/300x200/0891b2/ffffff?text=Conference" alt="Blockchain Conference" class="event-image">
                                 </div>
+                                <div class="event-image-wrapper" data-event="hackathon">
+                                    <img src="https://via.placeholder.com/300x200/059669/ffffff?text=Hackathon" alt="Blockchain Hackathon" class="event-image">
+                                </div>
+                                <div class="event-image-wrapper" data-event="workshop">
+                                    <img src="https://via.placeholder.com/300x200/dc2626/ffffff?text=Workshop" alt="Technical Workshop" class="event-image">
+                                </div>
+                                <div class="event-image-wrapper" data-event="guest-talk">
+                                    <img src="https://via.placeholder.com/300x200/7c2d12/ffffff?text=Guest+Talk" alt="Guest Speaker Event" class="event-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Events Section -->
+        <section class="industry-events-section" id="industry-events">
+            <div class="industry-events-container">
+                <div class="industry-events-content">
+                    <div class="industry-events-text scroll-animate-left">
+                        <h2 class="industry-events-title scroll-animate">Industry Events</h2>
+                        <p class="industry-events-description scroll-animate stagger-1">
+                            Connect with the broader blockchain ecosystem through industry conferences, networking events, 
+                            and professional meetups. Our members regularly attend and speak at major blockchain events 
+                            worldwide, building valuable connections and staying ahead of industry trends.
+                        </p>
+                        
+                        <div class="last-industry-event">
+                            <h4 class="last-industry-event-label">Last Industry Event</h4>
+                            <h3 class="industry-event-name past">ETH Denver 2024</h3>
+                            <p class="industry-event-summary">Successfully represented Emory at one of the largest Ethereum conferences, with team members presenting research and networking with industry leaders.</p>
+                        </div>
+                        
+                        <div class="next-industry-event">
+                            <h4 class="next-industry-event-label">Next Industry Event</h4>
+                            <h3 class="industry-event-name">Consensus 2024</h3>
+                            <div class="industry-event-details">
+                                <div class="industry-event-detail">
+                                    <span class="detail-label">Date:</span>
+                                    <span class="detail-value">May 29-31, 2024</span>
+                                </div>
+                                <div class="industry-event-detail">
+                                    <span class="detail-label">Location:</span>
+                                    <span class="detail-value">Austin, TX</span>
+                                </div>
+                                <div class="industry-event-detail">
+                                    <span class="detail-label">Focus:</span>
+                                    <span class="detail-value">DeFi & Institutional Adoption</span>
+                                </div>
+                            </div>
+                            <div class="industry-event-actions">
+                                <button class="learn-more-btn">Learn More</button>
+                                <a href="https://consensus2024.coindesk.com/" target="_blank" rel="noopener noreferrer" class="track-events-btn">
+                                    <svg class="calendar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    View Event Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="industry-events-visual">
+                        <div class="industry-events-slider">
+                            <div class="slider-container">
+                                <div class="slider-track" id="industrySliderTrack">
+                                    <div class="slider-slide" data-event="ethdenver">
+                                        <img src="../Images/Gallery/ETH Denver.jpg" alt="ETH Denver Conference" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>ETH Denver 2024</h4>
+                                            <p>Largest Ethereum conference in the Rocky Mountain region. Our team presented research on DeFi innovations and networked with industry leaders.</p>
+                                            <span class="event-date">February 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="slider-slide" data-event="cornell">
+                                        <img src="../Images/Gallery/Cornell Blockchain.jpg" alt="Cornell Blockchain Event" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>Cornell Blockchain Conference</h4>
+                                            <p>Academic blockchain conference focusing on research and innovation. Our members participated in panel discussions and workshops.</p>
+                                            <span class="event-date">March 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="slider-slide" data-event="networking">
+                                        <img src="../Images/Gallery/1st Event Dinner.jpg" alt="Networking Dinner" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>Industry Networking Dinner</h4>
+                                            <p>Exclusive networking event with blockchain professionals and entrepreneurs. Building connections for future collaborations.</p>
+                                            <span class="event-date">January 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="slider-slide" data-event="conference">
+                                        <img src="https://via.placeholder.com/600x400/0891b2/ffffff?text=Blockchain+Summit" alt="Blockchain Summit" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>Blockchain Summit 2024</h4>
+                                            <p>International blockchain summit featuring keynote speakers and cutting-edge technology demonstrations.</p>
+                                            <span class="event-date">April 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="slider-slide" data-event="workshop">
+                                        <img src="https://via.placeholder.com/600x400/ea580c/ffffff?text=Industry+Workshop" alt="Industry Workshop" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>Industry Workshop Series</h4>
+                                            <p>Hands-on workshops with blockchain companies covering smart contracts, DeFi protocols, and emerging technologies.</p>
+                                            <span class="event-date">May 2024</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-btn prev-btn" id="industryPrevBtn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="15,18 9,12 15,6"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="slider-dots" id="industrySliderDots"></div>
+                                <button class="slider-btn next-btn" id="industryNextBtn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9,18 15,12 9,6"></polyline>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -310,113 +375,91 @@
         <section class="team-preview-section" id="team-preview">
             <div class="team-preview-container">
                 <div class="team-preview-header">
-                    <h2 class="team-preview-title">Meet the Team</h2>
-                    <div class="title-underline"></div>
-                    <p class="team-preview-subtitle">The people driving blockchain innovation at Emory.</p>
+                    <h2 class="team-preview-title scroll-animate">Meet the Team</h2>
                 </div>
                 
-                <div class="team-preview-grid">
-                    <!-- Event Photo 1 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="../Images/Meetings/NearAI.jpg" alt="Near AI Workshop Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Near AI Workshop</span>
-                            </div>
+                <div class="team-sections">
+                    <!-- Board Section: Image on left, text on right -->
+                    <div class="team-section scroll-animate-scale stagger-1">
+                        <div class="team-section-image">
+                            <a href="../Team/Team.html#board" class="team-section-link">
+                                <img src="../Images/Gallery/ETH Denver.jpg" alt="ETH Denver Conference" class="team-section-img">
+                            </a>
                         </div>
-                        <h3 class="team-preview-name">Innovation in Action</h3>
-                        <p class="team-preview-role">Exploring AI & Blockchain</p>
+                        <div class="team-section-content">
+                            <h3 class="team-section-title">Directors</h3>
+                            <p class="team-section-description">
+                                Our leadership team drives strategic vision and oversees all club operations. 
+                                They ensure we maintain our mission of empowering students in blockchain innovation 
+                                while building strong industry partnerships and academic connections.
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Event Photo 2 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="../Images/Meetings/Accelerate.jpg" alt="Accelerate Workshop Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Accelerate Workshop</span>
-                            </div>
+                    <!-- Hacker Team Section: Text on left, image on right -->
+                    <div class="team-section scroll-animate-scale stagger-2">
+                                                <div class="team-section-content">
+                            <h3 class="team-section-title">Hackers</h3>
+                            <p class="team-section-description">
+                                Our technical experts focus on hands-on development, smart contract creation, 
+                                and blockchain infrastructure. They lead workshops, hackathons, and technical 
+                                projects that bridge theory with real-world applications.
+                            </p>
                         </div>
-                        <h3 class="team-preview-name">Building Together</h3>
-                        <p class="team-preview-role">Collaborative Development</p>
+                        <div class="team-section-image">
+                            <a href="../Team/Team.html#hacker" class="team-section-link">
+                                <img src="../Images/Gallery/1st Event Dinner.jpg" alt="First Event Dinner" class="team-section-img">
+                            </a>
+                                </div>
+                            </div>
+
+                    <!-- Research Team Section: Image on left, text on right -->
+                    <div class="team-section scroll-animate-scale stagger-3">
+                        <div class="team-section-image">
+                            <a href="../Team/Team.html#research" class="team-section-link">
+                                <img src="../Images/Gallery/Cornell Blockchain.jpg" alt="Cornell Blockchain Event" class="team-section-img">
+                            </a>
+                        </div>
+                        <div class="team-section-content">
+                            <h3 class="team-section-title">Researchers</h3>
+                            <p class="team-section-description">
+                                Our research team explores cutting-edge blockchain technologies, publishes 
+                                academic papers, and conducts market analysis. They stay ahead of industry 
+                                trends and contribute to the broader blockchain ecosystem.
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Event Photo 3 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="../Images/Meetings/Sui-workshop.jpg" alt="SUI Workshop Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">SUI Workshop</span>
-                            </div>
+                    <!-- Investment Team Section: Text on left, image on right -->
+                    <div class="team-section scroll-animate-scale stagger-4">
+                        <div class="team-section-content">
+                            <h3 class="team-section-title">Investors</h3>
+                            <p class="team-section-description">
+                                Our investment team manages portfolio strategies, conducts due diligence, 
+                                and identifies emerging opportunities in the blockchain space. They provide 
+                                financial education and real-world investment experience to our members.
+                            </p>
                         </div>
-                        <h3 class="team-preview-name">Technical Excellence</h3>
-                        <p class="team-preview-role">Blockchain Development</p>
-                    </div>
-
-                    <!-- Placeholder Event Photo 4 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=300&h=300&fit=crop&crop=faces" alt="Team Collaboration Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Team Meeting</span>
-                            </div>
+                        <div class="team-section-image">
+                            <a href="../Team/Team.html#investment" class="team-section-link">
+                                <img src="../Images/Gallery/Waffle House.jpg" alt="Waffle House Event" class="team-section-img">
+                            </a>
                         </div>
-                        <h3 class="team-preview-name">Strategic Planning</h3>
-                        <p class="team-preview-role">Future Roadmap</p>
-                    </div>
-
-                    <!-- Placeholder Event Photo 5 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300&h=300&fit=crop&crop=center" alt="Networking Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Networking Night</span>
-                            </div>
-                        </div>
-                        <h3 class="team-preview-name">Community Building</h3>
-                        <p class="team-preview-role">Industry Connections</p>
-                    </div>
-
-                    <!-- Placeholder Event Photo 6 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=300&h=300&fit=crop&crop=center" alt="Hackathon Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Hackathon</span>
-                            </div>
-                        </div>
-                        <h3 class="team-preview-name">Innovation Challenge</h3>
-                        <p class="team-preview-role">48-Hour Build</p>
                     </div>
                 </div>
                 
-                <div class="team-preview-cta">
-                    <a href="../Team/Team.html" class="team-preview-btn">
-                        <span class="btn-text">View Full Team</span>
-                        <span class="btn-glow"></span>
-                    </a>
-                    <a href="../Team/Team.html" class="team-arrow-btn" aria-label="Navigate to Team page">
-                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M9 18l6-6-6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
+
             </div>
         </section>
 
         <!-- Latest Updates Section -->
         <section class="updates-section" id="updates">
             <div class="updates-container">
-                <h2 class="updates-title">Latest Updates</h2>
+                <h2 class="updates-title scroll-animate">Latest Updates</h2>
                 
                 <div class="updates-grid">
                     <!-- Card 1: Solana Validator -->
-                    <div class="update-card validator-card" tabindex="0">
+                    <div class="update-card validator-card scroll-animate-scale stagger-1" tabindex="0">
                         <div class="card-header">
                             <div class="card-icon validator-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -468,7 +511,7 @@
                     </div>
 
                     <!-- Card 2: Research on Substack -->
-                    <div class="update-card research-card" tabindex="0">
+                    <div class="update-card research-card scroll-animate-scale stagger-2" tabindex="0">
                         <div class="card-header">
                             <div class="card-icon research-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -497,7 +540,7 @@
                     </div>
 
                     <!-- Card 3: Performance Update -->
-                    <div class="update-card performance-card" tabindex="0">
+                    <div class="update-card performance-card scroll-animate-scale stagger-3" tabindex="0">
                         <div class="card-header">
                             <div class="card-icon performance-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -564,50 +607,63 @@
                 </div>
 
                 <div class="contact-card">
-                    <div class="card-accent"></div>
-                    
                     <form class="contact-form" action="#" method="post">
                         <div class="form-grid">
-                                <div class="form-group">
-                                <label for="contact-name" class="form-label">NAME</label>
-                                <input type="text" id="contact-name" name="name" class="form-input" required>
-                                </div>
-                                <div class="form-group">
-                                <label for="contact-email" class="form-label">EMAIL</label>
-                                <input type="email" id="contact-email" name="email" class="form-input" required>
-                                </div>
-                                </div>
-
-                                <div class="form-group">
-                            <label for="contact-topic" class="form-label">TOPIC</label>
-                            <select id="contact-topic" name="topic" class="form-select" required>
-                                <option value="">Select a topic</option>
-                                <option value="partnership">Partnership</option>
-                                <option value="research">Research collaboration</option>
-                                        <option value="consulting">Consulting</option>
-                                <option value="speaking">Speaking engagement</option>
-                                <option value="general">General inquiry</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                            <label for="contact-message" class="form-label">MESSAGE</label>
-                            <textarea id="contact-message" name="message" class="form-textarea" rows="6" placeholder="Tell us about your project or inquiry..." required></textarea>
+                            <div class="form-group">
+                                <label for="first-name" class="form-label">FIRST NAME <span class="required">*</span></label>
+                                <input type="text" id="first-name" name="firstName" class="form-input" required>
+                                <div class="error-message" id="firstNameError"></div>
                             </div>
+                            <div class="form-group">
+                                <label for="last-name" class="form-label">LAST NAME <span class="required">*</span></label>
+                                <input type="text" id="last-name" name="lastName" class="form-input" required>
+                                <div class="error-message" id="lastNameError"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email" class="form-label">EMAIL <span class="required">*</span></label>
+                            <input type="email" id="contact-email" name="email" class="form-input" required>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-subject" class="form-label">SUBJECT <span class="required">*</span></label>
+                            <input type="text" id="contact-subject" name="subject" class="form-input" required>
+                            <div class="error-message" id="subjectError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-message" class="form-label">MESSAGE <span class="required">*</span></label>
+                            <textarea id="contact-message" name="message" class="form-textarea" rows="6" placeholder="Tell us about your inquiry..." required></textarea>
+                            <div class="error-message" id="messageError"></div>
+                        </div>
 
                         <button type="submit" class="form-submit">
-                            <span class="submit-text">SEND MESSAGE</span>
+                            <span class="submit-text">SUBMIT</span>
                             <div class="submit-loading">
                                 <div class="loading-spinner"></div>
-                                </div>
+                            </div>
                         </button>
                     </form>
                     
                     <div class="contact-footer">
-                        <p class="contact-info">Or reach us directly at <a href="mailto:hello@blockchainclubemory.org" class="contact-email-link">hello@blockchainclubemory.org</a></p>
-                                </div>
-                            </div>
-                        </div>
+                        <p class="contact-info">Or reach us directly at 
+                            <span class="email-with-copy">
+                                <a href="mailto:blockchainemory@gmail.com" class="contact-email-link">blockchainemory@gmail.com</a>
+                                <button class="copy-email-btn" onclick="copyEmail()" aria-label="Copy email address">
+                                    <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                    <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                                        <polyline points="20,6 9,17 4,12"></polyline>
+                                    </svg>
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
         </section>
     </main>
 
@@ -621,17 +677,17 @@
             <!-- Top Row -->
             <div class="footer-top">
                 <div class="footer-logo">
-                    <a href="index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                    <a href="home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
                         <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="footer-logo-img">
                     </a>
                 </div>
                 
                 <nav class="footer-nav" aria-label="Footer navigation">
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="../About/index.html" class="footer-link">About</a>
-                    <a href="../Projects/index.html" class="footer-link">Projects</a>
-                    <a href="../Research/index.html" class="footer-link">Research</a>
-                    <a href="../Finances/index.html" class="footer-link">Finances</a>
+                    <a href="home.html" class="footer-link">Home</a>
+                    <a href="../About/about.html" class="footer-link">About</a>
+                    <a href="../Projects/projects.html" class="footer-link">Projects</a>
+                    <a href="../Research/research.html" class="footer-link">Research</a>
+                    <a href="../Finances/finances.html" class="footer-link">Finances</a>
                     <a href="../Team/Team.html" class="footer-link">Team</a>
                 </nav>
                 
@@ -708,6 +764,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Toast Container for Form Feedback -->
+    <div id="toastContainer" class="toast-container"></div>
 
     <script src="home.js"></script>
 </body>

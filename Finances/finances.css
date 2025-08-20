@@ -682,7 +682,7 @@ body {
 
 /* Main Content */
 .main-content {
-    margin-top: 92px;
+    margin-top: 0;
     min-height: calc(100vh - 92px);
 }
 
@@ -2099,19 +2099,20 @@ body {
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, #5cc2ff, #f7c948);
-    color: #0b2a5a;
+    background: rgba(92, 194, 255, 0.1);
+    color: #cfd6e4;
     text-decoration: none;
     border-radius: 25px;
     font-size: 1rem;
     font-weight: 700;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(92, 194, 255, 0.3);
+    border: 1px solid rgba(92, 194, 255, 0.2);
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(92, 194, 255, 0.4);
+    color: #5cc2ff;
+    border-color: rgba(92, 194, 255, 0.4);
+    background: linear-gradient(135deg, rgba(92, 194, 255, 0.15), rgba(247, 201, 72, 0.15));
 }
 
 /* Footer Styles - Flowing Digital Ledger */

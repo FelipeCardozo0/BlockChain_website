@@ -3,250 +3,554 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — Blockchain Club at Emory</title>
-    <meta name="description" content="Student-led blockchain research, education, and innovation at Emory University">
+    <title>About - Blockchain Club at Emory</title>
     <link rel="icon" type="image/png" href="../Images/Logo/Logo_Official.png">
     <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="print.css" media="print">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Schema.org markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "https://blockchainclubemory.org",
-        "name": "Blockchain Club at Emory",
-        "url": "https://blockchainclubemory.org",
-        "description": "Student-led blockchain research, education, and innovation at Emory University",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Atlanta",
-            "addressRegion": "GA",
-            "addressCountry": "US"
-        },
-        "parentOrganization": {
-            "@type": "EducationalOrganization",
-            "name": "Emory University"
-        }
-    }
-    </script>
 </head>
 <body>
-    <!-- Skip Navigation -->
-    <a href="#main" class="skip-link">Skip to main content</a>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <canvas id="blockchainCanvas" class="background-canvas"></canvas>
+    </div>
 
-    <!-- Navigation -->
-    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <!-- Home-style Navigation Bar (Initial) -->
+    <nav class="home-navbar" id="homeNavbar">
         <div class="nav-container">
-            <div class="nav-brand">
-                <a href="../Home/home.html" class="brand-link">
-                    <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="nav-brand-img">
+            <!-- Logo -->
+            <div class="nav-logo"> 
+                <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                    <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="nav-logo-img">
                 </a>
             </div>
-            <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="about.html" class="nav-link active" role="menuitem" aria-current="page">About</a></li>
-                <li role="none"><a href="../Team/Team.html" class="nav-link" role="menuitem">Team</a></li>
-                <li role="none"><a href="../Projects/projects.html" class="nav-link" role="menuitem">Projects</a></li>
-                <li role="none"><a href="../Research/research.html" class="nav-link" role="menuitem">Research</a></li>
-                <li role="none"><a href="../Finances/finances.html" class="nav-link" role="menuitem">Finances</a></li>
-            </ul>
+            
+            <!-- Navigation Links -->
+            <nav class="nav-navigation" aria-label="Main navigation">
+                <div class="nav-links-center">
+                    <a href="about.html" class="nav-link nav-link-active">About</a>
+                    <a href="../Projects/projects.html" class="nav-link">Projects</a>
+                    <a href="../Research/research.html" class="nav-link">Research</a>
+                    <a href="../Finances/finances.html" class="nav-link">Finances</a>
+                    <a href="../Team/Team.html" class="nav-link">Team</a>
+                </div>
+                <div class="nav-links-right">
+                    <a href="../Home/home.html#contact" class="nav-link">Contact</a>
+                    <a href="#join" class="nav-link nav-link-apply">Apply</a>
+                </div>
+            </nav>
         </div>
     </nav>
 
+    <!-- About-style Navigation Bar (After Scroll) -->
+    <nav class="about-navbar" id="aboutNavbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club About - Home">
+                    <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="about-logo-img">
+                </a>
+            </div>
+            
+            <!-- Center Navigation Links -->
+            <div class="navbar-center">
+                <a href="#mission" class="nav-link" data-section="mission">
+                    <span class="link-text">Mission</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="#principles" class="nav-link" data-section="principles">
+                    <span class="link-text">Principles</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="#programs" class="nav-link" data-section="programs">
+                    <span class="link-text">Programs</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="#teams" class="nav-link" data-section="teams">
+                    <span class="link-text">Teams</span>
+                    <span class="link-underline"></span>
+                </a>
+                <a href="#join" class="nav-link" data-section="join">
+                    <span class="link-text">Join Us</span>
+                    <span class="link-underline"></span>
+                </a>
+            </div>
+            
+            <!-- Menu Icon -->
+            <div class="navbar-menu">
+                <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
+                    <span class="menu-icon">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="overlay-background"></div>
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2 class="overlay-title">Navigation</h2>
+                <button class="overlay-close" id="overlayClose" aria-label="Close navigation menu">
+                    <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="overlay-nav" aria-label="Main navigation">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Main</h3>
+                    <ul class="nav-list">
+                        <li><a href="../Home/home.html" class="overlay-link">
+                            <span class="link-label">Home</span>
+                        </a></li>
+                        <li><a href="about.html" class="overlay-link active">
+                            <span class="link-label">About</span>
+                        </a></li>
+                        <li><a href="../Projects/projects.html" class="overlay-link">
+                            <span class="link-label">Projects</span>
+                        </a></li>
+                        <li><a href="../Research/research.html" class="overlay-link">
+                            <span class="link-label">Research</span>
+                        </a></li>
+                        <li><a href="../Finances/finances.html" class="overlay-link">
+                            <span class="link-label">Finances</span>
+                        </a></li>
+                        <li><a href="../Team/Team.html" class="overlay-link">
+                            <span class="link-label">Team</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">About Sections</h3>
+                    <ul class="nav-list">
+                        <li><a href="#mission" class="overlay-link">
+                            <span class="link-label">Mission & Vision</span>
+                        </a></li>
+                        <li><a href="#principles" class="overlay-link">
+                            <span class="link-label">Core Principles</span>
+                        </a></li>
+                        <li><a href="#programs" class="overlay-link">
+                            <span class="link-label">Programs</span>
+                        </a></li>
+                        <li><a href="#teams" class="overlay-link">
+                            <span class="link-label">Teams</span>
+                        </a></li>
+                        <li><a href="#track-record" class="overlay-link">
+                            <span class="link-label">Impact Metrics</span>
+                        </a></li>
+                        <li><a href="#join" class="overlay-link">
+                            <span class="link-label">Join Us</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Contact</h3>
+                    <ul class="nav-list">
+                        <li><a href="../Home/home.html#contact" class="overlay-link">
+                            <span class="link-label">Contact Us</span>
+                        </a></li>
+                        <li><a href="#join" class="overlay-link apply-highlight">
+                            <span class="link-label">Apply Now</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
     <!-- Main Content -->
-    <main id="main" class="main" role="main">
-        <div class="grid-container">
-            <!-- Hero Section -->
-            <section class="hero-section grid-module">
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
                 <div class="hero-content">
-                    <h1 class="hero-title">About the Blockchain Club at Emory</h1>
-                    <p class="hero-mission">Learn about our mission, programs, team, and everything you need to know about the Blockchain Club at Emory.</p>
+                    <h1 class="hero-title">About</h1>
+                    <p class="hero-subtitle">Student-led blockchain research, education, and innovation at Emory University. Building the future of decentralized technology through academic excellence and practical implementation.</p>
                 </div>
-            </section>
+                <div class="hero-grid"></div>
+            </div>
+        </section>
 
-            <!-- Principles Section -->
-            <section class="principles-section grid-module" aria-labelledby="principles-title">
-                <h2 id="principles-title" class="section-title">Principles</h2>
-                <ul class="principles-list" role="list">
-                    <li>Education</li>
-                    <li>Research</li>
-                    <li>Consulting</li>
-                    <li>Design</li>
-                    <li>Xcelerator</li>
-                    <li>Governance</li>
-                </ul>
-            </section>
-
-            <!-- What We Do Section -->
-            <section class="manifesto-section grid-module" aria-labelledby="manifesto-title">
-                <h2 id="manifesto-title" class="section-title">What We Do</h2>
-                <div class="manifesto-content">
-                    <div class="manifesto-column">
-                        <p>We bridge the gap between academic theory and practical blockchain implementation. Our research-driven approach ensures every project contributes to the broader understanding of decentralized systems.</p>
-                        <p>Through partnerships with industry leaders and academic institutions, we create opportunities for students to engage with cutting-edge blockchain technology. Our work spans consensus mechanisms, DeFi protocols, and governance systems.</p>
-                        <p>We maintain rigorous standards for research methodology and peer review. Every publication undergoes extensive validation to ensure scientific integrity and reproducibility.</p>
-                    </div>
-                    <div class="manifesto-column">
-                        <p>Our consulting practice applies blockchain solutions to real-world problems. We work with startups, enterprises, and government entities to design and implement decentralized systems.</p>
-                        <p>The Xcelerator program incubates student-led blockchain ventures. We provide technical guidance, funding, and mentorship to transform research insights into viable products and services.</p>
-                        <p>Community governance drives our decision-making process. All members participate in shaping the club's direction through transparent, on-chain voting mechanisms.</p>
+        <!-- Mission Section -->
+        <section class="mission-section" id="mission">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Mission & Vision</h2>
+                    <p class="section-subtitle">Advancing blockchain technology through education, research, and innovation</p>
+                </div>
+                
+                <div class="mission-card">
+                    <div class="mission-content">
+                        <div class="mission-text">
+                            <h3 class="mission-title">Our Mission</h3>
+                            <p class="mission-description">
+                                Our mission is to bridge the gap between the complex fintech industry and our members by fostering a deeper understanding of blockchain. Through engaging lesson plans, talks with industry experts, and networking events, we equip our members with the knowledge and skills necessary to navigate the ever-evolving landscape of the blockchain industry.
+                            </p>
+                            <p class="mission-description">
+                                The interest group is a dynamic platform for students passionate about blockchain, providing valuable insights and preparing them for future opportunities in this transformative space.
+                            </p>
+                            <div class="mission-stats">
+                                <div class="stat">
+                                    <span class="stat-value">47</span>
+                                    <span class="stat-label">Events held</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">23</span>
+                                    <span class="stat-label">Papers published</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">156</span>
+                                    <span class="stat-label">Internships placed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mission-visual">
+                            <div class="mission-image">
+                                <svg viewBox="0 0 400 300" class="mission-diagram">
+                                    <!-- Mission Visualization -->
+                                    <defs>
+                                        <linearGradient id="missionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#5cc2ff;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#9b6bff;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Central Hub -->
+                                    <circle cx="200" cy="150" r="25" fill="url(#missionGradient)" opacity="0.9"/>
+                                    <!-- Connected Nodes -->
+                                    <circle cx="120" cy="80" r="15" fill="#5cc2ff" opacity="0.7"/>
+                                    <circle cx="280" cy="80" r="15" fill="#5cc2ff" opacity="0.7"/>
+                                    <circle cx="320" cy="150" r="15" fill="#9b6bff" opacity="0.7"/>
+                                    <circle cx="280" cy="220" r="15" fill="#9b6bff" opacity="0.7"/>
+                                    <circle cx="120" cy="220" r="15" fill="#5cc2ff" opacity="0.7"/>
+                                    <circle cx="80" cy="150" r="15" fill="#9b6bff" opacity="0.7"/>
+                                    <!-- Connections -->
+                                    <line x1="200" y1="150" x2="120" y2="80" stroke="#5cc2ff" stroke-width="3" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="280" y2="80" stroke="#5cc2ff" stroke-width="3" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="320" y2="150" stroke="#9b6bff" stroke-width="3" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="280" y2="220" stroke="#9b6bff" stroke-width="3" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="120" y2="220" stroke="#5cc2ff" stroke-width="3" opacity="0.6"/>
+                                    <line x1="200" y1="150" x2="80" y2="150" stroke="#9b6bff" stroke-width="3" opacity="0.6"/>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Programs Section -->
-            <section class="programs-section grid-module" aria-labelledby="programs-title">
-                <h2 id="programs-title" class="section-title">Programs</h2>
+        <!-- Principles Section -->
+        <section class="principles-section" id="principles">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Core Principles</h2>
+                    <p class="section-subtitle">The foundational values that guide our work and community</p>
+                </div>
+                
+                <div class="principles-grid">
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="m2 17 10 5 10-5"/>
+                                <path d="m2 12 10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="principle-title">Education</h3>
+                        <p class="principle-description">Comprehensive blockchain curriculum and hands-on learning experiences for all skill levels.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M9 12l2 2 4-4"/>
+                                <path d="M21 12c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z"/>
+                                <path d="M3 12c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2z"/>
+                                <path d="M12 3c0 1-1 2-2 2s-2-1-2-2 1-2 2-2 2 1 2 2z"/>
+                                <path d="M12 21c0-1 1-2 2-2s2 1 2 2-1 2-2 2-2-1-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="principle-title">Research</h3>
+                        <p class="principle-description">Peer-reviewed publications and cutting-edge research in blockchain technology and applications.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3 class="principle-title">Consulting</h3>
+                        <p class="principle-description">Strategic advisory for blockchain implementation and design solutions for real-world problems.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="principle-title">Design</h3>
+                        <p class="principle-description">User experience research and design for decentralized applications and blockchain interfaces.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="principle-title">Xcelerator</h3>
+                        <p class="principle-description">Startup incubation and venture development program for student-led blockchain projects.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="principle-title">Governance</h3>
+                        <p class="principle-description">Transparent, on-chain decision-making processes that empower all community members.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section class="programs-section" id="programs">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Programs</h2>
+                    <p class="section-subtitle">Comprehensive programs designed to develop blockchain expertise and practical skills</p>
+                </div>
+                
                 <div class="programs-grid">
-                    <div class="program-tile">
-                        <h3 class="program-title">Education</h3>
-                        <p class="program-description">Comprehensive blockchain curriculum and certification programs</p>
-                    </div>
-                    <div class="program-tile">
-                        <h3 class="program-title">Consulting</h3>
-                        <p class="program-description">Strategic advisory for blockchain implementation and design</p>
-                    </div>
-                    <div class="program-tile">
-                        <h3 class="program-title">Design</h3>
-                        <p class="program-description">User experience research for decentralized applications</p>
-                    </div>
-                    <div class="program-tile">
-                        <h3 class="program-title">Research</h3>
-                        <p class="program-description">Peer-reviewed publications in blockchain and cryptocurrency</p>
-                    </div>
-                    <div class="program-tile">
-                        <h3 class="program-title">Xcelerator</h3>
-                        <p class="program-description">Startup incubation and venture development program</p>
-                    </div>
-                    <div class="program-tile">
-                        <h3 class="program-title">Community</h3>
-                        <p class="program-description">Events, workshops, and networking opportunities</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Teams Section -->
-            <section class="teams-section grid-module" aria-labelledby="teams-title">
-                <h2 id="teams-title" class="section-title">Teams</h2>
-                <div class="teams-grid">
-                    <div class="team-item">
-                        <h3 class="team-name">Hacker</h3>
-                        <div class="team-meta">
-                            <span class="team-count">24 members</span>
-                            <a href="../Team/Team.html" class="team-link">View team</a>
-                        </div>
-                    </div>
-                    <div class="team-item">
-                        <h3 class="team-name">Research</h3>
-                        <div class="team-meta">
-                            <span class="team-count">18 members</span>
-                            <a href="../Team/Team.html" class="team-link">View team</a>
-                        </div>
-                    </div>
-                    <div class="team-item">
-                        <h3 class="team-name">Investment</h3>
-                        <div class="team-meta">
-                            <span class="team-count">12 members</span>
-                            <a href="../Team/Team.html" class="team-link">View team</a>
-                        </div>
-                    </div>
-                    <div class="team-item">
-                        <h3 class="team-name">Governance</h3>
-                        <div class="team-meta">
-                            <span class="team-count">8 members</span>
-                            <a href="../Team/Team.html" class="team-link">View team</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Track Record Section -->
-            <section class="track-record-section grid-module" aria-labelledby="track-record-title">
-                <h2 id="track-record-title" class="section-title">Track Record</h2>
-                <div class="facts-grid">
-                    <div class="fact-item">
-                        <div class="fact-number">47</div>
-                        <div class="fact-label">Events held</div>
-                    </div>
-                    <div class="fact-item">
-                        <div class="fact-number">23</div>
-                        <div class="fact-label">Papers published</div>
-                    </div>
-                    <div class="fact-item">
-                        <div class="fact-number">8</div>
-                        <div class="fact-label">Research grants</div>
-                    </div>
-                    <div class="fact-item">
-                        <div class="fact-number">3</div>
-                        <div class="fact-label">Validators operated</div>
-                    </div>
-                    <div class="fact-item">
-                        <div class="fact-number">156</div>
-                        <div class="fact-label">Internships placed</div>
-                    </div>
-                    <div class="fact-item">
-                        <div class="fact-number">12</div>
-                        <div class="fact-label">Competition wins</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Infrastructure Section -->
-            <section class="infrastructure-section grid-module" aria-labelledby="infrastructure-title">
-                <h2 id="infrastructure-title" class="section-title">Infrastructure</h2>
-                <div class="infrastructure-content">
-                    <div class="infrastructure-item">
-                        <h3 class="infrastructure-name">Solana Validator</h3>
-                        <div class="infrastructure-stats">
-                            <div class="stat-row">
-                                <span class="stat-label">Uptime</span>
-                                <span class="stat-value">99.7%</span>
-                            </div>
-                            <div class="stat-row">
-                                <span class="stat-label">Stake</span>
-                                <span class="stat-value">1.2M SOL</span>
-                            </div>
-                            <div class="stat-row">
-                                <span class="stat-label">Monthly rewards</span>
-                                <span class="stat-value">847 SOL</span>
+                    <div class="program-card">
+                        <div class="program-header">
+                            <h3 class="program-title">Education</h3>
+                            <div class="program-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="m2 17 10 5 10-5"/>
+                                    <path d="m2 12 10 5 10-5"/>
+                                </svg>
                             </div>
                         </div>
-                    </div>
-                    <div class="infrastructure-item">
-                        <h3 class="infrastructure-name">Technology Stack</h3>
-                        <div class="tech-stack">
-                            <div class="tech-category">
-                                <span class="tech-label">Languages</span>
-                                <span class="tech-items">Rust, Solidity, Python, TypeScript</span>
-                            </div>
-                            <div class="tech-category">
-                                <span class="tech-label">Infrastructure</span>
-                                <span class="tech-items">AWS, Docker, Kubernetes, Grafana</span>
-                            </div>
-                            <div class="tech-category">
-                                <span class="tech-label">Blockchain</span>
-                                <span class="tech-items">Ethereum, Solana, Polygon, Arbitrum</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <!-- How to Join Section -->
-            <section class="join-section grid-module" aria-labelledby="join-title">
-                <h2 id="join-title" class="section-title">How to Join</h2>
-                <div class="join-content">
-                    <div class="join-requirements">
-                        <h3 class="join-subtitle">Eligibility</h3>
-                        <ul class="join-list">
-                            <li>Current Emory University student</li>
-                            <li>Programming knowledge (Hacker team)</li>
-                            <li>Interest in blockchain technology</li>
-                            <li>Commitment to attend weekly meetings</li>
+                        <p class="program-description">Comprehensive blockchain curriculum and certification programs for all skill levels.</p>
+                        <ul class="program-features">
+                            <li>Weekly workshops and tutorials</li>
+                            <li>Blockchain fundamentals course</li>
+                            <li>Advanced smart contract development</li>
+                            <li>Industry certification preparation</li>
                         </ul>
                     </div>
+                    
+                    <div class="program-card">
+                        <div class="program-header">
+                            <h3 class="program-title">Consulting</h3>
+                            <div class="program-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="program-description">Strategic advisory for blockchain implementation and design solutions.</p>
+                        <ul class="program-features">
+                            <li>Technical architecture design</li>
+                            <li>Smart contract auditing</li>
+                            <li>DeFi protocol analysis</li>
+                            <li>Blockchain strategy consulting</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-header">
+                            <h3 class="program-title">Research</h3>
+                            <div class="program-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M9 12l2 2 4-4"/>
+                                    <path d="M21 12c-1 0-2-1-2-2s1-2 2-2 2 1 2 2-1 2-2 2z"/>
+                                    <path d="M3 12c1 0 2-1 2-2s-1-2-2-2-2 1-2 2 1 2 2 2z"/>
+                                    <path d="M12 3c0 1-1 2-2 2s-2-1-2-2 1-2 2-2 2 1 2 2z"/>
+                                    <path d="M12 21c0-1 1-2 2-2s2 1 2 2-1 2-2 2-2-1-2-2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="program-description">Peer-reviewed publications in blockchain and cryptocurrency research.</p>
+                        <ul class="program-features">
+                            <li>Academic paper publication</li>
+                            <li>Conference presentations</li>
+                            <li>Research collaboration</li>
+                            <li>Open-source datasets</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-header">
+                            <h3 class="program-title">Xcelerator</h3>
+                            <div class="program-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="program-description">Startup incubation and venture development program.</p>
+                        <ul class="program-features">
+                            <li>Project incubation support</li>
+                            <li>Technical mentorship</li>
+                            <li>Funding opportunities</li>
+                            <li>Industry connections</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teams Section -->
+        <section class="teams-section" id="teams">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Teams</h2>
+                    <p class="section-subtitle">Specialized teams working on different aspects of blockchain technology</p>
+                </div>
+                
+                <div class="teams-grid">
+                    <div class="team-card">
+                        <div class="team-header">
+                            <h3 class="team-name">Hacker Team</h3>
+                            <span class="team-count">24 members</span>
+                        </div>
+                        <p class="team-description">Core development team focused on smart contracts, dApps, and blockchain infrastructure.</p>
+                        <div class="team-skills">
+                            <span class="skill-tag">Solidity</span>
+                            <span class="skill-tag">Rust</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">React</span>
+                        </div>
+                        <a href="../Team/Team.html" class="team-link">View Team</a>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-header">
+                            <h3 class="team-name">Research Team</h3>
+                            <span class="team-count">18 members</span>
+                        </div>
+                        <p class="team-description">Academic research team publishing papers and conducting blockchain studies.</p>
+                        <div class="team-skills">
+                            <span class="skill-tag">Data Analysis</span>
+                            <span class="skill-tag">Economics</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Statistics</span>
+                        </div>
+                        <a href="../Team/Team.html" class="team-link">View Team</a>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-header">
+                            <h3 class="team-name">Investment Team</h3>
+                            <span class="team-count">12 members</span>
+                        </div>
+                        <p class="team-description">Financial analysis and investment strategy for blockchain assets and protocols.</p>
+                        <div class="team-skills">
+                            <span class="skill-tag">DeFi</span>
+                            <span class="skill-tag">Trading</span>
+                            <span class="skill-tag">Portfolio Management</span>
+                            <span class="skill-tag">Risk Analysis</span>
+                        </div>
+                        <a href="../Team/Team.html" class="team-link">View Team</a>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-header">
+                            <h3 class="team-name">Governance Team</h3>
+                            <span class="team-count">8 members</span>
+                        </div>
+                        <p class="team-description">Community governance and organizational structure management.</p>
+                        <div class="team-skills">
+                            <span class="skill-tag">DAO Governance</span>
+                            <span class="skill-tag">Community Management</span>
+                            <span class="skill-tag">Policy</span>
+                            <span class="skill-tag">Voting Systems</span>
+                        </div>
+                        <a href="../Team/Team.html" class="team-link">View Team</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Metrics Section -->
+        <section class="track-record-section" id="track-record">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Impact Metrics</h2>
+                    <p class="section-subtitle">Our achievements and impact in the blockchain ecosystem</p>
+                </div>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="47">0</div>
+                        <div class="metric-label">Events held</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="23">0</div>
+                        <div class="metric-label">Papers published</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="8">0</div>
+                        <div class="metric-label">Research grants</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="3">0</div>
+                        <div class="metric-label">Validators operated</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="156">0</div>
+                        <div class="metric-label">Internships placed</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="12">0</div>
+                        <div class="metric-label">Competition wins</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join Section -->
+        <section class="join-section" id="join">
+            <div class="section-container">
+                <div class="join-content">
+                    <h2 class="join-title">Join Our Community</h2>
+                    <p class="join-text">
+                        Ready to be part of the future of blockchain technology? We welcome students from all backgrounds 
+                        who are passionate about decentralized systems and innovation.
+                    </p>
+                    
+                    <div class="join-requirements">
+                        <h3 class="join-subtitle">Requirements</h3>
+                        <ul class="join-list">
+                            <li>Current Emory University student</li>
+                            <li>Interest in blockchain technology</li>
+                            <li>Commitment to attend weekly meetings</li>
+                            <li>Programming knowledge (for Hacker team)</li>
+                        </ul>
+                    </div>
+                    
                     <div class="join-process">
                         <h3 class="join-subtitle">Application Process</h3>
                         <ol class="join-steps">
@@ -256,361 +560,119 @@
                             <li>Join onboarding program</li>
                         </ol>
                     </div>
-                    <div class="join-timeline">
-                        <h3 class="join-subtitle">Timeline</h3>
-                        <div class="timeline-item">
-                            <span class="timeline-date">Fall recruitment</span>
-                            <span class="timeline-period">August 25 — September 25</span>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-date">Spring recruitment</span>
-                            <span class="timeline-period">January 15 — February 15</span>
-                        </div>
-                    </div>
+                    
                     <div class="join-actions">
-                        <a href="#apply" class="cta-button primary">Apply</a>
-                        <a href="#newsletter" class="cta-button secondary">Newsletter</a>
-                        <a href="#discord" class="cta-button secondary">Discord</a>
+                        <a href="#apply" class="btn btn-primary">Apply Now</a>
+                        <a href="../Home/home.html#contact" class="btn btn-secondary">Contact Us</a>
                     </div>
                 </div>
-            </section>
-
-            <!-- Governance & Ethics Section -->
-            <section class="governance-section grid-module" aria-labelledby="governance-title">
-                <h2 id="governance-title" class="section-title">Governance & Ethics</h2>
-                <div class="governance-content">
-                    <div class="governance-item">
-                        <h3 class="governance-subtitle">Decision Process</h3>
-                        <p>All major decisions are made through transparent, on-chain voting. Members propose initiatives through our governance portal, followed by community discussion and formal voting periods.</p>
-                    </div>
-                    <div class="governance-item">
-                        <h3 class="governance-subtitle">Financial Transparency</h3>
-                        <p>Complete financial records are publicly available. <a href="../Finances/finances.html" class="governance-link">View our finances</a> for real-time treasury data, allocation strategies, and transaction history.</p>
-                    </div>
-                    <div class="governance-item">
-                        <h3 class="governance-subtitle">Code of Conduct</h3>
-                        <p>We maintain high standards for academic integrity, professional conduct, and inclusive participation. Our code of conduct ensures a respectful environment for all members.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Press & Speaking Section -->
-            <section class="press-section grid-module" aria-labelledby="press-title">
-                <h2 id="press-title" class="section-title">Press & Speaking</h2>
-                <div class="press-content">
-                    <p>For media inquiries, speaking engagements, or interview requests, please use our <a href="#press-form" class="press-link">media request form</a>.</p>
-                    <p>Download our <a href="#media-kit" class="press-link">media kit</a> for high-resolution logos, fact sheets, and executive biographies.</p>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section class="contact-section grid-module" aria-labelledby="contact-title">
-                <h2 id="contact-title" class="section-title">Contact</h2>
-                <div class="contact-content">
-                    <form class="contact-form" action="#" method="post">
-                        <div class="form-group">
-                            <label for="contact-name" class="form-label">Name</label>
-                            <input type="text" id="contact-name" name="name" class="form-input" required aria-describedby="name-error">
-                            <div id="name-error" class="form-error" role="alert"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-email" class="form-label">Email</label>
-                            <input type="email" id="contact-email" name="email" class="form-input" required aria-describedby="email-error">
-                            <div id="email-error" class="form-error" role="alert"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-topic" class="form-label">Topic</label>
-                            <select id="contact-topic" name="topic" class="form-select" required aria-describedby="topic-error">
-                                <option value="">Select a topic</option>
-                                <option value="general">General inquiry</option>
-                                <option value="partnership">Partnership</option>
-                                <option value="research">Research collaboration</option>
-                                <option value="speaking">Speaking engagement</option>
-                                <option value="press">Press inquiry</option>
-                                <option value="press">Other</option>
-                                
-
-                            </select>
-                            <div id="topic-error" class="form-error" role="alert"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-message" class="form-label">Message</label>
-                            <textarea id="contact-message" name="message" class="form-textarea" rows="6" required aria-describedby="message-error"></textarea>
-                            <div id="message-error" class="form-error" role="alert"></div>
-                        </div>
-                        <button type="submit" class="form-submit">Send Message</button>
-                    </form>
-                    <div class="contact-info">
-                        <p class="contact-email">
-                            <a href="mailto:hello@blockchainclubemory.org">hello@blockchainclubemory.org</a>
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQs Section -->
-            <section class="faqs-section grid-module" aria-labelledby="faqs-title">
-                <h2 id="faqs-title" class="section-title">Frequently Asked Questions</h2>
-                <div class="faqs-list">
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
-                            Do I need prior blockchain experience to join?
-                        </button>
-                        <div id="faq-1" class="faq-answer">
-                            <p>No prior blockchain experience is required. We provide comprehensive onboarding and educational resources for all new members.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
-                            What is the time commitment?
-                        </button>
-                        <div id="faq-2" class="faq-answer">
-                            <p>Members are expected to attend weekly meetings and contribute 5-10 hours per week to club activities and projects. Engaged ones may contribute more if interested</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
-                            Are there membership fees?
-                        </button>
-                        <div id="faq-3" class="faq-answer">
-                            <p>No membership fees are required. The club is funded through grants, partnerships, and validator rewards.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
-                            Can graduate students join?
-                        </button>
-                        <div id="faq-4" class="faq-answer">
-                            <p>Yes, both undergraduate and graduate students are welcome. We have specific research tracks for PhD students.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
-                            Do you offer internship opportunities?
-                        </button>
-                        <div id="faq-5" class="faq-answer">
-                            <p>We maintain partnerships with leading blockchain companies and regularly facilitate internship placements for qualified members.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
-                            How do I stay updated on club activities?
-                        </button>
-                        <div id="faq-6" class="faq-answer">
-                            <p>Subscribe to our newsletter, join our Discord server, or follow us on social media for regular updates on events and opportunities.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Location & Hours Section -->
-            <section class="location-section grid-module" aria-labelledby="location-title">
-                <h2 id="location-title" class="section-title">Location & Hours</h2>
-                <div class="location-content">
-                    <div class="location-info">
-                        <div class="location-address">
-                            <h3 class="location-subtitle">Address</h3>
-                            <address class="address">
-                                Emory University<br>
-                                Mathematics & Science Center<br>
-                                400 Dowman Drive<br>
-                                Atlanta, GA 30322
-                            </address>
-                        </div>
-                        <div class="location-hours">
-                            <h3 class="location-subtitle">Meeting Hours</h3>
-                            <div class="hours-list">
-                                <div class="hours-item">
-                                    <span class="hours-day">Tuesday</span>
-                                    <span class="hours-time">7:00 PM — 9:00 PM EST</span>
-                                </div>
-                                <div class="hours-item">
-                                    <span class="hours-day">Thursday</span>
-                                    <span class="hours-time">6:00 PM — 8:00 PM EST</span>
-                                </div>
-                                <div class="hours-item">
-                                    <span class="hours-day">Saturday</span>
-                                    <span class="hours-time">2:00 PM — 5:00 PM EST</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Mega Footer -->
-    <footer class="mega-footer" role="contentinfo">
+    <!-- Thin Line Divider -->
+    <div class="thin-line-divider"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Animated Background -->
+        <canvas id="blockchainCanvas" class="footer-canvas"></canvas>
+        <div class="footer-overlay"></div>
+        
         <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3 class="footer-title">Club</h3>
-                    <ul class="footer-links" role="list">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="#mission">Mission</a></li>
-                        <li><a href="#principles">Principles</a></li>
-                        <li><a href="../Team/Team.html">Team</a></li>
-                        <li><a href="#governance">Governance</a></li>
-                        <li><a href="../Finances/finances.html">Finances</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+            <!-- Top Row -->
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
+                        <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="footer-logo-img">
+                    </a>
                 </div>
-                <div class="footer-column">
-                    <h3 class="footer-title">Programs</h3>
-                    <ul class="footer-links" role="list">
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#consulting">Consulting</a></li>
-                        <li><a href="#design">Design</a></li>
-                        <li><a href="../Research/research.html">Research</a></li>
-                        <li><a href="#xcelerator">Xcelerator</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 class="footer-title">Research</h3>
-                    <ul class="footer-links" role="list">
-                                        <li><a href="../Research/research.html#publications">Publications</a></li>
-                <li><a href="../Research/research.html#datasets">Datasets</a></li>
-                <li><a href="../Research/research.html#tools">Tools</a></li>
-                <li><a href="../Research/research.html#working-papers">Working Papers</a></li>
-                <li><a href="../Research/research.html#collaboration">Collaboration</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 class="footer-title">Projects</h3>
-                    <ul class="footer-links" role="list">
-                        <li><a href="../Projects/projects.html">All Projects</a></li>
-                        <li><a href="#case-studies">Case Studies</a></li>
-                        <li><a href="https://github.com/blockchain-club-emory">GitHub</a></li>
-                        <li><a href="#validator">Validator Dashboard</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 class="footer-title">Resources</h3>
-                    <ul class="footer-links" role="list">
-                        <li><a href="#join">Join</a></li>
-                        <li><a href="#newsletter">Newsletter</a></li>
-                        <li><a href="#brand">Brand Assets</a></li>
-                        <li><a href="#media-kit">Media Kit</a></li>
-                        <li><a href="#faqs">FAQs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 class="footer-title">Legal</h3>
-                    <ul class="footer-links" role="list">
-                        <li><a href="#privacy">Privacy Policy</a></li>
-                        <li><a href="#terms">Terms</a></li>
-                        <li><a href="#conduct">Code of Conduct</a></li>
-                        <li><a href="#accessibility">Accessibility</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3 class="footer-title">Social</h3>
-                    <ul class="footer-links" role="list">
-                        <li><a href="https://instagram.com/blockchainclubemory">Instagram</a></li>
-                        <li><a href="https://twitter.com/blockchainclubemory">X</a></li>
-                        <li><a href="https://linkedin.com/company/blockchain-club-emory">LinkedIn</a></li>
-                        <li><a href="https://discord.gg/blockchainemory">Discord</a></li>
-                        <li><a href="https://emoryblockchain.substack.com/">Substack</a></li>
-                        <li><a href="https://github.com/blockchain-club-emory">GitHub</a></li>
-                    </ul>
+                
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="../Home/home.html" class="footer-link">Home</a>
+                    <a href="about.html" class="footer-link">About</a>
+                    <a href="../Projects/projects.html" class="footer-link">Projects</a>
+                    <a href="../Research/research.html" class="footer-link">Research</a>
+                    <a href="../Finances/finances.html" class="footer-link">Finances</a>
+                    <a href="../Team/Team.html" class="footer-link">Team</a>
+                    <a href="../Home/home.html#contact" class="footer-link">Contact</a>
+                    <a href="#join" class="footer-link">Apply</a>
+                </nav>
+                
+                <div class="footer-social">
+                    <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="https://discord.gg/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord community">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://emoryblockchain.substack.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Read our research on Substack">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
             
+            <!-- Middle Row -->
+            <div class="footer-middle">
+                <div class="footer-tagline">
+                    <h3>Building the future of blockchain at Emory University</h3>
+                </div>
+                
+                <div class="newsletter-signup">
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-wrapper">
+                            <input type="email" id="newsletterEmail" name="email" class="newsletter-input" 
+                                placeholder="Enter your email" required aria-label="Email address for newsletter">
+                            <button type="submit" class="newsletter-btn">
+                                <span class="btn-text">Subscribe</span>
+                                <span class="btn-spinner newsletter-spinner"></span>
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Bottom Row -->
             <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <div class="copyright">
-                        <span>&copy; 2025 Blockchain Club at Emory</span>
-                        <span>Atlanta, GA</span>
-                    </div>
-                    <div class="newsletter-subscribe">
-                        <form class="newsletter-form" action="#" method="post">
-                            <div class="newsletter-input-group">
-                                <input type="email" class="newsletter-input" placeholder="Enter your email" required aria-label="Email address for newsletter">
-                                <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
-                                    Subscribe
-                        </button>
-                            </div>
-                        </form>
-                    </div>
+                <div class="footer-copyright">
+                    <p>&copy; <span id="currentYear">2024</span> Blockchain Club at Emory University. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-legal">
+                    <a href="#privacy" class="legal-link">Privacy Policy</a>
+                    <span class="legal-separator">•</span>
+                    <a href="#terms" class="legal-link">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script>
-
-
-        // FAQ Accordion functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                    const answer = document.getElementById(this.getAttribute('aria-controls'));
-                    
-                    // Close all other FAQs
-                    faqQuestions.forEach(q => {
-                        if (q !== this) {
-                            q.setAttribute('aria-expanded', 'false');
-                            const otherAnswer = document.getElementById(q.getAttribute('aria-controls'));
-                            otherAnswer.style.maxHeight = '0';
-                        }
-                    });
-                    
-                    // Toggle current FAQ
-                    this.setAttribute('aria-expanded', !isExpanded);
-                    if (!isExpanded) {
-                        answer.style.maxHeight = answer.scrollHeight + 'px';
-                    } else {
-                        answer.style.maxHeight = '0';
-                    }
-                });
-            });
-
-            // Form validation
-            const form = document.querySelector('.contact-form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Add form validation logic here
-                });
-            }
-
-            // Newsletter form validation
-            const newsletterForm = document.querySelector('.newsletter-form');
-            const newsletterInput = document.querySelector('.newsletter-input');
-            
-            if (newsletterForm && newsletterInput) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    if (!newsletterInput.checkValidity()) {
-                        newsletterForm.classList.add('error');
-                        newsletterForm.setAttribute('data-error', 'Please enter a valid email address');
-                    } else {
-                        newsletterForm.classList.remove('error');
-                        newsletterForm.setAttribute('data-error', '');
-                        // Here you would typically send the email to your backend
-                        alert('Thank you for subscribing to our newsletter!');
-                        newsletterInput.value = '';
-                    }
-                });
-
-                // Remove error on input
-                newsletterInput.addEventListener('input', function() {
-                    if (this.checkValidity()) {
-                        newsletterForm.classList.remove('error');
-                        newsletterForm.setAttribute('data-error', '');
-                    }
-                });
-            }
-
-
-        });
-    </script>
+    <script src="about.js"></script>
 </body>
 </html>

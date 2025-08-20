@@ -209,7 +209,7 @@ function createBlockchainBackground() {
 
 // Create flowing digital ledger background
 function createFooterBlockchainBackground() {
-    const canvas = document.getElementById('tesseractCanvas');
+    const canvas = document.getElementById('footerTesseractCanvas');
     if (!canvas) return;
     
     // Check for reduced motion preference
@@ -252,12 +252,12 @@ function createFooterBlockchainBackground() {
     
     // Create ledger rows
     const ledgerRows = [];
-    const rowCount = 8;
+    const rowCount = 6;
     const rowHeight = canvas.height / rowCount;
     
     for (let i = 0; i < rowCount; i++) {
         const transactions = [];
-        const transactionCount = Math.floor(Math.random() * 15) + 10; // 10-25 transactions per row
+        const transactionCount = Math.floor(Math.random() * 8) + 5; // 5-13 transactions per row
         
         for (let j = 0; j < transactionCount; j++) {
             const isLargeTransaction = Math.random() < 0.1; // 10% chance of large transaction
@@ -268,7 +268,7 @@ function createFooterBlockchainBackground() {
                 amount: generateAmount(),
                 timestamp: generateTimestamp(),
                 isLarge: isLargeTransaction,
-                x: Math.random() * canvas.width * 2, // Spread across wider area
+                x: Math.random() * canvas.width * 3, // Spread across wider area
                 y: i * rowHeight + rowHeight / 2,
                 speed: (Math.random() * 0.5 + 0.5) * (isLargeTransaction ? 1.5 : 1), // Large transactions move faster
                 opacity: Math.random() * 0.4 + 0.1,
@@ -295,10 +295,10 @@ function createFooterBlockchainBackground() {
                 transaction.x += transaction.speed * row.direction;
                 
                 // Reset position when off screen
-                if (row.direction > 0 && transaction.x > canvas.width + 200) {
-                    transaction.x = -200;
-                } else if (row.direction < 0 && transaction.x < -200) {
-                    transaction.x = canvas.width + 200;
+                if (row.direction > 0 && transaction.x > canvas.width + 300) {
+                    transaction.x = -300;
+                } else if (row.direction < 0 && transaction.x < -300) {
+                    transaction.x = canvas.width + 300;
                 }
                 
                 // Random highlight flash for large transactions
@@ -321,10 +321,10 @@ function createFooterBlockchainBackground() {
                 gradient.addColorStop(1, `rgba(247, 201, 72, ${alpha})`); // #f7c948 (yellow)
                 
                 ctx.fillStyle = gradient;
-                ctx.font = '10px "Courier New", monospace';
+                ctx.font = '12px "Courier New", monospace';
                 ctx.textAlign = 'left';
                 
-                const text = `${transaction.hash.slice(0, 8)}...${transaction.hash.slice(-6)} | ${transaction.from.slice(0, 6)}...${transaction.from.slice(-4)} → ${transaction.to.slice(0, 6)}...${transaction.to.slice(-4)} | ${transaction.amount} ETH | ${transaction.timestamp}`;
+                const text = `${transaction.hash.slice(0, 6)}...${transaction.hash.slice(-6)} | ${transaction.from.slice(0, 6)}...${transaction.from.slice(-4)} → ${transaction.to.slice(0, 6)}...${transaction.to.slice(-4)} | ${transaction.amount} ETH | ${transaction.timestamp}`;
                 
                 // Add glow effect for highlighted transactions
                 if (transaction.highlight > 0) {
