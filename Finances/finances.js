@@ -41,16 +41,24 @@ function initializeNavigation() {
     window.addEventListener('scroll', function() {
         const currentScrollY = window.scrollY;
         const scrollThreshold = 200;
+        const isMobile = window.innerWidth <= 768;
         
         if (homeNavbar && financesNavbar) {
-            if (currentScrollY > scrollThreshold) {
-                // Hide home navbar, show finances navbar
-                homeNavbar.classList.add('hidden');
-                financesNavbar.classList.add('visible');
-            } else {
-                // Show home navbar, hide finances navbar
+            if (isMobile) {
+                // On mobile, always keep home navbar visible since finances navbar is hidden
                 homeNavbar.classList.remove('hidden');
                 financesNavbar.classList.remove('visible');
+            } else {
+                // On desktop, use the dual navbar effect
+                if (currentScrollY > scrollThreshold) {
+                    // Hide home navbar, show finances navbar
+                    homeNavbar.classList.add('hidden');
+                    financesNavbar.classList.add('visible');
+                } else {
+                    // Show home navbar, hide finances navbar
+                    homeNavbar.classList.remove('hidden');
+                    financesNavbar.classList.remove('visible');
+                }
             }
         }
         
@@ -209,7 +217,7 @@ function createBlockchainBackground() {
 
 // Create flowing digital ledger background
 function createFooterBlockchainBackground() {
-    const canvas = document.getElementById('tesseractCanvas');
+    const canvas = document.getElementById('footerTesseractCanvas');
     if (!canvas) return;
     
     // Check for reduced motion preference
@@ -252,12 +260,12 @@ function createFooterBlockchainBackground() {
     
     // Create ledger rows
     const ledgerRows = [];
-    const rowCount = 8;
+    const rowCount = 6;
     const rowHeight = canvas.height / rowCount;
     
     for (let i = 0; i < rowCount; i++) {
         const transactions = [];
-        const transactionCount = Math.floor(Math.random() * 15) + 10; // 10-25 transactions per row
+        const transactionCount = Math.floor(Math.random() * 8) + 5; // 5-13 transactions per row
         
         for (let j = 0; j < transactionCount; j++) {
             const isLargeTransaction = Math.random() < 0.1; // 10% chance of large transaction
@@ -268,7 +276,7 @@ function createFooterBlockchainBackground() {
                 amount: generateAmount(),
                 timestamp: generateTimestamp(),
                 isLarge: isLargeTransaction,
-                x: Math.random() * canvas.width * 2, // Spread across wider area
+                x: Math.random() * canvas.width * 3, // Spread across wider area
                 y: i * rowHeight + rowHeight / 2,
                 speed: (Math.random() * 0.5 + 0.5) * (isLargeTransaction ? 1.5 : 1), // Large transactions move faster
                 opacity: Math.random() * 0.4 + 0.1,
@@ -295,10 +303,10 @@ function createFooterBlockchainBackground() {
                 transaction.x += transaction.speed * row.direction;
                 
                 // Reset position when off screen
-                if (row.direction > 0 && transaction.x > canvas.width + 200) {
-                    transaction.x = -200;
-                } else if (row.direction < 0 && transaction.x < -200) {
-                    transaction.x = canvas.width + 200;
+                if (row.direction > 0 && transaction.x > canvas.width + 300) {
+                    transaction.x = -300;
+                } else if (row.direction < 0 && transaction.x < -300) {
+                    transaction.x = canvas.width + 300;
                 }
                 
                 // Random highlight flash for large transactions
@@ -321,10 +329,10 @@ function createFooterBlockchainBackground() {
                 gradient.addColorStop(1, `rgba(247, 201, 72, ${alpha})`); // #f7c948 (yellow)
                 
                 ctx.fillStyle = gradient;
-                ctx.font = '10px "Courier New", monospace';
+                ctx.font = '12px "Courier New", monospace';
                 ctx.textAlign = 'left';
                 
-                const text = `${transaction.hash.slice(0, 8)}...${transaction.hash.slice(-6)} | ${transaction.from.slice(0, 6)}...${transaction.from.slice(-4)} → ${transaction.to.slice(0, 6)}...${transaction.to.slice(-4)} | ${transaction.amount} ETH | ${transaction.timestamp}`;
+                const text = `${transaction.hash.slice(0, 6)}...${transaction.hash.slice(-6)} | ${transaction.from.slice(0, 6)}...${transaction.from.slice(-4)} → ${transaction.to.slice(0, 6)}...${transaction.to.slice(-4)} | ${transaction.amount} ETH | ${transaction.timestamp}`;
                 
                 // Add glow effect for highlighted transactions
                 if (transaction.highlight > 0) {
@@ -406,15 +414,14 @@ function initializePieChart() {
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Partners', 'Solana Validator', 'Emory Funds', 'Event Revenue', 'Donations'],
+            labels: ['CGLD Holdings', 'Partners', 'Solana Validator', 'Emory Funds'],
             datasets: [{
-                data: [50.2, 21.9, 17.7, 7.3, 2.9],
+                data: [33.1, 33.7, 14.7, 11.9],
                 backgroundColor: [
+                    '#ffd700',
                     '#5cc2ff',
                     '#3b82f6',
-                    '#f7c948',
-                    '#22c55e',
-                    '#a855f7'
+                    '#f7c948'
                 ],
                 borderWidth: 0,
                 cutout: '60%'
@@ -452,10 +459,11 @@ function initializeAllocationChart() {
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Stablecoins', 'ETH', 'SOL', 'BTC', 'Other'],
+            labels: ['CGLD', 'Stablecoins', 'ETH', 'SOL', 'BTC', 'Other'],
             datasets: [{
-                data: [44.9, 25.9, 18.5, 10.4, 0.3],
+                data: [33.1, 30.1, 17.4, 12.4, 7.0, 0.0],
                 backgroundColor: [
+                    '#ffd700',
                     '#22c55e',
                     '#627eea',
                     '#9945ff',
@@ -496,7 +504,7 @@ function initializePerformanceChart() {
     if (!ctx) return;
     
     const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const data = [680000, 695000, 720000, 742000, 758000, 781000, 795000, 812000, 825000, 834000, 841000, 847329];
+    const data = [680000, 695000, 720000, 742000, 758000, 781000, 795000, 812000, 825000, 834000, 841000, 1262064];
     
     new Chart(ctx, {
         type: 'line',
@@ -562,14 +570,14 @@ function initializeValidatorChart() {
     if (!ctx) return;
     
     const labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'];
-    const rewards = [11200, 11850, 12100, 12450, 11900, 12650];
+    const rewards = [15600, 15800, 15400, 15900, 15700, 16000]; // Updated to reflect actual SOL rewards
     
     new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
             datasets: [{
-                label: 'Weekly Rewards ($)',
+                label: 'Weekly Rewards (SOL)',
                 data: rewards,
                 backgroundColor: 'rgba(168, 85, 247, 0.8)',
                 borderColor: '#a855f7',
@@ -594,7 +602,7 @@ function initializeValidatorChart() {
                     ticks: {
                         color: '#cfd6e4',
                         callback: function(value) {
-                            return '$' + value.toLocaleString();
+                            return value.toLocaleString() + ' SOL';
                         }
                     },
                     grid: {
@@ -624,6 +632,7 @@ function initializeInteractivity() {
     initializeTimeframToggle();
     initializeNewsletterForms();
     initializeDownloadButtons();
+    initializeFundingHoverEffects();
 }
 
 // Initialize menu toggle
@@ -812,6 +821,49 @@ function initializeDownloadButtons() {
     });
 }
 
+// Initialize hover effects for funding sources, performance KPIs, and validator statistics
+function initializeFundingHoverEffects() {
+    const fundingStats = document.querySelectorAll('.funding-card .stat');
+    const performanceKPIs = document.querySelectorAll('.kpi-item');
+    const validatorStats = document.querySelectorAll('.validator-stats-grid .stat-item');
+    
+    // Apply hover effect to funding stats
+    fundingStats.forEach(stat => {
+        stat.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+        
+        stat.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Apply hover effect to performance KPIs
+    performanceKPIs.forEach(kpi => {
+        kpi.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+        
+        kpi.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Apply hover effect to validator statistics
+    validatorStats.forEach(stat => {
+        stat.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+        
+        stat.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+}
+
 // Initialize scroll animations
 function initializeScrollAnimations() {
     const observerOptions = {
@@ -870,16 +922,27 @@ function animateCounter(element, start, end, duration) {
 // Initialize counter animations when elements come into view
 function initializeCounterAnimations() {
     const counters = document.querySelectorAll('.usd-value, .stat-value, .kpi-value');
+    const validatorStats = document.querySelectorAll('.validator-stats-grid .stat-value[data-target]');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const element = entry.target;
-                const text = element.textContent;
-                const number = parseFloat(text.replace(/[^0-9.-]/g, ''));
                 
-                if (!isNaN(number) && number > 0) {
-                    animateCounter(element, 0, number, 2000);
+                // Handle validator stats with data-target attribute
+                if (element.hasAttribute('data-target')) {
+                    const target = parseInt(element.getAttribute('data-target'));
+                    if (!isNaN(target) && target > 0) {
+                        animateValidatorCounter(element, 0, target, 2000);
+                    }
+                } else {
+                    // Handle regular counters
+                    const text = element.textContent;
+                    const number = parseFloat(text.replace(/[^0-9.-]/g, ''));
+                    
+                    if (!isNaN(number) && number > 0) {
+                        animateCounter(element, 0, number, 2000);
+                    }
                 }
                 
                 observer.unobserve(element);
@@ -888,6 +951,31 @@ function initializeCounterAnimations() {
     });
     
     counters.forEach(counter => observer.observe(counter));
+    validatorStats.forEach(stat => observer.observe(stat));
+}
+
+// Special counter animation for validator statistics
+function animateValidatorCounter(element, start, end, duration) {
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= end) {
+            current = end;
+            clearInterval(timer);
+        }
+        
+        // Format based on the type of value
+        if (element.nextElementSibling && element.nextElementSibling.classList.contains('stat-unit')) {
+            // Has unit (SOL)
+            element.textContent = Math.floor(current).toLocaleString();
+        } else {
+            // No unit (vote credits)
+            element.textContent = Math.floor(current).toLocaleString();
+        }
+    }, 16);
 }
 
 // Initialize everything when DOM is loaded
@@ -1261,3 +1349,77 @@ function initializeMiningInteractivity() {
         });
     }
 }
+
+// Board Access Authentication
+function initializeBoardAccess() {
+    const loginForm = document.getElementById('boardLoginForm');
+    const passwordToggle = document.getElementById('passwordToggle');
+    const passwordInput = document.getElementById('boardPassword');
+    const loginError = document.getElementById('loginError');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const boardLoginCard = document.getElementById('boardLoginCard');
+    const boardContent = document.getElementById('boardContent');
+
+    // Password toggle functionality
+    if (passwordToggle && passwordInput) {
+        passwordToggle.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            passwordToggle.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+    }
+
+    // Login form submission - DENY ALL ATTEMPTS
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            const loginBtn = loginForm.querySelector('.login-btn');
+            loginBtn.classList.add('loading');
+            
+            // Simulate processing delay
+            setTimeout(() => {
+                // Always deny access
+                loginBtn.classList.remove('loading');
+                
+                // Show error message
+                if (loginError) {
+                    loginError.style.display = 'flex';
+                    loginError.innerHTML = `
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Access denied. Board access is currently restricted.</span>
+                    `;
+                }
+                
+                // Clear password field
+                if (passwordInput) {
+                    passwordInput.value = '';
+                }
+                
+                // Hide error after 5 seconds
+                setTimeout(() => {
+                    if (loginError) {
+                        loginError.style.display = 'none';
+                    }
+                }, 5000);
+                
+            }, 1500); // 1.5 second delay to simulate processing
+        });
+    }
+
+    // Logout functionality (in case someone manually shows the content)
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            if (boardLoginCard) boardLoginCard.style.display = 'block';
+            if (boardContent) boardContent.style.display = 'none';
+            if (passwordInput) passwordInput.value = '';
+            if (loginError) loginError.style.display = 'none';
+        });
+    }
+}
+
+// Initialize board access when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeBoardAccess();
+});

@@ -3,137 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blockchain Club at Emory</title>
+    <title>Blockchain at Emory</title>
     <link rel="icon" type="image/png" href="../Images/Logo/Logo_Official.png">
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-        <!-- Animated Background -->
-        <div class="animated-background">
-            <canvas id="geometricCanvas" class="background-canvas"></canvas>
-        </div>
-
-        <!-- Research-style Navigation Bar -->
-        <nav class="research-navbar" id="researchNavbar">
-            <div class="navbar-container">
-                <!-- Logo -->
-                <div class="navbar-logo">
-                    <a href="home.html" class="logo-link" aria-label="Blockchain Club Home">
-                        <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="research-logo-img">
-                    </a>
-                </div>
-                
-                <!-- Center Navigation Links -->
-                <div class="navbar-center">
-                    <a href="../About/about.html" class="nav-link" data-section="about">
-                        <span class="link-text">About</span>
-                        <span class="link-underline"></span>
-                    </a>
-                    <a href="../Projects/projects.html" class="nav-link" data-section="projects">
-                        <span class="link-text">Projects</span>
-                        <span class="link-underline"></span>
-                    </a>
-                    <a href="../Research/research.html" class="nav-link" data-section="research">
-                        <span class="link-text">Research</span>
-                        <span class="link-underline"></span>
-                    </a>
-                    <a href="../Finances/finances.html" class="nav-link" data-section="finances">
-                        <span class="link-text">Finances</span>
-                        <span class="link-underline"></span>
-                    </a>
-                    <a href="../Team/Team.html" class="nav-link" data-section="team">
-                        <span class="link-text">Team</span>
-                        <span class="link-underline"></span>
-                    </a>
-                </div>
-                
-                <!-- Menu Icon -->
-                <div class="navbar-menu">
-                    <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
-                        <span class="menu-icon">
-                            <span class="menu-line"></span>
-                            <span class="menu-line"></span>
-                            <span class="menu-line"></span>
-                            <span class="menu-line"></span>
-                        </span>
-                    </button>
-                </div>
+    <!-- Navigation -->
+    <nav class="home-navbar" id="homeNavbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <a href="home.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                    <img src="../Images/Logo/Logo_Official.png" alt="Blockchain at Emory" class="nav-logo-img">
+                </a>
             </div>
-        </nav>
-
-        <!-- Menu Overlay -->
-        <div class="menu-overlay" id="menuOverlay">
-            <div class="overlay-background"></div>
-            <div class="overlay-content">
-                <div class="overlay-header">
-                    <h2 class="overlay-title">Navigation</h2>
-                    <button class="overlay-close" id="overlayClose" aria-label="Close navigation menu">
-                        <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                    </button>
+            
+            <!-- Navigation Links -->
+            <nav class="nav-navigation" aria-label="Main navigation">
+                <div class="nav-links-center">
+                    <a href="../Projects/projects.html" class="nav-link">Projects</a>
+                    <a href="../Research/research.html" class="nav-link">Research</a>
+                    <a href="../Finances/finances.html" class="nav-link">Finances</a>
+                    <a href="../Team/Team.html" class="nav-link">Team</a>
                 </div>
-                
-                <nav class="overlay-nav" aria-label="Main navigation">
-                    <div class="nav-section">
-                        <h3 class="nav-section-title">Main</h3>
-                        <ul class="nav-list">
-                            <li><a href="home.html" class="overlay-link active">
-                                <span class="link-label">Home</span>
-                            </a></li>
-                            <li><a href="../About/about.html" class="overlay-link">
-                                <span class="link-label">About</span>
-                            </a></li>
-                            <li><a href="../Projects/projects.html" class="overlay-link">
-                                <span class="link-label">Projects</span>
-                            </a></li>
-                            <li><a href="../Research/research.html" class="overlay-link">
-                                <span class="link-label">Research</span>
-                            </a></li>
-                            <li><a href="../Finances/finances.html" class="overlay-link">
-                                <span class="link-label">Finances</span>
-                            </a></li>
-                            <li><a href="../Team/Team.html" class="overlay-link">
-                                <span class="link-label">Team</span>
-                            </a></li>
-                        </ul>
-                    </div>
-
-                                    <div class="nav-section">
-                    <h3 class="nav-section-title">Home Sections</h3>
-                    <ul class="nav-list">
-                        <li><a href="#mission" class="overlay-link">
-                            <span class="link-label">Mission</span>
-                        </a></li>
-                        <li><a href="#events" class="overlay-link">
-                            <span class="link-label">Events</span>
-                        </a></li>
-                        <li><a href="#team-preview" class="overlay-link">
-                            <span class="link-label">Team Preview</span>
-                        </a></li>
-                        <li><a href="#updates" class="overlay-link">
-                            <span class="link-label">Latest Updates</span>
-                        </a></li>
-                    </ul>
+                <div class="nav-links-right">
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="../About/about.html#join" class="nav-link nav-link-apply">Apply</a>
                 </div>
-                
-                <div class="nav-section">
-                    <h3 class="nav-section-title">Contact</h3>
-                    <ul class="nav-list">
-                        <li><a href="#contact" class="overlay-link">
-                            <span class="link-label">Contact Us</span>
-                        </a></li>
-                        <li><a href="../About/about.html#join" class="overlay-link apply-highlight">
-                            <span class="link-label">Join Us</span>
-                        </a></li>
-                    </ul>
-                </div>
-                </nav>
-                
-
-            </div>
+            </nav>
         </div>
+    </nav>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -143,112 +42,77 @@
             <div class="hero-overlay"></div>
             
             <div class="hero-content">
-                <h1 class="hero-title">Welcome to Blockchain Club at Emory</h1>
-                <p class="hero-subtitle">Exploring the future of decentralized technology</p>
+                <h1 class="hero-title scroll-animate stagger-1">Blockchain at Emory</h1>
+                <p class="hero-subtitle scroll-animate stagger-2">Exploring the future of decentralized technology</p>
             </div>
         </section>
 
         <!-- Mission Section -->
-        <section class="mission-section" id="mission">
+        <section class="mission-section scroll-animate" id="mission">
             <div class="mission-container">
                 <div class="mission-content">
-                    <h2 class="mission-headline">
-                        Empowering students to <span class="highlight-gradient">lead the future</span> of blockchain innovation.
+                    <h2 class="mission-headline scroll-animate stagger-1">
+                        Empowering students to 
+                        <span class="highlight-gradient">lead the future</span> 
+                        of blockchain innovation
                     </h2>
-                    <p class="mission-description">
+                    
+                    <p class="mission-description scroll-animate stagger-2">
                         We bridge the gap between academic learning and real-world blockchain applications through 
                         <span class="highlight-blue">cutting-edge research</span>, hands-on education, strategic consulting, 
                         and <span class="highlight-blue">innovative design solutions</span>. Join us in shaping the 
                         decentralized economy of tomorrow.
                     </p>
+                    
+                    <div class="mission-stats scroll-animate stagger-3">
+                        <div class="stat-item scroll-animate-fade stagger-1">
+                            <div class="stat-number">23</div>
+                            <div class="stat-label">Featured Events</div>
+                        </div>
+                        <div class="stat-item scroll-animate-fade stagger-2">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item scroll-animate-fade stagger-3">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Industry Partners</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mission-visual">
-                    <img src="Images/blockchain-hero.jpg" alt="Blockchain network visualization" class="mission-image">
-                </div>
-            </div>
-        </section>
-
-        <!-- Partners Section -->
-        <section class="partners-section">
-            <div class="partners-container">
-                <h2 class="partners-title">Partners</h2>
-                <div class="partners-slider">
-                    <div class="partners-track">
-                        <!-- First set of logos -->
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/BAF.png" alt="BAF" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/Celo.png" alt="Celo" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/College_Dao.png" alt="College DAO" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/Gaia.png" alt="Gaia" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/Obol.png" alt="Obol" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/OCAM.png" alt="OCAM" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/SUI.png" alt="SUI" class="logo-img">
-                        </div>
-                        
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/BAF.png" alt="BAF" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/Celo.png" alt="Celo" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/College_Dao.png" alt="College DAO" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/Gaia.png" alt="Gaia" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/Obol.png" alt="Obol" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/OCAM.png" alt="OCAM" class="logo-img">
-                        </div>
-                        <div class="partner-logo">
-                            <img src="../Images/Partners/SUI.png" alt="SUI" class="logo-img">
+                
+                <div class="mission-visual scroll-animate-right stagger-4">
+                    <div class="eth-denver-image">
+                        <img src="../Images/end event/starknet.jpg  " alt="ETH Denver Conference" class="mission-image">
+                        <div class="image-overlay">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Events Section -->
-        <section class="events-section" id="events">
+                <!-- Events Section -->
+        <section class="events-section scroll-animate" id="events">
             <div class="events-container">
+                <h2 class="events-title scroll-animate stagger-1">Club Events</h2>
+                <p class="events-description scroll-animate stagger-1">
+                    Engage in hands-on workshops, visionary guest lectures, and creative hackathons designed to transform blockchain theory into real-world impact. Collaborate with leading experts, grow your network, and help shape the future of decentralized technology.
+                </p>
                 <div class="events-content">
-                    <div class="events-text">
-                        <h2 class="events-title"> Events</h2>
-                        <p class="events-description">
-                            Join us for cutting-edge workshops, inspiring guest talks, and innovative hackathons 
-                            that bridge the gap between blockchain theory and real-world applications. Connect with 
-                            industry leaders and build the future together.
-                        </p>
+                    <div class="events-text scroll-animate-left stagger-2">
                         
-                        <div class="last-event">
+                        <div class="last-event scroll-animate-fade stagger-3">
                             <h4 class="last-event-label">Last Event</h4>
-                            <h3 class="event-name past">Blockchain Security Workshop</h3>
-                            <p class="event-summary">Successfully completed with 150+ attendees learning about smart contract vulnerabilities and security best practices.</p>
+                            <h3 class="event-name past">Solana University x Emory Blockchain</h3>
+                            <p class="event-summary">Accelerate Conference and the Block 0 Scholarship happening in May!</p>
                         </div>
                         
-                        <div class="next-event">
+                        <div class="next-event scroll-animate-fade stagger-4">
                             <h4 class="next-event-label">Next Event</h4>
                             <h3 class="event-name">DeFi Innovation Hackathon</h3>
                             <div class="event-details">
                                 <div class="event-detail">
                                     <span class="detail-label">Date:</span>
-                                    <span class="detail-value">April 20-22, 2024</span>
+                                    <span class="detail-value">April 20-22, 2025</span>
                                 </div>
                                 <div class="event-detail">
                                     <span class="detail-label">Time:</span>
@@ -274,17 +138,23 @@
                         </div>
                     </div>
                     
-                    <div class="events-visual">
+                    <div class="events-visual scroll-animate-right stagger-3">
                         <div class="event-images-container">
                             <div class="event-images-fan" id="eventImagesFan">
-                                <div class="event-image-wrapper" data-event="nearai" data-expanded="../Images/Meetings/NearAI expanded.png">
+                                <div class="event-image-wrapper" data-event="nearai">
                                     <img src="../Images/Meetings/NearAI.jpg" alt="Near AI Workshop" class="event-image">
                                 </div>
-                                <div class="event-image-wrapper" data-event="accelerate" data-expanded="../Images/Meetings/Accekerate expanded.png">
+                                <div class="event-image-wrapper" data-event="accelerate">
                                     <img src="../Images/Meetings/Accelerate.jpg" alt="Accelerate Workshop" class="event-image">
                                 </div>
-                                <div class="event-image-wrapper" data-event="sui" data-expanded="../Images/Meetings/SUi-workshop expanded.png">
+                                <div class="event-image-wrapper" data-event="sui">
                                     <img src="../Images/Meetings/Sui-workshop.jpg" alt="SUI Workshop" class="event-image">
+                                </div>
+                                <div class="event-image-wrapper" data-event="starknet">
+                                    <img src="../Images/Meetings/Starknet.jpg" alt="Starknet Workshop" class="event-image">
+                                </div>
+                                <div class="event-image-wrapper" data-event="sui-pizza">
+                                    <img src="../Images/Meetings/SUI-pizza.jpg" alt="SUI Pizza Event" class="event-image">
                                 </div>
                             </div>
                             
@@ -299,6 +169,132 @@
                                 <div class="event-image-wrapper" data-event="conference">
                                     <img src="https://via.placeholder.com/300x200/0891b2/ffffff?text=Conference" alt="Blockchain Conference" class="event-image">
                                 </div>
+                                <div class="event-image-wrapper" data-event="hackathon">
+                                    <img src="https://via.placeholder.com/300x200/059669/ffffff?text=Hackathon" alt="Blockchain Hackathon" class="event-image">
+                                </div>
+                                <div class="event-image-wrapper" data-event="workshop">
+                                    <img src="https://via.placeholder.com/300x200/dc2626/ffffff?text=Workshop" alt="Technical Workshop" class="event-image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Events Section -->
+        <section class="industry-events-section scroll-animate" id="industry-events">
+            <div class="industry-events-container">
+                <div class="industry-events-content">
+                    <div class="industry-events-text scroll-animate-left stagger-1">
+                        <h2 class="industry-events-title scroll-animate">Industry Events</h2>
+                        <p class="industry-events-description scroll-animate stagger-1">
+                            Connect with the broader blockchain ecosystem through industry conferences, networking events, 
+                            and professional meetups. Our members regularly attend and speak at major blockchain events 
+                            worldwide, building valuable connections and staying ahead of industry trends.
+                        </p>
+                        
+                        <div class="last-industry-event scroll-animate-fade stagger-3">
+                            <h4 class="last-industry-event-label">Last Industry Event</h4>
+                            <h3 class="industry-event-name past">Bitcoin 2025</h3>
+                            <p class="industry-event-summary">Successfully represented Emory at the world's largest Bitcoin conference in Las Vegas, with team members presenting research and networking with industry leaders.</p>
+                        </div>
+                        
+                        <div class="next-industry-event scroll-animate-fade stagger-4">
+                            <h4 class="next-industry-event-label">Next Industry Event</h4>
+                            <h3 class="industry-event-name">Midwest Blockchain Conference 2025</h3>
+                            <div class="industry-event-details">
+                                <div class="industry-event-detail">
+                                    <span class="detail-label">Date:</span>
+                                    <span class="detail-value">December 5–6, 2025</span>
+                                </div>
+                                <div class="industry-event-detail">
+                                    <span class="detail-label">Location:</span>
+                                    <span class="detail-value">UMich, Ann Arbor</span>
+                                </div>
+                                <div class="industry-event-detail">
+                                    <span class="detail-label">Focus:</span>
+                                    <span class="detail-value">Web3, hackathon, 70+ universities</span>
+                                </div>
+                            </div>
+                            <div class="industry-event-actions">
+                                <a href="https://forms.gle/your-interest-form-link" target="_blank" rel="noopener noreferrer" class="learn-more-btn">Interest Form</a>
+                                <a href="https://lu.ma/x6apzbr8?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="track-events-btn">
+                                    <svg class="calendar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    View Event Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="industry-events-visual scroll-animate-right stagger-2">
+                        <div class="industry-events-slider">
+                            <div class="slider-container">
+                                <div class="slider-track" id="industrySliderTrack">
+                                    <div class="slider-slide" data-event="workshop">
+                                        <img src="../Images/end event/starknet.jpg" alt="Industry Workshop" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>Starknet Foundation </h4>
+                                            <span class="event-date">March 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="slider-slide" data-event="sui-workshop">
+                                        <img src="../Images/end event/Sui-workshop.jpg" alt="SUI Workshop" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>SUI Workshop</h4>
+                                            <span class="event-date">March 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="slider-slide" data-event="ethdenver">
+                                        <img src="../Images/Gallery/ETH Denver.jpg" alt="ETH Denver Conference" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>ETH Denver 2025</h4>
+                                            <span class="event-date">February 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="slider-slide" data-event="cornell">
+                                        <img src="../Images/Gallery/Cornell Blockchain.jpg" alt="Cornell Blockchain Event" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>Cornell Blockchain Conference</h4>
+                                            <span class="event-date">April 2025</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="slider-slide" data-event="conference">
+                                        <img src="../Images/end event/SUI-pizza.jpg" alt="Blockchain Summit" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>Sui & Pizza</h4>
+                                            <span class="event-date">March 2025</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="slider-slide" data-event="bitcoin2025">
+                                        <img src="../Images/Gallery/Bitcoin 2025.jpg" alt="Bitcoin 2025 Conference" class="slider-image">
+                                        <div class="slide-overlay">
+                                            <h4>Bitcoin 2025</h4>
+                                            <span class="event-date">June 2025</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-btn prev-btn" id="industryPrevBtn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="15,18 9,12 15,6"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="slider-dots" id="industrySliderDots"></div>
+                                <button class="slider-btn next-btn" id="industryNextBtn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="9,18 15,12 9,6"></polyline>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -307,116 +303,268 @@
         </section>
 
         <!-- Meet the Team Section -->
-        <section class="team-preview-section" id="team-preview">
+        <section class="team-preview-section scroll-animate" id="team-preview">
             <div class="team-preview-container">
                 <div class="team-preview-header">
-                    <h2 class="team-preview-title">Meet the Team</h2>
-                    <div class="title-underline"></div>
-                    <p class="team-preview-subtitle">The people driving blockchain innovation at Emory.</p>
+                    <h2 class="team-preview-title scroll-animate stagger-1">Meet the Team</h2>
+                    <p class="team-preview-description scroll-animate stagger-2">
+                        Building real-world blockchain solutions through research, development, and strategic execution. 
+                        Our team brings together technical expertise and industry insight to drive innovation in decentralized systems.
+                    </p>
                 </div>
                 
-                <div class="team-preview-grid">
-                    <!-- Event Photo 1 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="../Images/Meetings/NearAI.jpg" alt="Near AI Workshop Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Near AI Workshop</span>
+                <div class="team-preview-content">
+                    <div class="team-preview-text scroll-animate-left stagger-3">
+                        <a href="../Team/Team.html" class="team-preview-link-secondary" aria-label="View our full team">
+                            <div class="team-image-container-secondary">
+                                <img src="../Images/end event/Accelerator.jpg" alt="Blockchain at Emory Workshop" class="team-preview-image-secondary">
+                                <div class="team-image-overlay-secondary">
+                                    <div class="overlay-content-secondary">
+                                        <div class="overlay-cta-secondary">
+                                            <span>Learn More</span>
+                                            <svg class="overlay-arrow-secondary" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12,5 19,12 12,19"></polyline>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <div class="team-stats">
+                            <div class="team-stat-item scroll-animate-fade stagger-1">
+                                <div class="team-stat-number">50+</div>
+                                <div class="team-stat-label">Active Members</div>
+                            </div>
+                            <div class="team-stat-item scroll-animate-fade stagger-2">
+                                <div class="team-stat-number">6</div>
+                                <div class="team-stat-label">Specialized Teams</div>
+                            </div>
+                            <div class="team-stat-item scroll-animate-fade stagger-3">
+                                <div class="team-stat-number">20+</div>
+                                <div class="team-stat-label">Projects Completed</div>
                             </div>
                         </div>
-                        <h3 class="team-preview-name">Innovation in Action</h3>
-                        <p class="team-preview-role">Exploring AI & Blockchain</p>
-                    </div>
+                        
 
-                    <!-- Event Photo 2 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="../Images/Meetings/Accelerate.jpg" alt="Accelerate Workshop Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Accelerate Workshop</span>
-                            </div>
-                        </div>
-                        <h3 class="team-preview-name">Building Together</h3>
-                        <p class="team-preview-role">Collaborative Development</p>
                     </div>
-
-                    <!-- Event Photo 3 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="../Images/Meetings/Sui-workshop.jpg" alt="SUI Workshop Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">SUI Workshop</span>
+                    
+                    <div class="team-preview-visual scroll-animate-right stagger-4">
+                        <a href="../Team/Team.html" class="team-preview-link" aria-label="View our full team">
+                            <div class="team-image-container">
+                                <img src="../Images/end event/Genesis-meeting.jpg" alt="Blockchain at Emory Team" class="team-preview-image">
+                                <div class="team-image-overlay">
+                                    <div class="overlay-content">
+                                        <div class="overlay-cta">
+                                            <span>Learn More</span>
+                                            <svg class="overlay-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                <polyline points="12,5 19,12 12,19"></polyline>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <div class="team-highlights">
+                            <div class="highlight-item scroll-animate-fade stagger-1">
+                                <div class="highlight-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <div class="highlight-text">
+                                    <h4>Collaborative Spirit</h4>
+                                    <p>Working together to solve complex blockchain challenges</p>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight-item scroll-animate-fade stagger-2">
+                                <div class="highlight-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 1 14 18.469V19a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                    </svg>
+                                </div>
+                                <div class="highlight-text">
+                                    <h4>Innovation Focus</h4>
+                                    <p>Pioneering new approaches to blockchain technology</p>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight-item scroll-animate-fade stagger-3">
+                                <div class="highlight-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                    </svg>
+                                </div>
+                                <div class="highlight-text">
+                                    <h4>Technical Excellence</h4>
+                                    <p>Building robust and scalable blockchain solutions</p>
+                                </div>
                             </div>
                         </div>
-                        <h3 class="team-preview-name">Technical Excellence</h3>
-                        <p class="team-preview-role">Blockchain Development</p>
-                    </div>
-
-                    <!-- Placeholder Event Photo 4 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=300&h=300&fit=crop&crop=faces" alt="Team Collaboration Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Team Meeting</span>
-                            </div>
-                        </div>
-                        <h3 class="team-preview-name">Strategic Planning</h3>
-                        <p class="team-preview-role">Future Roadmap</p>
-                    </div>
-
-                    <!-- Placeholder Event Photo 5 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300&h=300&fit=crop&crop=center" alt="Networking Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Networking Night</span>
-                            </div>
-                        </div>
-                        <h3 class="team-preview-name">Community Building</h3>
-                        <p class="team-preview-role">Industry Connections</p>
-                    </div>
-
-                    <!-- Placeholder Event Photo 6 -->
-                    <div class="team-preview-card">
-                        <div class="team-preview-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=300&h=300&fit=crop&crop=center" alt="Hackathon Event" class="team-preview-image">
-                            <div class="team-preview-glow"></div>
-                            <div class="event-overlay">
-                                <span class="event-label">Hackathon</span>
-                            </div>
-                        </div>
-                        <h3 class="team-preview-name">Innovation Challenge</h3>
-                        <p class="team-preview-role">48-Hour Build</p>
                     </div>
                 </div>
-                
-                <div class="team-preview-cta">
-                    <a href="../Team/Team.html" class="team-preview-btn">
-                        <span class="btn-text">View Full Team</span>
-                        <span class="btn-glow"></span>
-                    </a>
-                    <a href="../Team/Team.html" class="team-arrow-btn" aria-label="Navigate to Team page">
-                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M9 18l6-6-6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
+            </div>
+        </section>
+
+        <!-- Partners Title Section -->
+        <section class="partners-title-section scroll-animate">
+            <div class="partners-title-container">
+                <h2 class="partners-title scroll-animate stagger-1">Partners</h2>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section class="partners-section scroll-animate">
+            <div class="partners-container">
+                <div class="partners-slider scroll-animate stagger-1">
+                    <div class="partners-track scroll-animate-fade stagger-2">
+                        <!-- First set of logos -->
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/BAF.png" alt="BAF" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/Celo.png" alt="Celo" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/College_Dao.png" alt="College DAO" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/Gaia.png" alt="Gaia" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/Obol.png" alt="Obol" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/OCAM.png" alt="OCAM" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/SUI.png" alt="SUI" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/jupiter.png" alt="Jupiter" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/coinbase.png" alt="Coinbase" class="logo-img">
+                        </div>
+                        
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/BAF.png" alt="BAF" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/Celo.png" alt="Celo" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/College_Dao.png" alt="College DAO" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/Gaia.png" alt="Gaia" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/Obol.png" alt="Obol" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/OCAM.png" alt="OCAM" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/SUI.png" alt="SUI" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/jupiter.png" alt="Jupiter" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners/coinbase.png" alt="Coinbase" class="logo-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section - Duplicate -->
+        <section class="partners-section scroll-animate">
+            <div class="partners-container">
+                <div class="partners-slider scroll-animate stagger-1">
+                    <div class="partners-track partners-track-reverse scroll-animate-fade stagger-2">
+                        <!-- First set of logos -->
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/starknet.png" alt="Starknet" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/50T.png" alt="50T" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/near-foundation.png" alt="Near Foundation" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/Gemini.png" alt="Gemini" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/fenbushi-capital.png" alt="Fenbushi Capital" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/solana-foundation.png" alt="Solana Foundation" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/origin.png" alt="Origin" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/eigenlayer.png" alt="Eigenlayer" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/kraken.png" alt="Kraken" class="logo-img">
+                        </div>
+                        
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/starknet.png" alt="Starknet" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/50T.png" alt="50T" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/near-foundation.png" alt="Near Foundation" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/Gemini.png" alt="Gemini" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/fenbushi-capital.png" alt="Fenbushi Capital" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/solana-foundation.png" alt="Solana Foundation" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/hipe.png" alt="Hipe" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/origin.png" alt="Origin" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/eigenlayer.png" alt="Eigenlayer" class="logo-img">
+                        </div>
+                        <div class="partner-logo">
+                            <img src="../Images/Partners2/kraken.png" alt="Kraken" class="logo-img">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Latest Updates Section -->
-        <section class="updates-section" id="updates">
+        <section class="updates-section scroll-animate" id="updates">
             <div class="updates-container">
-                <h2 class="updates-title">Latest Updates</h2>
+                <h2 class="updates-title scroll-animate stagger-1">Latest Updates</h2>
                 
                 <div class="updates-grid">
                     <!-- Card 1: Solana Validator -->
-                    <div class="update-card validator-card" tabindex="0">
+                    <div class="update-card validator-card scroll-animate-scale stagger-1">
                         <div class="card-header">
                             <div class="card-icon validator-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -429,25 +577,25 @@
                         </div>
                         
                         <div class="kpi-grid">
-                            <div class="kpi-item" data-tooltip="Current slot height">
-                                <span class="kpi-label">Slot Height</span>
-                                <span class="kpi-value">245,892,156</span>
+                            <div class="kpi-item">
+                                <span class="kpi-label">Rank</span>
+                                <span class="kpi-value">814th</span>
                             </div>
-                            <div class="kpi-item" data-tooltip="Vote success rate in last 24 hours">
+                            <div class="kpi-item">
                                 <span class="kpi-label">Vote %</span>
                                 <span class="kpi-value">99.7%</span>
                             </div>
-                            <div class="kpi-item" data-tooltip="Validator uptime percentage">
+                            <div class="kpi-item">
                                 <span class="kpi-label">Uptime</span>
                                 <span class="kpi-value">99.9%</span>
                             </div>
-                            <div class="kpi-item" data-tooltip="Commission rate">
+                            <div class="kpi-item">
                                 <span class="kpi-label">Commission</span>
                                 <span class="kpi-value">5%</span>
                             </div>
-                            <div class="kpi-item" data-tooltip="Total staked SOL">
+                            <div class="kpi-item">
                                 <span class="kpi-label">Stake</span>
-                                <span class="kpi-value">1.2M SOL</span>
+                                <span class="kpi-value">29,407 SOL</span>
                             </div>
                         </div>
                         
@@ -468,7 +616,7 @@
                     </div>
 
                     <!-- Card 2: Research on Substack -->
-                    <div class="update-card research-card" tabindex="0">
+                    <div class="update-card research-card scroll-animate-scale stagger-2">
                         <div class="card-header">
                             <div class="card-icon research-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -478,161 +626,182 @@
                                     <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
-                            <h3 class="card-title">New Research: DeFi Yield Optimization</h3>
+                            <h3 class="card-title">New Research: State of Bittensor in 2025</h3>
                         </div>
                         
                         <p class="research-abstract">
-                            Our latest analysis explores advanced yield farming strategies across multiple protocols, 
-                            examining risk-adjusted returns and optimal capital allocation in the current DeFi landscape. 
-                            Key findings include emerging opportunities in liquid staking derivatives.
+                            Our latest analysis explores Bittensor's emergence as the leading decentralized AI network, 
+                            examining subnet growth, staking dynamics, and institutional adoption. Key findings include 
+                            rapid ecosystem expansion with 129 subnets and strong holder conviction with 65% of TAO staked.
                         </p>
                         
                         <div class="card-meta">
-                            <span class="meta-date">Published Mar 12, 2024</span>
+                            <span class="meta-date">Published Jul 25, 2025</span>
                             <span class="meta-separator">·</span>
                             <span class="meta-platform">Substack</span>
                         </div>
                         
-                        <button class="card-cta">Read on Substack</button>
+                        <a href="https://emoryblockchain.substack.com/p/state-of-bittensor-in-2025" target="_blank" rel="noopener noreferrer" class="card-cta">Read on Substack</a>
                     </div>
 
-                    <!-- Card 3: Performance Update -->
-                    <div class="update-card performance-card" tabindex="0">
+                    <!-- Card 3: MEV Simulator Project -->
+                    <div class="update-card performance-card scroll-animate-scale stagger-3">
                         <div class="card-header">
                             <div class="card-icon performance-icon">
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M9 9L12 6L16 10L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
                                 </svg>
                             </div>
-                            <h3 class="card-title">Performance Update</h3>
+                            <h3 class="card-title">MEV Simulator Project</h3>
                         </div>
                         
                         <div class="performance-grid">
                             <div class="perf-item">
-                                <span class="perf-label">Strategy YTD</span>
-                                <span class="perf-value positive">+24.7%</span>
+                                <span class="perf-label">Latency Target</span>
+                                <span class="perf-value">100μs</span>
                             </div>
                             <div class="perf-item">
-                                <span class="perf-label">30d PnL</span>
-                                <span class="perf-value positive">+5.2%</span>
+                                <span class="perf-label">Throughput</span>
+                                <span class="perf-value positive">100K+ tx/sec</span>
                             </div>
                             <div class="perf-item">
-                                <span class="perf-label">Sharpe (30d)</span>
-                                <span class="perf-value">1.85</span>
+                                <span class="perf-label">Strategy Success</span>
+                                <span class="perf-value positive">87%</span>
                             </div>
                             <div class="perf-item">
-                                <span class="perf-label">Win Rate</span>
-                                <span class="perf-value">68%</span>
+                                <span class="perf-label">Code Coverage</span>
+                                <span class="perf-value">92%</span>
                             </div>
                             <div class="perf-item">
-                                <span class="perf-label">Max Drawdown</span>
-                                <span class="perf-value negative">-8.3%</span>
+                                <span class="perf-label">Memory Usage</span>
+                                <span class="perf-value">32GB+</span>
                             </div>
                         </div>
                         
                         <div class="chart-container">
-                            <span class="chart-label">Performance (8 periods)</span>
+                            <span class="chart-label">Performance Benchmarks</span>
                             <div class="mini-chart" id="performanceChart">
-                                <div class="chart-bar positive" style="height: 40%"></div>
-                                <div class="chart-bar positive" style="height: 60%"></div>
-                                <div class="chart-bar negative" style="height: 20%"></div>
-                                <div class="chart-bar positive" style="height: 80%"></div>
-                                <div class="chart-bar positive" style="height: 70%"></div>
                                 <div class="chart-bar positive" style="height: 85%"></div>
-                                <div class="chart-bar negative" style="height: 15%"></div>
+                                <div class="chart-bar positive" style="height: 92%"></div>
+                                <div class="chart-bar positive" style="height: 78%"></div>
+                                <div class="chart-bar positive" style="height: 95%"></div>
+                                <div class="chart-bar positive" style="height: 88%"></div>
                                 <div class="chart-bar positive" style="height: 90%"></div>
+                                <div class="chart-bar positive" style="height: 87%"></div>
+                                <div class="chart-bar positive" style="height: 93%"></div>
                             </div>
                         </div>
                         
                         <div class="disclaimer">
-                            <small>Educational; not investment advice.</small>
+                            <small>Educational & research purposes only.</small>
                         </div>
                         
-                        <button class="card-cta">View full report</button>
+                        <a href="https://github.com/blockchainemory/Crypto-MEV-Simulator-Frontrunning-Bot/tree/main" target="_blank" rel="noopener noreferrer" class="card-cta">View on GitHub</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section class="contact-section" id="contact">
+        <section class="contact-section scroll-animate" id="contact">
             <div class="contact-container">
                 <div class="contact-header">
-                    <h2 class="contact-title">Looking to work with us?</h2>
-                    <p class="contact-subtitle">Get in touch and let's discuss how we can collaborate on your next blockchain project.</p>
+                    <h2 class="contact-title scroll-animate stagger-1">Looking to work with us?</h2>
+                    <p class="contact-subtitle scroll-animate stagger-2">Get in touch and let's discuss how we can collaborate on your next blockchain project.</p>
                 </div>
 
-                <div class="contact-card">
-                    <div class="card-accent"></div>
-                    
-                    <form class="contact-form" action="#" method="post">
+                <div class="contact-card scroll-animate-scale stagger-3">
+                    <form class="contact-form" action="https://formspree.io/f/mrblwjpo" method="POST">
                         <div class="form-grid">
-                                <div class="form-group">
-                                <label for="contact-name" class="form-label">NAME</label>
-                                <input type="text" id="contact-name" name="name" class="form-input" required>
-                                </div>
-                                <div class="form-group">
-                                <label for="contact-email" class="form-label">EMAIL</label>
-                                <input type="email" id="contact-email" name="email" class="form-input" required>
-                                </div>
-                                </div>
-
-                                <div class="form-group">
-                            <label for="contact-topic" class="form-label">TOPIC</label>
-                            <select id="contact-topic" name="topic" class="form-select" required>
-                                <option value="">Select a topic</option>
-                                <option value="partnership">Partnership</option>
-                                <option value="research">Research collaboration</option>
-                                        <option value="consulting">Consulting</option>
-                                <option value="speaking">Speaking engagement</option>
-                                <option value="general">General inquiry</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                            <label for="contact-message" class="form-label">MESSAGE</label>
-                            <textarea id="contact-message" name="message" class="form-textarea" rows="6" placeholder="Tell us about your project or inquiry..." required></textarea>
+                            <div class="form-group">
+                                <label for="first-name" class="form-label">FIRST NAME <span class="required">*</span></label>
+                                <input type="text" id="first-name" name="firstName" class="form-input" required>
+                                <div class="error-message" id="firstNameError"></div>
                             </div>
+                            <div class="form-group">
+                                <label for="last-name" class="form-label">LAST NAME <span class="required">*</span></label>
+                                <input type="text" id="last-name" name="lastName" class="form-input" required>
+                                <div class="error-message" id="lastNameError"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email" class="form-label">EMAIL <span class="required">*</span></label>
+                            <input type="email" id="contact-email" name="email" class="form-input" required>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-subject" class="form-label">SUBJECT <span class="required">*</span></label>
+                            <input type="text" id="contact-subject" name="subject" class="form-input" required>
+                            <div class="error-message" id="subjectError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-message" class="form-label">MESSAGE <span class="required">*</span></label>
+                            <textarea id="contact-message" name="message" class="form-textarea" rows="6" placeholder="Tell us about your project and how we can collaborate..." required></textarea>
+                            <div class="error-message" id="messageError"></div>
+                        </div>
 
                         <button type="submit" class="form-submit">
-                            <span class="submit-text">SEND MESSAGE</span>
+                            <span class="submit-text">SUBMIT</span>
                             <div class="submit-loading">
                                 <div class="loading-spinner"></div>
-                                </div>
+                            </div>
                         </button>
                     </form>
                     
                     <div class="contact-footer">
-                        <p class="contact-info">Or reach us directly at <a href="mailto:hello@blockchainclubemory.org" class="contact-email-link">hello@blockchainclubemory.org</a></p>
-                                </div>
-                            </div>
-                        </div>
+                        <p class="contact-info">Or reach us directly at 
+                            <span class="email-with-copy">
+                                <a href="mailto:blockchainemory@gmail.com" class="contact-email-link">blockchainemory@gmail.com</a>
+                                <button class="copy-email-btn" onclick="copyEmail()" aria-label="Copy email address">
+                                    <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                    <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                                        <polyline points="20,6 9,17 4,12"></polyline>
+                                    </svg>
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
+
+
+    <!-- Toast Container for Form Feedback -->
+    <div id="toastContainer" class="toast-container"></div>
+
     <!-- Footer -->
     <footer class="footer">
-        <!-- Animated Background -->
-        <canvas id="blockchainCanvas" class="footer-canvas"></canvas>
+        <!-- Blockchain Animated Background -->
+        <canvas id="footerTesseractCanvas" class="footer-canvas"></canvas>
         <div class="footer-overlay"></div>
         
         <div class="footer-container">
             <!-- Top Row -->
             <div class="footer-top">
                 <div class="footer-logo">
-                    <a href="index.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
-                        <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="footer-logo-img">
+                    <a href="home.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                        <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain at Emory" class="footer-logo-img">
                     </a>
                 </div>
                 
                 <nav class="footer-nav" aria-label="Footer navigation">
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="../About/index.html" class="footer-link">About</a>
-                    <a href="../Projects/index.html" class="footer-link">Projects</a>
-                    <a href="../Research/index.html" class="footer-link">Research</a>
-                    <a href="../Finances/index.html" class="footer-link">Finances</a>
+                    <a href="home.html" class="footer-link">Home</a>
+                    <a href="../Projects/projects.html" class="footer-link">Projects</a>
+                    <a href="../Research/research.html" class="footer-link">Research</a>
+                    <a href="../Finances/finances.html" class="footer-link">Finances</a>
                     <a href="../Team/Team.html" class="footer-link">Team</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                    <a href="#contact" class="footer-link">Apply</a>
                 </nav>
                 
                 <div class="footer-social">
@@ -655,9 +824,9 @@
                             <circle cx="4" cy="4" r="2"/>
                         </svg>
                     </a>
-                    <a href="https://discord.gg/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord community">
+                    <a href="https://t.me/+YqSNGcCL8-QyNDhh" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Telegram community">
                         <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
                         </svg>
                     </a>
                     <a href="https://emoryblockchain.substack.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Read our research on Substack">
@@ -665,7 +834,7 @@
                             <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
                         </svg>
                     </a>
-                    <a href="https://github.com/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                    <a href="https://github.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
                         <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                         </svg>
@@ -697,7 +866,7 @@
             <!-- Bottom Row -->
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    <p>&copy; <span id="currentYear">2025</span> Blockchain Club at Emory University. All rights reserved.</p>
+                    <p>&copy; <span id="currentYear">2025</span> Blockchain at Emory University. All rights reserved.</p>
                 </div>
                 
                 <div class="footer-legal">

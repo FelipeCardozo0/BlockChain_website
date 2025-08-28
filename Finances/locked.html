@@ -1,0 +1,839 @@
+
+        <!-- Treasury Overview Section -->
+        <section class="section treasury-section" id="treasury">
+            <div class="section-container">
+                <h2 class="section-title">Treasury Overview</h2>
+                <div class="treasury-grid">
+                    <div class="glass-card treasury-total">
+                        <div class="card-header">
+                            <h3>Total Treasury Value</h3>
+                            <div class="change-indicator positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+12.5%</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="total-value">
+                                <span class="usd-value">$760,329</span>
+                                <span class="crypto-equivalent">≈ 18.4 ETH</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card funding-breakdown">
+                        <div class="card-header">
+                            <h3>Funding Sources</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="breakdown-list">
+                                <div class="breakdown-item">
+                                    <div class="item-info">
+                                        <span class="source-name">Partners</span>
+                                        <span class="source-amount">$425,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 55.9%"></div>
+                                    </div>
+                                    <span class="percentage">55.9%</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="item-info">
+                                        <span class="source-name">Solana Validator</span>
+                                        <span class="source-amount">$185,329</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 24.4%"></div>
+                                    </div>
+                                    <span class="percentage">24.4%</span>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="item-info">
+                                        <span class="source-name">Emory Funds</span>
+                                        <span class="source-amount">$150,000</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 19.7%"></div>
+                                    </div>
+                                    <span class="percentage">19.7%</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card pie-chart-card">
+                        <div class="card-header">
+                            <h3>Allocation by Source</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-container">
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funding Sources Section -->
+        <section class="section funding-sources-section" id="funding-sources">
+            <div class="section-container">
+                <h2 class="section-title">Funding Sources</h2>
+                <div class="funding-grid">
+                    <div class="glass-card funding-card">
+                        <div class="funding-header">
+                            <div class="funding-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Partners</h3>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Total Contributions</span>
+                                    <span class="stat-value">$425,000</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Active Partners</span>
+                                    <span class="stat-value">12</span>
+                                </div>
+                            </div>
+                            <div class="recent-contributions">
+                                <div class="contribution-item">
+                                    <span class="partner-name">Solana Foundation</span>
+                                    <span class="contribution-amount">$75,000</span>
+                                    <span class="contribution-date">Dec 2024</span>
+                                </div>
+                                <div class="contribution-item">
+                                    <span class="partner-name">Ethereum Foundation</span>
+                                    <span class="contribution-amount">$50,000</span>
+                                    <span class="contribution-date">Nov 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card funding-card">
+                        <div class="funding-header">
+                            <div class="funding-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>Solana Validator</h3>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Current Stake</span>
+                                    <span class="stat-value">2,847 SOL</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Commission</span>
+                                    <span class="stat-value">5%</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Uptime</span>
+                                    <span class="stat-value">99.8%</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Monthly Rewards</span>
+                                    <span class="stat-value">$12,450</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card funding-card">
+                        <div class="funding-header">
+                            <div class="funding-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h3>Emory University</h3>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Research Grants</span>
+                                    <span class="stat-value">$100,000</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Program Support</span>
+                                    <span class="stat-value">$50,000</span>
+                                </div>
+                            </div>
+                            <div class="recent-contributions">
+                                <div class="contribution-item">
+                                    <span class="partner-name">DeFi Research Grant</span>
+                                    <span class="contribution-amount">$75,000</span>
+                                    <span class="contribution-date">Sep 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio & Allocation Section -->
+        <section class="section portfolio-section" id="portfolio">
+            <div class="section-container">
+                <h2 class="section-title">Portfolio & Allocation</h2>
+                <div class="portfolio-grid">
+                    <div class="glass-card allocation-chart-card">
+                        <div class="card-header">
+                            <h3>Asset Allocation</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-container">
+                                <canvas id="allocationChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card assets-table-card">
+                        <div class="card-header">
+                            <h3>Holdings</h3>
+                            <div class="table-controls">
+                                <button class="control-btn active" data-filter="all">All</button>
+                                <button class="control-btn" data-filter="crypto">Crypto</button>
+                                <button class="control-btn" data-filter="stable">Stables</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="assets-table-container">
+                                <div class="table-scroll-indicator">← Scroll to see more →</div>
+                                <table class="assets-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Asset</th>
+                                            <th>Chain</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Value (USD)</th>
+                                            <th>% of Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="assetsTableBody">
+                                        <tr data-type="stable">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon usdc"></div>
+                                                    <span>USDC</span>
+                                                </div>
+                                            </td>
+                                            <td>Ethereum</td>
+                                            <td>285,420</td>
+                                            <td>$1.00</td>
+                                            <td>$285,420</td>
+                                            <td>22.6%</td>
+                                        </tr>
+                                        <tr data-type="crypto">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon eth"></div>
+                                                    <span>ETH</span>
+                                                </div>
+                                            </td>
+                                            <td>Ethereum</td>
+                                            <td>67.5</td>
+                                            <td>$3,247</td>
+                                            <td>$219,173</td>
+                                            <td>17.4%</td>
+                                        </tr>
+                                        <tr data-type="crypto">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon sol"></div>
+                                                    <span>SOL</span>
+                                                </div>
+                                            </td>
+                                            <td>Solana</td>
+                                            <td>847</td>
+                                            <td>$185</td>
+                                            <td>$156,695</td>
+                                            <td>12.4%</td>
+                                        </tr>
+                                        <tr data-type="stable">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon usdt"></div>
+                                                    <span>USDT</span>
+                                                </div>
+                                            </td>
+                                            <td>Ethereum</td>
+                                            <td>95,000</td>
+                                            <td>$1.00</td>
+                                            <td>$95,000</td>
+                                            <td>7.5%</td>
+                                        </tr>
+                                        <tr data-type="crypto">
+                                            <td class="asset-cell">
+                                                <div class="asset-info">
+                                                    <div class="asset-icon btc"></div>
+                                                    <span>BTC</span>
+                                                </div>
+                                            </td>
+                                            <td>Bitcoin</td>
+                                            <td>0.89</td>
+                                            <td>$98,750</td>
+                                            <td>$87,888</td>
+                                            <td>7.0%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Metrics Section -->
+        <section class="section performance-section" id="performance">
+            <div class="section-container">
+                <h2 class="section-title">Performance Metrics</h2>
+                <div class="performance-controls">
+                    <div class="timeframe-toggle">
+                        <button class="toggle-btn active" data-period="7d">7D</button>
+                        <button class="toggle-btn" data-period="30d">30D</button>
+                        <button class="toggle-btn" data-period="ytd">YTD</button>
+                    </div>
+                </div>
+                <div class="performance-grid">
+                    <div class="glass-card metrics-card">
+                        <div class="card-header">
+                            <h3>Key Performance Indicators</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="kpi-grid">
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Cumulative Return</div>
+                                    <div class="kpi-value positive">+24.7%</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Daily PnL</div>
+                                    <div class="kpi-value positive">+$2,847</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Sharpe Ratio</div>
+                                    <div class="kpi-value">1.85</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Win Rate</div>
+                                    <div class="kpi-value">67.3%</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Max Drawdown</div>
+                                    <div class="kpi-value negative">-8.2%</div>
+                                </div>
+                                <div class="kpi-item">
+                                    <div class="kpi-label">Volatility</div>
+                                    <div class="kpi-value">15.4%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card chart-card">
+                        <div class="card-header">
+                            <h3>Portfolio Performance</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-container">
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cash Flow Tracker Section -->
+        <section class="section cashflow-section" id="cashflow">
+            <div class="section-container">
+                <h2 class="section-title">Cash Flow Tracker</h2>
+                <div class="glass-card cashflow-card">
+                    <div class="card-header">
+                        <h3>Income & Expenses</h3>
+                        <div class="cashflow-summary">
+                            <div class="summary-item positive">
+                                <span class="summary-label">Total Income</span>
+                                <span class="summary-value">+$134,350</span>
+                            </div>
+                            <div class="summary-item negative">
+                                <span class="summary-label">Total Expenses</span>
+                                <span class="summary-value">-$38,920</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Net Flow</span>
+                                <span class="summary-value positive">+$95,430</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="cashflow-table-container">
+                            <div class="table-scroll-indicator">← Scroll to see more →</div>
+                            <table class="cashflow-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th>Amount</th>
+                                        <th>Running Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="income-row">
+                                        <td>2024-12-15</td>
+                                        <td><span class="category-tag grants">Grants</span></td>
+                                        <td>Ethereum Foundation Grant</td>
+                                        <td class="positive">+$50,000</td>
+                                        <td>$760,329</td>
+                                    </tr>
+                                    <tr class="income-row">
+                                        <td>2024-12-10</td>
+                                        <td><span class="category-tag validator">Validator</span></td>
+                                        <td>Solana Staking Rewards</td>
+                                        <td class="positive">+$12,450</td>
+                                        <td>$710,329</td>
+                                    </tr>
+                                    <tr class="expense-row">
+                                        <td>2024-12-08</td>
+                                        <td><span class="category-tag infrastructure">Infrastructure</span></td>
+                                        <td>Server & Cloud Costs</td>
+                                        <td class="negative">-$2,850</td>
+                                        <td>$697,879</td>
+                                    </tr>
+
+                                    <tr class="expense-row">
+                                        <td>2024-12-01</td>
+                                        <td><span class="category-tag operations">Operations</span></td>
+                                        <td>Marketing & Outreach</td>
+                                        <td class="negative">-$5,200</td>
+                                        <td>$770,729</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mining Operations Section -->
+        <section class="section mining-section" id="mining">
+            <div class="section-container">
+                <h2 class="section-title">Mining Operations</h2>
+                
+                <!-- Mining KPIs -->
+                <div class="mining-kpis">
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Network Difficulty</span>
+                        <span class="kpi-value">72.5T</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Total Hashrate</span>
+                        <span class="kpi-value">847 PH/s</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Active Rigs</span>
+                        <span class="kpi-value">24/25</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Uptime (24h/7d/30d)</span>
+                        <span class="kpi-value">98.7% / 97.2% / 96.8%</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Avg Efficiency</span>
+                        <span class="kpi-value">29.5 J/TH</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Power</span>
+                        <span class="kpi-value">2.4 MW</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Cost/kWh</span>
+                        <span class="kpi-value">$0.045</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Daily BTC</span>
+                        <span class="kpi-value">0.0087</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Daily USD</span>
+                        <span class="kpi-value">$859</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Pool Fee</span>
+                        <span class="kpi-value">1.5%</span>
+                    </div>
+                    <div class="kpi-chip">
+                        <span class="kpi-label">Breakeven BTC Price</span>
+                        <span class="kpi-value">$42,850</span>
+                    </div>
+                </div>
+
+                <div class="mining-grid">
+                    <!-- Overview Card -->
+                    <div class="glass-card mining-overview-card">
+                        <div class="card-header">
+                            <h3>Mining Overview</h3>
+                            <div class="status-indicator online">
+                                <div class="status-dot"></div>
+                                <span>All Systems Operational</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="overview-grid">
+                                <div class="overview-item">
+                                    <span class="overview-label">Sites/Rooms</span>
+                                    <span class="overview-value">3 / 8</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Pool</span>
+                                    <span class="overview-value">F2Pool</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Payout Scheme</span>
+                                    <span class="overview-value">FPPS</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Payout Frequency</span>
+                                    <span class="overview-value">Daily</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Wallet</span>
+                                    <span class="overview-value wallet-address">XAqHfPFsqTfAJHBRHAcEECkMSykXjkUj2Rta16Qshrk</span>
+                                    <button class="copy-btn" data-clipboard="XAqHfPFsqTfAJHBRHAcEECkMSykXjkUj2Rta16Qshrk">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Renewable %</span>
+                                    <span class="overview-value">85%</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">PUE</span>
+                                    <span class="overview-value">1.15</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Carbon Intensity</span>
+                                    <span class="overview-value">0.12 kgCO₂/kWh</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Curtailment Events (30d)</span>
+                                    <span class="overview-value">2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hardware Inventory -->
+                    <div class="glass-card hardware-inventory-card">
+                        <div class="card-header">
+                            <h3>Hardware Inventory</h3>
+                            <div class="table-controls">
+                                <button class="control-btn active" data-filter="all">All</button>
+                                <button class="control-btn" data-filter="healthy">Healthy</button>
+                                <button class="control-btn" data-filter="degraded">Degraded</button>
+                                <button class="control-btn" data-filter="down">Down</button>
+                                <button class="export-btn">
+                                    <i class="fas fa-download"></i>
+                                    CSV
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="hardware-table-container">
+                                <div class="table-scroll-indicator">← Scroll to see more →</div>
+                                <table class="hardware-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Rig ID</th>
+                                            <th>Model</th>
+                                            <th>Firmware</th>
+                                            <th>Hashrate (TH/s)</th>
+                                            <th>Power (W)</th>
+                                            <th>Efficiency (J/TH)</th>
+                                            <th>Temp (°C)</th>
+                                            <th>Fan %</th>
+                                            <th>Status</th>
+                                            <th>Location</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="hardwareTableBody">
+                                        <tr data-status="healthy">
+                                            <td>RIG-001</td>
+                                            <td>S19 XP</td>
+                                            <td>v2.1.3</td>
+                                            <td>140.2</td>
+                                            <td>3,010</td>
+                                            <td>21.5</td>
+                                            <td>68</td>
+                                            <td>85%</td>
+                                            <td><span class="status-badge healthy">Healthy</span></td>
+                                            <td>Site A - Room 1</td>
+                                        </tr>
+                                        <tr data-status="healthy">
+                                            <td>RIG-002</td>
+                                            <td>S19 XP</td>
+                                            <td>v2.1.3</td>
+                                            <td>139.8</td>
+                                            <td>3,005</td>
+                                            <td>21.5</td>
+                                            <td>67</td>
+                                            <td>82%</td>
+                                            <td><span class="status-badge healthy">Healthy</span></td>
+                                            <td>Site A - Room 1</td>
+                                        </tr>
+                                        <tr data-status="degraded">
+                                            <td>RIG-003</td>
+                                            <td>S19 Pro</td>
+                                            <td>v2.0.8</td>
+                                            <td>105.5</td>
+                                            <td>3,250</td>
+                                            <td>30.8</td>
+                                            <td>72</td>
+                                            <td>95%</td>
+                                            <td><span class="status-badge degraded">Degraded</span></td>
+                                            <td>Site A - Room 2</td>
+                                        </tr>
+                                        <tr data-status="healthy">
+                                            <td>RIG-004</td>
+                                            <td>S19 XP</td>
+                                            <td>v2.1.3</td>
+                                            <td>140.1</td>
+                                            <td>3,008</td>
+                                            <td>21.5</td>
+                                            <td>69</td>
+                                            <td>87%</td>
+                                            <td><span class="status-badge healthy">Healthy</span></td>
+                                            <td>Site A - Room 1</td>
+                                        </tr>
+                                        <tr data-status="down">
+                                            <td>RIG-005</td>
+                                            <td>S19 Pro</td>
+                                            <td>v2.0.8</td>
+                                            <td>0.0</td>
+                                            <td>0</td>
+                                            <td>N/A</td>
+                                            <td>N/A</td>
+                                            <td>0%</td>
+                                            <td><span class="status-badge down">Down</span></td>
+                                            <td>Site B - Room 1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Charts -->
+                    <div class="glass-card performance-charts-card">
+                        <div class="card-header">
+                            <h3>Performance Charts</h3>
+                            <div class="chart-controls">
+                                <div class="timeframe-toggle">
+                                    <button class="toggle-btn active" data-period="7d">7D</button>
+                                    <button class="toggle-btn" data-period="30d">30D</button>
+                                    <button class="toggle-btn" data-period="ytd">YTD</button>
+                                </div>
+                                <div class="unit-toggle">
+                                    <button class="unit-btn active" data-unit="th">TH/s</button>
+                                    <button class="unit-btn" data-unit="ph">PH/s</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-container">
+                                <canvas id="hashrateChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Revenue vs Power Cost -->
+                    <div class="glass-card revenue-cost-card">
+                        <div class="card-header">
+                            <h3>Revenue vs Power Cost</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="chart-container">
+                                <canvas id="revenueCostChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Energy & Cost -->
+                    <div class="glass-card energy-cost-card">
+                        <div class="card-header">
+                            <h3>Energy & Cost Analysis</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="energy-stats-grid">
+                                <div class="energy-stat">
+                                    <span class="stat-label">kWh/day</span>
+                                    <span class="stat-value">57,600</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">kWh/30d</span>
+                                    <span class="stat-value">1,728,000</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Avg Cost/kWh</span>
+                                    <span class="stat-value">$0.045</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Demand Response Credits</span>
+                                    <span class="stat-value">$2,450</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Curtailed Hours</span>
+                                    <span class="stat-value">18</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Power Cap vs Actual</span>
+                                    <span class="stat-value">2.4MW / 2.38MW</span>
+                                </div>
+                            </div>
+                            <div class="cost-breakdown">
+                                <h4>Cost Breakdown</h4>
+                                <div class="cost-categories">
+                                    <div class="cost-category">
+                                        <span class="category-name">OpEx</span>
+                                        <div class="cost-items">
+                                            <div class="cost-item">
+                                                <span>Power</span>
+                                                <span>$77,760/mo</span>
+                                            </div>
+                                            <div class="cost-item">
+                                                <span>Hosting</span>
+                                                <span>$12,000/mo</span>
+                                            </div>
+                                            <div class="cost-item">
+                                                <span>Pool Fees</span>
+                                                <span>$387/mo</span>
+                                            </div>
+                                            <div class="cost-item">
+                                                <span>Maintenance</span>
+                                                <span>$3,500/mo</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cost-category">
+                                        <span class="category-name">CapEx</span>
+                                        <div class="cost-items">
+                                            <div class="cost-item">
+                                                <span>Hardware</span>
+                                                <span>$1,250,000</span>
+                                            </div>
+                                            <div class="cost-item">
+                                                <span>Infrastructure</span>
+                                                <span>$450,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profitability -->
+                    <div class="glass-card profitability-card">
+                        <div class="card-header">
+                            <h3>Profitability Analysis</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="profitability-stats">
+                                <div class="profit-stat">
+                                    <span class="stat-label">Daily Revenue (BTC)</span>
+                                    <span class="stat-value">0.0087 BTC</span>
+                                </div>
+                                <div class="profit-stat">
+                                    <span class="stat-label">Daily Revenue (USD)</span>
+                                    <span class="stat-value">$859</span>
+                                </div>
+                                <div class="profit-stat">
+                                    <span class="stat-label">Daily Costs (USD)</span>
+                                    <span class="stat-value">$3,122</span>
+                                </div>
+                                <div class="profit-stat">
+                                    <span class="stat-label">Daily Net (USD)</span>
+                                    <span class="stat-value negative">-$2,263</span>
+                                </div>
+                                <div class="profit-stat">
+                                    <span class="stat-label">Margin %</span>
+                                    <span class="stat-value negative">-263%</span>
+                                </div>
+                                <div class="profit-stat">
+                                    <span class="stat-label">YTD Cum PnL</span>
+                                    <span class="stat-value negative">-$826,000</span>
+                                </div>
+                                <div class="profit-stat">
+                                    <span class="stat-label">Max Drawdown</span>
+                                    <span class="stat-value negative">-$1,250,000</span>
+                                </div>
+                                <div class="profit-stat">
+                                    <span class="stat-label">Payback Period</span>
+                                    <span class="stat-value">18.2 months</span>
+                                </div>
+                                <div class="profit-stat">
+                                    <span class="stat-label">ROI</span>
+                                    <span class="stat-value negative">-32.8%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pool & Payouts -->
+                    <div class="glass-card pool-payouts-card">
+                        <div class="card-header">
+                            <h3>Pool & Payouts</h3>
+                            <div class="pool-status">
+                                <div class="status-indicator online">
+                                    <div class="status-dot"></div>
+                                    <span>F2Pool API: OK</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="pool-stats-grid">
+                                <div class="pool-stat">
+                                    <span class="stat-label">Accepted Shares %</span>
+                                    <span class="stat-value">99.2%</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="stat-label">Stale Shares %</span>
+                                    <span class="stat-value">0.7%</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="stat-label">Invalid Shares %</span>
+                                    <span class="stat-value">0.1%</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="stat-label">Orphan Rate</span>
+                                    <span class="stat-value">0.3%</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="stat-label">Luck %</span>
+                                    <span class="stat-value">102.4%</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="stat-label">Last Payout</span>
+                                    <span class="stat-value">2024-12-20 14:30 UTC</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="stat-label">Payout Amount</span>
+                                    <span class="stat-value">0.0087 BTC</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="stat-label">Next Expected</span>
+                                    <span class="stat-value">2024-12-21 14:30 UTC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

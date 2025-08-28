@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finances - Blockchain Club at Emory</title>
+    <title>Finances - Blockchain at Emory</title>
     <link rel="icon" type="image/png" href="../Images/Logo/Logo_Official.png">
     <link rel="stylesheet" href="finances.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -14,20 +14,19 @@
         <canvas id="blockchainCanvas" class="background-canvas"></canvas>
     </div>
 
-    <!-- Navigation Bar (Same as Team page) -->
+    <!-- Navigation -->
     <nav class="home-navbar" id="homeNavbar">
         <div class="nav-container">
             <!-- Logo -->
             <div class="nav-logo">
-                <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
-                    <img src="../Images/Logo/Logo_Official.png" alt="Blockchain Club at Emory" class="nav-logo-img">
+                <a href="../Home/home.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                    <img src="../Images/Logo/Logo_Official.png" alt="Blockchain at Emory" class="nav-logo-img">
                 </a>
             </div>
             
             <!-- Navigation Links -->
             <nav class="nav-navigation" aria-label="Main navigation">
                 <div class="nav-links-center">
-                    <a href="../About/about.html" class="nav-link">About</a>
                     <a href="../Projects/projects.html" class="nav-link">Projects</a>
                     <a href="../Research/research.html" class="nav-link">Research</a>
                     <a href="finances.html" class="nav-link nav-link-active">Finances</a>
@@ -38,8 +37,6 @@
                     <a href="../About/about.html#join" class="nav-link nav-link-apply">Apply</a>
                 </div>
             </nav>
-            
-
         </div>
     </nav>
 
@@ -49,7 +46,7 @@
             <!-- Logo -->
             <div class="navbar-logo">
                 <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club Finances - Home">
-                    <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="finances-logo-img">
+                    <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain at Emory" class="finances-logo-img">
                 </a>
             </div>
             
@@ -61,6 +58,7 @@
                 <a href="#cashflow" class="finances-nav-link" data-section="cashflow">Cash Flow</a>
                 <a href="#mining" class="finances-nav-link" data-section="mining">Mining</a>
                 <a href="#validator" class="finances-nav-link" data-section="validator">Validator</a>
+
             </div>
             
             <!-- Menu Icon -->
@@ -153,942 +151,281 @@
                 </div>
             </nav>
             
-            <!-- Social Links -->
-            <div class="overlay-social">
-                <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                        <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                    </svg>
-                </a>
-                <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                </a>
-                <a href="https://emoryblockchain.substack.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Substack">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
-                    </svg>
-                </a>
-                <a href="https://discord.gg/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Discord">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                    </svg>
-                </a>
-            </div>
         </div>
     </div>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="floating-elements">
-                    <div class="floating-icon" data-delay="0">
-                        <i class="fab fa-bitcoin"></i>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-container">
+                    <div class="floating-elements">
+                        <div class="floating-icon" data-delay="0">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="floating-icon" data-delay="1">
+                            <i class="fab fa-ethereum"></i>
+                        </div>
+                        <div class="floating-icon" data-delay="2">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="floating-icon" data-delay="3">
+                            <i class="fas fa-coins"></i>
+                        </div>
                     </div>
-                    <div class="floating-icon" data-delay="1">
-                        <i class="fab fa-ethereum"></i>
-                    </div>
-                    <div class="floating-icon" data-delay="2">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="floating-icon" data-delay="3">
-                        <i class="fas fa-coins"></i>
-                    </div>
+                    <h1 class="hero-title">Finances</h1>
+                    <p class="hero-subtitle">Transparency and accountability in managing club funds and digital assets with complete financial oversight.</p>
                 </div>
-                <h1 class="hero-title">Finances</h1>
-                <p class="hero-subtitle">Transparency and accountability in managing club funds and digital assets with complete financial oversight.</p>
-            </div>
-        </section>
+            </section>
 
-        <!-- Treasury Overview Section -->
-        <section class="section treasury-section" id="treasury">
+                    <!-- Board Access Section -->
+        <section class="section board-access-section" id="board-access">
             <div class="section-container">
-                <h2 class="section-title">Treasury Overview</h2>
-                <div class="treasury-grid">
-                    <div class="glass-card treasury-total">
-                        <div class="card-header">
-                            <h3>Total Treasury Value</h3>
-                            <div class="change-indicator positive">
-                                <i class="fas fa-arrow-up"></i>
-                                <span>+12.5%</span>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="total-value">
-                                <span class="usd-value">$847,329</span>
-                                <span class="crypto-equivalent">≈ 18.4 ETH</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card funding-breakdown">
-                        <div class="card-header">
-                            <h3>Funding Sources</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="breakdown-list">
-                                <div class="breakdown-item">
-                                    <div class="item-info">
-                                        <span class="source-name">Partners</span>
-                                        <span class="source-amount">$425,000</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 50.2%"></div>
-                                    </div>
-                                    <span class="percentage">50.2%</span>
-                                </div>
-                                <div class="breakdown-item">
-                                    <div class="item-info">
-                                        <span class="source-name">Solana Validator</span>
-                                        <span class="source-amount">$185,329</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 21.9%"></div>
-                                    </div>
-                                    <span class="percentage">21.9%</span>
-                                </div>
-                                <div class="breakdown-item">
-                                    <div class="item-info">
-                                        <span class="source-name">Emory Funds</span>
-                                        <span class="source-amount">$150,000</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 17.7%"></div>
-                                    </div>
-                                    <span class="percentage">17.7%</span>
-                                </div>
-                                <div class="breakdown-item">
-                                    <div class="item-info">
-                                        <span class="source-name">Event Revenue</span>
-                                        <span class="source-amount">$62,000</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 7.3%"></div>
-                                    </div>
-                                    <span class="percentage">7.3%</span>
-                                </div>
-                                <div class="breakdown-item">
-                                    <div class="item-info">
-                                        <span class="source-name">Donations</span>
-                                        <span class="source-amount">$25,000</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-fill" style="width: 2.9%"></div>
-                                    </div>
-                                    <span class="percentage">2.9%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card pie-chart-card">
-                        <div class="card-header">
-                            <h3>Allocation by Source</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="chart-container">
-                                <canvas id="pieChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Funding Sources Section -->
-        <section class="section funding-sources-section" id="funding-sources">
-            <div class="section-container">
-                <h2 class="section-title">Funding Sources</h2>
-                <div class="funding-grid">
-                    <div class="glass-card funding-card">
-                        <div class="funding-header">
-                            <div class="funding-icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <h3>Partners</h3>
-                        </div>
-                        <div class="funding-content">
-                            <div class="funding-stats">
-                                <div class="stat">
-                                    <span class="stat-label">Total Contributions</span>
-                                    <span class="stat-value">$425,000</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-label">Active Partners</span>
-                                    <span class="stat-value">12</span>
-                                </div>
-                            </div>
-                            <div class="recent-contributions">
-                                <div class="contribution-item">
-                                    <span class="partner-name">Solana Foundation</span>
-                                    <span class="contribution-amount">$75,000</span>
-                                    <span class="contribution-date">Dec 2024</span>
-                                </div>
-                                <div class="contribution-item">
-                                    <span class="partner-name">Ethereum Foundation</span>
-                                    <span class="contribution-amount">$50,000</span>
-                                    <span class="contribution-date">Nov 2024</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card funding-card">
-                        <div class="funding-header">
-                            <div class="funding-icon">
-                                <i class="fas fa-server"></i>
-                            </div>
-                            <h3>Solana Validator</h3>
-                        </div>
-                        <div class="funding-content">
-                            <div class="funding-stats">
-                                <div class="stat">
-                                    <span class="stat-label">Current Stake</span>
-                                    <span class="stat-value">2,847 SOL</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-label">Commission</span>
-                                    <span class="stat-value">5%</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-label">Uptime</span>
-                                    <span class="stat-value">99.8%</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-label">Monthly Rewards</span>
-                                    <span class="stat-value">$12,450</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card funding-card">
-                        <div class="funding-header">
-                            <div class="funding-icon">
-                                <i class="fas fa-university"></i>
-                            </div>
-                            <h3>Emory University</h3>
-                        </div>
-                        <div class="funding-content">
-                            <div class="funding-stats">
-                                <div class="stat">
-                                    <span class="stat-label">Research Grants</span>
-                                    <span class="stat-value">$100,000</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-label">Program Support</span>
-                                    <span class="stat-value">$50,000</span>
-                                </div>
-                            </div>
-                            <div class="recent-contributions">
-                                <div class="contribution-item">
-                                    <span class="partner-name">DeFi Research Grant</span>
-                                    <span class="contribution-amount">$75,000</span>
-                                    <span class="contribution-date">Sep 2024</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card funding-card">
-                        <div class="funding-header">
-                            <div class="funding-icon">
-                                <i class="fas fa-gift"></i>
-                            </div>
-                            <h3>Donations & Events</h3>
-                        </div>
-                        <div class="funding-content">
-                            <div class="funding-stats">
-                                <div class="stat">
-                                    <span class="stat-label">Event Revenue</span>
-                                    <span class="stat-value">$62,000</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-label">Donations</span>
-                                    <span class="stat-value">$25,000</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio & Allocation Section -->
-        <section class="section portfolio-section" id="portfolio">
-            <div class="section-container">
-                <h2 class="section-title">Portfolio & Allocation</h2>
-                <div class="portfolio-grid">
-                    <div class="glass-card allocation-chart-card">
-                        <div class="card-header">
-                            <h3>Asset Allocation</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="chart-container">
-                                <canvas id="allocationChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card assets-table-card">
-                        <div class="card-header">
-                            <h3>Holdings</h3>
-                            <div class="table-controls">
-                                <button class="control-btn active" data-filter="all">All</button>
-                                <button class="control-btn" data-filter="crypto">Crypto</button>
-                                <button class="control-btn" data-filter="stable">Stables</button>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="assets-table-container">
-                                <table class="assets-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Asset</th>
-                                            <th>Chain</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
-                                            <th>Value (USD)</th>
-                                            <th>% of Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="assetsTableBody">
-                                        <tr data-type="stable">
-                                            <td class="asset-cell">
-                                                <div class="asset-info">
-                                                    <div class="asset-icon usdc"></div>
-                                                    <span>USDC</span>
-                                                </div>
-                                            </td>
-                                            <td>Ethereum</td>
-                                            <td>285,420</td>
-                                            <td>$1.00</td>
-                                            <td>$285,420</td>
-                                            <td>33.7%</td>
-                                        </tr>
-                                        <tr data-type="crypto">
-                                            <td class="asset-cell">
-                                                <div class="asset-info">
-                                                    <div class="asset-icon eth"></div>
-                                                    <span>ETH</span>
-                                                </div>
-                                            </td>
-                                            <td>Ethereum</td>
-                                            <td>67.5</td>
-                                            <td>$3,247</td>
-                                            <td>$219,173</td>
-                                            <td>25.9%</td>
-                                        </tr>
-                                        <tr data-type="crypto">
-                                            <td class="asset-cell">
-                                                <div class="asset-info">
-                                                    <div class="asset-icon sol"></div>
-                                                    <span>SOL</span>
-                                                </div>
-                                            </td>
-                                            <td>Solana</td>
-                                            <td>847</td>
-                                            <td>$185</td>
-                                            <td>$156,695</td>
-                                            <td>18.5%</td>
-                                        </tr>
-                                        <tr data-type="stable">
-                                            <td class="asset-cell">
-                                                <div class="asset-info">
-                                                    <div class="asset-icon usdt"></div>
-                                                    <span>USDT</span>
-                                                </div>
-                                            </td>
-                                            <td>Ethereum</td>
-                                            <td>95,000</td>
-                                            <td>$1.00</td>
-                                            <td>$95,000</td>
-                                            <td>11.2%</td>
-                                        </tr>
-                                        <tr data-type="crypto">
-                                            <td class="asset-cell">
-                                                <div class="asset-info">
-                                                    <div class="asset-icon btc"></div>
-                                                    <span>BTC</span>
-                                                </div>
-                                            </td>
-                                            <td>Bitcoin</td>
-                                            <td>0.89</td>
-                                            <td>$98,750</td>
-                                            <td>$87,888</td>
-                                            <td>10.4%</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Performance Metrics Section -->
-        <section class="section performance-section" id="performance">
-            <div class="section-container">
-                <h2 class="section-title">Performance Metrics</h2>
-                <div class="performance-controls">
-                    <div class="timeframe-toggle">
-                        <button class="toggle-btn active" data-period="7d">7D</button>
-                        <button class="toggle-btn" data-period="30d">30D</button>
-                        <button class="toggle-btn" data-period="ytd">YTD</button>
-                    </div>
-                </div>
-                <div class="performance-grid">
-                    <div class="glass-card metrics-card">
-                        <div class="card-header">
-                            <h3>Key Performance Indicators</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="kpi-grid">
-                                <div class="kpi-item">
-                                    <div class="kpi-label">Cumulative Return</div>
-                                    <div class="kpi-value positive">+24.7%</div>
-                                </div>
-                                <div class="kpi-item">
-                                    <div class="kpi-label">Daily PnL</div>
-                                    <div class="kpi-value positive">+$2,847</div>
-                                </div>
-                                <div class="kpi-item">
-                                    <div class="kpi-label">Sharpe Ratio</div>
-                                    <div class="kpi-value">1.85</div>
-                                </div>
-                                <div class="kpi-item">
-                                    <div class="kpi-label">Win Rate</div>
-                                    <div class="kpi-value">67.3%</div>
-                                </div>
-                                <div class="kpi-item">
-                                    <div class="kpi-label">Max Drawdown</div>
-                                    <div class="kpi-value negative">-8.2%</div>
-                                </div>
-                                <div class="kpi-item">
-                                    <div class="kpi-label">Volatility</div>
-                                    <div class="kpi-value">15.4%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card chart-card">
-                        <div class="card-header">
-                            <h3>Portfolio Performance</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="chart-container">
-                                <canvas id="performanceChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Cash Flow Tracker Section -->
-        <section class="section cashflow-section" id="cashflow">
-            <div class="section-container">
-                <h2 class="section-title">Cash Flow Tracker</h2>
-                <div class="glass-card cashflow-card">
+                <h2 class="section-title">Board Access</h2>
+                
+                <!-- Login Form -->
+                <div class="glass-card board-login-card" id="boardLoginCard">
                     <div class="card-header">
-                        <h3>Income & Expenses</h3>
-                        <div class="cashflow-summary">
-                            <div class="summary-item positive">
-                                <span class="summary-label">Total Income</span>
-                                <span class="summary-value">+$142,850</span>
-                            </div>
-                            <div class="summary-item negative">
-                                <span class="summary-label">Total Expenses</span>
-                                <span class="summary-value">-$38,920</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="summary-label">Net Flow</span>
-                                <span class="summary-value positive">+$103,930</span>
-                            </div>
-                        </div>
+                        <h3>
+                            <i class="fas fa-lock"></i>
+                            Board Member Authentication
+                        </h3>
                     </div>
                     <div class="card-content">
-                        <div class="cashflow-table-container">
-                            <table class="cashflow-table">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Category</th>
-                                        <th>Description</th>
-                                        <th>Amount</th>
-                                        <th>Running Balance</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="income-row">
-                                        <td>2024-12-15</td>
-                                        <td><span class="category-tag grants">Grants</span></td>
-                                        <td>Ethereum Foundation Grant</td>
-                                        <td class="positive">+$50,000</td>
-                                        <td>$847,329</td>
-                                    </tr>
-                                    <tr class="income-row">
-                                        <td>2024-12-10</td>
-                                        <td><span class="category-tag validator">Validator</span></td>
-                                        <td>Solana Staking Rewards</td>
-                                        <td class="positive">+$12,450</td>
-                                        <td>$797,329</td>
-                                    </tr>
-                                    <tr class="expense-row">
-                                        <td>2024-12-08</td>
-                                        <td><span class="category-tag infrastructure">Infrastructure</span></td>
-                                        <td>Server & Cloud Costs</td>
-                                        <td class="negative">-$2,850</td>
-                                        <td>$784,879</td>
-                                    </tr>
-                                    <tr class="income-row">
-                                        <td>2024-12-05</td>
-                                        <td><span class="category-tag events">Events</span></td>
-                                        <td>Blockchain Workshop Revenue</td>
-                                        <td class="positive">+$8,500</td>
-                                        <td>$787,729</td>
-                                    </tr>
-                                    <tr class="expense-row">
-                                        <td>2024-12-01</td>
-                                        <td><span class="category-tag operations">Operations</span></td>
-                                        <td>Marketing & Outreach</td>
-                                        <td class="negative">-$5,200</td>
-                                        <td>$779,229</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Mining Operations Section -->
-        <section class="section mining-section" id="mining">
-            <div class="section-container">
-                <h2 class="section-title">Mining Operations</h2>
-                
-                <!-- Mining KPIs -->
-                <div class="mining-kpis">
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Network Difficulty</span>
-                        <span class="kpi-value">72.5T</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Total Hashrate</span>
-                        <span class="kpi-value">847 PH/s</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Active Rigs</span>
-                        <span class="kpi-value">24/25</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Uptime (24h/7d/30d)</span>
-                        <span class="kpi-value">98.7% / 97.2% / 96.8%</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Avg Efficiency</span>
-                        <span class="kpi-value">29.5 J/TH</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Power</span>
-                        <span class="kpi-value">2.4 MW</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Cost/kWh</span>
-                        <span class="kpi-value">$0.045</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Daily BTC</span>
-                        <span class="kpi-value">0.0087</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Daily USD</span>
-                        <span class="kpi-value">$859</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Pool Fee</span>
-                        <span class="kpi-value">1.5%</span>
-                    </div>
-                    <div class="kpi-chip">
-                        <span class="kpi-label">Breakeven BTC Price</span>
-                        <span class="kpi-value">$42,850</span>
-                    </div>
-                </div>
-
-                <div class="mining-grid">
-                    <!-- Overview Card -->
-                    <div class="glass-card mining-overview-card">
-                        <div class="card-header">
-                            <h3>Mining Overview</h3>
-                            <div class="status-indicator online">
-                                <div class="status-dot"></div>
-                                <span>All Systems Operational</span>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="overview-grid">
-                                <div class="overview-item">
-                                    <span class="overview-label">Sites/Rooms</span>
-                                    <span class="overview-value">3 / 8</span>
-                                </div>
-                                <div class="overview-item">
-                                    <span class="overview-label">Pool</span>
-                                    <span class="overview-value">F2Pool</span>
-                                </div>
-                                <div class="overview-item">
-                                    <span class="overview-label">Payout Scheme</span>
-                                    <span class="overview-value">FPPS</span>
-                                </div>
-                                <div class="overview-item">
-                                    <span class="overview-label">Payout Frequency</span>
-                                    <span class="overview-value">Daily</span>
-                                </div>
-                                <div class="overview-item">
-                                    <span class="overview-label">Wallet</span>
-                                    <span class="overview-value wallet-address">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span>
-                                    <button class="copy-btn" data-clipboard="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh">
-                                        <i class="fas fa-copy"></i>
+                        <p class="login-description">This section contains sensitive financial information and operational details restricted to board members only.</p>
+                        
+                        <form class="board-login-form" id="boardLoginForm">
+                            <div class="form-group">
+                                <label for="boardPassword" class="form-label">Board Password</label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="boardPassword" name="password" class="form-input" 
+                                           placeholder="Enter board password" required>
+                                    <button type="button" class="password-toggle" id="passwordToggle">
+                                        <i class="fas fa-eye"></i>
                                     </button>
                                 </div>
-                                <div class="overview-item">
-                                    <span class="overview-label">Renewable %</span>
-                                    <span class="overview-value">85%</span>
-                                </div>
-                                <div class="overview-item">
-                                    <span class="overview-label">PUE</span>
-                                    <span class="overview-value">1.15</span>
-                                </div>
-                                <div class="overview-item">
-                                    <span class="overview-label">Carbon Intensity</span>
-                                    <span class="overview-value">0.12 kgCO₂/kWh</span>
-                                </div>
-                                <div class="overview-item">
-                                    <span class="overview-label">Curtailment Events (30d)</span>
-                                    <span class="overview-value">2</span>
-                                </div>
                             </div>
+                            
+                            <button type="submit" class="login-btn">
+                                <span class="btn-text">
+                                    <i class="fas fa-unlock"></i>
+                                    Access Board Section
+                                </span>
+                                <span class="btn-spinner login-spinner"></span>
+                            </button>
+                        </form>
+                        
+                        <div class="login-error" id="loginError" style="display: none;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Invalid password. Please try again.</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Hardware Inventory -->
-                    <div class="glass-card hardware-inventory-card">
-                        <div class="card-header">
-                            <h3>Hardware Inventory</h3>
-                            <div class="table-controls">
-                                <button class="control-btn active" data-filter="all">All</button>
-                                <button class="control-btn" data-filter="healthy">Healthy</button>
-                                <button class="control-btn" data-filter="degraded">Degraded</button>
-                                <button class="control-btn" data-filter="down">Down</button>
-                                <button class="export-btn">
-                                    <i class="fas fa-download"></i>
-                                    CSV
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="hardware-table-container">
-                                <table class="hardware-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Rig ID</th>
-                                            <th>Model</th>
-                                            <th>Firmware</th>
-                                            <th>Hashrate (TH/s)</th>
-                                            <th>Power (W)</th>
-                                            <th>Efficiency (J/TH)</th>
-                                            <th>Temp (°C)</th>
-                                            <th>Fan %</th>
-                                            <th>Status</th>
-                                            <th>Location</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="hardwareTableBody">
-                                        <tr data-status="healthy">
-                                            <td>RIG-001</td>
-                                            <td>S19 XP</td>
-                                            <td>v2.1.3</td>
-                                            <td>140.2</td>
-                                            <td>3,010</td>
-                                            <td>21.5</td>
-                                            <td>68</td>
-                                            <td>85%</td>
-                                            <td><span class="status-badge healthy">Healthy</span></td>
-                                            <td>Site A - Room 1</td>
-                                        </tr>
-                                        <tr data-status="healthy">
-                                            <td>RIG-002</td>
-                                            <td>S19 XP</td>
-                                            <td>v2.1.3</td>
-                                            <td>139.8</td>
-                                            <td>3,005</td>
-                                            <td>21.5</td>
-                                            <td>67</td>
-                                            <td>82%</td>
-                                            <td><span class="status-badge healthy">Healthy</span></td>
-                                            <td>Site A - Room 1</td>
-                                        </tr>
-                                        <tr data-status="degraded">
-                                            <td>RIG-003</td>
-                                            <td>S19 Pro</td>
-                                            <td>v2.0.8</td>
-                                            <td>105.5</td>
-                                            <td>3,250</td>
-                                            <td>30.8</td>
-                                            <td>72</td>
-                                            <td>95%</td>
-                                            <td><span class="status-badge degraded">Degraded</span></td>
-                                            <td>Site A - Room 2</td>
-                                        </tr>
-                                        <tr data-status="healthy">
-                                            <td>RIG-004</td>
-                                            <td>S19 XP</td>
-                                            <td>v2.1.3</td>
-                                            <td>140.1</td>
-                                            <td>3,008</td>
-                                            <td>21.5</td>
-                                            <td>69</td>
-                                            <td>87%</td>
-                                            <td><span class="status-badge healthy">Healthy</span></td>
-                                            <td>Site A - Room 1</td>
-                                        </tr>
-                                        <tr data-status="down">
-                                            <td>RIG-005</td>
-                                            <td>S19 Pro</td>
-                                            <td>v2.0.8</td>
-                                            <td>0.0</td>
-                                            <td>0</td>
-                                            <td>N/A</td>
-                                            <td>N/A</td>
-                                            <td>0%</td>
-                                            <td><span class="status-badge down">Down</span></td>
-                                            <td>Site B - Room 1</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                <!-- Board Content (Hidden by default) -->
+                <div class="board-content" id="boardContent" style="display: none;">
+                    <div class="board-header">
+                        <h3>
+                            <i class="fas fa-shield-alt"></i>
+                            Board Member Dashboard
+                        </h3>
+                        <button class="logout-btn" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
                     </div>
 
-                    <!-- Performance Charts -->
-                    <div class="glass-card performance-charts-card">
-                        <div class="card-header">
-                            <h3>Performance Charts</h3>
-                            <div class="chart-controls">
-                                <div class="timeframe-toggle">
-                                    <button class="toggle-btn active" data-period="7d">7D</button>
-                                    <button class="toggle-btn" data-period="30d">30D</button>
-                                    <button class="toggle-btn" data-period="ytd">YTD</button>
+                    <div class="board-grid">
+                        <!-- Sensitive Financial Data -->
+                        <div class="glass-card sensitive-data-card">
+                            <div class="card-header">
+                                <h3>
+                                    <i class="fas fa-chart-line"></i>
+                                    Internal Financial Metrics
+                                </h3>
+                                <div class="security-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Confidential
                                 </div>
-                                <div class="unit-toggle">
-                                    <button class="unit-btn active" data-unit="th">TH/s</button>
-                                    <button class="unit-btn" data-unit="ph">PH/s</button>
+                            </div>
+                            <div class="card-content">
+                                <div class="sensitive-metrics-grid">
+                                    <div class="metric-item">
+                                        <span class="metric-label">Operating Margin</span>
+                                        <span class="metric-value">23.4%</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Burn Rate</span>
+                                        <span class="metric-value">$12,450/mo</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Runway</span>
+                                        <span class="metric-value">18.2 months</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Liquidity Ratio</span>
+                                        <span class="metric-value">3.2:1</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Debt-to-Equity</span>
+                                        <span class="metric-value">0.15</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">ROI (YTD)</span>
+                                        <span class="metric-value">+34.7%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <div class="chart-container">
-                                <canvas id="hashrateChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Revenue vs Power Cost -->
-                    <div class="glass-card revenue-cost-card">
-                        <div class="card-header">
-                            <h3>Revenue vs Power Cost</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="chart-container">
-                                <canvas id="revenueCostChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Energy & Cost -->
-                    <div class="glass-card energy-cost-card">
-                        <div class="card-header">
-                            <h3>Energy & Cost Analysis</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="energy-stats-grid">
-                                <div class="energy-stat">
-                                    <span class="stat-label">kWh/day</span>
-                                    <span class="stat-value">57,600</span>
-                                </div>
-                                <div class="energy-stat">
-                                    <span class="stat-label">kWh/30d</span>
-                                    <span class="stat-value">1,728,000</span>
-                                </div>
-                                <div class="energy-stat">
-                                    <span class="stat-label">Avg Cost/kWh</span>
-                                    <span class="stat-value">$0.045</span>
-                                </div>
-                                <div class="energy-stat">
-                                    <span class="stat-label">Demand Response Credits</span>
-                                    <span class="stat-value">$2,450</span>
-                                </div>
-                                <div class="energy-stat">
-                                    <span class="stat-label">Curtailed Hours</span>
-                                    <span class="stat-value">18</span>
-                                </div>
-                                <div class="energy-stat">
-                                    <span class="stat-label">Power Cap vs Actual</span>
-                                    <span class="stat-value">2.4MW / 2.38MW</span>
+                        <!-- Strategic Planning -->
+                        <div class="glass-card strategic-planning-card">
+                            <div class="card-header">
+                                <h3>
+                                    <i class="fas fa-chess"></i>
+                                    Strategic Initiatives
+                                </h3>
+                                <div class="security-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Internal
                                 </div>
                             </div>
-                            <div class="cost-breakdown">
-                                <h4>Cost Breakdown</h4>
-                                <div class="cost-categories">
-                                    <div class="cost-category">
-                                        <span class="category-name">OpEx</span>
-                                        <div class="cost-items">
-                                            <div class="cost-item">
-                                                <span>Power</span>
-                                                <span>$77,760/mo</span>
-                                            </div>
-                                            <div class="cost-item">
-                                                <span>Hosting</span>
-                                                <span>$12,000/mo</span>
-                                            </div>
-                                            <div class="cost-item">
-                                                <span>Pool Fees</span>
-                                                <span>$387/mo</span>
-                                            </div>
-                                            <div class="cost-item">
-                                                <span>Maintenance</span>
-                                                <span>$3,500/mo</span>
-                                            </div>
+                            <div class="card-content">
+                                <div class="initiatives-list">
+                                    <div class="initiative-item">
+                                        <div class="initiative-header">
+                                            <h4>Q1 2025 Expansion</h4>
+                                            <span class="status-badge planning">Planning</span>
+                                        </div>
+                                        <p>Expand mining operations to 50 PH/s capacity with new facility in Texas</p>
+                                        <div class="initiative-details">
+                                            <span>Budget: $2.5M</span>
+                                            <span>Timeline: Q1 2025</span>
                                         </div>
                                     </div>
-                                    <div class="cost-category">
-                                        <span class="category-name">CapEx</span>
-                                        <div class="cost-items">
-                                            <div class="cost-item">
-                                                <span>Hardware</span>
-                                                <span>$1,250,000</span>
-                                            </div>
-                                            <div class="cost-item">
-                                                <span>Infrastructure</span>
-                                                <span>$450,000</span>
-                                            </div>
+                                    <div class="initiative-item">
+                                        <div class="initiative-header">
+                                            <h4>DeFi Protocol Launch</h4>
+                                            <span class="status-badge development">Development</span>
+                                        </div>
+                                        <p>Launch proprietary DeFi protocol for yield optimization</p>
+                                        <div class="initiative-details">
+                                            <span>Budget: $750K</span>
+                                            <span>Timeline: Q2 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="initiative-item">
+                                        <div class="initiative-header">
+                                            <h4>Partnership Expansion</h4>
+                                            <span class="status-badge active">Active</span>
+                                        </div>
+                                        <p>Strategic partnerships with 3 major blockchain foundations</p>
+                                        <div class="initiative-details">
+                                            <span>Budget: $500K</span>
+                                            <span>Timeline: Ongoing</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Profitability -->
-                    <div class="glass-card profitability-card">
-                        <div class="card-header">
-                            <h3>Profitability Analysis</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="profitability-stats">
-                                <div class="profit-stat">
-                                    <span class="stat-label">Daily Revenue (BTC)</span>
-                                    <span class="stat-value">0.0087 BTC</span>
+                        <!-- Risk Management -->
+                        <div class="glass-card risk-management-card">
+                            <div class="card-header">
+                                <h3>
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    Risk Assessment
+                                </h3>
+                                <div class="security-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Critical
                                 </div>
-                                <div class="profit-stat">
-                                    <span class="stat-label">Daily Revenue (USD)</span>
-                                    <span class="stat-value">$859</span>
-                                </div>
-                                <div class="profit-stat">
-                                    <span class="stat-label">Daily Costs (USD)</span>
-                                    <span class="stat-value">$3,122</span>
-                                </div>
-                                <div class="profit-stat">
-                                    <span class="stat-label">Daily Net (USD)</span>
-                                    <span class="stat-value negative">-$2,263</span>
-                                </div>
-                                <div class="profit-stat">
-                                    <span class="stat-label">Margin %</span>
-                                    <span class="stat-value negative">-263%</span>
-                                </div>
-                                <div class="profit-stat">
-                                    <span class="stat-label">YTD Cum PnL</span>
-                                    <span class="stat-value negative">-$826,000</span>
-                                </div>
-                                <div class="profit-stat">
-                                    <span class="stat-label">Max Drawdown</span>
-                                    <span class="stat-value negative">-$1,250,000</span>
-                                </div>
-                                <div class="profit-stat">
-                                    <span class="stat-label">Payback Period</span>
-                                    <span class="stat-value">18.2 months</span>
-                                </div>
-                                <div class="profit-stat">
-                                    <span class="stat-label">ROI</span>
-                                    <span class="stat-value negative">-32.8%</span>
+                            </div>
+                            <div class="card-content">
+                                <div class="risk-matrix">
+                                    <div class="risk-item high-risk">
+                                        <div class="risk-header">
+                                            <span class="risk-level">High Risk</span>
+                                            <span class="risk-score">8.5/10</span>
+                                        </div>
+                                        <h4>Regulatory Changes</h4>
+                                        <p>Potential impact of new crypto regulations on mining operations</p>
+                                        <div class="mitigation-plan">
+                                            <strong>Mitigation:</strong> Diversify into renewable energy credits and carbon offsets
+                                        </div>
+                                    </div>
+                                    <div class="risk-item medium-risk">
+                                        <div class="risk-header">
+                                            <span class="risk-level">Medium Risk</span>
+                                            <span class="risk-score">6.2/10</span>
+                                        </div>
+                                        <h4>Hardware Supply Chain</h4>
+                                        <p>Delays in ASIC miner deliveries affecting expansion timeline</p>
+                                        <div class="mitigation-plan">
+                                            <strong>Mitigation:</strong> Multiple supplier contracts and backup options
+                                        </div>
+                                    </div>
+                                    <div class="risk-item low-risk">
+                                        <div class="risk-header">
+                                            <span class="risk-level">Low Risk</span>
+                                            <span class="risk-score">3.1/10</span>
+                                        </div>
+                                        <h4>Market Volatility</h4>
+                                        <p>Cryptocurrency price fluctuations affecting revenue projections</p>
+                                        <div class="mitigation-plan">
+                                            <strong>Mitigation:</strong> Hedging strategies and stablecoin reserves
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Pool & Payouts -->
-                    <div class="glass-card pool-payouts-card">
-                        <div class="card-header">
-                            <h3>Pool & Payouts</h3>
-                            <div class="pool-status">
-                                <div class="status-indicator online">
-                                    <div class="status-dot"></div>
-                                    <span>F2Pool API: OK</span>
+                        <!-- Board Actions -->
+                        <div class="glass-card board-actions-card">
+                            <div class="card-header">
+                                <h3>
+                                    <i class="fas fa-gavel"></i>
+                                    Pending Board Actions
+                                </h3>
+                                <div class="security-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Board Only
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-content">
-                            <div class="pool-stats-grid">
-                                <div class="pool-stat">
-                                    <span class="stat-label">Accepted Shares %</span>
-                                    <span class="stat-value">99.2%</span>
-                                </div>
-                                <div class="pool-stat">
-                                    <span class="stat-label">Stale Shares %</span>
-                                    <span class="stat-value">0.7%</span>
-                                </div>
-                                <div class="pool-stat">
-                                    <span class="stat-label">Invalid Shares %</span>
-                                    <span class="stat-value">0.1%</span>
-                                </div>
-                                <div class="pool-stat">
-                                    <span class="stat-label">Orphan Rate</span>
-                                    <span class="stat-value">0.3%</span>
-                                </div>
-                                <div class="pool-stat">
-                                    <span class="stat-label">Luck %</span>
-                                    <span class="stat-value">102.4%</span>
-                                </div>
-                                <div class="pool-stat">
-                                    <span class="stat-label">Last Payout</span>
-                                    <span class="stat-value">2024-12-20 14:30 UTC</span>
-                                </div>
-                                <div class="pool-stat">
-                                    <span class="stat-label">Payout Amount</span>
-                                    <span class="stat-value">0.0087 BTC</span>
-                                </div>
-                                <div class="pool-stat">
-                                    <span class="stat-label">Next Expected</span>
-                                    <span class="stat-value">2024-12-21 14:30 UTC</span>
+                            <div class="card-content">
+                                <div class="actions-list">
+                                    <div class="action-item">
+                                        <div class="action-header">
+                                            <h4>Budget Approval</h4>
+                                            <span class="action-status pending">Pending Vote</span>
+                                        </div>
+                                        <p>Q1 2025 operating budget of $850,000</p>
+                                        <div class="action-details">
+                                            <span>Due: Jan 15, 2025</span>
+                                            <span>Votes: 3/5</span>
+                                        </div>
+                                    </div>
+                                    <div class="action-item">
+                                        <div class="action-header">
+                                            <h4>Investment Committee</h4>
+                                            <span class="action-status approved">Approved</span>
+                                        </div>
+                                        <p>Formation of investment committee for portfolio management</p>
+                                        <div class="action-details">
+                                            <span>Approved: Dec 10, 2024</span>
+                                            <span>Members: 5</span>
+                                        </div>
+                                    </div>
+                                    <div class="action-item">
+                                        <div class="action-header">
+                                            <h4>Audit Selection</h4>
+                                            <span class="action-status review">Under Review</span>
+                                        </div>
+                                        <p>Selection of external auditor for 2024 financial statements</p>
+                                        <div class="action-details">
+                                            <span>Due: Jan 30, 2025</span>
+                                            <span>Proposals: 3</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1096,187 +433,136 @@
                 </div>
             </div>
         </section>
-
         <!-- Validator Performance Section -->
         <section class="section validator-section" id="validator">
             <div class="section-container">
                 <h2 class="section-title">Solana Validator Performance</h2>
                 <div class="validator-grid">
-                    <div class="glass-card validator-stats-card">
+                    <!-- Validator Overview Card -->
+                    <div class="glass-card validator-overview-card">
                         <div class="card-header">
-                            <h3>Validator Statistics</h3>
+                            <h3>Validator Overview</h3>
                             <div class="status-indicator online">
                                 <div class="status-dot"></div>
-                                <span>Online</span>
+                                <span>Active & Online</span>
                             </div>
                         </div>
                         <div class="card-content">
-                            <div class="validator-stats-grid">
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-vote-yea"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-label">Vote Credits (7d)</span>
-                                        <span class="stat-value">24,847</span>
-                                    </div>
+                            <div class="overview-grid">
+                                <div class="overview-item">
+                                    <span class="overview-label">Active Stake</span>
+                                    <span class="overview-value">29,407 SOL</span>
                                 </div>
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-percentage"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-label">APY</span>
-                                        <span class="stat-value">7.2%</span>
-                                    </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Commission</span>
+                                    <span class="overview-value">5%</span>
                                 </div>
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-coins"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-label">Effective Stake</span>
-                                        <span class="stat-value">2,847 SOL</span>
-                                    </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Staking APY</span>
+                                    <span class="overview-value">7.27%</span>
                                 </div>
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-server"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-label">Infrastructure Costs</span>
-                                        <span class="stat-value">$890/mo</span>
-                                    </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Rank</span>
+                                    <span class="overview-value">814th</span>
                                 </div>
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-label">Net Revenue</span>
-                                        <span class="stat-value">$11,560/mo</span>
-                                    </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Uptime</span>
+                                    <span class="overview-value">99.9%</span>
                                 </div>
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-clock"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-label">Uptime</span>
-                                        <span class="stat-value">99.8%</span>
-                                    </div>
+
+                                <div class="overview-item">
+                                    <span class="overview-label">Validator Address</span>
+                                    <span class="overview-value wallet-address">XAqHfPFsqTfAJHBRHAcEECkMSykXjkUj2Rta16Qshrk</span>
+                                    <button class="copy-btn" data-clipboard="XAqHfPFsqTfAJHBRHAcEECkMSykXjkUj2Rta16Qshrk">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Network</span>
+                                    <span class="overview-value">Mainnet</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Version</span>
+                                    <span class="overview-value">1.17.0</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Last Vote</span>
+                                    <span class="overview-value">2025-06-15 15:30:45 UTC</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Vote Distance</span>
+                                    <span class="overview-value">1.2s</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-card validator-chart-card">
+                    <!-- Performance Analysis Card -->
+                    <div class="glass-card validator-performance-card">
                         <div class="card-header">
-                            <h3>Rewards History</h3>
+                            <h3>Performance Analysis</h3>
                         </div>
                         <div class="card-content">
-                            <div class="chart-container">
-                                <canvas id="validatorChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card validator-dashboard-card">
-                        <div class="card-header">
-                            <h3>Validator Dashboard</h3>
-                        </div>
-                        <div class="card-content">
-                            <p class="dashboard-description">
-                                Monitor our validator performance in real-time with detailed metrics and analytics.
-                            </p>
-                            <a href="#" class="dashboard-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                View Full Dashboard
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Transparency & Reports Section -->
-        <section class="section transparency-section" id="transparency">
-            <div class="section-container">
-                <h2 class="section-title">Transparency & Reports</h2>
-                <div class="transparency-grid">
-                    <div class="glass-card reports-card">
-                        <div class="card-header">
-                            <h3>Financial Reports</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="reports-list">
-                                <div class="report-item">
-                                    <div class="report-info">
-                                        <div class="report-icon">
-                                            <i class="fas fa-file-pdf"></i>
-                                        </div>
-                                        <div class="report-details">
-                                            <span class="report-name">December 2024 Financial Report</span>
-                                            <span class="report-date">Generated: Dec 20, 2024</span>
-                                        </div>
-                                    </div>
-                                    <button class="download-btn">
-                                        <i class="fas fa-download"></i>
-                                        Download PDF
-                                    </button>
+                            <div class="performance-metrics-grid">
+                                <div class="energy-stat">
+                                    <span class="stat-label">Daily Rewards</span>
+                                    <span class="stat-value">520 SOL</span>
                                 </div>
-                                <div class="report-item">
-                                    <div class="report-info">
-                                        <div class="report-icon">
-                                            <i class="fas fa-file-csv"></i>
-                                        </div>
-                                        <div class="report-details">
-                                            <span class="report-name">Transaction Ledger</span>
-                                            <span class="report-date">Updated: Real-time</span>
-                                        </div>
-                                    </div>
-                                    <button class="download-btn">
-                                        <i class="fas fa-download"></i>
-                                        Download CSV
-                                    </button>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Weekly Rewards</span>
+                                    <span class="stat-value">3,640 SOL</span>
                                 </div>
-                                <div class="report-item">
-                                    <div class="report-info">
-                                        <div class="report-icon">
-                                            <i class="fas fa-code"></i>
-                                        </div>
-                                        <div class="report-details">
-                                            <span class="report-name">Wallet Addresses</span>
-                                            <span class="report-date">Public addresses & balances</span>
-                                        </div>
-                                    </div>
-                                    <button class="download-btn">
-                                        <i class="fas fa-download"></i>
-                                        Download JSON
-                                    </button>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Monthly Rewards</span>
+                                    <span class="stat-value">15,600 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Annual Rewards</span>
+                                    <span class="stat-value">189,800 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Commission Earned</span>
+                                    <span class="stat-value">780 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Delegator Rewards</span>
+                                    <span class="stat-value">14,820 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Vote Participation</span>
+                                    <span class="stat-value">99.8%</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Skip Rate</span>
+                                    <span class="stat-value">0.2%</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Average Vote Latency</span>
+                                    <span class="stat-value">1.2s</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-card newsletter-card">
+                    <!-- External Validator Links -->
+                    <div class="glass-card validator-links-card">
                         <div class="card-header">
-                            <h3>Financial Updates</h3>
+                            <h3>Check yourself</h3>
                         </div>
                         <div class="card-content">
-                            <p class="newsletter-description">
-                                Stay informed with monthly financial updates, treasury reports, and transparency insights delivered to your inbox.
-                            </p>
-                            <form class="newsletter-form">
-                                <div class="newsletter-input-wrapper">
-                                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                                    <button type="submit" class="newsletter-btn">
-                                        <span class="btn-text">Subscribe</span>
-                                        <span class="btn-spinner newsletter-spinner"></span>
-                                    </button>
-                                </div>
-                                <p class="newsletter-privacy">We respect your privacy. Updates sent monthly.</p>
-                            </form>
+                            <p class="links-description">Check detailed statistics and performance metrics on external validator explorer platforms:</p>
+                            <div class="validator-links">
+                                <a href="https://stakewiz.com/validator/xtA5ixQt5rvEHfqfGGJkdKqoV9TH14NPfkhsdXsshrk" target="_blank" rel="noopener noreferrer" class="validator-link">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>StakeWiz Validator Explorer</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://www.validators.app/validators/XAqHfPFsqTfAJHBRHAcEECkMSykXjkUj2Rta16Qshrk?locale=en&network=mainnet" target="_blank" rel="noopener noreferrer" class="validator-link">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span>Validators.app Analytics</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1307,27 +593,26 @@
     <!-- Footer -->
     <footer class="footer">
         <!-- Blockchain Animated Background -->
-        <canvas id="tesseractCanvas" class="footer-canvas"></canvas>
+                        <canvas id="footerTesseractCanvas" class="footer-canvas"></canvas>
         <div class="footer-overlay"></div>
         
         <div class="footer-container">
             <!-- Top Row -->
             <div class="footer-top">
                 <div class="footer-logo">
-                    <a href="../Home/home.html" class="logo-link" aria-label="Blockchain Club at Emory - Home">
-                        <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain Club at Emory" class="footer-logo-img">
+                                    <a href="../Home/home.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                    <img src="../Images/Logo/Logo_noBG.png" alt="Blockchain at Emory" class="footer-logo-img">
                     </a>
                 </div>
                 
-                <nav class="footer-nav" aria-label="Footer navigation">
-                                    <a href="../Home/home.html" class="footer-link">Home</a>
-                <a href="../About/about.html" class="footer-link">About</a>
-                <a href="../Projects/projects.html" class="footer-link">Projects</a>
-                <a href="../Research/research.html" class="footer-link">Research</a>
-                <a href="finances.html" class="footer-link">Finances</a>
-                <a href="../Team/Team.html" class="footer-link">Team</a>
-                <a href="../Home/home.html#contact" class="footer-link">Contact</a>
-                <a href="../About/about.html#join" class="footer-link">Apply</a>
+                                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="../Home/home.html" class="footer-link">Home</a>
+                    <a href="../Projects/projects.html" class="footer-link">Projects</a>
+                    <a href="../Research/research.html" class="footer-link">Research</a>
+                    <a href="finances.html" class="footer-link">Finances</a>
+                    <a href="../Team/Team.html" class="footer-link">Team</a>
+                    <a href="../Home/home.html#contact" class="footer-link">Contact</a>
+                    <a href="../Home/home.html#contact" class="footer-link">Apply</a>
                 </nav>
                 
                 <div class="footer-social">
@@ -1355,12 +640,12 @@
                             <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
                         </svg>
                     </a>
-                    <a href="https://discord.gg/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord community">
+                    <a href="https://t.me/+YqSNGcCL8-QyNDhh" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Telegram community">
                         <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.019 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
                         </svg>
                     </a>
-                    <a href="https://github.com/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                    <a href="https://github.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
                         <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                         </svg>
@@ -1392,7 +677,7 @@
             <!-- Bottom Row -->
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    <p>&copy; <span id="currentYear">2024</span> Blockchain Club at Emory University. All rights reserved.</p>
+                    <p>&copy; <span id="currentYear">2024</span> Blockchain at Emory University. All rights reserved.</p>
                 </div>
                 
                 <div class="footer-legal">

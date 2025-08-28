@@ -1,174 +1,11 @@
 // Team page functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
-    initializeGeometricBackground();
     initializeNavigation();
     initializeMemberCards();
     initializeFooter();
+    initializeAnimations();
 });
-
-// Animated Geometric Background
-function initializeGeometricBackground() {
-    const canvas = document.getElementById('geometricCanvas');
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    let animationId;
-    let shapes = [];
-    
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        initializeShapes();
-    }
-    
-    function initializeShapes() {
-        shapes = [];
-        const shapeCount = Math.min(12, Math.floor(canvas.width / 150));
-        
-        for (let i = 0; i < shapeCount; i++) {
-            const shapeType = Math.random() > 0.5 ? 'triangle' : 'hexagon';
-            shapes.push({
-                type: shapeType,
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 40 + 20,
-                rotation: Math.random() * Math.PI * 2,
-                rotationSpeed: (Math.random() - 0.5) * 0.02,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.3,
-                opacity: Math.random() * 0.3 + 0.1,
-                color: Math.random() > 0.6 ? '#5cc2ff' : '#f7c948',
-                glowIntensity: Math.random() * 0.5 + 0.3,
-                glowDirection: Math.random() > 0.5 ? 1 : -1
-            });
-        }
-    }
-    
-    function updateShapes() {
-        shapes.forEach(shape => {
-            // Update position
-            shape.x += shape.vx;
-            shape.y += shape.vy;
-            
-            // Bounce off edges
-            if (shape.x < -shape.size || shape.x > canvas.width + shape.size) {
-                shape.vx *= -1;
-            }
-            if (shape.y < -shape.size || shape.y > canvas.height + shape.size) {
-                shape.vy *= -1;
-            }
-            
-            // Keep within bounds
-            shape.x = Math.max(-shape.size, Math.min(canvas.width + shape.size, shape.x));
-            shape.y = Math.max(-shape.size, Math.min(canvas.height + shape.size, shape.y));
-            
-            // Update rotation
-            shape.rotation += shape.rotationSpeed;
-            
-            // Update glow
-            shape.glowIntensity += shape.glowDirection * 0.005;
-            if (shape.glowIntensity > 0.8 || shape.glowIntensity < 0.2) {
-                shape.glowDirection *= -1;
-            }
-        });
-    }
-    
-    function drawTriangle(ctx, x, y, size, rotation) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(rotation);
-        
-        const height = size * Math.sqrt(3) / 2;
-        
-        ctx.beginPath();
-        ctx.moveTo(0, -height / 2);
-        ctx.lineTo(-size / 2, height / 2);
-        ctx.lineTo(size / 2, height / 2);
-        ctx.closePath();
-        
-        ctx.restore();
-    }
-    
-    function drawHexagon(ctx, x, y, size, rotation) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(rotation);
-        
-        ctx.beginPath();
-        for (let i = 0; i < 6; i++) {
-            const angle = (i * Math.PI) / 3;
-            const px = size * Math.cos(angle);
-            const py = size * Math.sin(angle);
-            if (i === 0) {
-                ctx.moveTo(px, py);
-            } else {
-                ctx.lineTo(px, py);
-            }
-        }
-        ctx.closePath();
-        
-        ctx.restore();
-    }
-    
-    function drawShapes() {
-        shapes.forEach(shape => {
-            // Create glow effect
-            const gradient = ctx.createRadialGradient(
-                shape.x, shape.y, 0,
-                shape.x, shape.y, shape.size * 2
-            );
-            
-            const alpha = shape.opacity * shape.glowIntensity;
-            gradient.addColorStop(0, `${shape.color}${Math.floor(alpha * 255).toString(16).padStart(2, '0')}`);
-            gradient.addColorStop(0.5, `${shape.color}${Math.floor(alpha * 0.5 * 255).toString(16).padStart(2, '0')}`);
-            gradient.addColorStop(1, `${shape.color}00`);
-            
-            ctx.fillStyle = gradient;
-            
-            if (shape.type === 'triangle') {
-                drawTriangle(ctx, shape.x, shape.y, shape.size, shape.rotation);
-            } else {
-                drawHexagon(ctx, shape.x, shape.y, shape.size, shape.rotation);
-            }
-            
-            ctx.fill();
-            
-            // Draw outline
-            ctx.strokeStyle = `${shape.color}${Math.floor(alpha * 0.8 * 255).toString(16).padStart(2, '0')}`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-        });
-    }
-    
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        if (!prefersReducedMotion) {
-            updateShapes();
-        }
-        
-        drawShapes();
-        
-        animationId = requestAnimationFrame(animate);
-    }
-    
-    // Initialize
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    // Start animation
-    animate();
-    
-    // Cleanup function
-    return () => {
-        cancelAnimationFrame(animationId);
-        window.removeEventListener('resize', resizeCanvas);
-    };
-}
 
 // Navigation Functions
 function initializeNavigation() {
@@ -195,14 +32,15 @@ function initializeNavigation() {
         });
     }
     
-    // Dual navbar scroll effect
+    // Dual navbar scroll effect (desktop only)
     let lastScrollY = window.scrollY;
     
-    window.addEventListener('scroll', function() {
+    function handleNavbarScroll() {
         const currentScrollY = window.scrollY;
         const scrollThreshold = 200;
+        const isMobile = window.innerWidth <= 768;
         
-        if (homeNavbar && teamNavbar) {
+        if (homeNavbar && teamNavbar && !isMobile) {
             if (currentScrollY > scrollThreshold) {
                 // Hide home navbar, show team navbar
                 homeNavbar.classList.add('hidden');
@@ -212,16 +50,33 @@ function initializeNavigation() {
                 homeNavbar.classList.remove('hidden');
                 teamNavbar.classList.remove('visible');
             }
+        } else if (isMobile && homeNavbar) {
+            // On mobile, always show home navbar
+            homeNavbar.classList.remove('hidden');
         }
         
         lastScrollY = currentScrollY;
+    }
+    
+    window.addEventListener('scroll', handleNavbarScroll);
+    
+    // Handle resize events to update navbar state
+    window.addEventListener('resize', function() {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile && homeNavbar) {
+            homeNavbar.classList.remove('hidden');
+        }
+        handleNavbarScroll();
     });
     
-    // Smooth scrolling for team navbar links
+    // Smooth scrolling for team navbar links (desktop only)
     const teamNavLinks = document.querySelectorAll('.team-navbar .team-nav-link[data-section]');
     teamNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) return; // Disable on mobile
+            
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             
@@ -235,11 +90,14 @@ function initializeNavigation() {
         });
     });
     
-    // Update active nav link on scroll
+    // Update active nav link on scroll (desktop only)
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.team-navbar .team-nav-link[data-section]');
     
     window.addEventListener('scroll', function() {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) return; // Disable on mobile
+        
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 150;
@@ -338,7 +196,7 @@ function initializeFooter() {
 
 // Footer Blockchain Animation
 function initializeFooterBlockchainAnimation() {
-    const canvas = document.getElementById('blockchainCanvas');
+    const canvas = document.getElementById('footerTesseractCanvas');
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
@@ -519,108 +377,32 @@ function initializeFooterBlockchainAnimation() {
 
 // Newsletter signup functionality
 function initializeNewsletterSignup() {
-    const form = document.getElementById('newsletterForm');
-    const input = document.getElementById('newsletterEmail');
-    const button = form.querySelector('.newsletter-btn');
+    const newsletterForms = document.querySelectorAll('.newsletter-form');
     
-    if (!form) return;
-    
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const email = input.value.trim();
-        if (!email) return;
-        
-        // Validate email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            showNewsletterToast('Please enter a valid email address.', 'error');
-            return;
-        }
-        
-        // Show loading state
-        button.classList.add('loading');
-        button.disabled = true;
-        
-        try {
-            const response = await fetch('/api/newsletter', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ 
-                    email,
-                    source: 'team-footer',
-                    timestamp: new Date().toISOString()
-                })
-            });
+    newsletterForms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
             
-            if (response.ok) {
-                showNewsletterToast('Successfully subscribed! Welcome to our community.', 'success');
-                input.value = '';
-            } else {
-                throw new Error('Subscription failed');
-            }
-        } catch (error) {
-            console.error('Newsletter subscription error:', error);
-            showNewsletterToast('Something went wrong. Please try again later.', 'error');
-        } finally {
-            button.classList.remove('loading');
-            button.disabled = false;
-        }
-    });
-    
-    function showNewsletterToast(message, type) {
-        // Create toast container if it doesn't exist
-        let toastContainer = document.querySelector('.toast-container');
-        if (!toastContainer) {
-            toastContainer = document.createElement('div');
-            toastContainer.className = 'toast-container';
-            toastContainer.style.cssText = `
-                position: fixed;
-                top: 2rem;
-                right: 2rem;
-                z-index: 10000;
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-            `;
-            document.body.appendChild(toastContainer);
-        }
-        
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        toast.style.cssText = `
-            background: ${type === 'success' ? '#10b981' : '#ef4444'};
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            max-width: 300px;
-        `;
-        
-        const icon = type === 'success' ? '✓' : '✕';
-        toast.innerHTML = `<span style="margin-right: 0.5rem;">${icon}</span>${message}`;
-        
-        toastContainer.appendChild(toast);
-        
-        // Show toast
-        setTimeout(() => {
-            toast.style.transform = 'translateX(0)';
-        }, 100);
-        
-        // Remove toast after 4 seconds
-        setTimeout(() => {
-            toast.style.transform = 'translateX(100%)';
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            // Simulate loading
+            submitButton.textContent = 'Subscribing...';
+            submitButton.disabled = true;
+            
             setTimeout(() => {
-                if (toast.parentNode) {
-                    toast.parentNode.removeChild(toast);
-                }
-            }, 300);
-        }, 4000);
-    }
+                submitButton.textContent = 'Subscribed!';
+                submitButton.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                
+                setTimeout(() => {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                    submitButton.style.background = '';
+                    form.reset();
+                }, 2000);
+            }, 1500);
+        });
+    });
 }
 
 // Performance optimization
@@ -674,6 +456,46 @@ function initializeScrollAnimations() {
         `;
         document.head.appendChild(style);
     }
+}
+
+// Initialize animations
+function initializeAnimations() {
+    // Animate floating icons
+    animateFloatingIcons();
+    
+    // Animate member cards
+    animateMemberCards();
+}
+
+// Animate floating icons
+function animateFloatingIcons() {
+    const floatingIcons = document.querySelectorAll('.floating-icon');
+    
+    floatingIcons.forEach((icon, index) => {
+        icon.style.animationDelay = `${index * 0.5}s`;
+    });
+}
+
+// Animate member cards
+function animateMemberCards() {
+    const memberCards = document.querySelectorAll('.member-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, index * 100);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    memberCards.forEach(card => {
+        observer.observe(card);
+    });
 }
 
 // Initialize scroll animations
