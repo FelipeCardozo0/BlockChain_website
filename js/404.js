@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape') {
             history.back();
         } else if (e.key === 'Home' || e.key === 'h' || e.key === 'H') {
-            window.location.href = '../Home/home.html';
+            window.location.href = '../Home/index.html';
         }
     });
 

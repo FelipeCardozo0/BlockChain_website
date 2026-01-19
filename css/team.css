@@ -942,9 +942,25 @@ body {
     justify-self: center;
 }
 
-/* Create a 4-3 layout by adjusting the grid for the second row */
-.board-section .member-card:nth-child(n+5) {
-    grid-column: span 1;
+/* Center the last 3 board members (bottom row) in a 4-column grid */
+/* Position them in columns 1, 2, 3, then shift the entire group right by half a column */
+/* This creates equal empty space (half column) on both left and right sides */
+.board-section .member-card:nth-child(5) {
+    grid-column: 1;
+    position: relative;
+    left: calc((100% / 4) * 0.5);
+}
+
+.board-section .member-card:nth-child(6) {
+    grid-column: 2;
+    position: relative;
+    left: calc((100% / 4) * 0.5);
+}
+
+.board-section .member-card:nth-child(7) {
+    grid-column: 3;
+    position: relative;
+    left: calc((100% / 4) * 0.5);
 }
 
 /* Center the last 3 items in the second row */

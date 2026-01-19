@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
     initializeIndustryEventsSection();
     initializeContactSection();
+    initializeInterestFormPopup();
 });
 
 // Scroll-triggered animations
@@ -897,6 +898,115 @@ function initializeContactSection() {
     form.style.opacity = '1';
     form.style.transform = 'translateY(0)';
     form.style.visibility = 'visible';
+}
+
+// Handle scroll to email box when coming from finances page
+function handleContactScroll() {
+    // Check if URL has #contact hash
+    if (window.location.hash === '#contact') {
+        // First, scroll to top immediately to start from the top
+        window.scrollTo({
+            top: 0,
+            behavior: 'instant'
+        });
+        
+        // Wait a moment for the page to settle, then scroll to email box
+        setTimeout(() => {
+            const emailInput = document.getElementById('contact-email');
+            if (emailInput) {
+                // Get the position of the email input
+                const emailInputPosition = emailInput.getBoundingClientRect().top + window.pageYOffset;
+                
+                // Calculate offset to center the email input nicely in the viewport
+                const offset = 150; // Offset from top of viewport
+                const targetPosition = emailInputPosition - offset;
+                
+                // Smooth scroll to email input with animation
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Focus on the email input after scrolling completes
+                setTimeout(() => {
+                    emailInput.focus();
+                }, 1000); // Wait for scroll animation to complete
+            } else {
+                // Fallback: scroll to contact section if email input not found
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        }, 300); // Small delay to ensure page is ready and starts from top
+    }
+}
+
+// Prevent default browser scroll restoration
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+// Run on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        // Small delay to override any default browser scrolling
+        setTimeout(handleContactScroll, 100);
+    });
+} else {
+    // Small delay to ensure DOM is fully ready
+    setTimeout(handleContactScroll, 100);
+}
+
+// Also handle hash changes (in case user navigates with hash already in URL)
+window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#contact') {
+        handleContactScroll();
+    }
+});
+
+// Interest Form Popup
+function initializeInterestFormPopup() {
+    const interestFormBtn = document.getElementById('interestFormBtn');
+    const interestPopupModal = document.getElementById('interestPopupModal');
+    const interestPopupClose = document.getElementById('interestPopupClose');
+    const interestPopupOverlay = interestPopupModal?.querySelector('.interest-popup-overlay');
+
+    if (!interestFormBtn || !interestPopupModal) return;
+
+    // Open popup when Interest Form button is clicked
+    interestFormBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        interestPopupModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close popup when close button is clicked
+    if (interestPopupClose) {
+        interestPopupClose.addEventListener('click', function() {
+            interestPopupModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Close popup when overlay is clicked
+    if (interestPopupOverlay) {
+        interestPopupOverlay.addEventListener('click', function() {
+            interestPopupModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Close popup when Escape key is pressed
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && interestPopupModal.style.display === 'flex') {
+            interestPopupModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
 }
 
 console.log('Home page JavaScript initialized!');
