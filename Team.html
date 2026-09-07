@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Blockchain at Emory</title>
+    <link rel="icon" type="image/png" href="Images/Logo/Logo_Official.png">
+    <link rel="stylesheet" href="css/team.css">
+    <link rel="stylesheet" href="css/apply-modal.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Home-style Navigation Bar (Initial) -->
+    <nav class="home-navbar" id="homeNavbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                    <img src="Images/Logo/Logo_Official.png" alt="Blockchain at Emory" class="nav-logo-img">
+                </a>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="nav-navigation" aria-label="Main navigation">
+                <div class="nav-links-center">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                    <a href="research.html" class="nav-link">Research</a>
+                    <a href="finances.html" class="nav-link">Finances</a>
+                    <a href="Team.html" class="nav-link nav-link-active">Team</a>
+                </div>
+                <div class="nav-links-right">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform" class="nav-link nav-link-apply" target="_blank" rel="noopener noreferrer">Apply</a>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Team-style Navigation Bar (After Scroll) -->
+    <nav class="team-navbar" id="teamNavbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href="index.html" class="logo-link" aria-label="Blockchain Club Team - Home">
+                    <img src="Images/Logo/Logo_noBG.png" alt="Blockchain at Emory" class="team-logo-img">
+                </a>
+            </div>
+            
+            <!-- Center Navigation Links -->
+            <div class="team-navigation">
+                <a href="#board" class="team-nav-link" data-section="board">Board</a>
+                <a href="#hacker" class="team-nav-link" data-section="hacker">Hacker Team</a>
+                <a href="#research" class="team-nav-link" data-section="research">Research &amp; Investments</a>
+            </div>
+            
+            <!-- Menu Icon -->
+            <div class="navbar-menu">
+                <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
+                    <span class="menu-icon">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="overlay-background"></div>
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2 class="overlay-title">Navigation</h2>
+                <button class="overlay-close" id="overlayClose" aria-label="Close navigation menu">
+                    <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="overlay-nav" aria-label="Main navigation">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Main</h3>
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="overlay-link">
+                            <span class="link-label">Home</span>
+                        </a></li>
+
+                        <li><a href="projects.html" class="overlay-link">
+                            <span class="link-label">Projects</span>
+                        </a></li>
+                        <li><a href="research.html" class="overlay-link">
+                            <span class="link-label">Research</span>
+                        </a></li>
+                        <li><a href="finances.html" class="overlay-link">
+                            <span class="link-label">Finances</span>
+                        </a></li>
+                        <li><a href="Team.html" class="overlay-link active">
+                            <span class="link-label">Team</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Team Sections</h3>
+                    <ul class="nav-list">
+                        <li><a href="#board" class="overlay-link">
+                            <span class="link-label">Board of Directors</span>
+                        </a></li>
+                        <li><a href="#hacker" class="overlay-link">
+                            <span class="link-label">Hacker Team</span>
+                        </a></li>
+                        <li><a href="#research" class="overlay-link">
+                            <span class="link-label">Research &amp; Investments</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Contact</h3>
+                    <ul class="nav-list">
+                        <li><a href="index.html#contact" class="overlay-link">
+                            <span class="link-label">Contact Us</span>
+                        </a></li>
+                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform" class="overlay-link apply-highlight" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Join Us</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="floating-elements">
+                    <div class="floating-icon" data-delay="0">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="floating-icon" data-delay="1">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="floating-icon" data-delay="2">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="floating-icon" data-delay="3">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                </div>
+                <h1 class="hero-title">Team</h1>
+                <p class="hero-subtitle">Meet the talented individuals driving innovation and building the future of blockchain technology at Emory University.</p>
+            </div>
+        </section>
+
+        <!-- Board Section -->
+        <section class="section board-section" id="board">
+            <div class="section-container">
+                <h2 class="section-title">Board of Directors</h2>
+                <p class="section-description">The leadership team guiding Blockchain at Emory.</p>
+
+                <div class="members-grid board-grid">
+                    <div class="member-card board-member" data-linkedin="https://www.linkedin.com/in/robertsun-ca/">
+                        <div class="member-image-wrapper"><img src="Team/Board/robert.jpeg" alt="Robert Sun" class="member-image"></div>
+                        <h3 class="member-name">Robert Sun</h3>
+                        <p class="member-position">Co-President &amp; Head of Governance</p>
+                        <p class="member-title">Class of 2027</p>
+                    </div>
+                    <div class="member-card board-member" data-linkedin="https://www.linkedin.com/in/christophertrestonjr/">
+                        <div class="member-image-wrapper"><img src="Team/Board/chris.jpeg" alt="Christopher Treston" class="member-image"></div>
+                        <h3 class="member-name">Christopher Treston</h3>
+                        <p class="member-position">Co-President, Head of Education &amp; Partnership Coordinator</p>
+                        <p class="member-title">Class of 2027</p>
+                    </div>
+                    <div class="member-card board-member" data-linkedin="https://www.linkedin.com/in/emma-k-adams/">
+                        <div class="member-image-wrapper"><img src="Team/Board/emma.jpeg" alt="Emma Adams" class="member-image"></div>
+                        <h3 class="member-name">Emma Adams</h3>
+                        <p class="member-position">COO &amp; Head of R&amp;I</p>
+                        <p class="member-title">Class of 2027</p>
+                    </div>
+                    <div class="member-card board-member" data-linkedin="https://www.linkedin.com/in/felipecardozo-/">
+                        <div class="member-image-wrapper"><img src="Team/Board/Felipe Cardozo.jpeg" alt="Felipe Cardozo" class="member-image"></div>
+                        <h3 class="member-name">Felipe Cardozo</h3>
+                        <p class="member-position">Chief Technology Officer &amp; Head of Mining</p>
+                        <p class="member-title">Class of 2028</p>
+                    </div>
+                    <div class="member-card board-member" data-linkedin="https://www.linkedin.com/in/alan-wei-eu2027/">
+                        <div class="member-image-wrapper"><img src="Team/Board/Alan.jpg" alt="Alan Wei" class="member-image"></div>
+                        <h3 class="member-name">Alan Wei</h3>
+                        <p class="member-position">Co-Hackathon Team Lead</p>
+                        <p class="member-title">Class of 2027</p>
+                    </div>
+                    <div class="member-card board-member" data-linkedin="https://www.linkedin.com/in/alexlee24/">
+                        <div class="member-image-wrapper"><img src="Team/Board/Alex Lee.jpeg" alt="Alex Lee" class="member-image"></div>
+                        <h3 class="member-name">Alex Lee</h3>
+                        <p class="member-position">Co-Hackathon Team Lead</p>
+                        <p class="member-title">Class of 2028</p>
+                    </div>
+                    <div class="member-card board-member">
+                        <div class="member-image-wrapper"><img src="Team/Board/Moly.jpeg" alt="Molly Liu" class="member-image"></div>
+                        <h3 class="member-name">Molly Liu</h3>
+                        <p class="member-position">DoP &amp; DoR</p>
+                        <p class="member-title">Sophomore</p>
+                    </div>
+                    <div class="member-card board-member">
+                        <div class="member-image-wrapper"><img src="Team/Board/Jay.jpeg" alt="Jay Wang" class="member-image"></div>
+                        <h3 class="member-name">Jay Wang</h3>
+                        <p class="member-position">DoO &amp; DoI</p>
+                        <p class="member-title">Sophomore</p>
+                    </div>
+                    <div class="member-card board-member">
+                        <div class="member-image-wrapper"><img src="Team/Board/Adwoba.jpeg" alt="Adwoba Armah" class="member-image"></div>
+                        <h3 class="member-name">Adwoba Armah</h3>
+                        <p class="member-position">DoP &amp; DoI</p>
+                        <p class="member-title">Sophomore</p>
+                    </div>
+                    <div class="member-card board-member">
+                        <div class="member-image-wrapper"><img src="Team/Board/Kayla.png" alt="Kayla Bak" class="member-image"></div>
+                        <h3 class="member-name">Kayla Bak</h3>
+                        <p class="member-position">DoR &amp; DoO</p>
+                        <p class="member-title">Sophomore</p>
+                    </div>
+                    <div class="member-card board-member">
+                        <div class="member-image-wrapper"><img src="Team/Akshay Singh.jpeg" alt="Akshay Singh" class="member-image"></div>
+                        <h3 class="member-name">Akshay Singh</h3>
+                        <p class="member-position">DoE</p>
+                        <p class="member-title">Senior</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section hacker-section" id="hacker">
+            <div class="section-container">
+                <h2 class="section-title">Hacker Team</h2>
+                <p class="section-description">Building blockchain projects and technical skills together.</p>
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Board/Alan.jpg" alt="Alan Wei" class="member-image"></div>
+                        <h3 class="member-name">Alan Wei</h3>
+                        <p class="member-role">Hacking Team Member</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Board/Alex Lee.jpeg" alt="Alex Lee" class="member-image"></div>
+                        <h3 class="member-name">Alex Lee</h3>
+                        <p class="member-role">Hacking Team Member</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Board/Felipe Cardozo.jpeg" alt="Felipe Cardozo" class="member-image"></div>
+                        <h3 class="member-name">Felipe Cardozo</h3>
+                        <p class="member-role">Hacking Team Member</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Yu Ning Kao.jpeg" alt="Yu Ning Kao" class="member-image"></div>
+                        <h3 class="member-name">Yu Ning Kao</h3>
+                        <p class="member-role">Hacking Team Member</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Owen Hildebrand.jpeg" alt="Owen Hildebrand" class="member-image"></div>
+                        <h3 class="member-name">Owen Hildebrand</h3>
+                        <p class="member-role">Hacking Team Member</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Board/Moly.jpeg" alt="Molly Liu" class="member-image"></div>
+                        <h3 class="member-name">Molly Liu</h3>
+                        <p class="member-role">Hacking Team Member</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Alex Strofs.jpeg" alt="Alex Strofs" class="member-image"></div>
+                        <h3 class="member-name">Alex Strofs</h3>
+                        <p class="member-role">Hacking Team Member</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Amadou Dieng.jpeg" alt="Amadou Dieng" class="member-image"></div>
+                        <h3 class="member-name">Amadou Dieng</h3>
+                        <p class="member-role">Hacking Team Member</p>
+                    </div>
+                </div>
+                <ul class="member-roster" aria-label="Members without provided headshots">
+                    <li>Ethan Rao</li><li>Niccolo Balestriere</li>
+                    </ul>
+            </div>
+        </section>
+
+        <section class="section research-section" id="research">
+            <div class="section-container">
+                <h2 class="section-title">Research &amp; Investments</h2>
+                <p class="section-description">Our confirmed Spring 2026 Research &amp; Investments Division roster.</p>
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Board/emma.jpeg" alt="Emma Adams" class="member-image"></div>
+                        <h3 class="member-name">Emma Adams</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Board/Jay.jpeg" alt="Jay Wang" class="member-image"></div>
+                        <h3 class="member-name">Jay Wang</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/William Kong.jpeg" alt="William Kong" class="member-image"></div>
+                        <h3 class="member-name">William Kong</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Board/Adwoba.jpeg" alt="Adwoba Armah" class="member-image"></div>
+                        <h3 class="member-name">Adwoba Armah</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Board/Moly.jpeg" alt="Molly Liu" class="member-image"></div>
+                        <h3 class="member-name">Molly Liu</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Yadur Sood.jpeg" alt="Yadur Sood" class="member-image"></div>
+                        <h3 class="member-name">Yadur Sood</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Board/Kayla.png" alt="Kayla Bak" class="member-image"></div>
+                        <h3 class="member-name">Kayla Bak</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Oliver Li.jpeg" alt="Oliver Li" class="member-image"></div>
+                        <h3 class="member-name">Oliver Li</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Adam Moinuddeen.jpeg" alt="Adam Moinuddeen" class="member-image"></div>
+                        <h3 class="member-name">Adam Moinuddeen</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Zachary Spicer.jpeg" alt="Zachary Spicer" class="member-image"></div>
+                        <h3 class="member-name">Zachary Spicer</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Alex Strofs.jpeg" alt="Alex Strofs" class="member-image"></div>
+                        <h3 class="member-name">Alex Strofs</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Luka Magdic.jpeg" alt="Luka Magdic" class="member-image"></div>
+                        <h3 class="member-name">Luka Magdic</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Jack Chapon.jpeg" alt="Jack Chapon" class="member-image"></div>
+                        <h3 class="member-name">Jack Chapon</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Owen Hildebrand.jpeg" alt="Owen Hildebrand" class="member-image"></div>
+                        <h3 class="member-name">Owen Hildebrand</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Henry Carson.jpeg" alt="Henry Carson" class="member-image"></div>
+                        <h3 class="member-name">Henry Carson</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Minho Kang.jpeg" alt="Minho Kang" class="member-image"></div>
+                        <h3 class="member-name">Minho Kang</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Atma Krishnan.jpeg" alt="Atma Krishnan" class="member-image"></div>
+                        <h3 class="member-name">Atma Krishnan</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Kris Son.jpeg" alt="Kris Son" class="member-image"></div>
+                        <h3 class="member-name">Kris Son</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Hector Acevedo-Polo.jpeg" alt="Hector Acevedo-Polo" class="member-image"></div>
+                        <h3 class="member-name">Hector Acevedo-Polo</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Diane Li.jpeg" alt="Diane Li" class="member-image"></div>
+                        <h3 class="member-name">Diane Li</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Chloe Man.jpeg" alt="Chloe Man" class="member-image"></div>
+                        <h3 class="member-name">Chloe Man</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Pat Ngo.jpeg" alt="Pat Ngo" class="member-image"></div>
+                        <h3 class="member-name">Pat Ngo</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Josh Filer.jpeg" alt="Josh Filer" class="member-image"></div>
+                        <h3 class="member-name">Josh Filer</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Leon Le.jpeg" alt="Leon Le" class="member-image"></div>
+                        <h3 class="member-name">Leon Le</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Matthew Choe.jpeg" alt="Matthew Choe" class="member-image"></div>
+                        <h3 class="member-name">Matthew Choe</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Tiffany Yao.jpeg" alt="Tiffany Yao" class="member-image"></div>
+                        <h3 class="member-name">Tiffany Yao</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Amadou Dieng.jpeg" alt="Amadou Dieng" class="member-image"></div>
+                        <h3 class="member-name">Amadou Dieng</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Ruta Krishnan.jpeg" alt="Ruta Krishnan" class="member-image"></div>
+                        <h3 class="member-name">Ruta Krishnan</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-image-wrapper"><img src="Team/Akshay Singh.jpeg" alt="Akshay Singh" class="member-image"></div>
+                        <h3 class="member-name">Akshay Singh</h3>
+                        <p class="member-role">Research &amp; Investments Division</p>
+                    </div>
+                </div>
+                <ul class="member-roster" aria-label="Members without provided headshots">
+                    <li>Shaunak Mehta</li><li>Will Liu</li><li>Niccolo Balestriere</li><li>Arish Ashraf</li><li>Joao Pedro Nogueira</li><li>Jack Yang</li><li>Beckett Hettie</li><li>Tyler Lui</li><li>William Xie</li><li>Demetrios Bezianis</li><li>Angela Zhang</li>
+                    </ul>
+            </div>
+        </section>
+    </main>
+
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Blockchain Animated Background -->
+                        <canvas id="footerTesseractCanvas" class="footer-canvas"></canvas>
+        <div class="footer-overlay"></div>
+        
+        <div class="footer-container">
+            <!-- Top Row -->
+            <div class="footer-top">
+                <div class="footer-logo">
+                                    <a href="index.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                    <img src="Images/Logo/Logo_noBG.png" alt="Blockchain at Emory" class="footer-logo-img">
+                    </a>
+                </div>
+                
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="projects.html" class="footer-link">Projects</a>
+                    <a href="research.html" class="footer-link">Research</a>
+                    <a href="finances.html" class="footer-link">Finances</a>
+                    <a href="Team.html" class="footer-link">Team</a>
+                    <a href="index.html#contact" class="footer-link">Contact</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform" class="footer-link" target="_blank" rel="noopener noreferrer">Apply</a>
+                </nav>
+                
+                <div class="footer-social">
+                    <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="https://t.me/+YqSNGcCL8-QyNDhh" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Telegram community">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
+                        </svg>
+                    </a>
+                    <a href="https://emoryblockchain.substack.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Read our research on Substack">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Middle Row -->
+            <div class="footer-middle">
+                <div class="footer-tagline">
+                    <h3>Building the future of blockchain at Emory University</h3>
+                </div>
+                
+                <div class="newsletter-signup">
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-wrapper">
+                            <input type="email" id="newsletterEmail" name="email" class="newsletter-input" 
+                                placeholder="Enter your email" required aria-label="Email address for newsletter">
+                            <button type="submit" class="newsletter-btn">
+                                <span class="btn-text">Subscribe</span>
+                                <span class="btn-spinner newsletter-spinner"></span>
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Bottom Row -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="currentYear">2024</span> Blockchain at Emory University. All rights reserved.</p>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Modal Popup -->
+    <div class="apply-modal" id="applyModal">
+        <div class="apply-modal-overlay"></div>
+        <div class="apply-modal-container">
+            <button class="apply-modal-close" id="applyModalClose" aria-label="Close modal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="apply-modal-content">
+                <div class="apply-modal-header">
+                    <div class="apply-modal-logo">
+                        <img src="Images/Logo/Logo_noBG.png" alt="Blockchain at Emory">
+                    </div>
+                    <h2 class="apply-modal-title">Fall 2026</h2>
+                    <p class="apply-modal-subtitle">Recruitment Timeline</p>
+                </div>
+
+                <div class="apply-timeline">
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Fri. Sept. 4</div>
+                            <div class="apply-timeline-date-time">Now!</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Apps Open</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @Google Forms
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Wed. Sept. 9</div>
+                            <div class="apply-timeline-date-time">12-2 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Wonderful Weds</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @Asbury Circle
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Wed. Sept. 9</div>
+                            <div class="apply-timeline-date-time">7-8 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Interest Meeting #1</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @GBS 331
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Fri. Sept. 11</div>
+                            <div class="apply-timeline-date-time">1-2 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Interest Meeting #2</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @GBS 231
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event highlight">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Sat. Sept. 12</div>
+                            <div class="apply-timeline-date-time">11:59 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Applications Due!</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                                @Virtual
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="apply-button-section">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform"
+                       class="apply-modal-button" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <span>Apply Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/team.js"></script>
+    <script src="js/apply-modal.js"></script>
+</body>
+</html>

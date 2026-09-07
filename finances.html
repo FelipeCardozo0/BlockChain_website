@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finances - Blockchain at Emory</title>
+    <link rel="icon" type="image/png" href="Images/Logo/Logo_Official.png">
+    <link rel="stylesheet" href="css/finances.css">
+    <link rel="stylesheet" href="css/apply-modal.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <canvas id="blockchainCanvas" class="background-canvas"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="home-navbar" id="homeNavbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                    <img src="Images/Logo/Logo_Official.png" alt="Blockchain at Emory" class="nav-logo-img">
+                </a>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="nav-navigation" aria-label="Main navigation">
+                <div class="nav-links-center">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                    <a href="research.html" class="nav-link">Research</a>
+                    <a href="finances.html" class="nav-link nav-link-active">Finances</a>
+                    <a href="Team.html" class="nav-link">Team</a>
+                </div>
+                <div class="nav-links-right">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform" class="nav-link nav-link-apply" target="_blank" rel="noopener noreferrer">Apply</a>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Finances-style Navigation Bar (After Scroll) -->
+    <nav class="finances-navbar" id="financesNavbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href="index.html" class="logo-link" aria-label="Blockchain Club Finances - Home">
+                    <img src="Images/Logo/Logo_noBG.png" alt="Blockchain at Emory" class="finances-logo-img">
+                </a>
+            </div>
+            
+            <!-- Center Navigation Links -->
+            <div class="finances-navigation">
+                <a href="#board-access" class="finances-nav-link" data-section="board-access">Board Access</a>
+                <a href="#validator" class="finances-nav-link" data-section="validator">Validator</a>
+
+            </div>
+            
+            <!-- Menu Icon -->
+            <div class="navbar-menu">
+                <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
+                    <span class="menu-icon">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="overlay-background"></div>
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2 class="overlay-title">Navigation</h2>
+                <button class="overlay-close" id="overlayClose" aria-label="Close navigation menu">
+                    <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="overlay-nav" aria-label="Main navigation">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Main</h3>
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="overlay-link">
+                            <span class="link-label">Home</span>
+                        </a></li>
+                        <li><a href="about.html" class="overlay-link">
+                            <span class="link-label">About</span>
+                        </a></li>
+                        <li><a href="projects.html" class="overlay-link">
+                            <span class="link-label">Projects</span>
+                        </a></li>
+                        <li><a href="research.html" class="overlay-link">
+                            <span class="link-label">Research</span>
+                        </a></li>
+                        <li><a href="finances.html" class="overlay-link active">
+                            <span class="link-label">Finances</span>
+                        </a></li>
+                        <li><a href="Team.html" class="overlay-link">
+                            <span class="link-label">Team</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Financial Sections</h3>
+                    <ul class="nav-list">
+                        <li><a href="#board-access" class="overlay-link">
+                            <span class="link-label">Board Access</span>
+                        </a></li>
+                        <li><a href="#validator" class="overlay-link">
+                            <span class="link-label">Validator Performance</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Contact</h3>
+                    <ul class="nav-list">
+                        <li><a href="index.html#contact" class="overlay-link">
+                            <span class="link-label">Contact Us</span>
+                        </a></li>
+                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform" class="overlay-link apply-highlight" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Join Us</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+        </div>
+    </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-container">
+                    <div class="floating-elements">
+                        <div class="floating-icon" data-delay="0">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="floating-icon" data-delay="1">
+                            <i class="fab fa-ethereum"></i>
+                        </div>
+                        <div class="floating-icon" data-delay="2">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="floating-icon" data-delay="3">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                    </div>
+                    <h1 class="hero-title">Finances</h1>
+                    <p class="hero-subtitle">Transparency and accountability in managing club funds and digital assets with complete financial oversight.</p>
+                </div>
+            </section>
+
+                    <!-- Board Access Section -->
+        <section class="section board-access-section" id="board-access">
+            <div class="section-container">
+                <h2 class="section-title">Board Access</h2>
+                
+                <!-- Login Form -->
+                <div class="glass-card board-login-card" id="boardLoginCard">
+                    <div class="card-header">
+                        <h3>
+                            <i class="fas fa-lock"></i>
+                            Board Member Authentication
+                        </h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="login-description">This section contains sensitive financial information and operational details restricted to board members only.</p>
+                        
+                        <form class="board-login-form" id="boardLoginForm">
+                            <div class="form-group">
+                                <label for="boardPassword" class="form-label">Board Password</label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="boardPassword" name="password" class="form-input" 
+                                           placeholder="Enter board password" required>
+                                    <button type="button" class="password-toggle" id="passwordToggle">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="login-btn">
+                                <span class="btn-text">
+                                    <i class="fas fa-unlock"></i>
+                                    Access Board Section
+                                </span>
+                                <span class="btn-spinner login-spinner"></span>
+                            </button>
+                        </form>
+                        
+                        <div class="login-error" id="loginError" style="display: none;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Invalid password. Please try again.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Board Content (Hidden by default) -->
+                <div class="board-content" id="boardContent" style="display: none;">
+                    <div class="board-header">
+                        <h3>
+                            <i class="fas fa-shield-alt"></i>
+                            Board Member Dashboard
+                        </h3>
+                        <button class="logout-btn" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </button>
+                    </div>
+
+                    <div class="board-grid">
+                        <!-- Sensitive Financial Data -->
+                        <div class="glass-card sensitive-data-card">
+                            <div class="card-header">
+                                <h3>
+                                    <i class="fas fa-chart-line"></i>
+                                    Internal Financial Metrics
+                                </h3>
+                                <div class="security-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Confidential
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="sensitive-metrics-grid">
+                                    <div class="metric-item">
+                                        <span class="metric-label">Operating Margin</span>
+                                        <span class="metric-value">23.4%</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Burn Rate</span>
+                                        <span class="metric-value">$12,450/mo</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Runway</span>
+                                        <span class="metric-value">18.2 months</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Liquidity Ratio</span>
+                                        <span class="metric-value">3.2:1</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Debt-to-Equity</span>
+                                        <span class="metric-value">0.15</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">ROI (YTD)</span>
+                                        <span class="metric-value">+34.7%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Strategic Planning -->
+                        <div class="glass-card strategic-planning-card">
+                            <div class="card-header">
+                                <h3>
+                                    <i class="fas fa-chess"></i>
+                                    Strategic Initiatives
+                                </h3>
+                                <div class="security-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Internal
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="initiatives-list">
+                                    <div class="initiative-item">
+                                        <div class="initiative-header">
+                                            <h4>Q1 2025 Expansion</h4>
+                                            <span class="status-badge planning">Planning</span>
+                                        </div>
+                                        <p>Expand mining operations to 50 PH/s capacity with new facility in Texas</p>
+                                        <div class="initiative-details">
+                                            <span>Budget: $2.5M</span>
+                                            <span>Timeline: Q1 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="initiative-item">
+                                        <div class="initiative-header">
+                                            <h4>DeFi Protocol Launch</h4>
+                                            <span class="status-badge development">Development</span>
+                                        </div>
+                                        <p>Launch proprietary DeFi protocol for yield optimization</p>
+                                        <div class="initiative-details">
+                                            <span>Budget: $750K</span>
+                                            <span>Timeline: Q2 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="initiative-item">
+                                        <div class="initiative-header">
+                                            <h4>Partnership Expansion</h4>
+                                            <span class="status-badge active">Active</span>
+                                        </div>
+                                        <p>Strategic partnerships with 3 major blockchain foundations</p>
+                                        <div class="initiative-details">
+                                            <span>Budget: $500K</span>
+                                            <span>Timeline: Ongoing</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Risk Management -->
+                        <div class="glass-card risk-management-card">
+                            <div class="card-header">
+                                <h3>
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    Risk Assessment
+                                </h3>
+                                <div class="security-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Critical
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="risk-matrix">
+                                    <div class="risk-item high-risk">
+                                        <div class="risk-header">
+                                            <span class="risk-level">High Risk</span>
+                                            <span class="risk-score">8.5/10</span>
+                                        </div>
+                                        <h4>Regulatory Changes</h4>
+                                        <p>Potential impact of new crypto regulations on mining operations</p>
+                                        <div class="mitigation-plan">
+                                            <strong>Mitigation:</strong> Diversify into renewable energy credits and carbon offsets
+                                        </div>
+                                    </div>
+                                    <div class="risk-item medium-risk">
+                                        <div class="risk-header">
+                                            <span class="risk-level">Medium Risk</span>
+                                            <span class="risk-score">6.2/10</span>
+                                        </div>
+                                        <h4>Hardware Supply Chain</h4>
+                                        <p>Delays in ASIC miner deliveries affecting expansion timeline</p>
+                                        <div class="mitigation-plan">
+                                            <strong>Mitigation:</strong> Multiple supplier contracts and backup options
+                                        </div>
+                                    </div>
+                                    <div class="risk-item low-risk">
+                                        <div class="risk-header">
+                                            <span class="risk-level">Low Risk</span>
+                                            <span class="risk-score">3.1/10</span>
+                                        </div>
+                                        <h4>Market Volatility</h4>
+                                        <p>Cryptocurrency price fluctuations affecting revenue projections</p>
+                                        <div class="mitigation-plan">
+                                            <strong>Mitigation:</strong> Hedging strategies and stablecoin reserves
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Board Actions -->
+                        <div class="glass-card board-actions-card">
+                            <div class="card-header">
+                                <h3>
+                                    <i class="fas fa-gavel"></i>
+                                    Pending Board Actions
+                                </h3>
+                                <div class="security-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Board Only
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="actions-list">
+                                    <div class="action-item">
+                                        <div class="action-header">
+                                            <h4>Budget Approval</h4>
+                                            <span class="action-status pending">Pending Vote</span>
+                                        </div>
+                                        <p>Q1 2025 operating budget of $850,000</p>
+                                        <div class="action-details">
+                                            <span>Due: Jan 15, 2025</span>
+                                            <span>Votes: 3/5</span>
+                                        </div>
+                                    </div>
+                                    <div class="action-item">
+                                        <div class="action-header">
+                                            <h4>Investment Committee</h4>
+                                            <span class="action-status approved">Approved</span>
+                                        </div>
+                                        <p>Formation of investment committee for portfolio management</p>
+                                        <div class="action-details">
+                                            <span>Approved: Dec 10, 2024</span>
+                                            <span>Members: 5</span>
+                                        </div>
+                                    </div>
+                                    <div class="action-item">
+                                        <div class="action-header">
+                                            <h4>Audit Selection</h4>
+                                            <span class="action-status review">Under Review</span>
+                                        </div>
+                                        <p>Selection of external auditor for 2024 financial statements</p>
+                                        <div class="action-details">
+                                            <span>Due: Jan 30, 2025</span>
+                                            <span>Proposals: 3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Validator Performance Section -->
+        <section class="section validator-section" id="validator">
+            <div class="section-container">
+                <h2 class="section-title">Solana Validator Performance</h2>
+                <div class="validator-grid">
+                    <!-- Validator Overview Card -->
+                    <div class="glass-card validator-overview-card">
+                        <div class="card-header">
+                            <h3>Validator Overview</h3>
+                            <div class="status-indicator online">
+                                <div class="status-dot"></div>
+                                <span>Active & Online</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="overview-grid">
+                                <div class="overview-item">
+                                    <span class="overview-label">Active Stake</span>
+                                    <span class="overview-value">29,407 SOL</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Commission</span>
+                                    <span class="overview-value">5%</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Staking APY</span>
+                                    <span class="overview-value">7.27%</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Rank</span>
+                                    <span class="overview-value">814th</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Uptime</span>
+                                    <span class="overview-value">99.9%</span>
+                                </div>
+
+                                <div class="overview-item">
+                                    <span class="overview-label">Validator Address</span>
+                                    <span class="overview-value wallet-address">XAqHfPFsqTfAJHBRHAcEECkMSykXjkUj2Rta16Qshrk</span>
+                                    <button class="copy-btn" data-clipboard="XAqHfPFsqTfAJHBRHAcEECkMSykXjkUj2Rta16Qshrk">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Network</span>
+                                    <span class="overview-value">Mainnet</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Version</span>
+                                    <span class="overview-value">1.17.0</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Last Vote</span>
+                                    <span class="overview-value">2025-06-15 15:30:45 UTC</span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-label">Vote Distance</span>
+                                    <span class="overview-value">1.2s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Analysis Card -->
+                    <div class="glass-card validator-performance-card">
+                        <div class="card-header">
+                            <h3>Performance Analysis</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="performance-metrics-grid">
+                                <div class="energy-stat">
+                                    <span class="stat-label">Daily Rewards</span>
+                                    <span class="stat-value">520 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Weekly Rewards</span>
+                                    <span class="stat-value">3,640 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Monthly Rewards</span>
+                                    <span class="stat-value">15,600 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Annual Rewards</span>
+                                    <span class="stat-value">189,800 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Commission Earned</span>
+                                    <span class="stat-value">780 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Delegator Rewards</span>
+                                    <span class="stat-value">14,820 SOL</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Vote Participation</span>
+                                    <span class="stat-value">99.8%</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Skip Rate</span>
+                                    <span class="stat-value">0.2%</span>
+                                </div>
+                                <div class="energy-stat">
+                                    <span class="stat-label">Average Vote Latency</span>
+                                    <span class="stat-value">1.2s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- External Validator Links -->
+                    <div class="glass-card validator-links-card">
+                        <div class="card-header">
+                            <h3>Check yourself</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="links-description">Check detailed statistics and performance metrics on external validator explorer platforms:</p>
+                            <div class="validator-links">
+                                <a href="https://stakewiz.com/validator/ySxF6XaSFSwU46iJbgyh2rAW5jagLbYULPtWvZCshrk" target="_blank" rel="noopener noreferrer" class="validator-link">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>StakeWiz Validator Explorer</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://www.validators.app/validators/XAqHfPFsqTfAJHBRHAcEECkMSykXjkUj2Rta16Qshrk?locale=en&network=mainnet" target="_blank" rel="noopener noreferrer" class="validator-link">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <span>Validators.app Analytics</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partnership Call-to-Action Section -->
+        <section class="section partnership-section" id="partnership">
+            <div class="section-container">
+                <div class="glass-card partnership-card">
+                    <div class="partnership-content">
+                        <div class="partnership-text">
+                            <h2>Become a Partner</h2>
+                            <p>Join our growing network of partners and sponsors supporting blockchain innovation at Emory University. Help us build the future of decentralized technology.</p>
+                        </div>
+                        <div class="partnership-action">
+                            <a href="index.html#contact" class="cta-button">
+                                <i class="fas fa-handshake"></i>
+                                Partner With Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Blockchain Animated Background -->
+                        <canvas id="footerTesseractCanvas" class="footer-canvas"></canvas>
+        <div class="footer-overlay"></div>
+        
+        <div class="footer-container">
+            <!-- Top Row -->
+            <div class="footer-top">
+                <div class="footer-logo">
+                                    <a href="index.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                    <img src="Images/Logo/Logo_noBG.png" alt="Blockchain at Emory" class="footer-logo-img">
+                    </a>
+                </div>
+                
+                                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="projects.html" class="footer-link">Projects</a>
+                    <a href="research.html" class="footer-link">Research</a>
+                    <a href="finances.html" class="footer-link">Finances</a>
+                    <a href="Team.html" class="footer-link">Team</a>
+                    <a href="index.html#contact" class="footer-link">Contact</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform" class="footer-link" target="_blank" rel="noopener noreferrer">Apply</a>
+                </nav>
+                
+                <div class="footer-social">
+                    <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/emoryblockchain/posts/?feedView=all" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="https://blockchainemory.substack.com" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our Substack newsletter">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                        </svg>
+                    </a>
+                    <a href="https://t.me/+YqSNGcCL8-QyNDhh" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Telegram community">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Middle Row -->
+            <div class="footer-middle">
+                <div class="footer-tagline">
+                    <h3>Building the future of blockchain at Emory University</h3>
+                </div>
+                
+                <div class="newsletter-signup">
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-wrapper">
+                            <input type="email" id="newsletterEmail" name="email" class="newsletter-input" 
+                                placeholder="Enter your email" required aria-label="Email address for newsletter">
+                            <button type="submit" class="newsletter-btn">
+                                <span class="btn-text">Subscribe</span>
+                                <span class="btn-spinner newsletter-spinner"></span>
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Bottom Row -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="currentYear">2024</span> Blockchain at Emory University. All rights reserved.</p>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Modal Popup -->
+    <div class="apply-modal" id="applyModal">
+        <div class="apply-modal-overlay"></div>
+        <div class="apply-modal-container">
+            <button class="apply-modal-close" id="applyModalClose" aria-label="Close modal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="apply-modal-content">
+                <div class="apply-modal-header">
+                    <div class="apply-modal-logo">
+                        <img src="Images/Logo/Logo_noBG.png" alt="Blockchain at Emory">
+                    </div>
+                    <h2 class="apply-modal-title">Fall 2026</h2>
+                    <p class="apply-modal-subtitle">Recruitment Timeline</p>
+                </div>
+
+                <div class="apply-timeline">
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Fri. Sept. 4</div>
+                            <div class="apply-timeline-date-time">Now!</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Apps Open</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @Google Forms
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Wed. Sept. 9</div>
+                            <div class="apply-timeline-date-time">12-2 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Wonderful Weds</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @Asbury Circle
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Wed. Sept. 9</div>
+                            <div class="apply-timeline-date-time">7-8 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Interest Meeting #1</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @GBS 331
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Fri. Sept. 11</div>
+                            <div class="apply-timeline-date-time">1-2 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Interest Meeting #2</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @GBS 231
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event highlight">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Sat. Sept. 12</div>
+                            <div class="apply-timeline-date-time">11:59 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Applications Due!</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                                @Virtual
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="apply-button-section">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform"
+                       class="apply-modal-button" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <span>Apply Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/finances.js"></script>
+    <script src="js/apply-modal.js"></script>
+</body>
+</html>

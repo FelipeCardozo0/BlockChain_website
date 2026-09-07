@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Blockchain at Emory</title>
+    <link rel="icon" type="image/png" href="Images/Logo/Logo_Official.png">
+    <link rel="stylesheet" href="css/research.css">
+    <link rel="stylesheet" href="css/apply-modal.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="home-navbar" id="homeNavbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                    <img src="Images/Logo/Logo_Official.png" alt="Blockchain at Emory" class="nav-logo-img">
+                </a>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="nav-navigation" aria-label="Main navigation">
+                <div class="nav-links-center">
+                    <a href="projects.html" class="nav-link">Projects</a>
+                    <a href="research.html" class="nav-link nav-link-active">Research</a>
+                    <a href="finances.html" class="nav-link">Finances</a>
+                    <a href="Team.html" class="nav-link">Team</a>
+                </div>
+                <div class="nav-links-right">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform" class="nav-link nav-link-apply" target="_blank" rel="noopener noreferrer">Apply</a>
+                </div>
+            </nav>
+        </div>
+    </nav>
+
+    <!-- Research-style Navigation Bar (After Scroll) -->
+    <nav class="research-navbar" id="researchNavbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href="index.html" class="logo-link" aria-label="Blockchain Club Research - Home">
+                    <img src="Images/Logo/Logo_noBG.png" alt="Blockchain at Emory" class="research-logo-img">
+                </a>
+            </div>
+            
+            <!-- Center Navigation Links -->
+            <div class="research-navigation">
+                <a href="#featured" class="research-nav-link" data-section="featured">Featured</a>
+                <a href="#categories" class="research-nav-link" data-section="categories">Categories</a>
+                <a href="#articles" class="research-nav-link" data-section="articles">Articles</a>
+                <a href="#impact" class="research-nav-link" data-section="impact">Impact</a>
+            </div>
+            
+            <!-- Menu Icon -->
+            <div class="navbar-menu">
+                <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
+                    <span class="menu-icon">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="overlay-background"></div>
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2 class="overlay-title">Navigation</h2>
+                <button class="overlay-close" id="overlayClose" aria-label="Close navigation menu">
+                    <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <nav class="overlay-nav" aria-label="Main navigation">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Main</h3>
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="overlay-link">
+                            <span class="link-label">Home</span>
+                        </a></li>
+                        <li><a href="projects.html" class="overlay-link">
+                            <span class="link-label">Projects</span>
+                        </a></li>
+                        <li><a href="research.html" class="overlay-link active">
+                            <span class="link-label">Research</span>
+                        </a></li>
+                        <li><a href="finances.html" class="overlay-link">
+                            <span class="link-label">Finances</span>
+                        </a></li>
+                        <li><a href="Team.html" class="overlay-link">
+                            <span class="link-label">Team</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Research Sections</h3>
+                    <ul class="nav-list">
+                        <li><a href="#featured" class="overlay-link">
+                            <span class="link-label">Featured Research</span>
+                        </a></li>
+                        <li><a href="#categories" class="overlay-link">
+                            <span class="link-label">Research Categories</span>
+                        </a></li>
+                        <li><a href="#articles" class="overlay-link">
+                            <span class="link-label">Research Articles</span>
+                        </a></li>
+                        <li><a href="#impact" class="overlay-link">
+                            <span class="link-label">Impact Metrics</span>
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Contact</h3>
+                    <ul class="nav-list">
+                        <li><a href="index.html#contact" class="overlay-link">
+                            <span class="link-label">Contact Us</span>
+                        </a></li>
+                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform" class="overlay-link apply-highlight" target="_blank" rel="noopener noreferrer">
+                            <span class="link-label">Join Us</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="floating-elements">
+                    <div class="floating-icon" data-delay="0">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div class="floating-icon" data-delay="1">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="floating-icon" data-delay="2">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="floating-icon" data-delay="3">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                </div>
+                <h1 class="hero-title">Research</h1>
+                <p class="hero-subtitle">Exploring the future of blockchain technology through academic research and innovation at Emory University.</p>
+            </div>
+        </section>
+
+        <!-- Featured Research Section -->
+        <section class="featured-research" id="featured">
+            <div class="featured-research-container">
+                <div class="featured-research-header">
+                    <h2 class="featured-research-title">Featured Research</h2>
+                    <p class="featured-research-subtitle">Highlighting our latest breakthrough research and high-impact publications</p>
+                </div>
+                
+                <div class="featured-research-card">
+                    <div class="research-visual" style="margin-bottom: 2rem;">
+                        <img src="Research/Research Covers/Exploring Style Factors in Cryptocurrencies.png" alt="Exploring Style Factors in Cryptocurrencies" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+                    </div>
+                    <div class="research-content">
+                        <h3 class="research-article-title">Exploring Style Factors in Cryptocurrencies</h3>
+                        <p class="research-author">Emory Blockchain Research Team</p>
+                        <p class="research-description">
+                            This research investigates style factors in cryptocurrency markets, examining how traditional quantitative finance methodologies can be applied to digital assets. The study explores momentum, value, size, volatility, and other systematic factors that drive cryptocurrency returns, providing insights into market structure and potential alpha generation strategies in decentralized markets.
+                        </p>
+                        
+                        <div class="research-tags">
+                            <span class="research-tag">Quantitative Finance</span>
+                            <span class="research-tag">Cryptocurrency Markets</span>
+                            <span class="research-tag">Style Factors</span>
+                            <span class="research-tag">Market Analysis</span>
+                        </div>
+                        
+                        <div class="research-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">1</span>
+                                <span class="stat-label">PUBLICATION</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">2025</span>
+                                <span class="stat-label">YEAR</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">1</span>
+                                <span class="stat-label">RESEARCH AREA</span>
+                            </div>
+                        </div>
+                        
+                        <a href="Research/Exploring Style Factors in Cryptocurrencies.pdf" class="read-more-btn" target="_blank" rel="noopener noreferrer">
+                            Read Full Paper
+                            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Categories Section -->
+        <section class="research-categories" id="categories">
+            <div class="research-categories-container">
+                <div class="categories-header">
+                    <h2 class="categories-title">Research Categories</h2>
+                    <p class="categories-subtitle">Explore our diverse research areas and specializations</p>
+                </div>
+                
+                <div class="categories-buttons">
+                    <button class="category-btn active" data-category="all">All Research</button>
+                    <button class="category-btn" data-category="blockchain-economics">Blockchain Economics</button>
+                    <button class="category-btn" data-category="quantitative-finance">Quantitative Finance</button>
+                    <button class="category-btn" data-category="market-analysis">Market Analysis</button>
+                    <button class="category-btn" data-category="cryptocurrency-research">Cryptocurrency Research</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Articles Grid -->
+        <section class="research-articles" id="articles">
+            <div class="research-articles-container">
+                <div class="research-grid">
+                    <!-- Style Factors Research -->
+                    <article class="research-card" data-category="blockchain-economics quantitative-finance market-analysis cryptocurrency-research">
+                        <div class="card-cover-wrapper">
+                            <img src="Research/Research Covers/Exploring Style Factors in Cryptocurrencies.png" alt="Exploring Style Factors in Cryptocurrencies" class="card-cover-image">
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name">Emma Addams</div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description">Investigating style factors in cryptocurrency markets, examining how traditional quantitative finance methodologies can be applied to digital assets. Explores momentum, value, size, volatility, and other systematic factors driving cryptocurrency returns.</p>
+                            </div>
+                            <div class="card-tags">
+                                <span class="card-tag published">Published</span>
+                                <span class="card-tag data-analysis">Data Analysis</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 2 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 3 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 4 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 5 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 6 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 7 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 8 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 9 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 10 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 11 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 12 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 13 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 14 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 15 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 16 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 17 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 18 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 19 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-author-name"></div>
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+
+                    <!-- Empty Research Card 20 -->
+                    <article class="research-card" data-category="all">
+                        <div class="card-cover-wrapper">
+                            <div class="card-cover-placeholder"></div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-description-wrapper">
+                                <p class="card-description"></p>
+                            </div>
+                            <div class="card-tags"></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Metrics Section -->
+        <section class="metrics-section" id="impact">
+            <div class="metrics-container">
+                <h2 class="section-title">Impact Metrics</h2> 
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-value" data-target="1">0</div>
+                        <div class="metric-label">Publications</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value" data-target="1">0</div>
+                        <div class="metric-label">Research Papers</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value" data-target="2025">0</div>
+                        <div class="metric-label">Research Year</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-value" data-target="1">0</div>
+                        <div class="metric-label">Active Research Areas</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Blockchain Animated Background -->
+        <canvas id="footerTesseractCanvas" class="footer-canvas"></canvas>
+        <div class="footer-overlay"></div>
+        
+        <div class="footer-container">
+            <!-- Top Row -->
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo-link" aria-label="Blockchain at Emory - Home">
+                        <img src="Images/Logo/Logo_noBG.png" alt="Blockchain at Emory" class="footer-logo-img">
+                    </a>
+                </div>
+                
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="projects.html" class="footer-link">Projects</a>
+                    <a href="research.html" class="footer-link">Research</a>
+                    <a href="finances.html" class="footer-link">Finances</a>
+                    <a href="Team.html" class="footer-link">Team</a>
+                    <a href="index.html#contact" class="footer-link">Contact</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform" class="footer-link" target="_blank" rel="noopener noreferrer">Apply</a>
+                </nav>
+                
+                <div class="footer-social">
+                    <a href="https://instagram.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/blockchain-club-emory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="https://t.me/+YqSNGcCL8-QyNDhh" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Join our Telegram community">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"/>
+                        </svg>
+                    </a>
+                    <a href="https://emoryblockchain.substack.com/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Read our research on Substack">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11L22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/blockchainemory" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="View our code on GitHub">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Middle Row -->
+            <div class="footer-middle">
+                <div class="footer-tagline">
+                    <h3>Building the future of blockchain at Emory University</h3>
+                </div>
+                
+                <div class="newsletter-signup">
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-wrapper">
+                            <input type="email" id="newsletterEmail" name="email" class="newsletter-input" 
+                                placeholder="Enter your email" required aria-label="Email address for newsletter">
+                            <button type="submit" class="newsletter-btn">
+                                <span class="btn-text">Subscribe</span>
+                                <span class="btn-spinner newsletter-spinner"></span>
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Bottom Row -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; <span id="currentYear">2024</span> Blockchain at Emory University. All rights reserved.</p>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Modal Popup -->
+    <div class="apply-modal" id="applyModal">
+        <div class="apply-modal-overlay"></div>
+        <div class="apply-modal-container">
+            <button class="apply-modal-close" id="applyModalClose" aria-label="Close modal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="apply-modal-content">
+                <div class="apply-modal-header">
+                    <div class="apply-modal-logo">
+                        <img src="Images/Logo/Logo_noBG.png" alt="Blockchain at Emory">
+                    </div>
+                    <h2 class="apply-modal-title">Fall 2026</h2>
+                    <p class="apply-modal-subtitle">Recruitment Timeline</p>
+                </div>
+
+                <div class="apply-timeline">
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Fri. Sept. 4</div>
+                            <div class="apply-timeline-date-time">Now!</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Apps Open</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @Google Forms
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Wed. Sept. 9</div>
+                            <div class="apply-timeline-date-time">12-2 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Wonderful Weds</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @Asbury Circle
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Wed. Sept. 9</div>
+                            <div class="apply-timeline-date-time">7-8 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Interest Meeting #1</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @GBS 331
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Fri. Sept. 11</div>
+                            <div class="apply-timeline-date-time">1-2 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Interest Meeting #2</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @GBS 231
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-timeline-event highlight">
+                        <div class="apply-timeline-date">
+                            <div class="apply-timeline-date-day">Sat. Sept. 12</div>
+                            <div class="apply-timeline-date-time">11:59 PM</div>
+                        </div>
+                        <div class="apply-timeline-content">
+                            <div class="apply-timeline-event-name">Applications Due!</div>
+                            <div class="apply-timeline-event-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                                @Virtual
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="apply-button-section">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjhZDMZNTp5tyRMa6bKpGtivdJZsBRjDMg5jbTklRjyN-EXA/viewform"
+                       class="apply-modal-button" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <span>Apply Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/research.js"></script>
+    <script src="js/apply-modal.js"></script>
+</body>
+</html>
